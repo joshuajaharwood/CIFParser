@@ -1,9 +1,11 @@
-package com.joshuaharwood.records;
+package com.joshuaharwood.cifparser.records;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-import com.joshuaharwood.records.HeaderRecord.UpdateIndicator;
+import com.joshuaharwood.cifparser.records.model.HeaderRecord;
+import com.joshuaharwood.cifparser.records.model.HeaderRecord.UpdateIndicator;
+import com.joshuaharwood.cifparser.records.model.RecordIdentity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import org.junit.jupiter.api.Test;
@@ -81,6 +83,6 @@ class HeaderRecordTest {
         LocalDate.of(2000, 1, 1),
         null);
 
-    assertThat(headerRecord.getRecordIdentity()).isEqualTo(RecordIdentity.HEADER_RECORD);
+    assertThat(headerRecord.recordIdentity()).isEqualTo(RecordIdentity.HEADER_RECORD);
   }
 }

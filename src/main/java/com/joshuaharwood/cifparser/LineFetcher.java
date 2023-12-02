@@ -1,4 +1,4 @@
-package com.joshuaharwood;
+package com.joshuaharwood.cifparser;
 
 public class LineFetcher {
   public void fetchLine(String fileName) {

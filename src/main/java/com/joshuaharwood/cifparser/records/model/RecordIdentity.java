@@ -1,4 +1,4 @@
-package com.joshuaharwood.records;
+package com.joshuaharwood.cifparser.records.model;
 
 public enum RecordIdentity {
   HEADER_RECORD("HD", "Header Record"), TIPLOC_INSERT_RECORD("TI",
