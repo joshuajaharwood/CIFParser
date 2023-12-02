@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import com.joshuaharwood.cifparser.records.model.AssociationRecord.AssociationDateIndicator;
+import com.joshuaharwood.cifparser.records.model.literals.CharLiteral;
 import org.junit.jupiter.api.Test;
 
 class CharLiteralTest {

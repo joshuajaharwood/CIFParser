@@ -1,9 +1,10 @@
-package com.joshuaharwood.cifparser.records.model;
+package com.joshuaharwood.cifparser.records.model.literals;
 
 import java.util.Optional;
 
 public interface CharLiteral {
 
+  //TODO: i think this should actually just throw instead or data could be lost!
   static <U extends Enum<U> & CharLiteral> Optional<U> parseLiteral(Class<U> enumType,
       Character c) {
     if (enumType == null) {
