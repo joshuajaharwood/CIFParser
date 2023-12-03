@@ -1,5 +1,6 @@
 package com.joshuaharwood.cifparser.records.model;
 
+import com.joshuaharwood.cifparser.records.model.enums.RecordIdentity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 

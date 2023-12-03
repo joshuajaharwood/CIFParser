@@ -1,5 +1,7 @@
 package com.joshuaharwood.cifparser.records.model;
 
+import com.joshuaharwood.cifparser.records.model.enums.RecordIdentity;
+import com.joshuaharwood.cifparser.records.model.enums.TransactionType;
 import com.joshuaharwood.cifparser.records.model.literals.CharLiteral;
 import com.joshuaharwood.cifparser.records.model.literals.StringLiteral;
 import java.time.DayOfWeek;
@@ -18,20 +20,6 @@ public record AssociationRecord(RecordIdentity recordIdentity, String spare,
                                 AssociationType associationType, STPIndicator stpIndicator
 
 ) implements CIFRecord {
-
-  public enum TransactionType implements CharLiteral {
-    NEW('N'), DELETE('D'), REVISE('R');
-
-    private final char literal;
-
-    TransactionType(char literal) {
-      this.literal = literal;
-    }
-
-    public char getLiteral() {
-      return literal;
-    }
-  }
 
   public enum AssociationCategory implements StringLiteral {
     JOIN("JJ"), DIVIDE("VV"), NEXT("NP");

@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import com.joshuaharwood.cifparser.records.model.HeaderRecord;
 import com.joshuaharwood.cifparser.records.model.HeaderRecord.UpdateIndicator;
-import com.joshuaharwood.cifparser.records.model.RecordIdentity;
+import com.joshuaharwood.cifparser.records.model.enums.RecordIdentity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import org.junit.jupiter.api.Test;

@@ -1,5 +1,7 @@
 package com.joshuaharwood.cifparser.records.model;
 
+import com.joshuaharwood.cifparser.records.model.enums.RecordIdentity;
+
 public record TiplocInsertRecord(String spare,
                                  String tiploc,
                                  byte capitalsIdentification,

@@ -1,6 +1,9 @@
 package com.joshuaharwood.cifparser.records.model;
 
-public sealed interface CIFRecord permits AssociationRecord, HeaderRecord, TiplocRecord {
+import com.joshuaharwood.cifparser.records.model.enums.RecordIdentity;
+
+public sealed interface CIFRecord permits AssociationRecord, HeaderRecord,
+    BasicSchedule, TiplocRecord {
 
   RecordIdentity recordIdentity();
 
