@@ -1,18 +1,29 @@
 package com.joshuaharwood.cifparser.records.model.enums;
 
 public enum CateringCode {
-  BUFFET_SERVICE('C', ""),
-  RESTAURANT_CAR_AVAILABLE_FOR_FIRST_CLASS_PASSENGERS('F', ""),
-  HOT_FOOD_AVAILABLE('', ""),
-  MEAL_INCLUDED_FOR_FIRST_CLASS_PASSENGERS('', ""),
-  WHEELCHAIR_ONLY_RESERVATIONS('', ""),
-  RESTAURANT('', ""),
-  TROLLEY_SERVICE('', "");
-  C - Buffet Service
-  F - Restaurant Car available for First Class passengers
-  H - Hot food available
-  M - Meal included for First Class passengers
-  P - Wheelchair only reservations
-  R - Restaurant
-  T - Trolley service.
+  BUFFET_SERVICE('C', "Buffet Service"),
+  RESTAURANT_CAR_AVAILABLE_FOR_FIRST_CLASS_PASSENGERS('F',
+      "Restaurant Car available for First Class passengers"),
+  HOT_FOOD_AVAILABLE('H', "Hot food available"),
+  MEAL_INCLUDED_FOR_FIRST_CLASS_PASSENGERS('M', "Meal included for First Class passengers"),
+  WHEELCHAIR_ONLY_RESERVATIONS('P', "Wheelchair only reservations"),
+  RESTAURANT('R', "Restaurant"),
+  TROLLEY_SERVICE('T', "Trolley service");
+
+  private final char literal;
+  private final String description;
+
+  CateringCode(char literal, String description) {
+
+    this.literal = literal;
+    this.description = description;
+  }
+
+  public char getLiteral() {
+    return literal;
+  }
+
+  public String getDescription() {
+    return description;
+  }
 }
