@@ -3,22 +3,36 @@ package com.joshuaharwood.cifparser.records.model;
 import static com.joshuaharwood.cifparser.records.model.BasicSchedule.TrainStatus.TrainStatusSchedulingType.SHORT_TERM_PLANNING;
 import static com.joshuaharwood.cifparser.records.model.BasicSchedule.TrainStatus.TrainStatusSchedulingType.WORKING_TIMETABLE;
 
+import com.joshuaharwood.cifparser.records.model.enums.CateringCode;
+import com.joshuaharwood.cifparser.records.model.enums.OperatingCharacteristics;
 import com.joshuaharwood.cifparser.records.model.enums.PowerType;
 import com.joshuaharwood.cifparser.records.model.enums.RecordIdentity;
+import com.joshuaharwood.cifparser.records.model.enums.Reservations;
+import com.joshuaharwood.cifparser.records.model.enums.STPIndicator;
+import com.joshuaharwood.cifparser.records.model.enums.SeatingClass;
+import com.joshuaharwood.cifparser.records.model.enums.ServiceBranding;
+import com.joshuaharwood.cifparser.records.model.enums.Sleepers;
 import com.joshuaharwood.cifparser.records.model.enums.TrainCategory;
 import com.joshuaharwood.cifparser.records.model.enums.TransactionType;
 import com.joshuaharwood.cifparser.records.model.literals.CharLiteral;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Map;
+import java.util.Set;
 
 public record BasicSchedule(String spare, TransactionType transactionType, String trainUid,
                             LocalDate dateRunsFrom, LocalDate dateRunsTo,
                             Map<DayOfWeek, Boolean> daysRun, BankHolidayRunning bankHolidayRunning,
                             TrainStatus trainStatus, TrainCategory trainCategory,
                             String trainIdentity, int headcode, byte courseIndicator,
-                            int trainServiceCode, char portionId, PowerType powerType, String timingLoad,
-                            int speed, ) implements CIFRecord {
+                            int trainServiceCode, char portionId, PowerType powerType,
+                            String timingLoad, int speed,
+                            Set<OperatingCharacteristics> operatingCharacteristics,
+                            SeatingClass seatingClass, Sleepers sleepers, Reservations reservations,
+                            Character connectionIndicator, CateringCode cateringCode,
+                            ServiceBranding serviceBranding,
+                            STPIndicator stpIndicator
+) implements CIFRecord {
 
   @Override
   public RecordIdentity recordIdentity() {

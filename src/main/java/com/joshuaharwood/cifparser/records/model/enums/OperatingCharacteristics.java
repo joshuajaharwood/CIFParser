@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.records.model.enums;
 
 import com.joshuaharwood.cifparser.records.model.literals.CharLiteral;
 
-public enum TrainAttributes implements CharLiteral {
+public enum OperatingCharacteristics implements CharLiteral {
   VACUUM_BRAKED('B', "Vacuum Braked"),
   TIMED_100_MPH('C', "Timed at 100 m.p.h."),
   DOO('D', "DOO (Coaching stock trains)"),
@@ -20,7 +20,7 @@ public enum TrainAttributes implements CharLiteral {
   private final char literal;
   private final String description;
 
-  TrainAttributes(char literal, String description) {
+  OperatingCharacteristics(char literal, String description) {
     this.literal = literal;
     this.description = description;
   }
