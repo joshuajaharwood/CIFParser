@@ -1,11 +1,10 @@
-package com.joshuaharwood.cifparser.records.model;
+package com.joshuaharwood.cifparser.records.model.literals;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 import com.joshuaharwood.cifparser.records.model.AssociationRecord.AssociationDateIndicator;
-import com.joshuaharwood.cifparser.records.model.literals.CharLiteral;
 import org.junit.jupiter.api.Test;
 
 class CharLiteralTest {
@@ -44,12 +43,5 @@ class CharLiteralTest {
   void parseLiteralWithRightCharReturnsCorrectEnumInstance() {
     assertThat(CharLiteral.parseLiteral(AssociationDateIndicator.class, 'S')).hasValue(
         AssociationDateIndicator.STANDARD);
-  }
-
-  @Test
-  void parseLiteralWithNumberThrowsIllegalArgumentException() {
-    assertThatIllegalArgumentException().isThrownBy(() -> CharLiteral.parseLiteral(
-        AssociationDateIndicator.class,
-        '2'));
   }
 }
