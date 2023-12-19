@@ -2,6 +2,7 @@ package com.joshuaharwood.cifparser.records.model;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 import com.joshuaharwood.cifparser.records.model.AssociationRecord.AssociationDateIndicator;
 import com.joshuaharwood.cifparser.records.model.literals.CharLiteral;
@@ -10,9 +11,8 @@ import org.junit.jupiter.api.Test;
 class CharLiteralTest {
 
   @Test
-  void parseLiteralWithNullEnumTypeThrowsIllegalArgumentException() {
-    //noinspection DataFlowIssue
-    assertThatIllegalArgumentException().isThrownBy(() -> CharLiteral.parseLiteral(null, 'e'));
+  void parseLiteralWithNullEnumTypeThrowsNullPointerException() {
+    assertThatNullPointerException().isThrownBy(() -> CharLiteral.parseLiteral(null, 'e'));
   }
 
   @Test
@@ -21,8 +21,17 @@ class CharLiteralTest {
   }
 
   @Test
-  void parseLiteralWithWrongCharReturnsEmptyOptional() {
-    assertThat(CharLiteral.parseLiteral(AssociationDateIndicator.class, 'e')).isEmpty();
+  void parseLiteralWithWhitespaceCharReturnsEmptyOptional() {
+    assertThat(CharLiteral.parseLiteral(AssociationDateIndicator.class, ' ')).isEmpty();
+  }
+
+  @Test
+  void parseLiteralWithWrongCharThrowsIllegalArgumentException() {
+    assertThatIllegalArgumentException().isThrownBy(() -> CharLiteral.parseLiteral(
+            AssociationDateIndicator.class,
+            'e'))
+        .withMessage(
+            "Failed to map character for given CharLiteral. [Character: e] [Enum: AssociationDateIndicator]");
   }
 
   @Test
@@ -38,7 +47,9 @@ class CharLiteralTest {
   }
 
   @Test
-  void parseLiteralWithNumberReturnsEmptyOptional() {
-    assertThat(CharLiteral.parseLiteral(AssociationDateIndicator.class, '2')).isEmpty();
+  void parseLiteralWithNumberThrowsIllegalArgumentException() {
+    assertThatIllegalArgumentException().isThrownBy(() -> CharLiteral.parseLiteral(
+        AssociationDateIndicator.class,
+        '2'));
   }
 }

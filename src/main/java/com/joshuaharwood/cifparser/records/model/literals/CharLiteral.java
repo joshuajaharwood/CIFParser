@@ -1,17 +1,15 @@
 package com.joshuaharwood.cifparser.records.model.literals;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public interface CharLiteral {
 
-  //TODO: i think this should actually just throw instead or data could be lost!
   static <U extends Enum<U> & CharLiteral> Optional<U> parseLiteral(Class<U> enumType,
       Character c) {
-    if (enumType == null) {
-      throw new IllegalArgumentException("Null type argument passed for enumType.");
-    }
+    Objects.requireNonNull(enumType);
 
-    if (c == null) {
+    if (c == null || Character.isWhitespace(c)) {
       return Optional.empty();
     }
 
@@ -21,7 +19,9 @@ public interface CharLiteral {
       }
     }
 
-    return Optional.empty();
+    throw new IllegalArgumentException(
+        "Failed to map character for given CharLiteral. [Character: %c] [Enum: %s]".formatted(c,
+            enumType.getSimpleName()));
   }
 
   char getLiteral();
