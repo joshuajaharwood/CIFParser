@@ -30,9 +30,8 @@ public record BasicSchedule(String spare, TransactionType transactionType, Strin
                             Set<OperatingCharacteristics> operatingCharacteristics,
                             SeatingClass seatingClass, Sleepers sleepers, Reservations reservations,
                             Character connectionIndicator, CateringCode cateringCode,
-                            ServiceBranding serviceBranding,
-                            STPIndicator stpIndicator
-) implements CIFRecord {
+                            ServiceBranding serviceBranding, STPIndicator stpIndicator) implements
+    CIFRecord {
 
   @Override
   public RecordIdentity recordIdentity() {
