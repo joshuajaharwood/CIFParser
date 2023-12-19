@@ -1,15 +1,14 @@
 package com.joshuaharwood.cifparser.records.model.literals;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public interface StringLiteral {
-  //FIXME: write tests for me!
-  static <U extends Enum<U> & StringLiteral> Optional<U> parseLiteral(Class<U> enumType, String s) {
-    if (enumType == null) {
-      throw new IllegalArgumentException("Null type argument passed for enumType.");
-    }
 
-    if (s == null) {
+  static <U extends Enum<U> & StringLiteral> Optional<U> parseLiteral(Class<U> enumType, String s) {
+    Objects.requireNonNull(enumType);
+
+    if (s == null || s.isBlank()) {
       return Optional.empty();
     }
 
@@ -19,7 +18,9 @@ public interface StringLiteral {
       }
     }
 
-    return Optional.empty();
+    throw new IllegalArgumentException(
+        "Failed to map String for given StringLiteral. [String: %s] [Enum: %s]".formatted(s,
+            enumType.getSimpleName()));
   }
 
   String getLiteral();
