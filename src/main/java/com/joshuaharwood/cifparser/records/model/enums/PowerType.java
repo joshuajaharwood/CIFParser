@@ -1,8 +1,8 @@
 package com.joshuaharwood.cifparser.records.model.enums;
 
-import com.joshuaharwood.cifparser.records.model.literals.StringLiteral;
+import com.joshuaharwood.cifparser.records.model.literals.Literal;
 
-public enum PowerType implements StringLiteral {
+public enum PowerType implements Literal {
   DIESEL("D", "Diesel"),
   DIESEL_ELECTRIC_MULTIPLE_UNIT("DEM", "Diesel Electric Multiple Unit"),
   DIESEL_MECHANICAL_MULTIPLE_UNIT("DMU", "Diesel Mechanical Multiple Unit"),

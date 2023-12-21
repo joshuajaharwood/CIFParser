@@ -1,6 +1,7 @@
 package com.joshuaharwood.cifparser.records.model;
 
 import com.joshuaharwood.cifparser.records.model.enums.RecordIdentity;
+import com.joshuaharwood.cifparser.records.model.literals.Literal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
@@ -23,12 +24,13 @@ public record HeaderRecord(String fileMainframeIdentity, LocalDate dateOfExtract
     return RecordIdentity.HEADER_RECORD;
   }
 
-  public enum UpdateIndicator {
-    UPDATE_EXTRACT('U', "Update Extract"), FULL_EXTRACT('F', "Full Extract");
-    private final char literal;
+  public enum UpdateIndicator implements Literal {
+    UPDATE_EXTRACT("U", "Update Extract"),
+    FULL_EXTRACT("F", "Full Extract");
+    private final String literal;
     private final String description;
 
-    UpdateIndicator(char literal, String description) {
+    UpdateIndicator(String literal, String description) {
       this.literal = literal;
       this.description = description;
     }
@@ -37,6 +39,11 @@ public record HeaderRecord(String fileMainframeIdentity, LocalDate dateOfExtract
     public String toString() {
       return "UpdateIndicator{" + "literal=" + literal + ", description='" + description + '\''
           + '}';
+    }
+
+    @Override
+    public String getLiteral() {
+      return this.literal;
     }
   }
 }

@@ -42,5 +42,4 @@ class RawStringParserTest {
         .withMessage(
             "Given lengths did not sum up to a full record's length. [Given lengths: 99, 99] [Record length: 6]");
   }
-
 }

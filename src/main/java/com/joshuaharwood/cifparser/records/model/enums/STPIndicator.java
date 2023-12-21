@@ -1,22 +1,22 @@
 package com.joshuaharwood.cifparser.records.model.enums;
 
-import com.joshuaharwood.cifparser.records.model.literals.CharLiteral;
+import com.joshuaharwood.cifparser.records.model.literals.Literal;
 
-public enum STPIndicator implements CharLiteral {
-  STP_CANCELLATION_OF_PERMANENT_ASSOCIATION('C'),
-  NEW_STP_ASSOCIATION('N'),
+public enum STPIndicator implements Literal {
+  STP_CANCELLATION_OF_PERMANENT_ASSOCIATION("C"),
+  NEW_STP_ASSOCIATION("N"),
   STP_OVERLAY_OF_PERMANENT_ASSOCIATION(
-      'O'),
-  PERMANENT_ASSOCIATION('P');
+      "O"),
+  PERMANENT_ASSOCIATION("P");
 
-  private final char literal;
+  private final String literal;
 
-  STPIndicator(char literal) {
+  STPIndicator(String literal) {
     this.literal = literal;
   }
 
   @Override
-  public char getLiteral() {
+  public String getLiteral() {
     return literal;
   }
 }

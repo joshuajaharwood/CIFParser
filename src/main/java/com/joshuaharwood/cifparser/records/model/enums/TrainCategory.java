@@ -11,9 +11,9 @@ import static com.joshuaharwood.cifparser.records.model.enums.TrainCategory.Trai
 import static com.joshuaharwood.cifparser.records.model.enums.TrainCategory.TrainCategoryDescription.RAILFREIGHT_DISTRIBUTION_CHANNEL_TUNNEL;
 import static com.joshuaharwood.cifparser.records.model.enums.TrainCategory.TrainCategoryDescription.TRAINLOAD_FREIGHT;
 
-import com.joshuaharwood.cifparser.records.model.literals.StringLiteral;
+import com.joshuaharwood.cifparser.records.model.literals.Literal;
 
-public enum TrainCategory implements StringLiteral {
+public enum TrainCategory implements Literal {
   LONDON_UNDERGROUND_METRO_SERVICE("OL",
       ORDINARY_PASSENGER_TRAINS,
       "London Underground/Metro Service"),

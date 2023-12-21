@@ -1,19 +1,19 @@
 package com.joshuaharwood.cifparser.records.model.enums;
 
-import com.joshuaharwood.cifparser.records.model.literals.CharLiteral;
+import com.joshuaharwood.cifparser.records.model.literals.Literal;
 
-public enum TransactionType implements CharLiteral {
-  NEW('N'),
-  DELETE('D'),
-  REVISE('R');
+public enum TransactionType implements Literal {
+  NEW("N"),
+  DELETE("D"),
+  REVISE("R");
 
-  private final char literal;
+  private final String literal;
 
-  TransactionType(char literal) {
+  TransactionType(String literal) {
     this.literal = literal;
   }
 
-  public char getLiteral() {
+  public String getLiteral() {
     return literal;
   }
 }

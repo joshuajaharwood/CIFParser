@@ -8,7 +8,7 @@ public class StringToCharacterParser {
   private StringToCharacterParser() {
   }
 
-  public static Optional<Character> parse(String s) {
+  public static Optional<Character> parseStringToCharacter(String s) {
     Objects.requireNonNull(s);
 
     if (s.isBlank()) {

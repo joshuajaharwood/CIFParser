@@ -9,23 +9,23 @@ class StringToCharacterParserTest {
 
   @Test
   public void parseWithMultipleCharactersThrowsIllegalArgumentException() {
-    assertThatIllegalArgumentException().isThrownBy(() -> StringToCharacterParser.parse("ee"))
+    assertThatIllegalArgumentException().isThrownBy(() -> StringToCharacterParser.parseStringToCharacter("ee"))
         .withMessage("Given string was longer than one character.");
   }
 
   @Test
   public void parseWithOnlyWhitespaceReturnsEmptyOptional() {
-    assertThat(StringToCharacterParser.parse(" ")).isEmpty();
+    assertThat(StringToCharacterParser.parseStringToCharacter(" ")).isEmpty();
   }
 
   @Test
   public void parseWithOneCharacterStringReturnsCharacter() {
-    assertThat(StringToCharacterParser.parse("e")).contains('e');
+    assertThat(StringToCharacterParser.parseStringToCharacter("e")).contains('e');
   }
 
   @Test
   public void parseWithOneCharacterPaddedThrowsIllegalArgumentException() {
-    assertThatIllegalArgumentException().isThrownBy(() -> StringToCharacterParser.parse(" e"))
+    assertThatIllegalArgumentException().isThrownBy(() -> StringToCharacterParser.parseStringToCharacter(" e"))
         .withMessage("Given string was longer than one character.");
   }
 }

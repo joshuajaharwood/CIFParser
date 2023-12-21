@@ -14,7 +14,7 @@ import com.joshuaharwood.cifparser.records.model.enums.ServiceBranding;
 import com.joshuaharwood.cifparser.records.model.enums.Sleepers;
 import com.joshuaharwood.cifparser.records.model.enums.TrainCategory;
 import com.joshuaharwood.cifparser.records.model.enums.TransactionType;
-import com.joshuaharwood.cifparser.records.model.literals.CharLiteral;
+import com.joshuaharwood.cifparser.records.model.literals.Literal;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Map;
@@ -38,44 +38,44 @@ public record BasicSchedule(String spare, TransactionType transactionType, Strin
     return RecordIdentity.BASIC_SCHEDULE;
   }
 
-  public enum BankHolidayRunning implements CharLiteral {
-    NOT_ON_SPECIFIED_BANK_HOLIDAY_MONDAYS('X'),
-    NOT_ON_GLASGOW_BANK_HOLIDAY('G');
+  public enum BankHolidayRunning implements Literal {
+    NOT_ON_SPECIFIED_BANK_HOLIDAY_MONDAYS("X"),
+    NOT_ON_GLASGOW_BANK_HOLIDAY("G");
 
-    private final char literal;
+    private final String literal;
 
-    BankHolidayRunning(char literal) {
+    BankHolidayRunning(String literal) {
       this.literal = literal;
     }
 
     @Override
-    public char getLiteral() {
+    public String getLiteral() {
       return literal;
     }
   }
 
-  public enum TrainStatus implements CharLiteral {
-    BUS_PERMANENT('B', null),
-    FREIGHT_PERMANENT('F', WORKING_TIMETABLE),
-    PASSENGER_AND_PARCELS_PERMANENT('P', WORKING_TIMETABLE),
-    SHIP_PERMANENT('S', null),
-    TRIP_PERMANENT('T', null),
-    PASSENGER_AND_PARCELS('1', SHORT_TERM_PLANNING),
-    FREIGHT('2', SHORT_TERM_PLANNING),
-    TRIP('3', SHORT_TERM_PLANNING),
-    SHIP('4', SHORT_TERM_PLANNING),
-    BUS('5', SHORT_TERM_PLANNING);
+  public enum TrainStatus implements Literal {
+    BUS_PERMANENT("B", null),
+    FREIGHT_PERMANENT("F", WORKING_TIMETABLE),
+    PASSENGER_AND_PARCELS_PERMANENT("P", WORKING_TIMETABLE),
+    SHIP_PERMANENT("S", null),
+    TRIP_PERMANENT("T", null),
+    PASSENGER_AND_PARCELS("1", SHORT_TERM_PLANNING),
+    FREIGHT("2", SHORT_TERM_PLANNING),
+    TRIP("3", SHORT_TERM_PLANNING),
+    SHIP("4", SHORT_TERM_PLANNING),
+    BUS("5", SHORT_TERM_PLANNING);
 
     private final TrainStatusSchedulingType schedulingType;
-    private final char literal;
+    private final String literal;
 
-    TrainStatus(char literal, TrainStatusSchedulingType schedulingType) {
+    TrainStatus(String literal, TrainStatusSchedulingType schedulingType) {
       this.literal = literal;
       this.schedulingType = schedulingType;
     }
 
     @Override
-    public char getLiteral() {
+    public String getLiteral() {
       return literal;
     }
 
