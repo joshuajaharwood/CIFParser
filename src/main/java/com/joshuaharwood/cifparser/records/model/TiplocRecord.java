@@ -1,7 +1,9 @@
 package com.joshuaharwood.cifparser.records.model;
 
-public sealed interface TiplocRecord extends CIFRecord permits TiplocDeleteRecord,
-    TiplocInsertRecord {
+import com.joshuaharwood.cifparser.records.model.fielddefinitions.RowField;
+
+public sealed interface TiplocRecord<T extends RowField> extends CIFRecord<T> permits
+    TiplocAmendRecord, TiplocDeleteRecord, TiplocInsertRecord {
 
   String tiploc();
 }

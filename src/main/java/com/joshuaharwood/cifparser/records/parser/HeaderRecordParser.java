@@ -24,22 +24,25 @@ public final class HeaderRecordParser implements RecordParser<HeaderRecord> {
       20);
 
   public HeaderRecord parse(String record) {
+
     var rawStrings = RawStringParser.parse(record, HEADER_RECORD_LENGTHS);
 
-    return new HeaderRecord(rawStrings.get(0),
-        DateParser.parse(rawStrings.get(1)),
-        TimeParser.parse(rawStrings.get(2)),
-        rawStrings.get(3),
-        rawStrings.get(4),
-        LiteralLookup.lookup(UpdateIndicator.class, rawStrings.get(5)).orElse(null),
-        parseStringToCharacter(rawStrings.get(6)).orElse(null),
-        DateParser.parse(rawStrings.get(7)),
+    return new HeaderRecord(throwIfNullOrBlank(rawStrings.get(1)),
+        DateParser.parse(rawStrings.get(2)),
+        TimeParser.parse(rawStrings.get(3)),
+        throwIfNullOrBlank(rawStrings.get(4)),
+        returnNullIfBlank(rawStrings.get(5)),
+        LiteralLookup.lookup(UpdateIndicator.class, rawStrings.get(6)).orElse(null),
+        parseStringToCharacter(rawStrings.get(7)).orElse(null),
         DateParser.parse(rawStrings.get(8)),
-        rawStrings.get(9));
+        DateParser.parse(rawStrings.get(9)),
+        returnNullIfBlank(rawStrings.get(10)));
   }
 
   @Override
   public Class<HeaderRecord> getRecordType() {
     return HeaderRecord.class;
   }
+
+
 }

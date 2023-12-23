@@ -1,8 +1,11 @@
 package com.joshuaharwood.cifparser.records.parser;
 
+import com.joshuaharwood.cifparser.records.model.enums.RecordIdentity;
+import com.joshuaharwood.cifparser.records.model.literals.LiteralLookup;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 
@@ -38,19 +41,21 @@ public class RawStringParser {
     int startingIndex = 0;
 
     for (final Integer length : lengths) {
-      final var sub = record.substring(startingIndex, startingIndex += length);
-
-      if (sub.isBlank()) {
-        substrings.add(null);
-      } else {
-        substrings.add(sub);
-      }
+      substrings.add(record.substring(startingIndex, startingIndex += length));
     }
 
-    // Remove RecordIdentity
-    substrings.removeFirst();
-
     return substrings;
+  }
+
+  public static @NotNull Optional<RecordIdentity> parseRecordIdentity(String record) {
+    Objects.requireNonNull(record);
+
+    if (record.length() < 2) {
+      throw new IllegalArgumentException(
+          "Given record strings must be at least 2 characters to establish their RecordIdentity.");
+    }
+
+    return LiteralLookup.lookup(RecordIdentity.class, record.substring(0, 2));
   }
 
   private static void validateLengths(List<Integer> lengths, int rowLength) {

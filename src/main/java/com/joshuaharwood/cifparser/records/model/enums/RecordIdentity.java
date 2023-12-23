@@ -1,6 +1,8 @@
 package com.joshuaharwood.cifparser.records.model.enums;
 
-public enum RecordIdentity {
+import com.joshuaharwood.cifparser.records.model.literals.Literal;
+
+public enum RecordIdentity implements Literal {
   HEADER_RECORD("HD", "Header Record"),
   TIPLOC_INSERT_RECORD("TI", "TIPLOC Insert Record"),
   TIPLOC_AMEND_RECORD("TA", "TIPLOC Amend Record"),
