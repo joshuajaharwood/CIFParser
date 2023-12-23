@@ -6,13 +6,28 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 
+/**
+ * Responsible for parsing a raw String read from a CIF file into a List of Strings of the correct
+ * lengths.
+ */
 public class RawStringParser {
-
-  private static final int RECORD_LENGTH = 80;
 
   private RawStringParser() {
   }
 
+  /**
+   * @param record  The raw CIF row to be parsed.
+   * @param lengths An ordered {@link List<Integer>} containing the constant lengths of each field
+   *                in the CIF field type.
+   * @return A {@link List<String>} containing {@code record} split up in into chunks of sizes given
+   * by the {@code lengths} argument.
+   * @throws IllegalArgumentException if the sum of the given lengths is not equal to the length of
+   *                                  the record.
+   * @throws NullPointerException     if the record or lengths argument are {@code null}.
+   * @apiNote The given {@link List<Integer>} of lengths must be equal to the length of the given
+   * data. Since CIF data rows are 80 characters wide, the sum of {@code lengths} must equal 80.
+   * Whitespace should not be trimmed from the raw data.
+   */
   public static @NotNull List<String> parse(String record, List<Integer> lengths) {
     Objects.requireNonNull(record);
     Objects.requireNonNull(lengths);
@@ -23,7 +38,13 @@ public class RawStringParser {
     int startingIndex = 0;
 
     for (final Integer length : lengths) {
-      substrings.add(record.substring(startingIndex, startingIndex += length));
+      final var sub = record.substring(startingIndex, startingIndex += length);
+
+      if (sub.isBlank()) {
+        substrings.add(null);
+      } else {
+        substrings.add(sub);
+      }
     }
 
     // Remove RecordIdentity
