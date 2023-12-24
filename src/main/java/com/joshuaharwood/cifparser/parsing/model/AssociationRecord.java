@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
-public record AssociationRecord(RecordIdentity recordIdentity, String spare,
+public record AssociationRecord(String spare,
                                 TransactionType transactionType, String mainTrainUid,
                                 String associatedTrainUid, LocalDate associationStartDate,
                                 LocalDate associationEndDate,
@@ -22,6 +22,11 @@ public record AssociationRecord(RecordIdentity recordIdentity, String spare,
                                 AssociationType associationType, STPIndicator stpIndicator
 
 ) implements CIFRecord<AssociationRowFields> {
+
+  @Override
+  public RecordIdentity recordIdentity() {
+    return RecordIdentity.ASSOCIATION_RECORD;
+  }
 
   @Override
   public List<AssociationRowFields> fields() {

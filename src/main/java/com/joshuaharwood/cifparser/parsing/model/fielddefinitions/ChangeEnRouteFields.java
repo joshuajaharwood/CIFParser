@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.model.fielddefinitions;
 
-public enum ChangesEnRouteFields implements RowField {
+public enum ChangeEnRouteFields implements RowField {
   RECORD_IDENTITY(1, 2),
   LOCATION(2, 8),
   TRAIN_CATEGORY(3, 2),
@@ -27,7 +27,7 @@ public enum ChangesEnRouteFields implements RowField {
   private final int order;
   private final int length;
 
-  ChangesEnRouteFields(int order, int length) {
+  ChangeEnRouteFields(int order, int length) {
     this.order = order;
     this.length = length;
   }

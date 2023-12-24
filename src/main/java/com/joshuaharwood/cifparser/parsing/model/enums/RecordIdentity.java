@@ -10,11 +10,13 @@ public enum RecordIdentity implements Literal {
   ASSOCIATION_RECORD("AA", "Association Record"),
   BASIC_SCHEDULE("BS", "Basic Schedule"),
   BASIC_SCHEDULE_EXTRA_DETAILS("BX", "Basic Schedule Extra Details"),
+  // Not currently implemented in CIF
   TRAIN_SPECIFIC_NOTE("TN", "Train-specific Note"),
   ORIGIN_LOCATION("LO", "Origin Location"),
   INTERMEDIATE_LOCATION("LI", "Intermediate Location"),
   CHANGE_EN_ROUTE("CR", "Change en Route"),
   TERMINATING_LOCATION("LT", "Terminating Location"),
+  // Not currently implemented in CIF
   LOCATION_SPECIFIC_NOTE("LN", "Location-specific Note"),
   TRAILER_RECORD("ZZ", "Trailer Record (EOF)");
 

@@ -9,7 +9,7 @@ public record TiplocDeleteRecord(RecordIdentity recordIdentity, String spare,
 
   @Override
   public RecordIdentity recordIdentity() {
-    return RecordIdentity.TIPLOC_INSERT_RECORD;
+    return RecordIdentity.TIPLOC_DELETE_RECORD;
   }
 
   @Override
