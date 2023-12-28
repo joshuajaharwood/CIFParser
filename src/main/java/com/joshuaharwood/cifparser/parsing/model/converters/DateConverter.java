@@ -10,7 +10,7 @@ public class DateConverter {
   private DateConverter() {
   }
 
-  public static LocalDate parse(String input) {
+  public static LocalDate convert(String input) {
     return LocalDate.parse(input, DATE_FORMAT);
   }
 }

@@ -10,7 +10,7 @@ public class TimeConverter {
   private TimeConverter() {
   }
 
-  public static LocalTime parse(String input) {
+  public static LocalTime convert(String input) {
     return LocalTime.parse(input, TIME_FORMAT);
   }
 }

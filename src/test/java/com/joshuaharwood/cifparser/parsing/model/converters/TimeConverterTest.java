@@ -11,19 +11,19 @@ class TimeConverterTest {
 
   @Test
   void parseDate() {
-    assertThat(TimeConverter.parse("2359")).hasHour(23).hasMinute(59).hasSecond(0).hasNano(0);
+    assertThat(TimeConverter.convert("2359")).hasHour(23).hasMinute(59).hasSecond(0).hasNano(0);
   }
 
   @Test
   void parseNullDateThrowsJavaTimeException() {
     //noinspection ResultOfMethodCallIgnored
-    assertThatNullPointerException().isThrownBy(() -> TimeConverter.parse(null));
+    assertThatNullPointerException().isThrownBy(() -> TimeConverter.convert(null));
   }
 
   @Test
   void parseInvalidTimeThrowsJavaTimeException() {
     //noinspection ResultOfMethodCallIgnored
-    assertThatExceptionOfType(DateTimeParseException.class).isThrownBy(() -> TimeConverter.parse(
+    assertThatExceptionOfType(DateTimeParseException.class).isThrownBy(() -> TimeConverter.convert(
         "2559"));
   }
 }
