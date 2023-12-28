@@ -2,28 +2,25 @@ package com.joshuaharwood.cifparser.parsing.model.converters;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.assertj.core.api.Assertions.assertThatNullPointerException;
-import static org.assertj.core.api.InstanceOfAssertFactories.DATE;
 import static org.assertj.core.api.InstanceOfAssertFactories.LOCAL_DATE;
 
 import java.time.Month;
 import java.time.format.DateTimeParseException;
-import org.assertj.core.api.InstanceOfAssertFactory;
 import org.junit.jupiter.api.Test;
 
-class DateConverterTest {
+class InverseDateConverterTest {
 
   @Test
   void parseGoodDateReturnsCorrectOptional() {
-    assertThat(DateConverter.convert("221123")).get(LOCAL_DATE)
-                                               .hasDayOfMonth(22)
-                                               .hasMonth(Month.NOVEMBER)
-                                               .hasYear(2023);
+    assertThat(InverseDateConverter.convert("631110")).get(LOCAL_DATE)
+                                                      .hasDayOfMonth(10)
+                                                      .hasMonth(Month.NOVEMBER)
+                                                      .hasYear(2063);
   }
 
   @Test
   void parseNullDateReturnsEmptyOptional() {
-    assertThat(DateConverter.convert(null)).isEmpty();
+    assertThat(InverseDateConverter.convert(null)).isEmpty();
   }
 
   @Test

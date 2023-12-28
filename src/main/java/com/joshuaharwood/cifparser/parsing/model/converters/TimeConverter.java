@@ -2,6 +2,7 @@ package com.joshuaharwood.cifparser.parsing.model.converters;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Optional;
 
 public class TimeConverter {
 
@@ -10,7 +11,17 @@ public class TimeConverter {
   private TimeConverter() {
   }
 
-  public static LocalTime convert(String input) {
-    return LocalTime.parse(input, TIME_FORMAT);
+  public static Optional<LocalTime> convert(String input) {
+    if (input == null || input.isBlank()) {
+      return Optional.empty();
+    }
+
+    final String trimmed = input.trim();
+
+    if (trimmed.length() != 4) {
+      throw new IllegalArgumentException("Time input must be 4 digits.");
+    }
+
+    return Optional.of(LocalTime.parse(input, TIME_FORMAT));
   }
 }
