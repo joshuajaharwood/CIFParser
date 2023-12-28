@@ -12,11 +12,11 @@ import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.RowField;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
+@SuppressWarnings("SpellCheckingInspection")
 class StringParserTest {
 
   private static final String HEADER_RECORD = "HDTPS.UDFROC1.PD2311242411232032DFROC1H       FA241123231124                    ";
   private static final String BAD_RECORD = "XXTPS.UDFROC1.PD2311242411232032DFROC1H       FA241123231124                    ";
-  private static final String SHORT_HEADER_RECORD = "HDTPS.UDFROC1.PD2311242411232032DFROC1H       FA241123231124";
 
   @Test
   void parsesCorrectly() {
