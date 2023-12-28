@@ -20,7 +20,7 @@ import java.time.LocalDate;
 import java.util.Map;
 import java.util.Set;
 
-public record BasicSchedule(String spare, TransactionType transactionType, String trainUid,
+public record BasicSchedule(TransactionType transactionType, String trainUid,
                             LocalDate dateRunsFrom, LocalDate dateRunsTo,
                             Map<DayOfWeek, Boolean> daysRun, BankHolidayRunning bankHolidayRunning,
                             TrainStatus trainStatus, TrainCategory trainCategory,
@@ -30,7 +30,7 @@ public record BasicSchedule(String spare, TransactionType transactionType, Strin
                             Set<OperatingCharacteristics> operatingCharacteristics,
                             SeatingClass seatingClass, Sleepers sleepers, Reservations reservations,
                             Character connectionIndicator, CateringCode cateringCode,
-                            ServiceBranding serviceBranding, STPIndicator stpIndicator) implements
+                            ServiceBranding serviceBranding, STPIndicator stpIndicator, String spare) implements
     CIFRecord {
 
   @Override
