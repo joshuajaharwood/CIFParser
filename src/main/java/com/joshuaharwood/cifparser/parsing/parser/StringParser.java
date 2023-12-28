@@ -3,47 +3,43 @@ package com.joshuaharwood.cifparser.parsing.parser;
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.RowField;
 import com.joshuaharwood.cifparser.parsing.model.literals.LiteralLookup;
-import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * Responsible for parsing a raw {@link String} read from a CIF file into a List of Strings of the
- * correct lengths.
- */
-public class RawStringParser<T extends Enum<T> & RowField> {
+public class StringParser {
 
-  private final List<T> fields;
-  private final Class<T> clazz;
-
-  public RawStringParser(List<T> fields, Class<T> clazz) {
-    Objects.requireNonNull(fields);
-    validateLengths(fields);
-    this.fields = fields;
-    this.clazz = clazz;
+  private StringParser() {
   }
 
-  public RawStringParser(T[] fields, Class<T> clazz) {
-    this(List.of(fields), clazz);
-  }
-
-  // todo remove val and use method generic!!
-  public @NotNull Map<T, String> parse(String record) {
+  public static @NotNull <T extends RowField> Map<T, String> parse(String record,
+      List<T> rowFields) {
     Objects.requireNonNull(record);
+    Objects.requireNonNull(rowFields);
+    validateLengths(rowFields, record.length());
 
-    final var newMap = new EnumMap<T, String>(clazz);
+    // We require at least one rowField for parsing
+    if (rowFields.isEmpty()) {
+      throw new NoSuchElementException("The given rowFields argument was empty.");
+    }
+
+    final var hashMap = new HashMap<T, String>();
 
     int startingIndex = 0;
 
-    for (T field : fields) {
-      newMap.put(field, record.substring(startingIndex, startingIndex += field.getLength()));
+    for (T field : rowFields) {
+      hashMap.put(field, record.substring(startingIndex, startingIndex += field.getLength()));
     }
 
-    return newMap;
+    return hashMap;
+  }
+
+  public static @NotNull <T extends RowField> Map<T, String> parse(String record, T[] rowFields) {
+    return parse(record, List.of(rowFields));
   }
 
   public static @NotNull RecordIdentity parseRecordIdentity(String record) {
@@ -63,16 +59,20 @@ public class RawStringParser<T extends Enum<T> & RowField> {
                 lookupRecordIdentity)));
   }
 
-  private void validateLengths(List<T> lengths) {
-    if (!fieldsAreCorrectLengthTotal(lengths)) {
+  private static <T extends RowField> void validateLengths(List<T> lengths, int targetLength) {
+    if (!fieldsAreCorrectLengthTotal(lengths, targetLength)) {
       throw new IllegalArgumentException(
           "Given lengths did not sum up to a full record's length. [Given lengths: %s] [Record length: %d]".formatted(
-              lengths.stream().map(Object::toString).collect(Collectors.joining(", ")),
-              80));
+              lengths.stream()
+                  .map(RowField::getLength)
+                  .map(Object::toString)
+                  .collect(Collectors.joining(", ")),
+              targetLength));
     }
   }
 
-  private boolean fieldsAreCorrectLengthTotal(List<T> fields) {
-    return fields.stream().mapToInt(RowField::getLength).sum() == 80;
+  private static <T extends RowField> boolean fieldsAreCorrectLengthTotal(List<T> fields,
+      int targetLength) {
+    return fields.stream().mapToInt(RowField::getLength).sum() == targetLength;
   }
 }

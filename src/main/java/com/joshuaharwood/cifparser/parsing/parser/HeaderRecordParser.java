@@ -5,20 +5,16 @@ import static com.joshuaharwood.cifparser.parsing.model.parsers.StringToCharacte
 import com.joshuaharwood.cifparser.parsing.model.HeaderRecord;
 import com.joshuaharwood.cifparser.parsing.model.HeaderRecord.UpdateIndicator;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.HeaderFields;
-import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.RowField;
 import com.joshuaharwood.cifparser.parsing.model.literals.LiteralLookup;
 import com.joshuaharwood.cifparser.parsing.model.parsers.DateParser;
 import com.joshuaharwood.cifparser.parsing.model.parsers.TimeParser;
-import java.util.List;
 import java.util.Map;
 
 public final class HeaderRecordParser implements RecordParser<HeaderRecord> {
 
-  private static final RawStringParser<HeaderFields> parser = new RawStringParser<>(List.of(
-      HeaderFields.values()), HeaderFields.class);
-
   public HeaderRecord parse(String record) {
-    final Map<HeaderFields, String> parsedValues = parser.parse(record);
+    final Map<HeaderFields, String> parsedValues = StringParser.parse(record,
+        HeaderFields.values());
 
     return new HeaderRecord(throwIfNullOrBlank(parsedValues.get(HeaderFields.FILE_IDENTITY)),
         DateParser.parse(parsedValues.get(HeaderFields.DATE_OF_EXTRACT)),

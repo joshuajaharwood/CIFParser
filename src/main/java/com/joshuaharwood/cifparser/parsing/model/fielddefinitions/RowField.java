@@ -1,10 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.model.fielddefinitions;
 
-public sealed interface RowField permits AssociationRowFields, BasicScheduleExtendedFields,
-    BasicScheduleFields, ChangeEnRouteFields, HeaderFields, LocationIntermediateFields,
-    LocationOriginFields, LocationTerminatingFields, TiplocAmendFields, TiplocDeleteFields,
-    TiplocInsertFields, TrailerFields {
-
+public interface RowField {
   int getOrder();
 
   String getName();
