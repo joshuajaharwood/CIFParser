@@ -8,7 +8,6 @@ import com.joshuaharwood.cifparser.parsing.model.enums.Reservations;
 import com.joshuaharwood.cifparser.parsing.model.enums.ServiceBranding;
 import com.joshuaharwood.cifparser.parsing.model.enums.Sleepers;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.ChangeEnRouteFields;
-import java.util.List;
 
 //TODO: Some of these strings should be enums...
 public record ChangeEnRouteRecord(String location, String trainCategory, String trainIdentity,
@@ -27,8 +26,4 @@ public record ChangeEnRouteRecord(String location, String trainCategory, String 
     return RecordIdentity.CHANGE_EN_ROUTE;
   }
 
-  @Override
-  public List<ChangeEnRouteFields> fields() {
-    return List.of(ChangeEnRouteFields.values());
-  }
 }

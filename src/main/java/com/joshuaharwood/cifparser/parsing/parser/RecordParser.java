@@ -2,11 +2,9 @@ package com.joshuaharwood.cifparser.parsing.parser;
 
 import com.joshuaharwood.cifparser.parsing.model.CIFRecord;
 
-public sealed interface RecordParser<T extends CIFRecord<?>> permits HeaderRecordParser {
-  //FIXME: is ? here correct?
-  T parse(String record);
+public sealed interface RecordParser<T extends CIFRecord> permits HeaderRecordParser {
 
-  Class<T> getRecordType();
+  T parse(String record);
 
   default String throwIfNullOrBlank(String s) {
     if (s == null || s.isBlank()) {

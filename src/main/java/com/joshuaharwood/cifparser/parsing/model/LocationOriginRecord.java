@@ -4,7 +4,6 @@ import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.LocationOriginFields;
 
 import java.time.LocalTime;
-import java.util.List;
 
 public record LocationOriginRecord(String location, LocalTime scheduledDepartureTime,
                                    LocalTime publicDepartureTime, String platform, String line,
@@ -17,8 +16,4 @@ public record LocationOriginRecord(String location, LocalTime scheduledDeparture
     return RecordIdentity.ORIGIN_LOCATION;
   }
 
-  @Override
-  public List<LocationOriginFields> fields() {
-    return List.of(LocationOriginFields.values());
-  }
 }

@@ -3,11 +3,9 @@ package com.joshuaharwood.cifparser.parsing.model;
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.model.enums.STPIndicator;
 import com.joshuaharwood.cifparser.parsing.model.enums.TransactionType;
-import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.AssociationRowFields;
 import com.joshuaharwood.cifparser.parsing.model.literals.Literal;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Map;
 
 public record AssociationRecord(String spare,
@@ -21,16 +19,11 @@ public record AssociationRecord(String spare,
                                 byte associationLocationSuffix, DiagramType diagramType,
                                 AssociationType associationType, STPIndicator stpIndicator
 
-) implements CIFRecord<AssociationRowFields> {
+) implements CIFRecord {
 
   @Override
   public RecordIdentity recordIdentity() {
     return RecordIdentity.ASSOCIATION_RECORD;
-  }
-
-  @Override
-  public List<AssociationRowFields> fields() {
-    return List.of(AssociationRowFields.values());
   }
 
   public enum AssociationCategory implements Literal {

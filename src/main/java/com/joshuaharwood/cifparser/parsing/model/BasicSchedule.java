@@ -14,11 +14,9 @@ import com.joshuaharwood.cifparser.parsing.model.enums.ServiceBranding;
 import com.joshuaharwood.cifparser.parsing.model.enums.Sleepers;
 import com.joshuaharwood.cifparser.parsing.model.enums.TrainCategory;
 import com.joshuaharwood.cifparser.parsing.model.enums.TransactionType;
-import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.BasicScheduleFields;
 import com.joshuaharwood.cifparser.parsing.model.literals.Literal;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -33,16 +31,11 @@ public record BasicSchedule(String spare, TransactionType transactionType, Strin
                             SeatingClass seatingClass, Sleepers sleepers, Reservations reservations,
                             Character connectionIndicator, CateringCode cateringCode,
                             ServiceBranding serviceBranding, STPIndicator stpIndicator) implements
-    CIFRecord<BasicScheduleFields> {
+    CIFRecord {
 
   @Override
   public RecordIdentity recordIdentity() {
     return RecordIdentity.BASIC_SCHEDULE;
-  }
-
-  @Override
-  public List<BasicScheduleFields> fields() {
-    return List.of(BasicScheduleFields.values());
   }
 
   public enum BankHolidayRunning implements Literal {

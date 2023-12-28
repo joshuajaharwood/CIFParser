@@ -5,15 +5,20 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
+import com.joshuaharwood.cifparser.parsing.model.HeaderRecord;
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
+import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.HeaderFields;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
 class RawStringParserTest {
+  RawStringParser<HeaderFields> headerParser = new RawStringParser<>(HeaderFields.values(), HeaderFields.class);
 
   private static final String HEADER_RECORD = "HDTPS.UDFROC1.PD2311242411232032DFROC1H       FA241123231124                    ";
   private static final String BAD_RECORD = "XXTPS.UDFROC1.PD2311242411232032DFROC1H       FA241123231124                    ";
   private static final String SHORT_HEADER_RECORD = "HDTPS.UDFROC1.PD2311242411232032DFROC1H       FA241123231124                    ";
+
+  private static final RawStringParser<HeaderFields> parser = new RawStringParser<>(HeaderFields.values(), HeaderFields.class);
 
   @Test
   void parsesCorrectly() {
@@ -29,7 +34,7 @@ class RawStringParserTest {
         "231124",
         "                    ");
     final var actual = RawStringParser.parse(HEADER_RECORD,
-        HeaderRecordParser.HEADER_RECORD_LENGTHS);
+        HeaderRecord.class);
 
     assertThat(actual).isEqualTo(expected);
   }

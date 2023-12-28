@@ -1,17 +1,15 @@
 package com.joshuaharwood.cifparser.parsing.model;
 
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
-import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.HeaderFields;
 import com.joshuaharwood.cifparser.parsing.model.literals.Literal;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import java.util.List;
 
 public record HeaderRecord(String fileMainframeIdentity, LocalDate dateOfExtract,
                            LocalTime timeOfExtract, String currentFileReference,
                            String lastFileReference, UpdateIndicator updateIndicator,
                            Character version, LocalDate userStartDate, LocalDate userEndDate,
-                           String spare) implements CIFRecord<HeaderFields> {
+                           String spare) implements CIFRecord {
 
   public HeaderRecord {
     if (version == null || !Character.isUpperCase(version)) {
@@ -24,11 +22,6 @@ public record HeaderRecord(String fileMainframeIdentity, LocalDate dateOfExtract
   @Override
   public RecordIdentity recordIdentity() {
     return RecordIdentity.HEADER_RECORD;
-  }
-
-  @Override
-  public List<HeaderFields> fields() {
-    return List.of(HeaderFields.values());
   }
 
   public enum UpdateIndicator implements Literal {

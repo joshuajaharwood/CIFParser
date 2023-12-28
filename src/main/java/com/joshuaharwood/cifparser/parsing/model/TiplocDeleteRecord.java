@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.model;
 
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.TiplocDeleteFields;
-import java.util.List;
 
 public record TiplocDeleteRecord(RecordIdentity recordIdentity, String spare,
                                  String tiploc) implements TiplocRecord<TiplocDeleteFields> {
@@ -12,8 +11,4 @@ public record TiplocDeleteRecord(RecordIdentity recordIdentity, String spare,
     return RecordIdentity.TIPLOC_DELETE_RECORD;
   }
 
-  @Override
-  public List<TiplocDeleteFields> fields() {
-    return List.of(TiplocDeleteFields.values());
-  }
 }
