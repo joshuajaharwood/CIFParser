@@ -1,25 +1,53 @@
 package com.joshuaharwood.cifparser.parsing.parser;
 
 import com.joshuaharwood.cifparser.parsing.model.CIFRecord;
+import java.util.Objects;
+import java.util.Optional;
 
-public sealed interface RecordParser<T extends CIFRecord> permits HeaderRecordParser {
+public sealed interface RecordParser<T extends CIFRecord> permits BasicScheduleParser,
+    HeaderRecordParser {
 
   T parse(String record);
 
-  default String throwIfNullOrBlank(String s) {
+  default Optional<String> ifNotBlank(String s) {
     if (s == null || s.isBlank()) {
-      throw new IllegalArgumentException("Given argument cannot be blank or null. [Argument: %s]".formatted(
-          s));
+      return Optional.empty();
     }
 
-    return s;
+    return Optional.of(s.trim());
   }
 
-  default String returnNullIfBlank(String s) {
+  private Optional<String> handleBlankOrNull(String s) {
     if (s == null || s.isBlank()) {
-      return null;
+      return Optional.empty();
     }
 
-    return s;
+    return Optional.of(s);
+  }
+
+  default Optional<Short> parseShort(String s) {
+    return handleBlankOrNull(s).map(Short::parseShort);
+  }
+
+  default Optional<Byte> parseByte(String s) {
+    return handleBlankOrNull(s).map(Byte::parseByte);
+  }
+
+  default Optional<Integer> parseInt(String s) {
+    return handleBlankOrNull(s).map(Integer::parseInt);
+  }
+
+  default Optional<Character> parseChar(String s) {
+    Objects.requireNonNull(s);
+
+    if (s.isBlank()) {
+      return Optional.empty();
+    }
+
+    if (s.length() > 1) {
+      throw new IllegalArgumentException("Given string was longer than one character.");
+    }
+
+    return Optional.of(s.charAt(0));
   }
 }

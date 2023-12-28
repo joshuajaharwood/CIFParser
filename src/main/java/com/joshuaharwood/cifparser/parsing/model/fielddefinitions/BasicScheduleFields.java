@@ -1,5 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.model.fielddefinitions;
 
+@SuppressWarnings("SpellCheckingInspection")
 public enum BasicScheduleFields implements RowField {
   RECORD_IDENTITY(1, 2),
   TRANSACTION_TYPE(2, 2),
@@ -13,20 +14,21 @@ public enum BasicScheduleFields implements RowField {
   TRAIN_IDENTITY(10, 4),
   HEADCODE(11, 4),
   COURSE_INDICATOR(12, 1),
-  PROFIT_CENTRE_CODE_TRAIN_CENTRE_CODE(13, 8),
-  BUSINESS_SECTOR(14, 1),
+  PROFIT_CENTRE_CODE_TRAIN_SERVICE_CODE(13, 8),
+  // Repurposed to store Portion ID for RSID
+  BUSINESS_SECTOR_PORTION_ID(14, 1),
   POWER_TYPE(15, 3),
   TIMING_LOAD(16, 4),
   SPEED(17, 3),
   OPERATING_CHARACTERISTICS(18, 6),
   TRAIN_CLASS(19, 1),
-  SLEEPERS(19, 1),
-  RESERVATIONS(20, 1),
-  CONNECT_INDICATOR(21, 1),
-  CATERING_CODE(22, 4),
-  SERVICE_BRANDING(23, 4),
-  SPARE(24, 1),
-  STP_INDICATOR(25, 1);
+  SLEEPERS(20, 1),
+  RESERVATIONS(21, 1),
+  CONNECT_INDICATOR(22, 1),
+  CATERING_CODE(23, 4),
+  SERVICE_BRANDING(24, 4),
+  SPARE(25, 1),
+  STP_INDICATOR(26, 1);
 
   private final int order;
   private final int length;

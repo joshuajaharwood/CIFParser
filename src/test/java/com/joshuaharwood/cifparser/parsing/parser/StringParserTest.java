@@ -65,7 +65,7 @@ class StringParserTest {
     assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> StringParser.parseRecordIdentity(
             BAD_RECORD))
         .withMessage(
-            "Failed to map String for given StringLiteral. [String: XX] [Enum: RecordIdentity]");
+            "Failed to map String for given Literal. [String: XX] [Enum: RecordIdentity]");
   }
 
   @Test

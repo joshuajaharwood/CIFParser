@@ -24,14 +24,14 @@ public record BasicSchedule(TransactionType transactionType, String trainUid,
                             LocalDate dateRunsFrom, LocalDate dateRunsTo,
                             Map<DayOfWeek, Boolean> daysRun, BankHolidayRunning bankHolidayRunning,
                             TrainStatus trainStatus, TrainCategory trainCategory,
-                            String trainIdentity, int headcode, byte courseIndicator,
-                            int trainServiceCode, char portionId, PowerType powerType,
-                            String timingLoad, int speed,
+                            String trainIdentity, Short headcode, Byte courseIndicator,
+                            Integer trainServiceCode, Character portionId, PowerType powerType,
+                            String timingLoad, Integer speed,
                             Set<OperatingCharacteristics> operatingCharacteristics,
                             SeatingClass seatingClass, Sleepers sleepers, Reservations reservations,
-                            Character connectionIndicator, CateringCode cateringCode,
-                            ServiceBranding serviceBranding, STPIndicator stpIndicator, String spare) implements
-    CIFRecord {
+                            Character connectionIndicator, Set<CateringCode> cateringCode,
+                            ServiceBranding serviceBranding, STPIndicator stpIndicator,
+                            String spare) implements CIFRecord {
 
   @Override
   public RecordIdentity recordIdentity() {
