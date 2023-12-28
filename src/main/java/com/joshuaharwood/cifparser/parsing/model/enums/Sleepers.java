@@ -1,19 +1,21 @@
 package com.joshuaharwood.cifparser.parsing.model.enums;
 
-public enum Sleepers {
-  FIRST_AND_STANDARD_CLASS('B', "First and standard class"),
-  FIRST_CLASS_ONLY('F', "First class only"),
-  STANDARD_CLASS_ONLY('S', "Standard class only");
+import com.joshuaharwood.cifparser.parsing.model.literals.Literal;
 
-  private final char literal;
+public enum Sleepers implements Literal {
+  FIRST_AND_STANDARD_CLASS("B", "First and standard class"),
+  FIRST_CLASS_ONLY("F", "First class only"),
+  STANDARD_CLASS_ONLY("S", "Standard class only");
+
+  private final String literal;
   private final String description;
 
-  Sleepers(char literal, String description) {
+  Sleepers(String literal, String description) {
     this.literal = literal;
     this.description = description;
   }
 
-  public char getLiteral() {
+  public String getLiteral() {
     return literal;
   }
 

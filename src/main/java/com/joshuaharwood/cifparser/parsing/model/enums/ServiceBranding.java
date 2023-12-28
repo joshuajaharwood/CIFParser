@@ -1,18 +1,20 @@
 package com.joshuaharwood.cifparser.parsing.model.enums;
 
-public enum ServiceBranding {
-  EUROSTAR('E', "Eurostar");
+import com.joshuaharwood.cifparser.parsing.model.literals.Literal;
 
-  private final char literal;
+public enum ServiceBranding implements Literal {
+  EUROSTAR("E", "Eurostar");
+
+  private final String literal;
 
   private final String description;
 
-  ServiceBranding(char literal, String description) {
+  ServiceBranding(String literal, String description) {
     this.literal = literal;
     this.description = description;
   }
 
-  public char getLiteral() {
+  public String getLiteral() {
     return literal;
   }
 
