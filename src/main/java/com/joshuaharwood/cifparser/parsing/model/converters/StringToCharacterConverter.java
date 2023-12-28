@@ -1,11 +1,11 @@
-package com.joshuaharwood.cifparser.parsing.model.parsers;
+package com.joshuaharwood.cifparser.parsing.model.converters;
 
 import java.util.Objects;
 import java.util.Optional;
 
-public class StringToCharacterParser {
+public class StringToCharacterConverter {
 
-  private StringToCharacterParser() {
+  private StringToCharacterConverter() {
   }
 
   public static Optional<Character> parseStringToCharacter(String s) {

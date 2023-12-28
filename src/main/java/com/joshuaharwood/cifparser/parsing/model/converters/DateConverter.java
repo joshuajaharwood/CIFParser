@@ -1,13 +1,13 @@
-package com.joshuaharwood.cifparser.parsing.model.parsers;
+package com.joshuaharwood.cifparser.parsing.model.converters;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class DateParser {
+public class DateConverter {
 
   private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("ddMMyy");
 
-  private DateParser() {
+  private DateConverter() {
   }
 
   public static LocalDate parse(String input) {

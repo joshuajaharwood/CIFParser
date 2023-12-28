@@ -1,9 +1,10 @@
 package com.joshuaharwood.cifparser.parsing.parser;
 
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.RowField;
-import java.util.Objects;
 
+@SuppressWarnings("ClassCanBeRecord")
 public class TestRowField implements RowField {
+
   private final int order;
   private final String name;
   private final int length;

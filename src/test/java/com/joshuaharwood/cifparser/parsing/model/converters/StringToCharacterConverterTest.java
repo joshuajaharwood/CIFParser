@@ -1,31 +1,31 @@
-package com.joshuaharwood.cifparser.parsing.model.parsers;
+package com.joshuaharwood.cifparser.parsing.model.converters;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import org.junit.jupiter.api.Test;
 
-class StringToCharacterParserTest {
+class StringToCharacterConverterTest {
 
   @Test
   public void parseWithMultipleCharactersThrowsIllegalArgumentException() {
-    assertThatIllegalArgumentException().isThrownBy(() -> StringToCharacterParser.parseStringToCharacter("ee"))
+    assertThatIllegalArgumentException().isThrownBy(() -> StringToCharacterConverter.parseStringToCharacter("ee"))
         .withMessage("Given string was longer than one character.");
   }
 
   @Test
   public void parseWithOnlyWhitespaceReturnsEmptyOptional() {
-    assertThat(StringToCharacterParser.parseStringToCharacter(" ")).isEmpty();
+    assertThat(StringToCharacterConverter.parseStringToCharacter(" ")).isEmpty();
   }
 
   @Test
   public void parseWithOneCharacterStringReturnsCharacter() {
-    assertThat(StringToCharacterParser.parseStringToCharacter("e")).contains('e');
+    assertThat(StringToCharacterConverter.parseStringToCharacter("e")).contains('e');
   }
 
   @Test
   public void parseWithOneCharacterPaddedThrowsIllegalArgumentException() {
-    assertThatIllegalArgumentException().isThrownBy(() -> StringToCharacterParser.parseStringToCharacter(" e"))
+    assertThatIllegalArgumentException().isThrownBy(() -> StringToCharacterConverter.parseStringToCharacter(" e"))
         .withMessage("Given string was longer than one character.");
   }
 }
