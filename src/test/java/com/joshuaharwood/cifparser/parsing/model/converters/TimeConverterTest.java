@@ -2,6 +2,7 @@ package com.joshuaharwood.cifparser.parsing.model.converters;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.InstanceOfAssertFactories.LOCAL_TIME;
 
 import java.time.format.DateTimeParseException;
@@ -11,11 +12,12 @@ class TimeConverterTest {
 
   @Test
   void parseGoodTimeReturnsCorrectOptional() {
-    assertThat(TimeConverter.convert("2359")).get(LOCAL_TIME)
-                                             .hasHour(23)
-                                             .hasMinute(59)
-                                             .hasSecond(0)
-                                             .hasNano(0);
+    assertThat(TimeConverter.convert("2359"))
+        .get(LOCAL_TIME)
+        .hasHour(23)
+        .hasMinute(59)
+        .hasSecond(0)
+        .hasNano(0);
   }
 
   @Test
@@ -27,5 +29,12 @@ class TimeConverterTest {
   void parseInvalidTimeThrowsJavaTimeException() {
     assertThatExceptionOfType(DateTimeParseException.class).isThrownBy(() -> TimeConverter.convert(
         "2559"));
+  }
+
+  @Test
+  void parseTooShortDateThrowsSomething() {
+    assertThatIllegalArgumentException()
+        .isThrownBy(() -> TimeConverter.convert("120"))
+        .withMessage("Time input must be 4 digits.");
   }
 }

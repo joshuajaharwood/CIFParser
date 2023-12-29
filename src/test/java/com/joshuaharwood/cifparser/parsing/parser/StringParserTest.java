@@ -67,7 +67,7 @@ class StringParserTest {
 
   @Test
   void parseRecordIdentityWithGoodRecordIdentityReturnsEnum() {
-    assertThat(StringParser.parseRecordIdentity(HEADER_RECORD)).isEqualTo(RecordIdentity.HEADER_RECORD);
+    assertThat(StringParser.parseRecordIdentity(HEADER_RECORD)).contains(RecordIdentity.HEADER_RECORD);
   }
 
   @Test

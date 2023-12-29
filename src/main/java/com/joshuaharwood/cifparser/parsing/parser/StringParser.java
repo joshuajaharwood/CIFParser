@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,7 +37,7 @@ public class StringParser {
     return parse(record, List.of(rowFields));
   }
 
-  public static @NotNull RecordIdentity parseRecordIdentity(String record) {
+  public static @NotNull Optional<RecordIdentity> parseRecordIdentity(String record) {
     Objects.requireNonNull(record);
 
     // Prevent IndexOutOfBoundsException
@@ -47,10 +48,7 @@ public class StringParser {
 
     final var lookupRecordIdentity = record.substring(0, 2);
 
-    return LiteralLookup.lookup(RecordIdentity.class, lookupRecordIdentity)
-                        .orElseThrow(() -> new IllegalArgumentException(
-                            "No RecordIdentity could be found for the given value. [Value: %s]".formatted(
-                                lookupRecordIdentity)));
+    return LiteralLookup.lookup(RecordIdentity.class, lookupRecordIdentity);
   }
 
   private static <T extends RowField> void validateLengths(List<T> lengths, int targetLength) {
@@ -61,10 +59,11 @@ public class StringParser {
 
       throw new IllegalArgumentException(
           "Given lengths did not sum up to a full record's length. [Given lengths: %s] [Record length: %d]".formatted(
-              lengths.stream()
-                     .map(RowField::getLength)
-                     .map(Object::toString)
-                     .collect(Collectors.joining(", ")),
+              lengths
+                  .stream()
+                  .map(RowField::getLength)
+                  .map(Object::toString)
+                  .collect(Collectors.joining(", ")),
               targetLength));
     }
   }

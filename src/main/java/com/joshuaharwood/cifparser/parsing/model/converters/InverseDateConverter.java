@@ -17,7 +17,7 @@ public class InverseDateConverter {
     }
 
     if (input.length() != 6) {
-      throw new IllegalArgumentException("Dates must be 6 digits.");
+      throw new IllegalArgumentException("Date input must be 6 digits.");
     }
 
     return Optional.of(LocalDate.parse(input, DATE_FORMAT));
