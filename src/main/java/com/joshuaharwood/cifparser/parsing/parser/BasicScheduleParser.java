@@ -33,7 +33,7 @@ public final class BasicScheduleParser implements RecordParser<BasicSchedule> {
         BasicScheduleFields.TRANSACTION_TYPE.getName(),
         record,
         parsedValues)),
-        ifNotBlank(parsedValues.get(BasicScheduleFields.TRAIN_UID)).orElseThrow(() -> new RequiredPropertyMissingException(
+        ifPresent(parsedValues.get(BasicScheduleFields.TRAIN_UID)).orElseThrow(() -> new RequiredPropertyMissingException(
             BasicScheduleFields.TRAIN_UID.getName(),
             record,
             parsedValues)),
@@ -51,24 +51,29 @@ public final class BasicScheduleParser implements RecordParser<BasicSchedule> {
         lookup(TrainStatus.class, parsedValues.get(BasicScheduleFields.TRAIN_STATUS)).orElse(null),
         lookup(TrainCategory.class, parsedValues.get(BasicScheduleFields.TRAIN_CATEGORY)).orElse(
             null),
-        ifNotBlank(parsedValues.get(BasicScheduleFields.TRAIN_IDENTITY)).orElse(null),
-        parseShort(parsedValues.get(BasicScheduleFields.HEADCODE)).orElse(null),
-        parseByte(parsedValues.get(BasicScheduleFields.COURSE_INDICATOR)).orElseThrow(() -> new RequiredPropertyMissingException(
-            BasicScheduleFields.COURSE_INDICATOR.getName(),
-            record,
-            parsedValues)),
-        parseInt(parsedValues.get(BasicScheduleFields.PROFIT_CENTRE_CODE_TRAIN_SERVICE_CODE)).orElse(
-            null),
-        parseChar(parsedValues.get(BasicScheduleFields.BUSINESS_SECTOR_PORTION_ID)).orElse(null),
+        ifPresent(parsedValues.get(BasicScheduleFields.TRAIN_IDENTITY)).orElse(null),
+        ifPresent(parsedValues.get(BasicScheduleFields.HEADCODE)).map(Short::parseShort)
+                                                                 .orElse(null),
+
+        ifPresent(parsedValues.get(BasicScheduleFields.COURSE_INDICATOR)).map(Byte::parseByte)
+                                                                         .orElseThrow(() -> new RequiredPropertyMissingException(
+                                                                             BasicScheduleFields.COURSE_INDICATOR.getName(),
+                                                                             record,
+                                                                             parsedValues)),
+        ifPresent(parsedValues.get(BasicScheduleFields.PROFIT_CENTRE_CODE_TRAIN_SERVICE_CODE)).map(
+            Integer::valueOf).orElse(null),
+        ifPresent(parsedValues.get(BasicScheduleFields.BUSINESS_SECTOR_PORTION_ID)).map(this::parseChar)
+                                                                                   .orElse(null),
         lookup(PowerType.class, parsedValues.get(BasicScheduleFields.POWER_TYPE)).orElse(null),
-        ifNotBlank(parsedValues.get(BasicScheduleFields.TIMING_LOAD)).orElse(null),
-        parseInt(parsedValues.get(BasicScheduleFields.SPEED)).orElse(null),
+        ifPresent(parsedValues.get(BasicScheduleFields.TIMING_LOAD)).orElse(null),
+        ifPresent(parsedValues.get(BasicScheduleFields.SPEED)).map(Integer::valueOf).orElse(null),
         lookupCollection(OperatingCharacteristics.class,
             parsedValues.get(BasicScheduleFields.OPERATING_CHARACTERISTICS)),
         lookup(SeatingClass.class, parsedValues.get(BasicScheduleFields.TRAIN_CLASS)).orElse(null),
         lookup(Sleepers.class, parsedValues.get(BasicScheduleFields.SLEEPERS)).orElse(null),
         lookup(Reservations.class, parsedValues.get(BasicScheduleFields.RESERVATIONS)).orElse(null),
-        parseChar(parsedValues.get(BasicScheduleFields.CONNECT_INDICATOR)).orElse(null),
+        ifPresent(parsedValues.get(BasicScheduleFields.CONNECT_INDICATOR)).map(this::parseChar)
+                                                                          .orElse(null),
         lookupCollection(CateringCode.class, parsedValues.get(BasicScheduleFields.CATERING_CODE)),
         lookup(ServiceBranding.class,
             parsedValues.get(BasicScheduleFields.SERVICE_BRANDING)).orElse(null),
@@ -76,6 +81,6 @@ public final class BasicScheduleParser implements RecordParser<BasicSchedule> {
             () -> new RequiredPropertyMissingException(BasicScheduleFields.STP_INDICATOR.getName(),
                 record,
                 parsedValues)),
-        ifNotBlank(parsedValues.get(BasicScheduleFields.SPARE)).orElse(null));
+        ifPresent(parsedValues.get(BasicScheduleFields.SPARE)).orElse(null));
   }
 }

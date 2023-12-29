@@ -4,7 +4,6 @@ import com.joshuaharwood.cifparser.parsing.model.HeaderRecord;
 import com.joshuaharwood.cifparser.parsing.model.HeaderRecord.UpdateIndicator;
 import com.joshuaharwood.cifparser.parsing.model.converters.DateConverter;
 import com.joshuaharwood.cifparser.parsing.model.converters.TimeConverter;
-import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.BasicScheduleFields;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.HeaderFields;
 import com.joshuaharwood.cifparser.parsing.model.literals.LiteralLookup;
 import java.util.Map;
@@ -15,22 +14,22 @@ public final class HeaderRecordParser implements RecordParser<HeaderRecord> {
     final Map<HeaderFields, String> parsedValues = StringParser.parse(record,
         HeaderFields.values());
 
-    return new HeaderRecord(ifNotBlank(parsedValues.get(HeaderFields.FILE_IDENTITY)).orElseThrow(() -> new RequiredPropertyMissingException(
+    return new HeaderRecord(ifPresent(parsedValues.get(HeaderFields.FILE_IDENTITY)).orElseThrow(() -> new RequiredPropertyMissingException(
         HeaderFields.FILE_IDENTITY.getName(),
         record,
         parsedValues)),
         DateConverter.convert(parsedValues.get(HeaderFields.DATE_OF_EXTRACT)).orElse(null),
         TimeConverter.convert(parsedValues.get(HeaderFields.TIME_OF_EXTRACT)).orElse(null),
-        ifNotBlank(parsedValues.get(HeaderFields.CURRENT_FILE_REFERENCE)).orElseThrow(() -> new RequiredPropertyMissingException(
+        ifPresent(parsedValues.get(HeaderFields.CURRENT_FILE_REFERENCE)).orElseThrow(() -> new RequiredPropertyMissingException(
             HeaderFields.CURRENT_FILE_REFERENCE.getName(),
             record,
             parsedValues)),
-        ifNotBlank(parsedValues.get(HeaderFields.LAST_FILE_REFERENCE)).orElse(null),
+        ifPresent(parsedValues.get(HeaderFields.LAST_FILE_REFERENCE)).orElse(null),
         LiteralLookup.lookup(UpdateIndicator.class, parsedValues.get(HeaderFields.UPDATE_INDICATOR))
                      .orElse(null),
-        parseChar(parsedValues.get(HeaderFields.VERSION)).orElse(null),
+        ifPresent(parsedValues.get(HeaderFields.VERSION)).map(this::parseChar).orElse(null),
         DateConverter.convert(parsedValues.get(HeaderFields.EXTRACT_START_DATE)).orElse(null),
         DateConverter.convert(parsedValues.get(HeaderFields.EXTRACT_END_DATE)).orElse(null),
-        ifNotBlank(parsedValues.get(HeaderFields.SPARE)).orElse(null));
+        ifPresent(parsedValues.get(HeaderFields.SPARE)).orElse(null));
   }
 }

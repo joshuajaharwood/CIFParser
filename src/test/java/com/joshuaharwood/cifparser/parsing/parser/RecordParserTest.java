@@ -7,6 +7,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class RecordParserTest {
+
   private HeaderRecordParser p;
 
   @BeforeEach
@@ -17,7 +18,7 @@ class RecordParserTest {
   @Test
   public void parseWithMultipleCharactersThrowsIllegalArgumentException() {
     assertThatIllegalArgumentException().isThrownBy(() -> p.parseChar("ee"))
-        .withMessage("Given string was longer than one character.");
+                                        .withMessage("Given string was longer than one character.");
   }
 
   @Test
@@ -33,6 +34,6 @@ class RecordParserTest {
   @Test
   public void parseWithOneCharacterPaddedThrowsIllegalArgumentException() {
     assertThatIllegalArgumentException().isThrownBy(() -> p.parseChar(" e"))
-        .withMessage("Given string was longer than one character.");
+                                        .withMessage("Given string was longer than one character.");
   }
 }
