@@ -37,33 +37,38 @@ public final class BasicScheduleParser implements RecordParser<BasicSchedule> {
             BasicScheduleFields.TRAIN_UID.getName(),
             record,
             parsedValues)),
-        InverseDateConverter.convert(parsedValues.get(BasicScheduleFields.DATE_RUNS_FROM))
-                            .orElseThrow(() -> new RequiredPropertyMissingException(
-                                BasicScheduleFields.DATE_RUNS_FROM.getName(),
-                                record,
-                                parsedValues)),
-        InverseDateConverter.convert(parsedValues.get(BasicScheduleFields.DATE_RUNS_TO))
-                            .orElse(null),
-        DaysOfWeekBitmaskConverter.convert(parsedValues.get(BasicScheduleFields.DAYS_RUN))
-                                  .orElse(null),
+        InverseDateConverter
+            .convert(parsedValues.get(BasicScheduleFields.DATE_RUNS_FROM))
+            .orElseThrow(() -> new RequiredPropertyMissingException(BasicScheduleFields.DATE_RUNS_FROM.getName(),
+                record,
+                parsedValues)),
+        InverseDateConverter
+            .convert(parsedValues.get(BasicScheduleFields.DATE_RUNS_TO))
+            .orElse(null),
+        DaysOfWeekBitmaskConverter
+            .convert(parsedValues.get(BasicScheduleFields.DAYS_RUN))
+            .orElse(null),
         lookup(BankHolidayRunning.class,
             parsedValues.get(BasicScheduleFields.BANK_HOLIDAY_RUNNING)).orElse(null),
         lookup(TrainStatus.class, parsedValues.get(BasicScheduleFields.TRAIN_STATUS)).orElse(null),
         lookup(TrainCategory.class, parsedValues.get(BasicScheduleFields.TRAIN_CATEGORY)).orElse(
             null),
         ifPresent(parsedValues.get(BasicScheduleFields.TRAIN_IDENTITY)).orElse(null),
-        ifPresent(parsedValues.get(BasicScheduleFields.HEADCODE)).map(Short::parseShort)
-                                                                 .orElse(null),
+        ifPresent(parsedValues.get(BasicScheduleFields.HEADCODE))
+            .map(Short::parseShort)
+            .orElse(null),
 
-        ifPresent(parsedValues.get(BasicScheduleFields.COURSE_INDICATOR)).map(Byte::parseByte)
-                                                                         .orElseThrow(() -> new RequiredPropertyMissingException(
-                                                                             BasicScheduleFields.COURSE_INDICATOR.getName(),
-                                                                             record,
-                                                                             parsedValues)),
-        ifPresent(parsedValues.get(BasicScheduleFields.PROFIT_CENTRE_CODE_TRAIN_SERVICE_CODE)).map(
-            Integer::valueOf).orElse(null),
-        ifPresent(parsedValues.get(BasicScheduleFields.BUSINESS_SECTOR_PORTION_ID)).map(this::parseChar)
-                                                                                   .orElse(null),
+        ifPresent(parsedValues.get(BasicScheduleFields.COURSE_INDICATOR))
+            .map(Byte::parseByte)
+            .orElseThrow(() -> new RequiredPropertyMissingException(BasicScheduleFields.COURSE_INDICATOR.getName(),
+                record,
+                parsedValues)),
+        ifPresent(parsedValues.get(BasicScheduleFields.PROFIT_CENTRE_CODE_TRAIN_SERVICE_CODE))
+            .map(Integer::valueOf)
+            .orElse(null),
+        ifPresent(parsedValues.get(BasicScheduleFields.BUSINESS_SECTOR_PORTION_ID))
+            .map(this::parseChar)
+            .orElse(null),
         lookup(PowerType.class, parsedValues.get(BasicScheduleFields.POWER_TYPE)).orElse(null),
         ifPresent(parsedValues.get(BasicScheduleFields.TIMING_LOAD)).orElse(null),
         ifPresent(parsedValues.get(BasicScheduleFields.SPEED)).map(Integer::valueOf).orElse(null),
@@ -72,8 +77,9 @@ public final class BasicScheduleParser implements RecordParser<BasicSchedule> {
         lookup(SeatingClass.class, parsedValues.get(BasicScheduleFields.TRAIN_CLASS)).orElse(null),
         lookup(Sleepers.class, parsedValues.get(BasicScheduleFields.SLEEPERS)).orElse(null),
         lookup(Reservations.class, parsedValues.get(BasicScheduleFields.RESERVATIONS)).orElse(null),
-        ifPresent(parsedValues.get(BasicScheduleFields.CONNECT_INDICATOR)).map(this::parseChar)
-                                                                          .orElse(null),
+        ifPresent(parsedValues.get(BasicScheduleFields.CONNECT_INDICATOR))
+            .map(this::parseChar)
+            .orElse(null),
         lookupCollection(CateringCode.class, parsedValues.get(BasicScheduleFields.CATERING_CODE)),
         lookup(ServiceBranding.class,
             parsedValues.get(BasicScheduleFields.SERVICE_BRANDING)).orElse(null),
