@@ -6,7 +6,6 @@ import com.joshuaharwood.cifparser.parsing.model.literals.LiteralLookup;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import org.jetbrains.annotations.NotNull;
@@ -21,11 +20,6 @@ public class StringParser {
     Objects.requireNonNull(record);
     Objects.requireNonNull(rowFields);
     validateLengths(rowFields, record.length());
-
-    // We require at least one rowField for parsing
-    if (rowFields.isEmpty()) {
-      throw new NoSuchElementException("The given rowFields argument was empty.");
-    }
 
     final var hashMap = new HashMap<T, String>();
 
@@ -54,19 +48,23 @@ public class StringParser {
     final var lookupRecordIdentity = record.substring(0, 2);
 
     return LiteralLookup.lookup(RecordIdentity.class, lookupRecordIdentity)
-        .orElseThrow(() -> new IllegalArgumentException(
-            "No RecordIdentity could be found for the given value. [Value: %s]".formatted(
-                lookupRecordIdentity)));
+                        .orElseThrow(() -> new IllegalArgumentException(
+                            "No RecordIdentity could be found for the given value. [Value: %s]".formatted(
+                                lookupRecordIdentity)));
   }
 
   private static <T extends RowField> void validateLengths(List<T> lengths, int targetLength) {
     if (!fieldsAreCorrectLengthTotal(lengths, targetLength)) {
+      if (lengths.isEmpty()) {
+        throw new IllegalArgumentException("RowField argument must include at least one element.");
+      }
+
       throw new IllegalArgumentException(
           "Given lengths did not sum up to a full record's length. [Given lengths: %s] [Record length: %d]".formatted(
               lengths.stream()
-                  .map(RowField::getLength)
-                  .map(Object::toString)
-                  .collect(Collectors.joining(", ")),
+                     .map(RowField::getLength)
+                     .map(Object::toString)
+                     .collect(Collectors.joining(", ")),
               targetLength));
     }
   }

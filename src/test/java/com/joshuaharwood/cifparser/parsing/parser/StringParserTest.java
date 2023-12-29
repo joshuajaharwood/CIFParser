@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.entry;
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.HeaderFields;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.RowField;
+import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
@@ -41,8 +42,8 @@ class StringParserTest {
         new TestRowField(2, "FIELD_2", 1));
 
     assertThatIllegalArgumentException().isThrownBy(() -> StringParser.parse("123456", tooShort))
-        .withMessage(
-            "Given lengths did not sum up to a full record's length. [Given lengths: 2, 1] [Record length: 6]");
+                                        .withMessage(
+                                            "Given lengths did not sum up to a full record's length. [Given lengths: 2, 1] [Record length: 6]");
   }
 
   @Test
@@ -51,9 +52,18 @@ class StringParserTest {
         new TestRowField(2, "FIELD_2", 99));
 
     assertThatIllegalArgumentException().isThrownBy(() -> StringParser.parse("123456", tooLong))
-        .withMessage(
-            "Given lengths did not sum up to a full record's length. [Given lengths: 99, 99] [Record length: 6]");
+                                        .withMessage(
+                                            "Given lengths did not sum up to a full record's length. [Given lengths: 99, 99] [Record length: 6]");
   }
+
+  @Test
+  void throwsSomeExceptionWhenNoRowFieldsGiven() {
+    assertThatIllegalArgumentException().isThrownBy(() -> StringParser.parse("123456",
+                                            Collections.emptyList()))
+                                        .withMessage(
+                                            "RowField argument must include at least one element.");
+  }
+
 
   @Test
   void parseRecordIdentityWithGoodRecordIdentityReturnsEnum() {
@@ -63,9 +73,9 @@ class StringParserTest {
   @Test
   void parseRecordIdentityWithBadRecordIdentityThrowsIllegalArgumentException() {
     assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> StringParser.parseRecordIdentity(
-            BAD_RECORD))
-        .withMessage(
-            "Failed to map String for given Literal. [String: XX] [Enum: RecordIdentity]");
+                                                                 BAD_RECORD))
+                                                             .withMessage(
+                                                                 "Failed to map String for given Literal. [String: XX] [Enum: RecordIdentity]");
   }
 
   @Test
@@ -76,7 +86,7 @@ class StringParserTest {
   @Test
   void parseRecordIdentityWithShortRecordThrowsIllegalArgumentException() {
     assertThatIllegalArgumentException().isThrownBy(() -> StringParser.parseRecordIdentity("A"))
-        .withMessage(
-            "Given record strings must be at least 2 characters to establish their RecordIdentity.");
+                                        .withMessage(
+                                            "Given record strings must be at least 2 characters to establish their RecordIdentity.");
   }
 }
