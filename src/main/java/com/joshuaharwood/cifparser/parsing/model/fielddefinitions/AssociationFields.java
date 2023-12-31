@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.model.fielddefinitions;
 
-public enum AssociationRowFields implements RowField {
+public enum AssociationFields implements RowField {
   RECORD_IDENTITY(1, 2),
   TRANSACTION_TYPE(2, 1),
   BASE_UID(3, 6),
@@ -22,7 +22,7 @@ public enum AssociationRowFields implements RowField {
   private final int order;
   private final int length;
 
-  AssociationRowFields(int order, int length) {
+  AssociationFields(int order, int length) {
     this.order = order;
     this.length = length;
   }

@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.parser;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.joshuaharwood.cifparser.parsing.model.BasicScheduleExtended;
 import com.joshuaharwood.cifparser.parsing.model.enums.ApplicableTimetableCode;

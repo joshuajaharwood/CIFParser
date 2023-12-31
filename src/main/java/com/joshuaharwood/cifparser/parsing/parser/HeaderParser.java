@@ -1,20 +1,20 @@
 package com.joshuaharwood.cifparser.parsing.parser;
 
-import com.joshuaharwood.cifparser.parsing.model.HeaderRecord;
-import com.joshuaharwood.cifparser.parsing.model.HeaderRecord.UpdateIndicator;
+import com.joshuaharwood.cifparser.parsing.model.Header;
+import com.joshuaharwood.cifparser.parsing.model.Header.UpdateIndicator;
 import com.joshuaharwood.cifparser.parsing.model.converters.DateConverter;
 import com.joshuaharwood.cifparser.parsing.model.converters.TimeConverter;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.HeaderFields;
 import com.joshuaharwood.cifparser.parsing.model.literals.LiteralLookup;
 import java.util.Map;
 
-public final class HeaderRecordParser implements RecordParser<HeaderRecord> {
+public final class HeaderParser implements RecordParser<Header> {
 
-  public HeaderRecord parse(String record) {
+  public Header parse(String record) {
     final Map<HeaderFields, String> parsedValues = StringParser.parse(record,
         HeaderFields.values());
 
-    return new HeaderRecord(ifPresent(parsedValues.get(HeaderFields.FILE_IDENTITY)).orElseThrow(() -> new RequiredPropertyMissingException(
+    return new Header(ifPresent(parsedValues.get(HeaderFields.FILE_IDENTITY)).orElseThrow(() -> new RequiredPropertyMissingException(
         HeaderFields.FILE_IDENTITY.getName(),
         record,
         parsedValues)),

@@ -8,16 +8,16 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Map;
 
-public record AssociationRecord(String spare,
-                                TransactionType transactionType, String mainTrainUid,
-                                String associatedTrainUid, LocalDate associationStartDate,
-                                LocalDate associationEndDate,
-                                Map<DayOfWeek, Boolean> associationDays,
-                                AssociationCategory associationCategory,
-                                AssociationDateIndicator associationDateIndicator,
-                                String associationLocation, byte baseLocationSuffix,
-                                byte associationLocationSuffix, DiagramType diagramType,
-                                AssociationType associationType, STPIndicator stpIndicator
+public record Association(String spare,
+                          TransactionType transactionType, String mainTrainUid,
+                          String associatedTrainUid, LocalDate associationStartDate,
+                          LocalDate associationEndDate,
+                          Map<DayOfWeek, Boolean> associationDays,
+                          AssociationCategory associationCategory,
+                          AssociationDateIndicator associationDateIndicator,
+                          String associationLocation, byte baseLocationSuffix,
+                          byte associationLocationSuffix, DiagramType diagramType,
+                          AssociationType associationType, STPIndicator stpIndicator
 
 ) implements CIFRecord {
 

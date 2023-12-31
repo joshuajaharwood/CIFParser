@@ -3,28 +3,28 @@ package com.joshuaharwood.cifparser.parsing.parser;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import com.joshuaharwood.cifparser.parsing.model.HeaderRecord;
-import com.joshuaharwood.cifparser.parsing.model.HeaderRecord.UpdateIndicator;
+import com.joshuaharwood.cifparser.parsing.model.Header;
+import com.joshuaharwood.cifparser.parsing.model.Header.UpdateIndicator;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 @SuppressWarnings("SpellCheckingInspection")
-class HeaderRecordParserTest {
+class HeaderParserTest {
 
-  private HeaderRecordParser parser;
+  private HeaderParser parser;
 
   @BeforeEach
   public void setUp() {
-    parser = new HeaderRecordParser();
+    parser = new HeaderParser();
   }
 
   @Test
   void shouldParseWithValidInput() {
     final String input = "HDTPS.UDFROC1.PD2311242411232032DFROC1H       FA241123231124                    ";
 
-    final HeaderRecord expected = new HeaderRecord("TPS.UDFROC1.PD231124",
+    final Header expected = new Header("TPS.UDFROC1.PD231124",
         LocalDate.of(2023, 11, 24),
         LocalTime.of(20, 32),
         "DFROC1H",
@@ -35,7 +35,7 @@ class HeaderRecordParserTest {
         LocalDate.of(2024, 11, 23),
         null);
 
-    final HeaderRecord actual = parser.parse(input);
+    final Header actual = parser.parse(input);
 
     assertThat(actual).isEqualTo(expected);
   }

@@ -1,10 +1,10 @@
 package com.joshuaharwood.cifparser.parsing.model;
 
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
-import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.LocationTerminatingFields;
+import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.TerminatingLocationFields;
 
-public record LocationTerminatingRecord(String location) implements
-    LocationRecord<LocationTerminatingFields> {
+public record TerminatingLocation(String location) implements
+    LocationRecord<TerminatingLocationFields> {
 
   @Override
   public RecordIdentity recordIdentity() {

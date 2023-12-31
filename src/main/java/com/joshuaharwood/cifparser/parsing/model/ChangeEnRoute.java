@@ -10,15 +10,15 @@ import com.joshuaharwood.cifparser.parsing.model.enums.Sleepers;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.ChangeEnRouteFields;
 
 //TODO: Some of these strings should be enums...
-public record ChangeEnRouteRecord(String location, String trainCategory, String trainIdentity,
-                                  String headcode, String courseIndicator,
-                                  String profitCentreCodeTrainServiceCode, String businessSector,
-                                  PowerType powerType, String timingLoad, int speed,
-                                  OperatingCharacteristics operatingCharacteristics,
-                                  String trainClass, Sleepers sleepers, Reservations reservations,
-                                  String connectIndicator, CateringCode cateringCode,
-                                  ServiceBranding serviceBranding, String tractionClass,
-                                  String uicCode, String retailServiceId, String spare) implements
+public record ChangeEnRoute(String location, String trainCategory, String trainIdentity,
+                            String headcode, String courseIndicator,
+                            String profitCentreCodeTrainServiceCode, String businessSector,
+                            PowerType powerType, String timingLoad, int speed,
+                            OperatingCharacteristics operatingCharacteristics,
+                            String trainClass, Sleepers sleepers, Reservations reservations,
+                            String connectIndicator, CateringCode cateringCode,
+                            ServiceBranding serviceBranding, String tractionClass,
+                            String uicCode, String retailServiceId, String spare) implements
     LocationRecord<ChangeEnRouteFields> {
 
   @Override

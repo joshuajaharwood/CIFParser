@@ -3,19 +3,19 @@ package com.joshuaharwood.cifparser.parsing;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-import com.joshuaharwood.cifparser.parsing.model.HeaderRecord;
-import com.joshuaharwood.cifparser.parsing.model.HeaderRecord.UpdateIndicator;
+import com.joshuaharwood.cifparser.parsing.model.Header;
+import com.joshuaharwood.cifparser.parsing.model.Header.UpdateIndicator;
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import org.junit.jupiter.api.Test;
 
-class HeaderRecordTest {
+class HeaderTest {
 
   @Test
   void versionCannotBeNull() {
     assertThatIllegalArgumentException().isThrownBy(() -> {
-      new HeaderRecord("fileMainframeIdentity",
+      new Header("fileMainframeIdentity",
           LocalDate.of(2000, 1, 1),
           LocalTime.of(12, 0, 0),
           "currentFileReference",
@@ -30,7 +30,7 @@ class HeaderRecordTest {
 
   @Test
   void versionCannotBeLowercase() {
-    assertThatIllegalArgumentException().isThrownBy(() -> new HeaderRecord("fileMainframeIdentity",
+    assertThatIllegalArgumentException().isThrownBy(() -> new Header("fileMainframeIdentity",
         LocalDate.of(2000, 1, 1),
         LocalTime.of(12, 0, 0),
         "currentFileReference",
@@ -44,7 +44,7 @@ class HeaderRecordTest {
 
   @Test
   void versionCannotBeSpace() {
-    assertThatIllegalArgumentException().isThrownBy(() -> new HeaderRecord("fileMainframeIdentity",
+    assertThatIllegalArgumentException().isThrownBy(() -> new Header("fileMainframeIdentity",
         LocalDate.of(2000, 1, 1),
         LocalTime.of(12, 0, 0),
         "currentFileReference",
@@ -58,7 +58,7 @@ class HeaderRecordTest {
 
   @Test
   void versionCannotBeNumeric() {
-    assertThatIllegalArgumentException().isThrownBy(() -> new HeaderRecord("fileMainframeIdentity",
+    assertThatIllegalArgumentException().isThrownBy(() -> new Header("fileMainframeIdentity",
         LocalDate.of(2000, 1, 1),
         LocalTime.of(12, 0, 0),
         "currentFileReference",
@@ -72,7 +72,7 @@ class HeaderRecordTest {
 
   @Test
   void shouldReturnCorrectRecordIdentity() {
-    var headerRecord = new HeaderRecord("fileMainframeIdentity",
+    var headerRecord = new Header("fileMainframeIdentity",
         LocalDate.of(2000, 1, 1),
         LocalTime.of(12, 0, 0),
         "currentFileReference",

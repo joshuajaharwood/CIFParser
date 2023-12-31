@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.model.fielddefinitions;
 
-public enum LocationOriginFields implements RowField {
+public enum OriginLocationFields implements RowField {
   RECORD_IDENTITY(1, 2),
   LOCATION(2, 8),
   SCHEDULED_DEPARTURE_TIME(3, 5),
@@ -16,7 +16,7 @@ public enum LocationOriginFields implements RowField {
   private final int order;
   private final int length;
 
-  LocationOriginFields(int order, int length) {
+  OriginLocationFields(int order, int length) {
     this.order = order;
     this.length = length;
   }

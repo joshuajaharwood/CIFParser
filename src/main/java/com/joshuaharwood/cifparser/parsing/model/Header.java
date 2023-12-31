@@ -5,13 +5,13 @@ import com.joshuaharwood.cifparser.parsing.model.literals.Literal;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public record HeaderRecord(String fileMainframeIdentity, LocalDate dateOfExtract,
-                           LocalTime timeOfExtract, String currentFileReference,
-                           String lastFileReference, UpdateIndicator updateIndicator,
-                           Character version, LocalDate userStartDate, LocalDate userEndDate,
-                           String spare) implements CIFRecord {
+public record Header(String fileMainframeIdentity, LocalDate dateOfExtract,
+                     LocalTime timeOfExtract, String currentFileReference,
+                     String lastFileReference, UpdateIndicator updateIndicator,
+                     Character version, LocalDate userStartDate, LocalDate userEndDate,
+                     String spare) implements CIFRecord {
 
-  public HeaderRecord {
+  public Header {
     if (version == null || !Character.isUpperCase(version)) {
       throw new IllegalArgumentException(
           "A non-capital-alphanumeric Version property was passed as an argument. [Version: %s]".formatted(
