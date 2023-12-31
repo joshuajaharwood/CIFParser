@@ -14,18 +14,16 @@ class HeaderTest {
 
   @Test
   void versionCannotBeNull() {
-    assertThatIllegalArgumentException().isThrownBy(() -> {
-      new Header("fileMainframeIdentity",
-          LocalDate.of(2000, 1, 1),
-          LocalTime.of(12, 0, 0),
-          "currentFileReference",
-          "lastFileReference",
-          UpdateIndicator.UPDATE_EXTRACT,
-          null,
-          LocalDate.of(2000, 1, 1),
-          LocalDate.of(2000, 1, 1),
-          null);
-    });
+    assertThatIllegalArgumentException().isThrownBy(() -> new Header("fileMainframeIdentity",
+        LocalDate.of(2000, 1, 1),
+        LocalTime.of(12, 0, 0),
+        "currentFileReference",
+        "lastFileReference",
+        UpdateIndicator.UPDATE_EXTRACT,
+        null,
+        LocalDate.of(2000, 1, 1),
+        LocalDate.of(2000, 1, 1),
+        null));
   }
 
   @Test
