@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.model.fielddefinitions;
 @SuppressWarnings("SpellCheckingInspection")
 public enum BasicScheduleFields implements RowField {
   RECORD_IDENTITY(1, 2),
-  TRANSACTION_TYPE(2, 2),
+  TRANSACTION_TYPE(2, 1),
   TRAIN_UID(3, 6),
   DATE_RUNS_FROM(4, 6),
   DATE_RUNS_TO(5, 6),

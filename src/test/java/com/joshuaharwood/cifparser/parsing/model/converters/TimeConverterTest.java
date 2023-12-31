@@ -32,7 +32,7 @@ class TimeConverterTest {
   }
 
   @Test
-  void parseTooShortDateThrowsSomething() {
+  void parseTooShortDateThrowsIllegalArgumentException() {
     assertThatIllegalArgumentException()
         .isThrownBy(() -> TimeConverter.convert("120"))
         .withMessage("Time input must be 4 digits.");

@@ -32,7 +32,7 @@ class InverseDateConverterTest {
   }
 
   @Test
-  void parseTooShortDateThrowsSomething() {
+  void parseTooShortDateThrowsIllegalArgumentException() {
     assertThatIllegalArgumentException()
         .isThrownBy(() -> InverseDateConverter.convert("01010"))
         .withMessage("Date input must be 6 digits.");

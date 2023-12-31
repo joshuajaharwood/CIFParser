@@ -57,7 +57,7 @@ class StringParserTest {
   }
 
   @Test
-  void throwsSomeExceptionWhenNoRowFieldsGiven() {
+  void throwsIllegalArgumentExceptionWhenNoRowFieldsGiven() {
     assertThatIllegalArgumentException().isThrownBy(() -> StringParser.parse("123456",
                                             Collections.emptyList()))
                                         .withMessage(
@@ -72,10 +72,11 @@ class StringParserTest {
 
   @Test
   void parseRecordIdentityWithBadRecordIdentityThrowsIllegalArgumentException() {
-    assertThatExceptionOfType(IllegalArgumentException.class).isThrownBy(() -> StringParser.parseRecordIdentity(
-                                                                 BAD_RECORD))
-                                                             .withMessage(
-                                                                 "Failed to map String for given Literal. [String: XX] [Enum: RecordIdentity]");
+    assertThatExceptionOfType(IllegalArgumentException.class)
+        .isThrownBy(() -> StringParser.parseRecordIdentity(
+            BAD_RECORD))
+        .withMessage(
+            "Failed to map String for given Literal. [String: XX] [Enum: RecordIdentity]");
   }
 
   @Test
