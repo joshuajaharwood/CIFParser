@@ -57,7 +57,6 @@ public final class BasicScheduleParser implements RecordParser<BasicSchedule> {
         ifPresent(parsedValues.get(BasicScheduleFields.HEADCODE))
             .map(Short::parseShort)
             .orElse(null),
-
         ifPresent(parsedValues.get(BasicScheduleFields.COURSE_INDICATOR))
             .map(Byte::parseByte)
             .orElseThrow(() -> new RequiredPropertyMissingException(BasicScheduleFields.COURSE_INDICATOR.getName(),

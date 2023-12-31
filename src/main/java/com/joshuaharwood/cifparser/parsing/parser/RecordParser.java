@@ -5,8 +5,8 @@ import java.util.Optional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public sealed interface RecordParser<T extends CIFRecord> permits BasicScheduleParser,
-    HeaderRecordParser {
+public sealed interface RecordParser<T extends CIFRecord> permits BasicScheduleExtendedParser,
+    BasicScheduleParser, HeaderRecordParser {
 
   T parse(String record);
 

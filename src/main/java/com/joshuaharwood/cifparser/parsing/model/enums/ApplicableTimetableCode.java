@@ -1,16 +1,18 @@
 package com.joshuaharwood.cifparser.parsing.model.enums;
 
-public enum ApplicableTimetableCode {
-  APPLICABLE('Y'),
-  NOT_APPLICABLE('N');
+import com.joshuaharwood.cifparser.parsing.model.literals.Literal;
 
-  private final char literal;
+public enum ApplicableTimetableCode implements Literal {
+  APPLICABLE("Y"),
+  NOT_APPLICABLE("N");
 
-  ApplicableTimetableCode(char literal) {
+  private final String literal;
+
+  ApplicableTimetableCode(String literal) {
     this.literal = literal;
   }
 
-  public char getLiteral() {
+  public String getLiteral() {
     return literal;
   }
 }

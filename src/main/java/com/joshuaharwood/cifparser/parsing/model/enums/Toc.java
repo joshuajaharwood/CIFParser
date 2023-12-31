@@ -1,12 +1,13 @@
 package com.joshuaharwood.cifparser.parsing.model.enums;
 
+import com.joshuaharwood.cifparser.parsing.model.literals.Literal;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 @SuppressWarnings("SpellCheckingInspection")
-public enum Toc {
+public enum Toc implements Literal {
   VIRTUAL_EUROPEAN_PATHS("EU", "Virtual European Paths", null, "EU", true, false),
   ALLIANCE_RAIL("ZB", "Alliance Rail", "14", "AR", true, false),
   NORTHERN_TRAINS("ED", "Northern Trains", "23", "NT", true, false),
@@ -206,8 +207,14 @@ public enum Toc {
   }
 
   public Set<Toc> getAllNonDefunctMappedTocs() {
-    return Stream.of(Toc.values())
+    return Stream
+        .of(Toc.values())
         .filter(toc -> !toc.isDefunct() && toc.isMapped())
         .collect(Collectors.toSet());
+  }
+
+  @Override
+  public String getLiteral() {
+    return atocCode;
   }
 }
