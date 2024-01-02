@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.parser;
 
 import com.joshuaharwood.cifparser.parsing.model.IntermediateLocation;
-import com.joshuaharwood.cifparser.parsing.model.converters.TimeConverter;
+import com.joshuaharwood.cifparser.parsing.model.converters.FiveDigitTimeConverter;
 import com.joshuaharwood.cifparser.parsing.model.converters.ZeroSafeTimeConverter;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.IntermediateLocationFields;
 import java.util.Map;
@@ -15,13 +15,13 @@ public final class IntermediateLocationParser implements RecordParser<Intermedia
 
     return new IntermediateLocation(ifPresent(parsedValues.get(IntermediateLocationFields.LOCATION)).orElse(
         null),
-        TimeConverter
+        FiveDigitTimeConverter
             .convert(parsedValues.get(IntermediateLocationFields.SCHEDULED_ARRIVAL_TIME))
             .orElse(null),
-        TimeConverter
+        FiveDigitTimeConverter
             .convert(parsedValues.get(IntermediateLocationFields.SCHEDULED_DEPARTURE_TIME))
             .orElse(null),
-        TimeConverter
+        FiveDigitTimeConverter
             .convert(parsedValues.get(IntermediateLocationFields.SCHEDULED_PASS))
             .orElse(null),
         ZeroSafeTimeConverter
