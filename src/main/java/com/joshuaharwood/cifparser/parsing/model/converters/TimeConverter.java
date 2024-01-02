@@ -22,6 +22,6 @@ public class TimeConverter {
       throw new IllegalArgumentException("Time input must be 4 digits.");
     }
 
-    return Optional.of(LocalTime.parse(input, TIME_FORMAT));
+    return Optional.of(LocalTime.parse(trimmed, TIME_FORMAT));
   }
 }
