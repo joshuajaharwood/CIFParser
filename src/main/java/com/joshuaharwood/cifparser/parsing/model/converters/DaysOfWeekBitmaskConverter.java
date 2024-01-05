@@ -3,11 +3,15 @@ package com.joshuaharwood.cifparser.parsing.model.converters;
 import java.time.DayOfWeek;
 import java.util.Collections;
 import java.util.EnumMap;
+import java.util.EnumSet;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.Set;
 
 public class DaysOfWeekBitmaskConverter {
+
+  //TODO: rewrite this now it returns a set!
 
   /**
    * Converts days-of-the-week bitmasks to {@link Map}s representing their data.
@@ -21,7 +25,7 @@ public class DaysOfWeekBitmaskConverter {
    * @throws IllegalArgumentException if {@code stringBitmask} is longer or shorter than 7
    *                                  characters.
    */
-  public static Optional<Map<DayOfWeek, Boolean>> convert(String stringBitmask) {
+  public static Optional<Set<DayOfWeek>> convert(String stringBitmask) {
     Objects.requireNonNull(stringBitmask, "Days-of-week bitmask must not be null.");
 
     if (stringBitmask.length() != 7) {
@@ -30,16 +34,37 @@ public class DaysOfWeekBitmaskConverter {
 
     byte bitmask = Byte.parseByte(stringBitmask, 2);
 
-    Map<DayOfWeek, Boolean> daysOfWeek = new EnumMap<>(DayOfWeek.class);
-    daysOfWeek.put(DayOfWeek.MONDAY, getBit(bitmask, 6));
-    daysOfWeek.put(DayOfWeek.TUESDAY, getBit(bitmask, 5));
-    daysOfWeek.put(DayOfWeek.WEDNESDAY, getBit(bitmask, 4));
-    daysOfWeek.put(DayOfWeek.THURSDAY, getBit(bitmask, 3));
-    daysOfWeek.put(DayOfWeek.FRIDAY, getBit(bitmask, 2));
-    daysOfWeek.put(DayOfWeek.SATURDAY, getBit(bitmask, 1));
-    daysOfWeek.put(DayOfWeek.SUNDAY, getBit(bitmask, 0));
+    EnumSet<DayOfWeek> daysOfWeek = EnumSet.noneOf(DayOfWeek.class);
 
-    return Optional.of(Collections.unmodifiableMap(daysOfWeek));
+    if (getBit(bitmask, 6)) {
+      daysOfWeek.add(DayOfWeek.MONDAY);
+    }
+
+    if (getBit(bitmask, 5)) {
+      daysOfWeek.add(DayOfWeek.TUESDAY);
+    }
+
+    if (getBit(bitmask, 4)) {
+      daysOfWeek.add(DayOfWeek.WEDNESDAY);
+    }
+
+    if (getBit(bitmask, 3)) {
+      daysOfWeek.add(DayOfWeek.THURSDAY);
+    }
+
+    if (getBit(bitmask, 2)) {
+      daysOfWeek.add(DayOfWeek.FRIDAY);
+    }
+
+    if (getBit(bitmask, 1)) {
+      daysOfWeek.add(DayOfWeek.SATURDAY);
+    }
+
+    if (getBit(bitmask, 0)) {
+      daysOfWeek.add(DayOfWeek.SUNDAY);
+    }
+
+    return Optional.of(Collections.unmodifiableSet(daysOfWeek));
   }
 
   /**
