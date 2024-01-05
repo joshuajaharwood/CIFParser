@@ -17,7 +17,7 @@ public enum ChangeEnRouteFields implements RowField {
   SLEEPERS(14, 1),
   RESERVATIONS(15, 1),
   CONNECT_INDICATOR(16, 1),
-  CATERING_CODE(17, 1),
+  CATERING_CODE(17, 4),
   SERVICE_BRANDING(18, 4),
   TRACTION_CLASS(19, 4),
   UIC_CODE(20, 5),

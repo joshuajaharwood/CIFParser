@@ -21,12 +21,11 @@ public class LiteralLookup {
       return Optional.empty();
     }
 
-    var foundEnumValue = EnumSet
-        .allOf(clazz)
-        .stream()
-        .filter(e -> e.getLiteral() != null)
-        .filter(e -> literal.toUpperCase().trim().equals(e.getLiteral()))
-        .findFirst();
+    var foundEnumValue = EnumSet.allOf(clazz)
+                                .stream()
+                                .filter(e -> e.getLiteral() != null)
+                                .filter(e -> literal.toUpperCase().trim().equals(e.getLiteral()))
+                                .findFirst();
 
     if (foundEnumValue.isPresent()) {
       return foundEnumValue;
@@ -37,18 +36,17 @@ public class LiteralLookup {
     }
   }
 
-  public static <T extends Enum<T> & Literal> @NotNull Set<T> lookupCollection(@NotNull Class<T> clazz,
-      @Nullable String s) {
+  public static <T extends Enum<T> & Literal> @NotNull Set<T> lookupCollection(
+      @NotNull Class<T> clazz, @Nullable String s) {
     if (s == null || s.isBlank()) {
       return Collections.emptySet();
     }
 
     Set<T> set = EnumSet.noneOf(clazz);
 
-    s
-        .trim()
-        .chars()
-        .forEachOrdered(ch -> lookup(clazz, String.valueOf((char) ch)).ifPresent(set::add));
+    s.trim()
+     .chars()
+     .forEachOrdered(ch -> lookup(clazz, String.valueOf((char) ch)).ifPresent(set::add));
 
     return Collections.unmodifiableSet(set);
   }
