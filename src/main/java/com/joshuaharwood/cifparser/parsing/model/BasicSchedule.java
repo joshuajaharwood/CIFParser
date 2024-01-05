@@ -22,7 +22,7 @@ import java.util.Set;
 
 public record BasicSchedule(TransactionType transactionType, String trainUid,
                             LocalDate dateRunsFrom, LocalDate dateRunsTo,
-                            Map<DayOfWeek, Boolean> daysRun, BankHolidayRunning bankHolidayRunning,
+                            Set<DayOfWeek> daysRun, BankHolidayRunning bankHolidayRunning,
                             TrainStatus trainStatus, TrainCategory trainCategory,
                             String trainIdentity, Short headcode, Byte courseIndicator,
                             Integer trainServiceCode, Character portionId, PowerType powerType,
