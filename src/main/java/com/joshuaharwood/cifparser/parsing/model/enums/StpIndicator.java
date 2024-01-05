@@ -2,16 +2,15 @@ package com.joshuaharwood.cifparser.parsing.model.enums;
 
 import com.joshuaharwood.cifparser.parsing.model.literals.Literal;
 
-public enum STPIndicator implements Literal {
+public enum StpIndicator implements Literal {
   STP_CANCELLATION_OF_PERMANENT_ASSOCIATION("C"),
   NEW_STP_ASSOCIATION("N"),
-  STP_OVERLAY_OF_PERMANENT_ASSOCIATION(
-      "O"),
+  STP_OVERLAY_OF_PERMANENT_ASSOCIATION("O"),
   PERMANENT_ASSOCIATION("P");
 
   private final String literal;
 
-  STPIndicator(String literal) {
+  StpIndicator(String literal) {
     this.literal = literal;
   }
 

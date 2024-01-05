@@ -12,7 +12,7 @@ import com.joshuaharwood.cifparser.parsing.model.enums.CateringCode;
 import com.joshuaharwood.cifparser.parsing.model.enums.OperatingCharacteristics;
 import com.joshuaharwood.cifparser.parsing.model.enums.PowerType;
 import com.joshuaharwood.cifparser.parsing.model.enums.Reservations;
-import com.joshuaharwood.cifparser.parsing.model.enums.STPIndicator;
+import com.joshuaharwood.cifparser.parsing.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.model.enums.SeatingClass;
 import com.joshuaharwood.cifparser.parsing.model.enums.ServiceBranding;
 import com.joshuaharwood.cifparser.parsing.model.enums.Sleepers;
@@ -82,7 +82,7 @@ public final class BasicScheduleParser implements RecordParser<BasicSchedule> {
         lookupCollection(CateringCode.class, parsedValues.get(BasicScheduleFields.CATERING_CODE)),
         lookup(ServiceBranding.class,
             parsedValues.get(BasicScheduleFields.SERVICE_BRANDING)).orElse(null),
-        lookup(STPIndicator.class, parsedValues.get(BasicScheduleFields.STP_INDICATOR)).orElseThrow(
+        lookup(StpIndicator.class, parsedValues.get(BasicScheduleFields.STP_INDICATOR)).orElseThrow(
             () -> new RequiredPropertyMissingException(BasicScheduleFields.STP_INDICATOR.getName(),
                 record,
                 parsedValues)),

@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import com.joshuaharwood.cifparser.parsing.model.BasicSchedule;
 import com.joshuaharwood.cifparser.parsing.model.BasicSchedule.TrainStatus;
 import com.joshuaharwood.cifparser.parsing.model.enums.PowerType;
-import com.joshuaharwood.cifparser.parsing.model.enums.STPIndicator;
+import com.joshuaharwood.cifparser.parsing.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.model.enums.SeatingClass;
 import com.joshuaharwood.cifparser.parsing.model.enums.TrainCategory;
 import com.joshuaharwood.cifparser.parsing.model.enums.TransactionType;
@@ -57,7 +57,7 @@ class BasicScheduleParserTest {
         null,
         Collections.emptySet(),
         null,
-        STPIndicator.STP_OVERLAY_OF_PERMANENT_ASSOCIATION,
+        StpIndicator.STP_OVERLAY_OF_PERMANENT_ASSOCIATION,
         null);
 
     final var actual = parser.parse(TEST_BS_RECORD);

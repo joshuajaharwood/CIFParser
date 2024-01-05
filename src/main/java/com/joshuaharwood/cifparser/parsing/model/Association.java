@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.model;
 
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
-import com.joshuaharwood.cifparser.parsing.model.enums.STPIndicator;
+import com.joshuaharwood.cifparser.parsing.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.model.enums.TransactionType;
 import com.joshuaharwood.cifparser.parsing.model.literals.Literal;
 import java.time.DayOfWeek;
@@ -17,7 +17,7 @@ public record Association(String spare,
                           AssociationDateIndicator associationDateIndicator,
                           String associationLocation, byte baseLocationSuffix,
                           byte associationLocationSuffix, DiagramType diagramType,
-                          AssociationType associationType, STPIndicator stpIndicator
+                          AssociationType associationType, StpIndicator stpIndicator
 
 ) implements CIFRecord {
 

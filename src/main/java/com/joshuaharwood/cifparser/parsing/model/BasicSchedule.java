@@ -8,7 +8,7 @@ import com.joshuaharwood.cifparser.parsing.model.enums.OperatingCharacteristics;
 import com.joshuaharwood.cifparser.parsing.model.enums.PowerType;
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.model.enums.Reservations;
-import com.joshuaharwood.cifparser.parsing.model.enums.STPIndicator;
+import com.joshuaharwood.cifparser.parsing.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.model.enums.SeatingClass;
 import com.joshuaharwood.cifparser.parsing.model.enums.ServiceBranding;
 import com.joshuaharwood.cifparser.parsing.model.enums.Sleepers;
@@ -17,7 +17,6 @@ import com.joshuaharwood.cifparser.parsing.model.enums.TransactionType;
 import com.joshuaharwood.cifparser.parsing.model.literals.Literal;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.Map;
 import java.util.Set;
 
 public record BasicSchedule(TransactionType transactionType, String trainUid,
@@ -30,7 +29,7 @@ public record BasicSchedule(TransactionType transactionType, String trainUid,
                             Set<OperatingCharacteristics> operatingCharacteristics,
                             SeatingClass seatingClass, Sleepers sleepers, Reservations reservations,
                             Character connectionIndicator, Set<CateringCode> cateringCode,
-                            ServiceBranding serviceBranding, STPIndicator stpIndicator,
+                            ServiceBranding serviceBranding, StpIndicator stpIndicator,
                             String spare) implements CIFRecord {
 
   @Override
