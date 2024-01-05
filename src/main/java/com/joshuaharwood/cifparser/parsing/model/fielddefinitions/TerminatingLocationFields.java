@@ -4,7 +4,7 @@ public enum TerminatingLocationFields implements RowField {
   RECORD_IDENTITY(1, 2),
   LOCATION(2, 8),
   SCHEDULED_ARRIVAL_TIME(3, 5),
-  PUBLIC_ARRIVAL_TIME(4, 5),
+  PUBLIC_ARRIVAL_TIME(4, 4),
   PLATFORM(5, 3),
   PATH(6, 3),
   ACTIVITY(7, 12),
