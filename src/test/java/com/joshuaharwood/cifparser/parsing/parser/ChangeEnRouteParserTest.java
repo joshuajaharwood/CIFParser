@@ -14,11 +14,11 @@ import org.junit.jupiter.api.Test;
 class ChangeEnRouteParserTest {
 
   public static final String CHANGE_EN_ROUTE_RECORD = "CRLENZIE  OO2N75    123578903 DMUE   090      S                                 ";
-  private ChangeEnRouteSpecificParser parser;
+  private ChangeEnRouteParser parser;
 
   @BeforeEach
   void setUp() {
-    parser = new ChangeEnRouteSpecificParser();
+    parser = new ChangeEnRouteParser();
   }
 
   @Test

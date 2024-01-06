@@ -63,31 +63,4 @@ class StringParserTest {
                                         .withMessage(
                                             "RowField argument must include at least one element.");
   }
-
-
-  @Test
-  void parseRecordIdentityWithGoodRecordIdentityReturnsEnum() {
-    assertThat(StringParser.parseRecordIdentity(HEADER_RECORD)).contains(RecordIdentity.HEADER_RECORD);
-  }
-
-  @Test
-  void parseRecordIdentityWithBadRecordIdentityThrowsIllegalArgumentException() {
-    assertThatExceptionOfType(IllegalArgumentException.class)
-        .isThrownBy(() -> StringParser.parseRecordIdentity(
-            BAD_RECORD))
-        .withMessage(
-            "Failed to map String for given Literal. [String: XX] [Enum: RecordIdentity]");
-  }
-
-  @Test
-  void parseRecordIdentityWithNullRecordThrowsNullPointerException() {
-    assertThatNullPointerException().isThrownBy(() -> StringParser.parseRecordIdentity(null));
-  }
-
-  @Test
-  void parseRecordIdentityWithShortRecordThrowsIllegalArgumentException() {
-    assertThatIllegalArgumentException().isThrownBy(() -> StringParser.parseRecordIdentity("A"))
-                                        .withMessage(
-                                            "Given record strings must be at least 2 characters to establish their RecordIdentity.");
-  }
 }

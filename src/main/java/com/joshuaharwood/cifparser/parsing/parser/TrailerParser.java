@@ -4,7 +4,7 @@ import com.joshuaharwood.cifparser.parsing.model.Trailer;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.TrailerFields;
 import java.util.Map;
 
-public final class TrailerSpecificParser implements RecordSpecificParser<Trailer> {
+public final class TrailerParser implements RecordSpecificParser<Trailer> {
 
   @Override
   public Trailer parse(String record) {

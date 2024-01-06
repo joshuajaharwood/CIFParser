@@ -8,7 +8,7 @@ import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.HeaderFields;
 import com.joshuaharwood.cifparser.parsing.model.literals.LiteralLookup;
 import java.util.Map;
 
-public final class HeaderSpecificParser implements RecordSpecificParser<Header> {
+public final class HeaderParser implements RecordSpecificParser<Header> {
 
   public Header parse(String record) {
     final Map<HeaderFields, String> parsedValues = StringParser.parse(record,

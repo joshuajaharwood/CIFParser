@@ -14,11 +14,11 @@ class OriginLocationParserTest {
   public static final String GOOD_LO_RECORD = "LOGLGQHL  1703 17033  UEG    TB                                                 ";
   public static final String GOOD_LO_RECORD_WITH_ZERO_PUBLIC_DEPARTURE_TIME = "LOGLGQHL  1703 00003  UEG    TB                                                 ";
   public static final String LO_RECORD_MISSING_LOCATION = "LO        1703 17033  UEG    TB                                                 ";
-  private OriginLocationSpecificParser parser;
+  private OriginLocationParser parser;
 
   @BeforeEach
   public void setUp() {
-    parser = new OriginLocationSpecificParser();
+    parser = new OriginLocationParser();
   }
 
   @Test

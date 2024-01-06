@@ -16,11 +16,11 @@ class BasicScheduleExtendedParserTest {
   public static final String BX_RECORD_MISSING_ATOC_CODE = "BX           Y                                                                  ";
 
 
-  private BasicScheduleExtendedSpecificParser parser;
+  private BasicScheduleExtendedParser parser;
 
   @BeforeEach
   public void setUp() {
-    parser = new BasicScheduleExtendedSpecificParser();
+    parser = new BasicScheduleExtendedParser();
   }
 
   @Test

@@ -5,12 +5,10 @@ import java.util.Optional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public sealed interface RecordSpecificParser<T extends CifRecord> permits AssociationSpecificParser,
-    BasicScheduleExtendedSpecificParser, BasicScheduleSpecificParser, ChangeEnRouteSpecificParser,
-    HeaderSpecificParser,
-    IntermediateLocationSpecificParser, OriginLocationSpecificParser,
-    TerminatingLocationSpecificParser, TiplocAmendSpecificParser,
-    TiplocDeleteSpecificParser, TiplocInsertSpecificParser, TrailerSpecificParser {
+public sealed interface RecordSpecificParser<T extends CifRecord> permits AssociationParser,
+    BasicScheduleExtendedParser, BasicScheduleParser, ChangeEnRouteParser, HeaderParser,
+    IntermediateLocationParser, OriginLocationParser, TerminatingLocationParser, TiplocAmendParser,
+    TiplocDeleteParser, TiplocInsertParser, TrailerParser {
 
   T parse(String record);
 

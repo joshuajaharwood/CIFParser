@@ -21,11 +21,11 @@ class AssociationParserTest {
   public static final String GOOD_AA_RECORD = "AANC01484C014852312102405260000001NPSKNGX     TO                               P";
   public static final String GOOD_AA_RECORD_2 = "AANC01975C750532312102312310000001   NMPTN    T                                C";
   public static final String GOOD_AA_RECORD_3 = "AANC12684G682792312102402110000001JJSYORK   2 TO                               P";
-  private AssociationSpecificParser parser;
+  private AssociationParser parser;
 
   @BeforeEach
   void setUp() {
-    parser = new AssociationSpecificParser();
+    parser = new AssociationParser();
   }
 
   @Test

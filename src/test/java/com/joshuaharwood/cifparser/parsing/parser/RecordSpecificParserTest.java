@@ -8,11 +8,11 @@ import org.junit.jupiter.api.Test;
 
 class RecordSpecificParserTest {
 
-  private HeaderSpecificParser p;
+  private HeaderParser p;
 
   @BeforeEach
   public void setUp() {
-    p = new HeaderSpecificParser();
+    p = new HeaderParser();
   }
 
   @Test

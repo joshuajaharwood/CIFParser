@@ -6,7 +6,7 @@ import com.joshuaharwood.cifparser.parsing.model.converters.ZeroSafeTimeConverte
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.OriginLocationFields;
 import java.util.Map;
 
-public final class OriginLocationSpecificParser implements RecordSpecificParser<OriginLocation> {
+public final class OriginLocationParser implements RecordSpecificParser<OriginLocation> {
 
   @Override
   public OriginLocation parse(String record) {

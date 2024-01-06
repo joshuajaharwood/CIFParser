@@ -4,7 +4,7 @@ import com.joshuaharwood.cifparser.parsing.model.TiplocDelete;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.TiplocDeleteFields;
 import java.util.Map;
 
-public final class TiplocDeleteSpecificParser implements RecordSpecificParser<TiplocDelete> {
+public final class TiplocDeleteParser implements RecordSpecificParser<TiplocDelete> {
 
   @Override
   public TiplocDelete parse(String record) {

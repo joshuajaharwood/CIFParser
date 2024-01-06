@@ -6,7 +6,7 @@ import com.joshuaharwood.cifparser.parsing.model.converters.ZeroSafeTimeConverte
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.IntermediateLocationFields;
 import java.util.Map;
 
-public final class IntermediateLocationSpecificParser implements
+public final class IntermediateLocationParser implements
     RecordSpecificParser<IntermediateLocation> {
 
   @Override

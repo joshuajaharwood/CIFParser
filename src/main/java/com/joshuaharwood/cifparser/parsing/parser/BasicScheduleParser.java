@@ -21,7 +21,7 @@ import com.joshuaharwood.cifparser.parsing.model.enums.TransactionType;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.BasicScheduleFields;
 import java.util.Map;
 
-public final class BasicScheduleSpecificParser implements RecordSpecificParser<BasicSchedule> {
+public final class BasicScheduleParser implements RecordSpecificParser<BasicSchedule> {
 
   @Override
   public BasicSchedule parse(String record) {

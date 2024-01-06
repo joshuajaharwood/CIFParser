@@ -13,11 +13,11 @@ import org.junit.jupiter.api.Test;
 @SuppressWarnings("SpellCheckingInspection")
 class HeaderParserTest {
 
-  private HeaderSpecificParser parser;
+  private HeaderParser parser;
 
   @BeforeEach
   public void setUp() {
-    parser = new HeaderSpecificParser();
+    parser = new HeaderParser();
   }
 
   @Test

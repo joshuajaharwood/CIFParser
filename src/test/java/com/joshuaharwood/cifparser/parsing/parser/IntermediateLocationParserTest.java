@@ -19,11 +19,11 @@ class IntermediateLocationParserTest {
   public static final String GOOD_LI_RECORD_7 = "LICAMELON 1731 1732      17311732         T                                     ";
 
 
-  private IntermediateLocationSpecificParser parser;
+  private IntermediateLocationParser parser;
 
   @BeforeEach
   void setUp() {
-    parser = new IntermediateLocationSpecificParser();
+    parser = new IntermediateLocationParser();
   }
 
   @Test
