@@ -5,7 +5,6 @@ import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.model.literals.LiteralLookup;
 import java.util.EnumMap;
 import java.util.Map;
-import org.jetbrains.annotations.NotNull;
 
 public class CifLineParser {
 
@@ -16,7 +15,16 @@ public class CifLineParser {
     constructParserMap();
   }
 
-  public CifRecord parseLine(@NotNull String record) {
+  public CifRecord parseLine(String record) {
+    if (record == null || record.isBlank() || record.trim().length() < 2) {
+      throw new IllegalArgumentException(
+          "Record must be at least 2 characters to establish RecordIdentity.");
+    }
+
+    if (record.length() != 80) {
+      throw new IllegalArgumentException("CIF records should be 80 characters including whitespace.");
+    }
+
     final RecordIdentity identity = LiteralLookup.lookup(RecordIdentity.class,
                                                      record.substring(0, 2))
                                                  .orElseThrow(() -> new IllegalArgumentException(
