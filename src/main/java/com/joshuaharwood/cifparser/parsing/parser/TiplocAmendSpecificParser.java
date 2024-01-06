@@ -1,18 +1,18 @@
 package com.joshuaharwood.cifparser.parsing.parser;
 
-import com.joshuaharwood.cifparser.parsing.model.TiplocInsert;
+import com.joshuaharwood.cifparser.parsing.model.TiplocAmend;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.TiplocAmendFields;
 import java.util.Map;
 
-public final class TiplocInsertParser implements RecordParser<TiplocInsert> {
+public final class TiplocAmendSpecificParser implements RecordSpecificParser<TiplocAmend> {
 
   @Override
-  public TiplocInsert parse(String record) {
+  public TiplocAmend parse(String record) {
     final Map<TiplocAmendFields, String> parsedValues = StringParser.parse(record,
         TiplocAmendFields.values());
 
-    return new TiplocInsert(ifPresent(parsedValues.get(TiplocAmendFields.TIPLOC)).orElse(null),
-        ifPresent(parsedValues.get(TiplocAmendFields.CAPITALS)).map(Byte::parseByte).orElse(null),
+    return new TiplocAmend(ifPresent(parsedValues.get(TiplocAmendFields.TIPLOC)).orElse(null),
+        ifPresent(parsedValues.get(TiplocAmendFields.CAPITALS)).map(Byte::valueOf).orElse(null),
         ifPresent(parsedValues.get(TiplocAmendFields.NATIONAL_LOCATION_CODE)).map(Integer::valueOf)
                                                                              .orElse(null),
         parseChar(parsedValues.get(TiplocAmendFields.NLC_CHECK_CHARACTER)),
@@ -22,6 +22,7 @@ public final class TiplocInsertParser implements RecordParser<TiplocInsert> {
                                                                   .orElse(null),
         ifPresent(parsedValues.get(TiplocAmendFields.CRS_CODE)).orElse(null),
         ifPresent(parsedValues.get(TiplocAmendFields.DESCRIPTION)).orElse(null),
+        ifPresent(parsedValues.get(TiplocAmendFields.NEW_TIPLOC)).orElse(null),
         ifPresent(parsedValues.get(TiplocAmendFields.SPARE)).orElse(null));
   }
 }

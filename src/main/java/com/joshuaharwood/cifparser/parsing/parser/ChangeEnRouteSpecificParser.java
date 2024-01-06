@@ -15,7 +15,7 @@ import com.joshuaharwood.cifparser.parsing.model.enums.TrainCategory;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.ChangeEnRouteFields;
 import java.util.Map;
 
-public final class ChangeEnRouteParser implements RecordParser<ChangeEnRoute> {
+public final class ChangeEnRouteSpecificParser implements RecordSpecificParser<ChangeEnRoute> {
 
   @Override
   public ChangeEnRoute parse(String record) {

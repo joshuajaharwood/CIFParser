@@ -11,11 +11,11 @@ import org.junit.jupiter.api.Test;
 class TerminatingLocationParserTest {
 
   private static final String GOOD_LT_RECORD = "LTFALKRKG 1734 17341     TF                                                     ";
-  private TerminatingLocationParser parser;
+  private TerminatingLocationSpecificParser parser;
 
   @BeforeEach
   void setUp() {
-    parser = new TerminatingLocationParser();
+    parser = new TerminatingLocationSpecificParser();
   }
 
   @Test

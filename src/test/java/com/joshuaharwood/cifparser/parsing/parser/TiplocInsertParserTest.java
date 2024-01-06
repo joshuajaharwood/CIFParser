@@ -11,11 +11,11 @@ class TiplocInsertParserTest {
 
   public static final String GOOD_TI_RECORD = "TIABRDCH 08897678MABERDEEN CLAYHILLS CAR.M.D02075   0XAC                        ";
   public static final String GOOD_TI_RECORD_2 = "TIABRDEEN00897600GABERDEEN                  020712800ABDABERDEEN                ";
-  private TiplocInsertParser parser;
+  private TiplocInsertSpecificParser parser;
 
   @BeforeEach
   void setUp() {
-    parser = new TiplocInsertParser();
+    parser = new TiplocInsertSpecificParser();
   }
 
   @Test

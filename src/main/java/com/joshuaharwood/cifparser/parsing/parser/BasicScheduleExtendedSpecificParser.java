@@ -8,7 +8,8 @@ import com.joshuaharwood.cifparser.parsing.model.enums.Toc;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.BasicScheduleExtendedFields;
 import java.util.Map;
 
-public final class BasicScheduleExtendedParser implements RecordParser<BasicScheduleExtended> {
+public final class BasicScheduleExtendedSpecificParser implements
+    RecordSpecificParser<BasicScheduleExtended> {
 
   @Override
   public BasicScheduleExtended parse(String record) {

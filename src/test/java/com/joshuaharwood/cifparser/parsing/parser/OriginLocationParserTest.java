@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.parser;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.joshuaharwood.cifparser.parsing.model.OriginLocation;
 import java.time.LocalTime;
@@ -15,11 +14,11 @@ class OriginLocationParserTest {
   public static final String GOOD_LO_RECORD = "LOGLGQHL  1703 17033  UEG    TB                                                 ";
   public static final String GOOD_LO_RECORD_WITH_ZERO_PUBLIC_DEPARTURE_TIME = "LOGLGQHL  1703 00003  UEG    TB                                                 ";
   public static final String LO_RECORD_MISSING_LOCATION = "LO        1703 17033  UEG    TB                                                 ";
-  private OriginLocationParser parser;
+  private OriginLocationSpecificParser parser;
 
   @BeforeEach
   public void setUp() {
-    parser = new OriginLocationParser();
+    parser = new OriginLocationSpecificParser();
   }
 
   @Test

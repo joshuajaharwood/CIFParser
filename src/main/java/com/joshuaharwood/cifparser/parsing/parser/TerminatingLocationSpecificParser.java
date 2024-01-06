@@ -6,7 +6,8 @@ import com.joshuaharwood.cifparser.parsing.model.converters.ZeroSafeTimeConverte
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.TerminatingLocationFields;
 import java.util.Map;
 
-public final class TerminatingLocationParser implements RecordParser<TerminatingLocation> {
+public final class TerminatingLocationSpecificParser implements
+    RecordSpecificParser<TerminatingLocation> {
 
   @Override
   public TerminatingLocation parse(String record) {

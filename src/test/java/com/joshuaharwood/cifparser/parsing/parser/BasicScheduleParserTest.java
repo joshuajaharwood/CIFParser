@@ -25,11 +25,11 @@ class BasicScheduleParserTest {
   private static final String TEST_BS_RECORD_MISSING_TRANSACTION_TYPE = "BS G828851510191510231100100 POO2N75    113575825 DMUE   090      S            O";
   private static final String TEST_BS_RECORD_MISSING_TRAIN_UID = "BSR      1510191510231100100 POO2N75    113575825 DMUE   090      S            O";
 
-  private BasicScheduleParser parser;
+  private BasicScheduleSpecificParser parser;
 
   @BeforeEach
   void setUp() {
-    parser = new BasicScheduleParser();
+    parser = new BasicScheduleSpecificParser();
   }
 
   @Test

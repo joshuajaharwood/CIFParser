@@ -15,7 +15,7 @@ import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.AssociationFie
 import com.joshuaharwood.cifparser.parsing.model.literals.LiteralLookup;
 import java.util.Map;
 
-public final class AssociationParser implements RecordParser<Association> {
+public final class AssociationSpecificParser implements RecordSpecificParser<Association> {
 
   @Override
   public Association parse(String record) {

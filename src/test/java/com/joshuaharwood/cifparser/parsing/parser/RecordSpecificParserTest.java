@@ -6,13 +6,13 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class RecordParserTest {
+class RecordSpecificParserTest {
 
-  private HeaderParser p;
+  private HeaderSpecificParser p;
 
   @BeforeEach
   public void setUp() {
-    p = new HeaderParser();
+    p = new HeaderSpecificParser();
   }
 
   @Test
