@@ -6,18 +6,22 @@ import com.joshuaharwood.cifparser.parsing.model.enums.TransactionType;
 import com.joshuaharwood.cifparser.parsing.model.literals.Literal;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
-import java.util.Map;
+import java.util.Set;
 
-public record Association(String spare,
-                          TransactionType transactionType, String mainTrainUid,
-                          String associatedTrainUid, LocalDate associationStartDate,
+public record Association(TransactionType transactionType,
+                          String mainTrainUid,
+                          String associatedTrainUid,
+                          LocalDate associationStartDate,
                           LocalDate associationEndDate,
-                          Map<DayOfWeek, Boolean> associationDays,
+                          Set<DayOfWeek> associationDays,
                           AssociationCategory associationCategory,
                           AssociationDateIndicator associationDateIndicator,
-                          String associationLocation, byte baseLocationSuffix,
-                          byte associationLocationSuffix, DiagramType diagramType,
-                          AssociationType associationType, StpIndicator stpIndicator
+                          String associationLocation,
+                          Byte baseLocationSuffix,
+                          Byte associationLocationSuffix,
+                          DiagramType diagramType,
+                          AssociationType associationType,
+                          StpIndicator stpIndicator
 
 ) implements CIFRecord {
 
