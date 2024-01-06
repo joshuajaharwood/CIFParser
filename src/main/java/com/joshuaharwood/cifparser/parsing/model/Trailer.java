@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.parsing.model;
 
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
 
-public record Trailer(String spare) implements CIFRecord {
+public record Trailer(String spare) implements CifRecord {
 
   @Override
   public RecordIdentity recordIdentity() {

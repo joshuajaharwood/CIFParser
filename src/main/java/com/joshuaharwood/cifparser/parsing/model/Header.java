@@ -9,7 +9,7 @@ public record Header(String fileMainframeIdentity, LocalDate dateOfExtract,
                      LocalTime timeOfExtract, String currentFileReference,
                      String lastFileReference, UpdateIndicator updateIndicator,
                      Character version, LocalDate userStartDate, LocalDate userEndDate,
-                     String spare) implements CIFRecord {
+                     String spare) implements CifRecord {
 
   public Header {
     if (version == null || !Character.isUpperCase(version)) {

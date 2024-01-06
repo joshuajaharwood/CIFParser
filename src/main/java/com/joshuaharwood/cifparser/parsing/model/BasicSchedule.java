@@ -30,7 +30,7 @@ public record BasicSchedule(TransactionType transactionType, String trainUid,
                             SeatingClass seatingClass, Sleepers sleepers, Reservations reservations,
                             Character connectionIndicator, Set<CateringCode> cateringCode,
                             ServiceBranding serviceBranding, StpIndicator stpIndicator,
-                            String spare) implements CIFRecord {
+                            String spare) implements CifRecord {
 
   @Override
   public RecordIdentity recordIdentity() {

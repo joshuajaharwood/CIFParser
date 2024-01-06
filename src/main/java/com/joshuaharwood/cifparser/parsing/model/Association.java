@@ -23,7 +23,7 @@ public record Association(TransactionType transactionType,
                           AssociationType associationType,
                           StpIndicator stpIndicator
 
-) implements CIFRecord {
+) implements CifRecord {
 
   @Override
   public RecordIdentity recordIdentity() {

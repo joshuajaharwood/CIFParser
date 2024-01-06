@@ -6,7 +6,7 @@ import com.joshuaharwood.cifparser.parsing.model.enums.Toc;
 
 public record BasicScheduleExtended(String tractionClass, Integer uicCode, Toc atocCode,
                                     ApplicableTimetableCode applicableTimetableCode, String rsid,
-                                    Character dataSource, String spare) implements CIFRecord {
+                                    Character dataSource, String spare) implements CifRecord {
 
   @Override
   public RecordIdentity recordIdentity() {

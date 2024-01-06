@@ -1,11 +1,11 @@
 package com.joshuaharwood.cifparser.parsing.parser;
 
-import com.joshuaharwood.cifparser.parsing.model.CIFRecord;
+import com.joshuaharwood.cifparser.parsing.model.CifRecord;
 import java.util.Optional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-public sealed interface RecordParser<T extends CIFRecord> permits AssociationParser,
+public sealed interface RecordParser<T extends CifRecord> permits AssociationParser,
     BasicScheduleExtendedParser, BasicScheduleParser, ChangeEnRouteParser, HeaderParser,
     IntermediateLocationParser, OriginLocationParser, TerminatingLocationParser, TiplocAmendParser,
     TiplocDeleteParser, TiplocInsertParser, TrailerParser {
