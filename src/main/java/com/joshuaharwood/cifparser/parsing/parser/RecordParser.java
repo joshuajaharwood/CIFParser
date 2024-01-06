@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
 
 public sealed interface RecordParser<T extends CIFRecord> permits AssociationParser,
     BasicScheduleExtendedParser, BasicScheduleParser, ChangeEnRouteParser, HeaderParser,
-    IntermediateLocationParser, OriginLocationParser, TerminatingLocationParser {
+    IntermediateLocationParser, OriginLocationParser, TerminatingLocationParser, TiplocAmendParser {
 
   T parse(String record);
 
