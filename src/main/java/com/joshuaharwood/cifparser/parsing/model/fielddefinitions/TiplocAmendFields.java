@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.parsing.model.fielddefinitions;
 
 public enum TiplocAmendFields implements RowField {
   RECORD_IDENTITY(1, 2),
-  TIPLOC_CODE(2, 7),
+  TIPLOC(2, 7),
   CAPITALS(3, 2),
   NATIONAL_LOCATION_CODE(4, 6),
   NLC_CHECK_CHARACTER(5, 1),

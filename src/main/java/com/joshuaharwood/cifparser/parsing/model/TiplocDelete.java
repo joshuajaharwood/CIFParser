@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.parsing.model;
 
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
 
-public record TiplocDelete(RecordIdentity recordIdentity, String spare,
+public record TiplocDelete(String spare,
                            String tiploc) implements TiplocRecord {
 
   @Override

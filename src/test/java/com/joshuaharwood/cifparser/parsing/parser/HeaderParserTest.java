@@ -42,7 +42,6 @@ class HeaderParserTest {
 
   @Test
   void shouldThrowWhenMissingFileMainframeIdentity() {
-    // No fileMainframeIdentity
     final String badInput = "                      2411232032DFROC1H       FA241123231124                    ";
 
     assertThatExceptionOfType(RequiredPropertyMissingException.class).isThrownBy(() -> parser.parse(
@@ -53,7 +52,6 @@ class HeaderParserTest {
 
   @Test
   void shouldThrowWhenMissingCurrentFileReference() {
-    // No fileMainframeIdentity
     final String badInput = "HDTPS.UDFROC1.PD2311242411232032              FA241123231124                    ";
 
     assertThatExceptionOfType(RequiredPropertyMissingException.class).isThrownBy(() -> parser.parse(
