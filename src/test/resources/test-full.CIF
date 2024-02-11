@@ -1,0 +1,62 @@
+HDTPS.UDFROC1.PD2311242411232032DFROC1H       FA241123231124                    
+TIAACHEN 00081601LAACHEN                    00005   0                           
+TIABARASQ00027400VABERAERON                 00000   0AERABERAERON               
+TIABCWM  00385964VABERCWMBOI                78128   0                           
+TIABDAPEN00398202VPENYWAUN BUS              00000   0XPZ                        
+TIABDARAR00398204BABERDARE PLATFORM 2       78100   0XCBABDARAR                 
+TIABDARE 00398200TABERDARE PLATFORM 1       78100   0ABAABERDARE                
+TIABDATRE00398203ATRECYNON BUS              00000   0XTO                        
+TIABDO   00909000ZABERDOUR                  03295   0AURABERDOUR                
+TIABDVY  00443500EABERDOVEY                 64409   0AVYABERDOVEY               
+TIABER   08381300LABER                      78371   0ABEABER                    
+TIABGLELE00244800AABERGELE & PENSARN        40073   0AGLABERGELE & PENSN        
+TIABGNWYN00192462FABERGYNOLWYN              00000   0                           
+TIABHL81100937802LEDINBURGH SIGNAL 811      04311   0                           
+TIABHLJN 08937800JABBEYHILL JN              04309   0                           
+TIABHLTB 00937801KABBEYHILL TURNBACK SDGS   04308   0                           
+TIABIN52100969702HABINGTON MC521 SIGNAL     07937   0                           
+TIABIN52800969703WABINGTON MC528 SIGNAL     07938   0                           
+TIABINCE 24969765FABINGTON C.E.             07947   0                           
+TIABINDPL56969767HABINGTON D.P.L.           07971   0                           
+TIABINDS 00969770DABINGTON DOWN SIDING      07948   0                           
+TIABINGTN00969700FABINGTON                  07972   0                           
+TIABINUPL56969769JABINGTON U.P.L.           07970   0                           
+TIABINUS 00969701GABINGTON UP SIDING        07939   0                           
+TIABNGHST00303002QABINGDON HIGH STREET      00000   0XAE                        
+TIABNGSTR00303007UABINGDON STRATTON WAY     00000   0                           
+TIABRBEG 00369600XABERBEEG JN               76639   0                           
+BSNH039362311222311240010100 FB46M95    157120824 D  1800060                   O
+BX         ZZY                                                                  
+LOCLFFBM  1005 0000          TB                                                 
+LICLFFD12 1020 1023      00000000         A                                     
+LIHOOJ502 1027H1030      00000000         A                                     
+LIHOOJ    1032 1034      00000000         A                                     
+LIGRVSEND           1040 000000001                                              
+LISPHEADJ           1042 00000000                       7H                      
+LIDARTFD            1058 000000002  UML                                         
+LIDARTFDJ           1059 00000000                                               
+LICRFDSPB           1100H00000000                       1                       
+LICRFD              1102H00000000                       2                       
+LISIDCUP            1110H00000000                                               
+LILEEE              1118 00000000                        H                      
+LIHTHRGRN 1120 1122      000000005  SL    A              H                      
+LIPKBGJN            1126H00000000      SL                                       
+LILEWISHM           1128 000000001                                              
+LILEWIVLJ           1129 00000000   UL                   H                      
+LINUNHEAD           1133H000000001                      1                       
+LICFTNRJN           1137H00000000   AL                   H                      
+LIDENMRKH           1140 000000001                       H                      
+LIVOLTRDJ           1145 00000000   AL                  1                       
+LIFACTRYJ           1147 00000000                       1H                      
+LILNGHDGJ           1150 00000000                       2H                      
+LICLPHMJW           1156H000000005  FL                  1H                      
+LIBARNES            1205 000000003                                              
+LINEWKEWJ           1211H00000000                                               
+LIKEWEJ             1213H00000000                                               
+LISACTON  1216H1231      000000002        A                                     
+LIACWLJN            1238 00000000                                               
+LIACTCWHF 1240 1242      00000000         C                                     
+LINEASJN            1248 00000000                                               
+LIDUDNGHJ 1250H1300H     00000000         A                                     
+LIBRENTCJ 1305 1311      00000000   SL    RM                                    
+LTCRKLDBC 1321 0000      TF                                                     

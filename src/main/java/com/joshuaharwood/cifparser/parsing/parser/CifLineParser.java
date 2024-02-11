@@ -22,7 +22,7 @@ public class CifLineParser {
     }
 
     if (record.length() != 80) {
-      throw new IllegalArgumentException("CIF records should be 80 characters including whitespace.");
+      throw new IllegalArgumentException("CIF records should be 80 characters, including whitespace.");
     }
 
     final RecordIdentity identity = LiteralLookup.lookup(RecordIdentity.class,
