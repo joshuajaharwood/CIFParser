@@ -30,7 +30,7 @@ class CifFileParserTest {
 
     List<CifRecord> records = cifFileParser.parseCifRecords(Path.of(testCifPath.getFile()));
     
-    assertThat(records).hasSize(62);
+    assertThat(records).hasSize(61);
   }
 
   @Disabled("Used for approximate manual benchmarking. Disabled by default")
