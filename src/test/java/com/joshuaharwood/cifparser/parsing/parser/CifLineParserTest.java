@@ -1,6 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.parser;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import com.joshuaharwood.cifparser.parsing.model.Association;
@@ -49,28 +50,28 @@ class CifLineParserTest {
   @Test
   void parsingEmptyStringThrowsIllegalArgumentException() {
     assertThatIllegalArgumentException().isThrownBy(() -> parser.parseLine(""))
-                                        .withMessage(
-                                            "Record must be at least 2 characters to establish RecordIdentity.");
+        .withMessage("Record must be at least 2 characters to establish RecordIdentity.");
   }
 
   @Test
   void parsingOneCharacterStringThrowsIllegalArgumentException() {
     assertThatIllegalArgumentException().isThrownBy(() -> parser.parseLine("A"))
-                                        .withMessage(
-                                            "Record must be at least 2 characters to establish RecordIdentity.");
+        .withMessage("Record must be at least 2 characters to establish RecordIdentity.");
   }
 
   @Test
   void parsingInvalidRecordIdentityThrowsIllegalArgumentException() {
-    assertThatIllegalArgumentException().isThrownBy(() -> parser.parseLine(INVALID_IDENTITY_RECORD))
-                                        .withMessage(
-                                            "Failed to map String for given Literal. [String: AB] [Enum: RecordIdentity]");
+    assertThatExceptionOfType(CifLineParserException.class).isThrownBy(() -> parser.parseLine(
+            INVALID_IDENTITY_RECORD))
+        .withMessage(
+            "Failed to parse record. [Record: ABNC01484C014852312102405260000001NPSKNGX     TO                               P]")
+        .withCause(new IllegalArgumentException(
+            "Failed to map String for given Literal. [String: AB] [Enum: RecordIdentity]"));
   }
 
   @Test
   void parsingTooShortRecordThrowsIllegalArgumentException() {
     assertThatIllegalArgumentException().isThrownBy(() -> parser.parseLine("AA"))
-                                        .withMessage(
-                                            "CIF records should be 80 characters including whitespace.");
+        .withMessage("CIF records should be 80 characters, including whitespace.");
   }
 }
