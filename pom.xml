@@ -10,6 +10,7 @@
 
   <build>
     <plugins>
+      <!-- We specify this here as Gitlab Actions' version of Surefire doesn't support JUnit 5 -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
