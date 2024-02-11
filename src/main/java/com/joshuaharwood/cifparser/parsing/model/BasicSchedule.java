@@ -8,10 +8,9 @@ import com.joshuaharwood.cifparser.parsing.model.enums.OperatingCharacteristics;
 import com.joshuaharwood.cifparser.parsing.model.enums.PowerType;
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.model.enums.Reservations;
-import com.joshuaharwood.cifparser.parsing.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.model.enums.SeatingClass;
-import com.joshuaharwood.cifparser.parsing.model.enums.ServiceBranding;
 import com.joshuaharwood.cifparser.parsing.model.enums.Sleepers;
+import com.joshuaharwood.cifparser.parsing.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.model.enums.TrainCategory;
 import com.joshuaharwood.cifparser.parsing.model.enums.TransactionType;
 import com.joshuaharwood.cifparser.parsing.model.literals.Literal;
@@ -20,16 +19,15 @@ import java.time.LocalDate;
 import java.util.Set;
 
 public record BasicSchedule(TransactionType transactionType, String trainUid,
-                            LocalDate dateRunsFrom, LocalDate dateRunsTo,
-                            Set<DayOfWeek> daysRun, BankHolidayRunning bankHolidayRunning,
-                            TrainStatus trainStatus, TrainCategory trainCategory,
-                            String trainIdentity, Short headcode, Byte courseIndicator,
-                            Integer trainServiceCode, Character portionId, PowerType powerType,
-                            String timingLoad, Integer speed,
+                            LocalDate dateRunsFrom, LocalDate dateRunsTo, Set<DayOfWeek> daysRun,
+                            BankHolidayRunning bankHolidayRunning, TrainStatus trainStatus,
+                            TrainCategory trainCategory, String trainIdentity, String headcode,
+                            Byte courseIndicator, Integer trainServiceCode, Character portionId,
+                            PowerType powerType, String timingLoad, Integer speed,
                             Set<OperatingCharacteristics> operatingCharacteristics,
                             SeatingClass seatingClass, Sleepers sleepers, Reservations reservations,
                             Character connectionIndicator, Set<CateringCode> cateringCode,
-                            ServiceBranding serviceBranding, StpIndicator stpIndicator,
+                            String serviceBranding, StpIndicator stpIndicator,
                             String spare) implements CifRecord {
 
   @Override
@@ -78,6 +76,7 @@ public record BasicSchedule(TransactionType transactionType, String trainUid,
       return literal;
     }
 
+    @SuppressWarnings("unused")
     public TrainStatusSchedulingType getSchedulingType() {
       return schedulingType;
     }
@@ -91,6 +90,8 @@ public record BasicSchedule(TransactionType transactionType, String trainUid,
       TrainStatusSchedulingType(String acronym) {
         this.acronym = acronym;
       }
+
+      @SuppressWarnings("unused")
 
       public String getAcronym() {
         return acronym;

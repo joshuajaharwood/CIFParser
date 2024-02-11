@@ -22,15 +22,19 @@ public class CifLineParser {
     }
 
     if (record.length() != 80) {
-      throw new IllegalArgumentException("CIF records should be 80 characters, including whitespace.");
+      throw new IllegalArgumentException(
+          "CIF records should be 80 characters, including whitespace.");
     }
 
-    final RecordIdentity identity = LiteralLookup.lookup(RecordIdentity.class,
-                                                     record.substring(0, 2))
-                                                 .orElseThrow(() -> new IllegalArgumentException(
-                                                     "A record's identity cannot be blank."));
+    try {
+      final RecordIdentity identity = LiteralLookup.lookup(RecordIdentity.class,
+              record.substring(0, 2))
+          .orElseThrow(() -> new IllegalArgumentException("A record's identity cannot be blank."));
 
-    return parsers.get(identity).parse(record);
+      return parsers.get(identity).parse(record);
+    } catch (Exception e) {
+      throw new CifLineParserException("Failed to parse record. [Record: %s]".formatted(record), e);
+    }
   }
 
   private void constructParserMap() {

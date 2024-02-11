@@ -10,6 +10,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 class CifFileParserTest {
@@ -23,18 +24,30 @@ class CifFileParserTest {
 
   @Test
   void parseCifRecords() throws IOException {
-    URL testCifPath = Thread.currentThread()
-        .getContextClassLoader()
-        .getResource("test-full.CIF");
+    URL testCifPath = Thread.currentThread().getContextClassLoader().getResource("test-full.CIF");
+
+    assertThat(testCifPath).isNotNull();
+
+    List<CifRecord> records = cifFileParser.parseCifRecords(Path.of(testCifPath.getFile()));
+    
+    assertThat(records).hasSize(62);
+  }
+
+  @Disabled("Used for approximate manual benchmarking. Disabled by default")
+  @Test
+  void parseEntireCifFullExtract() throws IOException {
+    /*
+     To use this, you'll need to download the latest CIF extract yourself and put it in the test 
+     resources.
+    */
+    URL testCifPath = Thread.currentThread().getContextClassLoader().getResource("toc-full.CIF");
 
     assertThat(testCifPath).isNotNull();
 
     final LocalDateTime before = LocalDateTime.now();
-    List<CifRecord> records = cifFileParser.parseCifRecords(Path.of(testCifPath.getFile()));
+    cifFileParser.parseCifRecords(Path.of(testCifPath.getFile()));
     final LocalDateTime after = LocalDateTime.now();
 
     System.out.printf("CifFileParser benchmark time elapsed: %s", Duration.between(before, after));
-
-    assertThat(records).hasSize(62);
   }
 }

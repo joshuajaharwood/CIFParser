@@ -9,7 +9,6 @@ import com.joshuaharwood.cifparser.parsing.model.enums.OperatingCharacteristics;
 import com.joshuaharwood.cifparser.parsing.model.enums.PowerType;
 import com.joshuaharwood.cifparser.parsing.model.enums.Reservations;
 import com.joshuaharwood.cifparser.parsing.model.enums.SeatingClass;
-import com.joshuaharwood.cifparser.parsing.model.enums.ServiceBranding;
 import com.joshuaharwood.cifparser.parsing.model.enums.Sleepers;
 import com.joshuaharwood.cifparser.parsing.model.enums.TrainCategory;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.ChangeEnRouteFields;
@@ -28,7 +27,7 @@ public final class ChangeEnRouteParser implements RecordSpecificParser<ChangeEnR
         ifPresent(parsedValues.get(ChangeEnRouteFields.TRAIN_IDENTITY)).orElse(null),
         ifPresent(parsedValues.get(ChangeEnRouteFields.HEADCODE)).orElse(null),
         ifPresent(parsedValues.get(ChangeEnRouteFields.COURSE_INDICATOR)).map(Byte::valueOf)
-                                                                         .orElse(null),
+            .orElse(null),
         ifPresent(parsedValues.get(ChangeEnRouteFields.PROFIT_CENTRE_CODE_TRAIN_SERVICE_CODE)).orElse(
             null),
         ifPresent(parsedValues.get(ChangeEnRouteFields.BUSINESS_SECTOR)).orElse(null),
@@ -43,8 +42,7 @@ public final class ChangeEnRouteParser implements RecordSpecificParser<ChangeEnR
         ifPresent(parsedValues.get(ChangeEnRouteFields.CONNECT_INDICATOR)).orElse(null),
         lookup(CateringCode.class,
             parsedValues.get(ChangeEnRouteFields.CATERING_CODE)).orElse(null),
-        lookup(ServiceBranding.class,
-            parsedValues.get(ChangeEnRouteFields.SERVICE_BRANDING)).orElse(null),
+        ifPresent(parsedValues.get(ChangeEnRouteFields.SERVICE_BRANDING)).orElse(null),
         ifPresent(parsedValues.get(ChangeEnRouteFields.TRACTION_CLASS)).orElse(null),
         ifPresent(parsedValues.get(ChangeEnRouteFields.UIC_CODE)).orElse(null),
         ifPresent(parsedValues.get(ChangeEnRouteFields.RETAIL_SERVICE_ID)).orElse(null),

@@ -18,7 +18,7 @@ public final class TerminatingLocationParser implements
         null),
         FiveDigitTimeConverter.convert(parsedValues.get(TerminatingLocationFields.SCHEDULED_ARRIVAL_TIME))
                               .orElse(null),
-        ZeroSafeTimeConverter.convert(parsedValues.get(TerminatingLocationFields.SCHEDULED_ARRIVAL_TIME))
+        ZeroSafeTimeConverter.convert(parsedValues.get(TerminatingLocationFields.PUBLIC_ARRIVAL_TIME))
                              .orElse(null),
         ifPresent(parsedValues.get(TerminatingLocationFields.PLATFORM)).orElse(null),
         ifPresent(parsedValues.get(TerminatingLocationFields.PATH)).orElse(null),

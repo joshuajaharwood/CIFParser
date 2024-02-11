@@ -12,10 +12,9 @@ import com.joshuaharwood.cifparser.parsing.model.enums.CateringCode;
 import com.joshuaharwood.cifparser.parsing.model.enums.OperatingCharacteristics;
 import com.joshuaharwood.cifparser.parsing.model.enums.PowerType;
 import com.joshuaharwood.cifparser.parsing.model.enums.Reservations;
-import com.joshuaharwood.cifparser.parsing.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.model.enums.SeatingClass;
-import com.joshuaharwood.cifparser.parsing.model.enums.ServiceBranding;
 import com.joshuaharwood.cifparser.parsing.model.enums.Sleepers;
+import com.joshuaharwood.cifparser.parsing.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.model.enums.TrainCategory;
 import com.joshuaharwood.cifparser.parsing.model.enums.TransactionType;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.BasicScheduleFields;
@@ -55,7 +54,6 @@ public final class BasicScheduleParser implements RecordSpecificParser<BasicSche
             null),
         ifPresent(parsedValues.get(BasicScheduleFields.TRAIN_IDENTITY)).orElse(null),
         ifPresent(parsedValues.get(BasicScheduleFields.HEADCODE))
-            .map(Short::parseShort)
             .orElse(null),
         ifPresent(parsedValues.get(BasicScheduleFields.COURSE_INDICATOR))
             .map(Byte::parseByte)
@@ -80,8 +78,7 @@ public final class BasicScheduleParser implements RecordSpecificParser<BasicSche
             .map(this::parseChar)
             .orElse(null),
         lookupCollection(CateringCode.class, parsedValues.get(BasicScheduleFields.CATERING_CODE)),
-        lookup(ServiceBranding.class,
-            parsedValues.get(BasicScheduleFields.SERVICE_BRANDING)).orElse(null),
+        ifPresent(parsedValues.get(BasicScheduleFields.SERVICE_BRANDING)).orElse(null),
         lookup(StpIndicator.class, parsedValues.get(BasicScheduleFields.STP_INDICATOR)).orElseThrow(
             () -> new RequiredPropertyMissingException(BasicScheduleFields.STP_INDICATOR.getName(),
                 record,

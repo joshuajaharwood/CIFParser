@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.parser;
 
 import com.joshuaharwood.cifparser.parsing.model.OriginLocation;
-import com.joshuaharwood.cifparser.parsing.model.converters.TimeConverter;
+import com.joshuaharwood.cifparser.parsing.model.converters.FiveDigitTimeConverter;
 import com.joshuaharwood.cifparser.parsing.model.converters.ZeroSafeTimeConverter;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.OriginLocationFields;
 import java.util.Map;
@@ -17,7 +17,7 @@ public final class OriginLocationParser implements RecordSpecificParser<OriginLo
         () -> new RequiredPropertyMissingException(OriginLocationFields.LOCATION.getName(),
             record,
             parsedValues)),
-        TimeConverter
+        FiveDigitTimeConverter
             .convert(parsedValues.get(OriginLocationFields.SCHEDULED_DEPARTURE_TIME).trim())
             .orElse(null),
         ZeroSafeTimeConverter

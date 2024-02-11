@@ -10,11 +10,12 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class CifFileParser implements CifProcessor<Path> {
+
   private static final CifLineParser CIF_LINE_PARSER = new CifLineParser();
 
   public List<CifRecord> parseCifRecords(Path path) throws IOException {
     try (BufferedReader b = Files.newBufferedReader(path, StandardCharsets.US_ASCII)) {
-      return b.lines().map(CIF_LINE_PARSER::parseLine).toList();
+      return b.lines().parallel().map(CIF_LINE_PARSER::parseLine).toList();
     }
   }
 }

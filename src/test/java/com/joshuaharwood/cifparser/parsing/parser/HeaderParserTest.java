@@ -45,9 +45,9 @@ class HeaderParserTest {
     final String badInput = "                      2411232032DFROC1H       FA241123231124                    ";
 
     assertThatExceptionOfType(RequiredPropertyMissingException.class).isThrownBy(() -> parser.parse(
-                                                                         badInput))
-                                                                     .withMessageContaining(
-                                                                         "Failed to parse as a required CIF field was blank or null. [Field name: FILE_IDENTITY]");
+            badInput))
+        .withMessageContaining(
+            "Failed to parse as a required CIF field was blank or null. [Field name: FILE_IDENTITY]");
   }
 
   @Test
@@ -55,8 +55,8 @@ class HeaderParserTest {
     final String badInput = "HDTPS.UDFROC1.PD2311242411232032              FA241123231124                    ";
 
     assertThatExceptionOfType(RequiredPropertyMissingException.class).isThrownBy(() -> parser.parse(
-                                                                         badInput))
-                                                                     .withMessageContaining(
-                                                                         "Failed to parse as a required CIF field was blank or null. [Field name: CURRENT_FILE_REFERENCE]");
+            badInput))
+        .withMessageContaining(
+            "Failed to parse as a required CIF field was blank or null. [Field name: CURRENT_FILE_REFERENCE]");
   }
 }

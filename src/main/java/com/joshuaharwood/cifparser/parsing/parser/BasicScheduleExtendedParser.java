@@ -4,7 +4,6 @@ import static com.joshuaharwood.cifparser.parsing.model.literals.LiteralLookup.l
 
 import com.joshuaharwood.cifparser.parsing.model.BasicScheduleExtended;
 import com.joshuaharwood.cifparser.parsing.model.enums.ApplicableTimetableCode;
-import com.joshuaharwood.cifparser.parsing.model.enums.Toc;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.BasicScheduleExtendedFields;
 import java.util.Map;
 
@@ -21,8 +20,7 @@ public final class BasicScheduleExtendedParser implements
         ifPresent(parsedValues.get(BasicScheduleExtendedFields.UIC_CODE))
             .map(Integer::valueOf)
             .orElse(null),
-        lookup(Toc.class,
-            parsedValues.get(BasicScheduleExtendedFields.ATOC_CODE)).orElseThrow(() -> new RequiredPropertyMissingException(
+        ifPresent(parsedValues.get(BasicScheduleExtendedFields.ATOC_CODE)).orElseThrow(() -> new RequiredPropertyMissingException(
             BasicScheduleExtendedFields.ATOC_CODE.getName(),
             record,
             parsedValues)),

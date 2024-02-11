@@ -6,7 +6,6 @@ import com.joshuaharwood.cifparser.parsing.model.enums.PowerType;
 import com.joshuaharwood.cifparser.parsing.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.model.enums.Reservations;
 import com.joshuaharwood.cifparser.parsing.model.enums.SeatingClass;
-import com.joshuaharwood.cifparser.parsing.model.enums.ServiceBranding;
 import com.joshuaharwood.cifparser.parsing.model.enums.Sleepers;
 import com.joshuaharwood.cifparser.parsing.model.enums.TrainCategory;
 import com.joshuaharwood.cifparser.parsing.model.fielddefinitions.ChangeEnRouteFields;
@@ -28,7 +27,7 @@ public record ChangeEnRoute(String location,
                             Reservations reservations,
                             String connectIndicator,
                             CateringCode cateringCode,
-                            ServiceBranding serviceBranding,
+                            String serviceBranding,
                             String tractionClass,
                             String uicCode,
                             String retailServiceId,

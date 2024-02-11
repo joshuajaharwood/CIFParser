@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import com.joshuaharwood.cifparser.parsing.model.BasicScheduleExtended;
 import com.joshuaharwood.cifparser.parsing.model.enums.ApplicableTimetableCode;
-import com.joshuaharwood.cifparser.parsing.model.enums.Toc;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -27,7 +26,7 @@ class BasicScheduleExtendedParserTest {
   void parsesGoodDataSuccessfully() {
     final var expected = new BasicScheduleExtended(null,
         null,
-        Toc.SCOTRAIL,
+        "SR",
         ApplicableTimetableCode.APPLICABLE,
         null,
         null,

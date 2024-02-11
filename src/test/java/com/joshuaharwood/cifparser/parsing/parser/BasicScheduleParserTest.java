@@ -6,8 +6,8 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import com.joshuaharwood.cifparser.parsing.model.BasicSchedule;
 import com.joshuaharwood.cifparser.parsing.model.BasicSchedule.TrainStatus;
 import com.joshuaharwood.cifparser.parsing.model.enums.PowerType;
-import com.joshuaharwood.cifparser.parsing.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.model.enums.SeatingClass;
+import com.joshuaharwood.cifparser.parsing.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.model.enums.TrainCategory;
 import com.joshuaharwood.cifparser.parsing.model.enums.TransactionType;
 import java.time.DayOfWeek;
@@ -68,24 +68,59 @@ class BasicScheduleParserTest {
   @Test
   void parsingWithMissingTrainUidThrowsRequiredPropertyMissingException() {
     assertThatExceptionOfType(RequiredPropertyMissingException.class).isThrownBy(() -> parser.parse(
-                                                                         TEST_BS_RECORD_MISSING_TRAIN_UID))
-                                                                     .withMessageContaining(
-                                                                         "Failed to parse as a required CIF field was blank or null. [Field name: TRAIN_UID]");
+            TEST_BS_RECORD_MISSING_TRAIN_UID))
+        .withMessageContaining(
+            "Failed to parse as a required CIF field was blank or null. [Field name: TRAIN_UID]");
   }
 
   @Test
   void parsingWithMissingTransactionTypeThrowsRequiredPropertyMissingException() {
     assertThatExceptionOfType(RequiredPropertyMissingException.class).isThrownBy(() -> parser.parse(
-                                                                         TEST_BS_RECORD_MISSING_TRANSACTION_TYPE))
-                                                                     .withMessageContaining(
-                                                                         "Failed to parse as a required CIF field was blank or null. [Field name: TRANSACTION_TYPE]");
+            TEST_BS_RECORD_MISSING_TRANSACTION_TYPE))
+        .withMessageContaining(
+            "Failed to parse as a required CIF field was blank or null. [Field name: TRANSACTION_TYPE]");
   }
 
   @Test
   void parsingWithMissingStpIndicatorThrowsRequiredPropertyMissingException() {
     assertThatExceptionOfType(RequiredPropertyMissingException.class).isThrownBy(() -> parser.parse(
-                                                                         TEST_BS_RECORD_MISSING_STP_INDICATOR))
-                                                                     .withMessageContaining(
-                                                                         "Failed to parse as a required CIF field was blank or null. [Field name: STP_INDICATOR]");
+            TEST_BS_RECORD_MISSING_STP_INDICATOR))
+        .withMessageContaining(
+            "Failed to parse as a required CIF field was blank or null. [Field name: STP_INDICATOR]");
+  }
+
+  @Test
+  void shouldParseHeadcodeCorrectly() {
+    final String headcode = "BSNC185212305212312030000001 BBS0B00RA6 125527005                              P";
+
+    final BasicSchedule actual = parser.parse(headcode);
+
+    final BasicSchedule expected = new BasicSchedule(TransactionType.NEW,
+        "C18521",
+        LocalDate.of(2023, 5, 21),
+        LocalDate.of(2023, 12, 3),
+        Set.of(DayOfWeek.SUNDAY),
+        null,
+        TrainStatus.BUS_PERMANENT,
+        TrainCategory.BUS_WTT_SERVICE,
+        "0B00",
+        "RA6",
+        (byte) 1,
+        25527005,
+        null, 
+        null, 
+        null, 
+        null, 
+        Collections.emptySet(),
+        null,
+        null,
+        null,
+        null,
+        Collections.emptySet(),
+        null,
+        StpIndicator.PERMANENT_ASSOCIATION,
+        null);
+    
+    assertThat(actual).usingRecursiveComparison().isEqualTo(expected);
   }
 }
