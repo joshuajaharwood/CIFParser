@@ -9,17 +9,18 @@ import java.nio.file.Path;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
+import java.util.stream.Stream;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-class CifFileParserTest {
+class CifMultithreadedParserTest {
 
-  private CifFileParser cifFileParser;
+  private CifMultithreadedParser cifMultithreadedParser;
 
   @BeforeEach
   void setUp() {
-    cifFileParser = new CifFileParser();
+    cifMultithreadedParser = new CifMultithreadedParser();
   }
 
   @Test
@@ -28,12 +29,14 @@ class CifFileParserTest {
 
     assertThat(testCifPath).isNotNull();
 
-    List<CifRecord> records = cifFileParser.parseCifRecords(Path.of(testCifPath.getFile()));
-    
+    List<CifRecord> records = cifMultithreadedParser.parseCifRecords(Path.of(testCifPath.getFile()))
+        .join()
+        .toList();
+
     assertThat(records).hasSize(62);
   }
 
-  @Disabled("Used for approximate manual benchmarking. Disabled by default")
+  //  @Disabled("Used for approximate manual benchmarking. Disabled by default")
   @Test
   void parseEntireCifFullExtract() throws IOException {
     /*
@@ -44,10 +47,14 @@ class CifFileParserTest {
 
     assertThat(testCifPath).isNotNull();
 
-    final LocalDateTime before = LocalDateTime.now();
-    cifFileParser.parseCifRecords(Path.of(testCifPath.getFile()));
-    final LocalDateTime after = LocalDateTime.now();
+//    final LocalDateTime before = LocalDateTime.now();
+    
+    CompletableFuture<Stream<CifRecord>> future = cifMultithreadedParser.parseCifRecords(Path.of(
+        testCifPath.getFile()));
+    
+//    assertThat(future).
+//    final LocalDateTime after = LocalDateTime.now();
 
-    System.out.printf("CifFileParser benchmark time elapsed: %s", Duration.between(before, after));
+//    System.out.printf("CifFileParser benchmark time elapsed: %s", Duration.between(before, after));
   }
 }
