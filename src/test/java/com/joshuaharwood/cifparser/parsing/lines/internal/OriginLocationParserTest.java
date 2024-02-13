@@ -3,7 +3,8 @@ package com.joshuaharwood.cifparser.parsing.lines.internal;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.OriginLocation;
+import com.joshuaharwood.cifparser.parsing.lines.model.OriginLocation;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.RequiredPropertyMissingException;
 import java.time.LocalTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

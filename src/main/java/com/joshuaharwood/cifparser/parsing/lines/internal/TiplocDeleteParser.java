@@ -1,7 +1,8 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.TiplocDelete;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.TiplocDeleteFields;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.RequiredPropertyMissingException;
+import com.joshuaharwood.cifparser.parsing.lines.model.TiplocDelete;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.TiplocDeleteFields;
 import java.util.Map;
 
 public final class TiplocDeleteParser implements RecordSpecificParser<TiplocDelete> {

@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.CifRecord;
+import com.joshuaharwood.cifparser.parsing.lines.model.CifRecord;
 import java.util.Optional;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

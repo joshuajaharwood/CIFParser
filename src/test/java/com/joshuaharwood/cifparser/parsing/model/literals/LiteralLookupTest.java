@@ -3,9 +3,9 @@ package com.joshuaharwood.cifparser.parsing.model.literals;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.OperatingCharacteristics;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.PowerType;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.literals.LiteralLookup;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.OperatingCharacteristics;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;
+import com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup;
 import org.junit.jupiter.api.Test;
 
 class LiteralLookupTest {

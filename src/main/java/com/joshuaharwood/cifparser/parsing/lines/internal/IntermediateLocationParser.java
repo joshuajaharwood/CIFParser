@@ -1,9 +1,9 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.IntermediateLocation;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.FiveDigitTimeConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.ZeroSafeTimeConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.IntermediateLocationFields;
+import com.joshuaharwood.cifparser.parsing.lines.model.IntermediateLocation;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.FiveDigitTimeConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.ZeroSafeTimeConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.IntermediateLocationFields;
 import java.util.Map;
 
 public final class IntermediateLocationParser implements

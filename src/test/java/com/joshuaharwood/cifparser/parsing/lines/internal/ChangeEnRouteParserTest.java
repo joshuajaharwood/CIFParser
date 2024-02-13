@@ -2,10 +2,10 @@ package com.joshuaharwood.cifparser.parsing.lines.internal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.ChangeEnRoute;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.PowerType;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.SeatingClass;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.TrainCategory;
+import com.joshuaharwood.cifparser.parsing.lines.model.ChangeEnRoute;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.SeatingClass;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainCategory;
 import java.util.Collections;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

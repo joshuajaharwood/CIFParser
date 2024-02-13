@@ -1,23 +1,24 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.model.literals.LiteralLookup.lookup;
-import static com.joshuaharwood.cifparser.parsing.lines.internal.model.literals.LiteralLookup.lookupCollection;
+import static com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup.lookup;
+import static com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup.lookupCollection;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.BasicSchedule;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.BasicSchedule.BankHolidayRunning;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.BasicSchedule.TrainStatus;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.DaysOfWeekBitmaskConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.InverseDateConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.CateringCode;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.OperatingCharacteristics;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.PowerType;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.Reservations;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.SeatingClass;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.Sleepers;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.StpIndicator;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.TrainCategory;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.TransactionType;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.BasicScheduleFields;
+import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule;
+import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule.BankHolidayRunning;
+import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule.TrainStatus;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DaysOfWeekBitmaskConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.InverseDateConverter;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.RequiredPropertyMissingException;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.CateringCode;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.OperatingCharacteristics;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.Reservations;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.SeatingClass;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.Sleepers;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainCategory;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.BasicScheduleFields;
 import java.util.Map;
 
 public final class BasicScheduleParser implements RecordSpecificParser<BasicSchedule> {

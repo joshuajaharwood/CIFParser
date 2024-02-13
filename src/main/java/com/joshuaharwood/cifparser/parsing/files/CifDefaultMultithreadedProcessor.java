@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.files;
 
 import com.joshuaharwood.cifparser.parsing.lines.CifLineParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.CifRecord;
+import com.joshuaharwood.cifparser.parsing.lines.model.CifRecord;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

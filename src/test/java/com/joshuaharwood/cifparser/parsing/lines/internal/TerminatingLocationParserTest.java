@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.TerminatingLocation;
+import com.joshuaharwood.cifparser.parsing.lines.model.TerminatingLocation;
 import java.time.LocalTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

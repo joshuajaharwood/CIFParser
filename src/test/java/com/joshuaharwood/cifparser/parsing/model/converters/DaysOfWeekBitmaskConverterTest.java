@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 import static org.assertj.core.api.InstanceOfAssertFactories.collection;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.DaysOfWeekBitmaskConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DaysOfWeekBitmaskConverter;
 import java.time.DayOfWeek;
 import org.junit.jupiter.api.Test;
 

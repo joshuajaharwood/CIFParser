@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.RowField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;

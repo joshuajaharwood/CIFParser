@@ -1,9 +1,10 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.OriginLocation;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.FiveDigitTimeConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.ZeroSafeTimeConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.OriginLocationFields;
+import com.joshuaharwood.cifparser.parsing.lines.model.OriginLocation;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.FiveDigitTimeConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.ZeroSafeTimeConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.OriginLocationFields;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.RequiredPropertyMissingException;
 import java.util.Map;
 
 public final class OriginLocationParser implements RecordSpecificParser<OriginLocation> {

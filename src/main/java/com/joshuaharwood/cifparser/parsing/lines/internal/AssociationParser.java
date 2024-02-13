@@ -1,18 +1,18 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.model.literals.LiteralLookup.lookup;
+import static com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup.lookup;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Association;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Association.AssociationCategory;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Association.AssociationDateIndicator;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Association.AssociationType;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Association.DiagramType;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.DaysOfWeekBitmaskConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.InverseDateConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.StpIndicator;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.TransactionType;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.AssociationFields;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.literals.LiteralLookup;
+import com.joshuaharwood.cifparser.parsing.lines.model.Association;
+import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationCategory;
+import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationDateIndicator;
+import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationType;
+import com.joshuaharwood.cifparser.parsing.lines.model.Association.DiagramType;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DaysOfWeekBitmaskConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.InverseDateConverter;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.AssociationFields;
+import com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup;
 import java.util.Map;
 
 public final class AssociationParser implements RecordSpecificParser<Association> {

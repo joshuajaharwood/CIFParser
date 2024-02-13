@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.RowField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
 
 @SuppressWarnings("ClassCanBeRecord")
 public class TestRowField implements RowField {

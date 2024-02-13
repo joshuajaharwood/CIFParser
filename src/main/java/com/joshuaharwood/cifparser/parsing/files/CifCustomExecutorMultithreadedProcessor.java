@@ -4,7 +4,7 @@ import static com.pivovarit.collectors.ParallelCollectors.parallel;
 import static java.util.stream.Collectors.toList;
 
 import com.joshuaharwood.cifparser.parsing.lines.CifLineParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.CifRecord;
+import com.joshuaharwood.cifparser.parsing.lines.model.CifRecord;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

@@ -1,11 +1,12 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Header;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Header.UpdateIndicator;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.DateConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.TimeConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.HeaderFields;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.literals.LiteralLookup;
+import com.joshuaharwood.cifparser.parsing.lines.model.Header;
+import com.joshuaharwood.cifparser.parsing.lines.model.Header.UpdateIndicator;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DateConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.TimeConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.HeaderFields;
+import com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.RequiredPropertyMissingException;
 import java.util.Map;
 
 public final class HeaderParser implements RecordSpecificParser<Header> {

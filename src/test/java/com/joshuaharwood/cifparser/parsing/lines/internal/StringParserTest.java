@@ -4,8 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.entry;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.HeaderFields;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.RowField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.HeaderFields;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
 import java.util.Collections;
 import java.util.List;
 import org.junit.jupiter.api.Test;

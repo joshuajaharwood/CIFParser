@@ -2,13 +2,13 @@ package com.joshuaharwood.cifparser.parsing.lines.internal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Association;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Association.AssociationCategory;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Association.AssociationDateIndicator;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Association.AssociationType;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Association.DiagramType;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.StpIndicator;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.TransactionType;
+import com.joshuaharwood.cifparser.parsing.lines.model.Association;
+import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationCategory;
+import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationDateIndicator;
+import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationType;
+import com.joshuaharwood.cifparser.parsing.lines.model.Association.DiagramType;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Set;

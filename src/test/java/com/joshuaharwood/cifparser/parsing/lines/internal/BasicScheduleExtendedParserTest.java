@@ -3,8 +3,9 @@ package com.joshuaharwood.cifparser.parsing.lines.internal;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.BasicScheduleExtended;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.ApplicableTimetableCode;
+import com.joshuaharwood.cifparser.parsing.lines.model.BasicScheduleExtended;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.RequiredPropertyMissingException;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.ApplicableTimetableCode;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

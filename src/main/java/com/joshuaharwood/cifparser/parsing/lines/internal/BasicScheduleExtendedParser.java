@@ -1,10 +1,11 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.model.literals.LiteralLookup.lookup;
+import static com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup.lookup;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.BasicScheduleExtended;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.ApplicableTimetableCode;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.BasicScheduleExtendedFields;
+import com.joshuaharwood.cifparser.parsing.lines.model.BasicScheduleExtended;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.RequiredPropertyMissingException;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.ApplicableTimetableCode;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.BasicScheduleExtendedFields;
 import java.util.Map;
 
 public final class BasicScheduleExtendedParser implements

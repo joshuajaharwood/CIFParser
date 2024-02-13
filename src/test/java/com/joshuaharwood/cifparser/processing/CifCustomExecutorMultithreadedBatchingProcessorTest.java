@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.joshuaharwood.cifparser.parsing.files.CifCustomExecutorMultithreadedBatchingProcessor;
 import com.joshuaharwood.cifparser.parsing.files.CifCustomExecutorMultithreadedBatchingProcessor.CifMultithreadedBatchingProcessorConfig;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.CifRecord;
+import com.joshuaharwood.cifparser.parsing.lines.model.CifRecord;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;

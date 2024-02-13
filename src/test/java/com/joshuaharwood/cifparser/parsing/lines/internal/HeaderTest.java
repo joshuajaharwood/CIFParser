@@ -3,9 +3,9 @@ package com.joshuaharwood.cifparser.parsing.lines.internal;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Header;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Header.UpdateIndicator;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.enums.RecordIdentity;
+import com.joshuaharwood.cifparser.parsing.lines.model.Header;
+import com.joshuaharwood.cifparser.parsing.lines.model.Header.UpdateIndicator;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import org.junit.jupiter.api.Test;

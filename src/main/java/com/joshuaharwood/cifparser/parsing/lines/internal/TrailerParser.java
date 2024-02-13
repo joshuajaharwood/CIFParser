@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.Trailer;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.TrailerFields;
+import com.joshuaharwood.cifparser.parsing.lines.model.Trailer;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.TrailerFields;
 import java.util.Map;
 
 public final class TrailerParser implements RecordSpecificParser<Trailer> {

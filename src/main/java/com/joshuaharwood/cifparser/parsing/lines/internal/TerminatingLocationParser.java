@@ -1,9 +1,9 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.TerminatingLocation;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.FiveDigitTimeConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.ZeroSafeTimeConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.TerminatingLocationFields;
+import com.joshuaharwood.cifparser.parsing.lines.model.TerminatingLocation;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.FiveDigitTimeConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.ZeroSafeTimeConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.TerminatingLocationFields;
 import java.util.Map;
 
 public final class TerminatingLocationParser implements

@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.TiplocAmend;
-import com.joshuaharwood.cifparser.parsing.lines.internal.model.fielddefinitions.TiplocAmendFields;
+import com.joshuaharwood.cifparser.parsing.lines.model.TiplocAmend;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.TiplocAmendFields;
 import java.util.Map;
 
 public final class TiplocAmendParser implements RecordSpecificParser<TiplocAmend> {
