@@ -5,4 +5,5 @@ module CIFParser {
   exports com.joshuaharwood.cifparser.parsing.lines;
   exports com.joshuaharwood.cifparser.parsing.files;
   exports com.joshuaharwood.cifparser.parsing.lines.internal.model;
+  exports com.joshuaharwood.cifparser.parsing.lines.internal.model.enums;
 }
