@@ -32,7 +32,7 @@ class CifBasicMultithreadedProcessorTest {
   }
 
   // Last result: PT3.3388724S (!!)
-  @Disabled("Used for approximate manual benchmarking. Disabled by default")
+//  @Disabled("Used for approximate manual benchmarking. Disabled by default")
   @Test
   void parseCifRecords() throws URISyntaxException, IOException {
     assertThat(FULL_CIF_PATH).isNotNull();

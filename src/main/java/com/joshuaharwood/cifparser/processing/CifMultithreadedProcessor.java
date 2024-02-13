@@ -18,16 +18,16 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class CifMultithreadedProcessor implements
-    CifProcessor<Path, CompletableFuture<List<CifRecord>>> {
+  CifProcessor<Path, CompletableFuture<List<CifRecord>>> {
 
   private static final CifLineParser CIF_LINE_PARSER = new CifLineParser();
-  private final CifMultithreadedParserConfig config;
+  private final CifMultithreadedProcessorConfig config;
 
   public CifMultithreadedProcessor() {
     this(null);
   }
 
-  public CifMultithreadedProcessor(@Nullable CifMultithreadedParserConfig config) {
+  public CifMultithreadedProcessor(@Nullable CifMultithreadedProcessor.CifMultithreadedProcessorConfig config) {
     this.config = config;
   }
 
@@ -36,9 +36,12 @@ public class CifMultithreadedProcessor implements
   }
 
   private static CompletableFuture<List<CifRecord>> usingCustomExecutor(@NotNull BufferedReader b,
-                                                                        @NotNull CifMultithreadedParserConfig config) {
+    @NotNull CifMultithreadedProcessor.CifMultithreadedProcessorConfig config) {
     return b.lines()
-        .collect(parallel(CIF_LINE_PARSER::parseLine, toList(), config.executor(), config.parallelism()));
+      .collect(parallel(CIF_LINE_PARSER::parseLine,
+        toList(),
+        config.executor(),
+        config.parallelism()));
   }
 
   public CompletableFuture<List<CifRecord>> parseCifRecords(Path path) throws IOException {
@@ -51,10 +54,10 @@ public class CifMultithreadedProcessor implements
     }
   }
 
-  public record CifMultithreadedParserConfig(@NotNull Executor executor,
-                                             @NotNull Integer parallelism) {
+  public record CifMultithreadedProcessorConfig(@NotNull Executor executor,
+                                                @NotNull Integer parallelism) {
 
-    public CifMultithreadedParserConfig {
+    public CifMultithreadedProcessorConfig {
       Objects.requireNonNull(executor);
       Objects.requireNonNull(parallelism);
     }

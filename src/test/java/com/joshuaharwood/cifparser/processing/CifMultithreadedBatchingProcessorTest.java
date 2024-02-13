@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.processing;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import com.joshuaharwood.cifparser.parsing.model.CifRecord;
-import com.joshuaharwood.cifparser.processing.CifMultithreadedProcessor.CifMultithreadedProcessorConfig;
+import com.joshuaharwood.cifparser.processing.CifMultithreadedBatchingProcessor.CifMultithreadedBatchingProcessorConfig;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -16,7 +16,7 @@ import java.util.concurrent.ForkJoinPool;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class CifMultithreadedProcessorTest {
+class CifMultithreadedBatchingProcessorTest {
 
   private static final URL TEST_CIF_PATH = Thread.currentThread()
     .getContextClassLoader()
@@ -30,18 +30,13 @@ class CifMultithreadedProcessorTest {
     .getContextClassLoader()
     .getResource("toc-full.CIF");
 
-  private CifMultithreadedProcessor cifMultithreadedProcessorPlatformThreads;
-
-  private CifMultithreadedProcessor cifMultithreadedProcessorVirtualThreads;
+  private CifMultithreadedBatchingProcessor cifMultithreadedBatchingProcessor;
 
   @BeforeEach
   void setUp() {
-    cifMultithreadedProcessorPlatformThreads = new CifMultithreadedProcessor(new CifMultithreadedProcessorConfig(
+    cifMultithreadedBatchingProcessor = new CifMultithreadedBatchingProcessor(new CifMultithreadedBatchingProcessorConfig(
       ForkJoinPool.commonPool(),
       Runtime.getRuntime().availableProcessors()));
-
-    // We use virtual threads when not provided with config
-    cifMultithreadedProcessorVirtualThreads = new CifMultithreadedProcessor();
   }
 
   @Test
@@ -49,7 +44,7 @@ class CifMultithreadedProcessorTest {
     throws IOException, ExecutionException, InterruptedException, URISyntaxException {
     assertThat(TEST_CIF_PATH).isNotNull();
 
-    List<CifRecord> records = cifMultithreadedProcessorVirtualThreads.parseCifRecords(Path.of(
+    List<CifRecord> records = cifMultithreadedBatchingProcessor.parseCifRecords(Path.of(
       TEST_CIF_PATH.toURI())).get();
 
     assertThat(records).hasSize(62);
@@ -63,23 +58,7 @@ class CifMultithreadedProcessorTest {
     assertThat(FULL_CIF_PATH).isNotNull();
 
     var beforeTime = LocalDateTime.now();
-    var records = cifMultithreadedProcessorPlatformThreads.parseCifRecords(Path.of(FULL_CIF_PATH.toURI()))
-      .get();
-
-    System.out.println(Duration.between(beforeTime, LocalDateTime.now()));
-
-    assertThat(records).hasSize(7184495);
-  }
-
-  // Last result: PT8.7434833S
-//  @Disabled("Used for approximate manual benchmarking. Disabled by default")
-  @Test
-  void parseEntireCifFullExtractWithVirtualThreads()
-    throws IOException, URISyntaxException, ExecutionException, InterruptedException {
-    assertThat(FULL_CIF_PATH).isNotNull();
-
-    var beforeTime = LocalDateTime.now();
-    var records = cifMultithreadedProcessorVirtualThreads.parseCifRecords(Path.of(FULL_CIF_PATH.toURI()))
+    var records = cifMultithreadedBatchingProcessor.parseCifRecords(Path.of(FULL_CIF_PATH.toURI()))
       .get();
 
     System.out.println(Duration.between(beforeTime, LocalDateTime.now()));
