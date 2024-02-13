@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.InstanceOfAssertFactories.LOCAL_DATE;
 
+import com.joshuaharwood.cifparser.parsing.lines.internal.model.converters.DateConverter;
 import java.time.Month;
 import java.time.format.DateTimeParseException;
 import org.junit.jupiter.api.Test;
