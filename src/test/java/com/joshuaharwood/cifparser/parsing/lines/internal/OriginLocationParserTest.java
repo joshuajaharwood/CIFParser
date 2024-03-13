@@ -35,7 +35,7 @@ class OriginLocationParserTest {
         null,
         null);
 
-    assertThat(parser.parse(GOOD_LO_RECORD)).usingRecursiveComparison().isEqualTo(expected);
+    assertThat(parser.parse(GOOD_LO_RECORD)).isEqualTo(expected);
   }
 
   @Test
@@ -60,7 +60,7 @@ class OriginLocationParserTest {
         null);
 
     assertThat(parser.parse(GOOD_LO_RECORD_WITH_ZERO_PUBLIC_DEPARTURE_TIME))
-        .usingRecursiveComparison()
+        
         .isEqualTo(expected);
   }
 }

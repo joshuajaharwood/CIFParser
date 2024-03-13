@@ -20,7 +20,7 @@ class TiplocInsertParserTest {
 
   @Test
   void parsesGoodDataSuccessfully() {
-    assertThat(parser.parse(GOOD_TI_RECORD)).usingRecursiveComparison()
+    assertThat(parser.parse(GOOD_TI_RECORD))
                                             .isEqualTo(new TiplocInsert("ABRDCH",
                                                 (byte) 8,
                                                 897678,
@@ -35,7 +35,7 @@ class TiplocInsertParserTest {
 
   @Test
   void parsesGoodDataSuccessfully2() {
-    assertThat(parser.parse(GOOD_TI_RECORD_2)).usingRecursiveComparison()
+    assertThat(parser.parse(GOOD_TI_RECORD_2))
                                             .isEqualTo(new TiplocInsert("ABRDEEN",
                                                 (byte) 0,
                                                 897600,

@@ -43,7 +43,7 @@ class IntermediateLocationParserTest {
       null,
       null);
 
-    assertThat(parser.parse(GOOD_LI_RECORD)).usingRecursiveComparison().isEqualTo(expected);
+    assertThat(parser.parse(GOOD_LI_RECORD)).isEqualTo(expected);
   }
 
   @Test
@@ -63,7 +63,7 @@ class IntermediateLocationParserTest {
       null,
       null);
 
-    assertThat(parser.parse(GOOD_LI_RECORD_2)).usingRecursiveComparison().isEqualTo(expected);
+    assertThat(parser.parse(GOOD_LI_RECORD_2)).isEqualTo(expected);
   }
 
   @Test
@@ -83,7 +83,7 @@ class IntermediateLocationParserTest {
       null,
       null);
 
-    assertThat(parser.parse(GOOD_LI_RECORD_3)).usingRecursiveComparison().isEqualTo(expected);
+    assertThat(parser.parse(GOOD_LI_RECORD_3)).isEqualTo(expected);
   }
 
   @Test
@@ -103,7 +103,7 @@ class IntermediateLocationParserTest {
       null,
       null);
 
-    assertThat(parser.parse(GOOD_LI_RECORD_4)).usingRecursiveComparison().isEqualTo(expected);
+    assertThat(parser.parse(GOOD_LI_RECORD_4)).isEqualTo(expected);
   }
 
   @Test
@@ -124,7 +124,7 @@ class IntermediateLocationParserTest {
       null,
       null);
 
-    assertThat(parser.parse(GOOD_LI_RECORD_5)).usingRecursiveComparison().isEqualTo(expected);
+    assertThat(parser.parse(GOOD_LI_RECORD_5)).isEqualTo(expected);
   }
 
   @Test
@@ -145,7 +145,7 @@ class IntermediateLocationParserTest {
       null,
       null);
 
-    assertThat(parser.parse(GOOD_LI_RECORD_6)).usingRecursiveComparison().isEqualTo(expected);
+    assertThat(parser.parse(GOOD_LI_RECORD_6)).isEqualTo(expected);
   }
 
   @Test
@@ -165,6 +165,6 @@ class IntermediateLocationParserTest {
       null,
       null);
 
-    assertThat(parser.parse(GOOD_LI_RECORD_7)).usingRecursiveComparison().isEqualTo(expected);
+    assertThat(parser.parse(GOOD_LI_RECORD_7)).isEqualTo(expected);
   }
 }

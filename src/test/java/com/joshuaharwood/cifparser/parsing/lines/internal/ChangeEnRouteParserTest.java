@@ -23,7 +23,7 @@ class ChangeEnRouteParserTest {
 
   @Test
   void parsesGoodDataSuccessfully() {
-    assertThat(parser.parse(CHANGE_EN_ROUTE_RECORD)).usingRecursiveComparison()
+    assertThat(parser.parse(CHANGE_EN_ROUTE_RECORD))
                                                     .isEqualTo(new ChangeEnRoute("LENZIE",
                                                         TrainCategory.ORDINARY_PASSENGER,
                                                         "2N75",

@@ -30,7 +30,7 @@ class AssociationParserTest {
 
   @Test
   void parsesGoodDataSuccessfully() {
-    assertThat(parser.parse(GOOD_AA_RECORD)).usingRecursiveComparison()
+    assertThat(parser.parse(GOOD_AA_RECORD))
       .isEqualTo(new Association(TransactionType.NEW,
         "C01484",
         "C01485",
@@ -49,7 +49,7 @@ class AssociationParserTest {
 
   @Test
   void parsesGoodDataSuccessfully2() {
-    assertThat(parser.parse(GOOD_AA_RECORD_2)).usingRecursiveComparison()
+    assertThat(parser.parse(GOOD_AA_RECORD_2))
       .isEqualTo(new Association(TransactionType.NEW,
         "C01975",
         "C75053",
@@ -68,7 +68,7 @@ class AssociationParserTest {
 
   @Test
   void parsesGoodDataSuccessfully3() {
-    assertThat(parser.parse(GOOD_AA_RECORD_3)).usingRecursiveComparison()
+    assertThat(parser.parse(GOOD_AA_RECORD_3))
       .isEqualTo(new Association(TransactionType.NEW,
         "C12684",
         "G68279",

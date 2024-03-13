@@ -4,7 +4,6 @@ import java.time.DayOfWeek;
 import java.util.Collections;
 import java.util.EnumSet;
 import java.util.Objects;
-import java.util.Optional;
 import java.util.Set;
 
 public class DaysOfWeekBitmaskConverter {
@@ -15,14 +14,13 @@ public class DaysOfWeekBitmaskConverter {
    *
    * @param stringBitmask A 7-digit bitmask where the left-most digit represents Monday, and the
    *                      right-most digit Sunday. A zero is false, and a one is true.
-   * @return An {@link Optional} of a {@link Set} of {@link DayOfWeek}s where the day of the week is
-   * true in the bitmask or an empty {@link Optional} if the given bitmask is blank or
-   * {@code null}.
+   * @return A {@link Set} of {@link DayOfWeek}s where the day of the week is true in the bitmask if
+   * the character is 1, or false otherwise.
    * @throws NullPointerException     if {@code stringBitmask} is {@code null}.
    * @throws IllegalArgumentException if {@code stringBitmask} is longer or shorter than 7
    *                                  characters.
    */
-  public static Optional<Set<DayOfWeek>> convert(String stringBitmask) {
+  public static Set<DayOfWeek> convert(String stringBitmask) {
     Objects.requireNonNull(stringBitmask, "Days-of-week bitmask must not be null.");
 
     if (stringBitmask.length() != 7) {
@@ -37,10 +35,18 @@ public class DaysOfWeekBitmaskConverter {
       }
     }
 
-    return Optional.of(Collections.unmodifiableSet(daysOfWeek));
+    return Collections.unmodifiableSet(daysOfWeek);
   }
 
   private static boolean getBit(String bitmask, int position) {
-    return bitmask.charAt(position) == '1';
+    char c = bitmask.charAt(position);
+
+    if (c != '1' && c != '0') {
+      throw new IllegalArgumentException("Illegal character in bitmask. [Bitmask: %s] [Index: %d]".formatted(
+        bitmask,
+        position));
+    }
+
+    return c == '1';
   }
 }

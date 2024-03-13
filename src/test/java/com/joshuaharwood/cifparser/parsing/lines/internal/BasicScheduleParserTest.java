@@ -122,6 +122,6 @@ class BasicScheduleParserTest {
         StpIndicator.PERMANENT_ASSOCIATION,
         null);
     
-    assertThat(actual).usingRecursiveComparison().isEqualTo(expected);
+    assertThat(actual).isEqualTo(expected);
   }
 }

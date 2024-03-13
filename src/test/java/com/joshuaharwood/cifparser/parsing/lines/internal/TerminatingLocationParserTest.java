@@ -20,7 +20,7 @@ class TerminatingLocationParserTest {
 
   @Test
   void parsesGoodDataSuccessfully() {
-    assertThat(parser.parse(GOOD_LT_RECORD)).usingRecursiveComparison()
+    assertThat(parser.parse(GOOD_LT_RECORD))
                                             .isEqualTo(new TerminatingLocation("FALKRKG",
                                                 LocalTime.of(17, 34),
                                                 LocalTime.of(17, 34),

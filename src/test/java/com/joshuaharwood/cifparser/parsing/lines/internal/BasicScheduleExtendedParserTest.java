@@ -33,7 +33,7 @@ class BasicScheduleExtendedParserTest {
         null,
         null);
 
-    assertThat(parser.parse(GOOD_BX_RECORD)).usingRecursiveComparison().isEqualTo(expected);
+    assertThat(parser.parse(GOOD_BX_RECORD)).isEqualTo(expected);
   }
 
   @Test
