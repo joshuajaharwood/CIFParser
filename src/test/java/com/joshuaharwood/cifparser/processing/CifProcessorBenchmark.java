@@ -51,7 +51,7 @@ public class CifProcessorBenchmark {
   public void benchmarkCustomExecutorMultithreadedBatchingProcessor(Blackhole bh) throws Exception {
     assert FULL_CIF_PATH != null;
 
-    bh.consume(CIF_CUSTOM_EXECUTOR_MULTITHREADED_BATCHING_PROCESSOR.parseCifRecords(getCifFileUri())
+    bh.consume(CIF_CUSTOM_EXECUTOR_MULTITHREADED_BATCHING_PROCESSOR.process(getCifFileUri())
       .get());
   }
 
@@ -59,14 +59,14 @@ public class CifProcessorBenchmark {
   public void benchmarkCustomExecutorMultithreadedProcessor(Blackhole bh) throws Exception {
     assert FULL_CIF_PATH != null;
 
-    bh.consume(CIF_CUSTOM_EXECUTOR_MULTITHREADED_PROCESSOR.parseCifRecords(getCifFileUri()).get());
+    bh.consume(CIF_CUSTOM_EXECUTOR_MULTITHREADED_PROCESSOR.process(getCifFileUri()).get());
   }
 
   @Benchmark
   public void benchmarkDefaultMultithreadedProcessor(Blackhole bh) throws Exception {
     assert FULL_CIF_PATH != null;
 
-    bh.consume(CIF_DEFAULT_MULTITHREADED_PROCESSOR.parseCifRecords(getCifFileUri()));
+    bh.consume(CIF_DEFAULT_MULTITHREADED_PROCESSOR.process(getCifFileUri()));
   }
 
   private Path getCifFileUri() {

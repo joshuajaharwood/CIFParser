@@ -26,7 +26,7 @@ public class CifCustomExecutorMultithreadedBatchingProcessor implements
     this.config = config;
   }
 
-  public CompletableFuture<List<CifRecord>> parseCifRecords(Path path) throws IOException {
+  public CompletableFuture<List<CifRecord>> process(Path path) throws IOException {
     try (BufferedReader b = Files.newBufferedReader(path, StandardCharsets.US_ASCII)) {
       return b.lines()
         .collect(parallel(CIF_LINE_PARSER::parseLine,

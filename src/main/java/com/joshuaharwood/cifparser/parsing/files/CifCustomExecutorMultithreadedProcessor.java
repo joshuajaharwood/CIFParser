@@ -44,7 +44,7 @@ public class CifCustomExecutorMultithreadedProcessor implements
         config.parallelism()));
   }
 
-  public CompletableFuture<List<CifRecord>> parseCifRecords(Path path) throws IOException {
+  public CompletableFuture<List<CifRecord>> process(Path path) throws IOException {
     try (BufferedReader b = Files.newBufferedReader(path, StandardCharsets.US_ASCII)) {
       if (this.config != null) {
         return usingCustomExecutor(b, config);

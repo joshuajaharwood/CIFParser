@@ -53,7 +53,7 @@ class CifCustomExecutorMultithreadedProcessorTest {
     throws IOException, ExecutionException, InterruptedException, URISyntaxException {
     assertThat(TEST_CIF_PATH).isNotNull();
 
-    List<CifRecord> records = cifCustomExecutorMultithreadedProcessorVirtualThreads.parseCifRecords(Path.of(
+    List<CifRecord> records = cifCustomExecutorMultithreadedProcessorVirtualThreads.process(Path.of(
       TEST_CIF_PATH.toURI())).get();
 
     assertThat(records).hasSize(62);
@@ -67,7 +67,7 @@ class CifCustomExecutorMultithreadedProcessorTest {
     assertThat(FULL_CIF_PATH).isNotNull();
 
     var beforeTime = LocalDateTime.now();
-    var records = cifCustomExecutorMultithreadedProcessorPlatformThreads.parseCifRecords(Path.of(FULL_CIF_PATH.toURI()))
+    var records = cifCustomExecutorMultithreadedProcessorPlatformThreads.process(Path.of(FULL_CIF_PATH.toURI()))
       .get();
 
     System.out.println(Duration.between(beforeTime, LocalDateTime.now()));
@@ -83,7 +83,7 @@ class CifCustomExecutorMultithreadedProcessorTest {
     assertThat(FULL_CIF_PATH).isNotNull();
 
     var beforeTime = LocalDateTime.now();
-    var records = cifCustomExecutorMultithreadedProcessorVirtualThreads.parseCifRecords(Path.of(FULL_CIF_PATH.toURI()))
+    var records = cifCustomExecutorMultithreadedProcessorVirtualThreads.process(Path.of(FULL_CIF_PATH.toURI()))
       .get();
 
     System.out.println(Duration.between(beforeTime, LocalDateTime.now()));

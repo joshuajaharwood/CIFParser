@@ -39,7 +39,7 @@ class CifDefaultMultithreadedProcessorTest {
     assertThat(FULL_CIF_PATH).isNotNull();
 
     var beforeTime = LocalDateTime.now();
-    List<CifRecord> cifRecords = cifDefaultMultithreadedProcessor.parseCifRecords(Path.of(
+    List<CifRecord> cifRecords = cifDefaultMultithreadedProcessor.process(Path.of(
       FULL_CIF_PATH.toURI()));
     System.out.println(Duration.between(beforeTime, LocalDateTime.now()));
 
