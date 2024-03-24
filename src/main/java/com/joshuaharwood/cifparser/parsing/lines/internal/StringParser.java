@@ -34,20 +34,6 @@ public class StringParser {
     return parse(record, List.of(rowFields));
   }
 
-//  public static @NotNull RecordIdentity parseRecordIdentity(String record) {
-//    Objects.requireNonNull(record);
-//
-//    // Prevent IndexOutOfBoundsException
-//    if (record.length() < 2) {
-//      throw new IllegalArgumentException(
-//          "Given record strings must be at least 2 characters to establish their RecordIdentity.");
-//    }
-//
-//    final var lookupRecordIdentity = record.substring(0, 2);
-//
-//    return LiteralLookup.lookup(RecordIdentity.class, lookupRecordIdentity).get();
-//  }
-
   private static <T extends RowField> void validateLengths(List<T> lengths, int targetLength) {
     if (!fieldsAreCorrectLengthTotal(lengths, targetLength)) {
       if (lengths.isEmpty()) {

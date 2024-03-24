@@ -58,36 +58,4 @@ class CifCustomExecutorMultithreadedProcessorTest {
 
     assertThat(records).hasSize(62);
   }
-
-  // Last result: PT9.7279543S
-  @Disabled("Used for approximate manual benchmarking. Disabled by default")
-  @Test
-  void parseEntireCifFullExtractWithPlatformThreads()
-    throws IOException, URISyntaxException, ExecutionException, InterruptedException {
-    assertThat(FULL_CIF_PATH).isNotNull();
-
-    var beforeTime = LocalDateTime.now();
-    var records = cifCustomExecutorMultithreadedProcessorPlatformThreads.process(Path.of(FULL_CIF_PATH.toURI()))
-      .get();
-
-    System.out.println(Duration.between(beforeTime, LocalDateTime.now()));
-
-    assertThat(records).hasSize(7184495);
-  }
-
-  // Last result: PT8.7434833S
-  @Disabled("Used for approximate manual benchmarking. Disabled by default")
-  @Test
-  void parseEntireCifFullExtractWithVirtualThreads()
-    throws IOException, URISyntaxException, ExecutionException, InterruptedException {
-    assertThat(FULL_CIF_PATH).isNotNull();
-
-    var beforeTime = LocalDateTime.now();
-    var records = cifCustomExecutorMultithreadedProcessorVirtualThreads.process(Path.of(FULL_CIF_PATH.toURI()))
-      .get();
-
-    System.out.println(Duration.between(beforeTime, LocalDateTime.now()));
-
-    assertThat(records).hasSize(7184495);
-  }
 }

@@ -1,8 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.model;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
-
-public sealed interface LocationRecord<T extends RowField> extends CifRecord permits
+public sealed interface LocationRecord extends CifRecord permits
     ChangeEnRoute, IntermediateLocation, OriginLocation,
     TerminatingLocation {
 

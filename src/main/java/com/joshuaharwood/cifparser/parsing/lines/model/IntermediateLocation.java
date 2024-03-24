@@ -1,7 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.model;
 
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.IntermediateLocationFields;
 import java.time.LocalTime;
 
 public record IntermediateLocation(String location, LocalTime scheduledArrivalTime,
@@ -10,7 +9,7 @@ public record IntermediateLocation(String location, LocalTime scheduledArrivalTi
                                    String platform, String line, String path, String activity,
                                    String engineeringAllowance, String pathingAllowance,
                                    String performanceAllowance, String spare) implements
-    LocationRecord<IntermediateLocationFields> {
+    LocationRecord {
 
   @Override
   public RecordIdentity recordIdentity() {
