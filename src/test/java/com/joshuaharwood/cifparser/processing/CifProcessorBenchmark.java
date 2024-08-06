@@ -1,10 +1,7 @@
 package com.joshuaharwood.cifparser.processing;
 
-import com.joshuaharwood.cifparser.parsing.files.CifCustomExecutorMultithreadedBatchingProcessor;
-import com.joshuaharwood.cifparser.parsing.files.CifCustomExecutorMultithreadedBatchingProcessor.CifMultithreadedBatchingProcessorConfig;
-import com.joshuaharwood.cifparser.parsing.files.CifCustomExecutorMultithreadedProcessor;
-import com.joshuaharwood.cifparser.parsing.files.CifCustomExecutorMultithreadedProcessor.CifMultithreadedProcessorConfig;
-import com.joshuaharwood.cifparser.parsing.files.CifDefaultMultithreadedProcessor;
+import com.joshuaharwood.cifparser.parsing.files.CifStreamImplProcessor;
+import com.joshuaharwood.cifparser.parsing.files.CifStreamExImplProcessor;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
@@ -25,15 +22,10 @@ import org.openjdk.jmh.infra.Blackhole;
 @Warmup(iterations = 2)
 public class CifProcessorBenchmark {
 
-  private static final CifCustomExecutorMultithreadedBatchingProcessor CIF_CUSTOM_EXECUTOR_MULTITHREADED_BATCHING_PROCESSOR = new CifCustomExecutorMultithreadedBatchingProcessor(
-    new CifMultithreadedBatchingProcessorConfig(new ForkJoinPool(),
-      Runtime.getRuntime().availableProcessors()));
+  private static final CifStreamImplProcessor CIF_CUSTOM_EXECUTOR_MULTITHREADED_PROCESSOR = new CifStreamImplProcessor(
+    new ForkJoinPool());
 
-  private static final CifCustomExecutorMultithreadedProcessor CIF_CUSTOM_EXECUTOR_MULTITHREADED_PROCESSOR = new CifCustomExecutorMultithreadedProcessor(
-    new CifMultithreadedProcessorConfig(new ForkJoinPool(),
-      Runtime.getRuntime().availableProcessors()));
-
-  private static final CifDefaultMultithreadedProcessor CIF_DEFAULT_MULTITHREADED_PROCESSOR = new CifDefaultMultithreadedProcessor();
+  private static final CifStreamExImplProcessor CIF_DEFAULT_MULTITHREADED_PROCESSOR = new CifStreamExImplProcessor();
 
   /**
    * To use this, you'll need to download the latest CIF extract yourself and put it in the test
@@ -48,18 +40,10 @@ public class CifProcessorBenchmark {
   }
 
   @Benchmark
-  public void benchmarkCustomExecutorMultithreadedBatchingProcessor(Blackhole bh) throws Exception {
-    assert FULL_CIF_PATH != null;
-
-    bh.consume(CIF_CUSTOM_EXECUTOR_MULTITHREADED_BATCHING_PROCESSOR.process(getCifFileUri())
-      .get());
-  }
-
-  @Benchmark
   public void benchmarkCustomExecutorMultithreadedProcessor(Blackhole bh) throws Exception {
     assert FULL_CIF_PATH != null;
 
-    bh.consume(CIF_CUSTOM_EXECUTOR_MULTITHREADED_PROCESSOR.process(getCifFileUri()).get());
+    bh.consume(CIF_CUSTOM_EXECUTOR_MULTITHREADED_PROCESSOR.process(getCifFileUri()));
   }
 
   @Benchmark

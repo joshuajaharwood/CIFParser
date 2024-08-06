@@ -18,11 +18,11 @@ import java.util.stream.Stream;
  *
  * @apiNote {@link Stream#parallel()} uses {@link ForkJoinPool#commonPool()}, which can lead to the
  * common thread pool becoming exhausted if other common thread pool consumers are competing for
- * threads. If this is a concern for you, {@link CifCustomExecutorMultithreadedProcessor} and
+ * threads. If this is a concern for you, {@link CifStreamImplProcessor} and
  * {@link CifCustomExecutorMultithreadedBatchingProcessor} allow you to provide your own
  * {@link Executor}.
  */
-public class CifDefaultMultithreadedProcessor implements CifProcessor<Path, List<CifRecord>> {
+public class CifStreamExImplProcessor implements CifProcessor<Path, List<CifRecord>> {
 
   private static final CifLineParser CIF_LINE_PARSER = new CifLineParser();
 

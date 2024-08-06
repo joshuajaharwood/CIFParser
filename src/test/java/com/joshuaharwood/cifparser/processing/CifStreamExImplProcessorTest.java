@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.processing;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.joshuaharwood.cifparser.parsing.files.CifDefaultMultithreadedProcessor;
+import com.joshuaharwood.cifparser.parsing.files.CifStreamExImplProcessor;
 import com.joshuaharwood.cifparser.parsing.lines.model.CifRecord;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -15,7 +15,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
-class CifDefaultMultithreadedProcessorTest {
+class CifStreamExImplProcessorTest {
 
   /**
    * To use this, you'll need to download the latest CIF extract yourself and put it in the test
@@ -25,11 +25,11 @@ class CifDefaultMultithreadedProcessorTest {
     .getContextClassLoader()
     .getResource("toc-full.CIF");
 
-  private CifDefaultMultithreadedProcessor cifDefaultMultithreadedProcessor;
+  private CifStreamExImplProcessor cifStreamExImplProcessor;
 
   @BeforeEach
   void setUp() {
-    this.cifDefaultMultithreadedProcessor = new CifDefaultMultithreadedProcessor();
+    this.cifStreamExImplProcessor = new CifStreamExImplProcessor();
   }
 
   // Last result: PT3.3388724S (!!)
@@ -39,7 +39,7 @@ class CifDefaultMultithreadedProcessorTest {
     assertThat(FULL_CIF_PATH).isNotNull();
 
     var beforeTime = LocalDateTime.now();
-    List<CifRecord> cifRecords = cifDefaultMultithreadedProcessor.process(Path.of(
+    List<CifRecord> cifRecords = cifStreamExImplProcessor.process(Path.of(
       FULL_CIF_PATH.toURI()));
     System.out.println(Duration.between(beforeTime, LocalDateTime.now()));
 
