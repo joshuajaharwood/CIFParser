@@ -2,9 +2,9 @@ package com.joshuaharwood.cifparser.parsing.lines.model;
 
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 
-public record TiplocInsert(String tiploc,
+public record TiplocInsert(String tiplocCode,
                            Byte capitalsIdentification,
-                           Integer nlc,
+                           String nlc,
                            Character nlcCheckCharacter,
                            String tpsDescription,
                            Integer stanox,
