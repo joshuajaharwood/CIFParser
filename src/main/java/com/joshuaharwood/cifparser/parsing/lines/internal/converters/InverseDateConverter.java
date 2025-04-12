@@ -12,7 +12,7 @@ public class InverseDateConverter {
   }
 
   public static Optional<LocalDate> convert(String input) {
-    if (input == null || input.isBlank()) {
+    if (input.isBlank()) {
       return Optional.empty();
     }
 

@@ -17,18 +17,35 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Set;
+import org.jspecify.annotations.Nullable;
 
-public record BasicSchedule(TransactionType transactionType, String trainUid,
-                            LocalDate dateRunsFrom, LocalDate dateRunsTo, Set<DayOfWeek> daysRun,
-                            BankHolidayRunning bankHolidayRunning, TrainStatus trainStatus,
-                            TrainCategory trainCategory, String trainIdentity, String headcode,
-                            Byte courseIndicator, Integer trainServiceCode, Character portionId,
-                            PowerType powerType, String timingLoad, Integer speed,
-                            Set<OperatingCharacteristics> operatingCharacteristics,
-                            SeatingClass seatingClass, Sleepers sleepers, Reservations reservations,
-                            Character connectionIndicator, Set<CateringCode> cateringCode,
-                            String serviceBranding, StpIndicator stpIndicator,
-                            String spare) implements CifRecord {
+public record BasicSchedule(
+  TransactionType transactionType,
+  String trainUid,
+  LocalDate dateRunsFrom,
+  LocalDate dateRunsTo,
+  Set<DayOfWeek> daysRun,
+  BankHolidayRunning bankHolidayRunning,
+  TrainStatus trainStatus,
+  TrainCategory trainCategory,
+  String trainIdentity,
+  String headcode,
+  Byte courseIndicator,
+  Integer trainServiceCode,
+  Character portionId,
+  PowerType powerType,
+  String timingLoad,
+  Integer speed,
+  Set<OperatingCharacteristics> operatingCharacteristics,
+  SeatingClass seatingClass,
+  Sleepers sleepers,
+  Reservations reservations,
+  Character connectionIndicator,
+  Set<CateringCode> cateringCode,
+  String serviceBranding,
+  StpIndicator stpIndicator,
+  String spare
+) implements CifRecord {
 
   @Override
   public RecordIdentity recordIdentity() {
@@ -62,11 +79,12 @@ public record BasicSchedule(TransactionType transactionType, String trainUid,
     TRIP("3", SHORT_TERM_PLANNING),
     SHIP("4", SHORT_TERM_PLANNING),
     BUS("5", SHORT_TERM_PLANNING);
-
+    
+    @Nullable
     private final TrainStatusSchedulingType schedulingType;
     private final String literal;
 
-    TrainStatus(String literal, TrainStatusSchedulingType schedulingType) {
+    TrainStatus(String literal, @Nullable TrainStatusSchedulingType schedulingType) {
       this.literal = literal;
       this.schedulingType = schedulingType;
     }
@@ -77,7 +95,7 @@ public record BasicSchedule(TransactionType transactionType, String trainUid,
     }
 
     @SuppressWarnings("unused")
-    public TrainStatusSchedulingType getSchedulingType() {
+    public @Nullable TrainStatusSchedulingType getSchedulingType() {
       return schedulingType;
     }
 

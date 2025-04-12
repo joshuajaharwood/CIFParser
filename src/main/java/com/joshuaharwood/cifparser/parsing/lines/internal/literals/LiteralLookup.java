@@ -22,7 +22,6 @@ public class LiteralLookup {
 
     var foundEnumValue = EnumSet.allOf(clazz)
       .stream()
-      .filter(e -> e.getLiteral() != null)
       .filter(e -> literal.toUpperCase().trim().equals(e.getLiteral()))
       .findFirst();
 

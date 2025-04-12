@@ -4,9 +4,15 @@ import java.util.Map;
 
 public class RequiredPropertyMissingException extends RuntimeException {
 
-  public RequiredPropertyMissingException(String fieldName, String record, Map<?, ?> parsedValues) {
+  public RequiredPropertyMissingException(ParserPropertyMetadata metadata) {
     super(
-        "Failed to parse as a required CIF field was blank or null. [Field name: %s] [Record: %s] [Parsed values: %s]".formatted(
-            fieldName, record, parsedValues));
+      "Failed to parse as a required CIF field was null. [Field name: %s] [Record: %s] [Parsed values: %s] [Target class: %s]".formatted(
+        metadata.fieldName(),
+        metadata.record(),
+        metadata.parsedValues()));
+  }
+
+  public record ParserPropertyMetadata(String fieldName, String record, Map<?, ?> parsedValues) {
+
   }
 }

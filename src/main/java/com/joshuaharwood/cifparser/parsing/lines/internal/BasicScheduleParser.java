@@ -29,6 +29,7 @@ public final class BasicScheduleParser implements RecordSpecificParser<BasicSche
       BasicScheduleFields.values());
 
     return new BasicSchedule(lookup(TransactionType.class,
+      required(parsedValues.get(BasicScheduleFields.TRANSACTION_TYPE), ) // todo: lets add a function that creates the metadata, so its lazy!,
       parsedValues.get(BasicScheduleFields.TRANSACTION_TYPE)).orElseThrow(() -> new RequiredPropertyMissingException(
       BasicScheduleFields.TRANSACTION_TYPE.getName(),
       record,

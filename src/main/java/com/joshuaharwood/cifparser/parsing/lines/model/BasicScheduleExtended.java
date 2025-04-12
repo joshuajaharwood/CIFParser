@@ -2,8 +2,9 @@ package com.joshuaharwood.cifparser.parsing.lines.model;
 
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.ApplicableTimetableCode;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
+import org.jspecify.annotations.Nullable;
 
-public record BasicScheduleExtended(String tractionClass, Integer uicCode, String atocCode,
+public record BasicScheduleExtended(@Nullable String tractionClass, Integer uicCode, String atocCode,
                                     ApplicableTimetableCode applicableTimetableCode, String rsid,
                                     Character dataSource, String spare) implements CifRecord {
 

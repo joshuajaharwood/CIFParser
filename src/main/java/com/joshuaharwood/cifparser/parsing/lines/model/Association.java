@@ -1,9 +1,9 @@
 package com.joshuaharwood.cifparser.parsing.lines.model;
 
+import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Set;
@@ -22,7 +22,6 @@ public record Association(TransactionType transactionType,
                           DiagramType diagramType,
                           AssociationType associationType,
                           StpIndicator stpIndicator
-
 ) implements CifRecord {
 
   @Override
