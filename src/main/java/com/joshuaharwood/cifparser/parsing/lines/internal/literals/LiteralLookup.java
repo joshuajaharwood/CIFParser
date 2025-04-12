@@ -5,16 +5,15 @@ import java.util.EnumSet;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.Set;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public class LiteralLookup {
 
   private LiteralLookup() {
   }
 
-  public static <T extends Enum<T> & Literal> @NotNull Optional<T> lookup(@NotNull Class<T> clazz,
-      @Nullable String literal) {
+  public static <T extends Enum<T> & Literal> Optional<T> lookup(Class<T> clazz,
+    @Nullable String literal) {
     Objects.requireNonNull(clazz);
 
     if (literal == null || literal.isBlank()) {
@@ -22,22 +21,22 @@ public class LiteralLookup {
     }
 
     var foundEnumValue = EnumSet.allOf(clazz)
-                                .stream()
-                                .filter(e -> e.getLiteral() != null)
-                                .filter(e -> literal.toUpperCase().trim().equals(e.getLiteral()))
-                                .findFirst();
+      .stream()
+      .filter(e -> e.getLiteral() != null)
+      .filter(e -> literal.toUpperCase().trim().equals(e.getLiteral()))
+      .findFirst();
 
     if (foundEnumValue.isPresent()) {
       return foundEnumValue;
     } else {
       throw new IllegalArgumentException(
-          "Failed to map String for given Literal. [String: %s] [Enum: %s]".formatted(literal,
-              clazz.getSimpleName()));
+        "Failed to map String for given Literal. [String: %s] [Enum: %s]".formatted(literal,
+          clazz.getSimpleName()));
     }
   }
 
-  public static <T extends Enum<T> & Literal> @NotNull Set<T> lookupCollection(
-      @NotNull Class<T> clazz, @Nullable String s) {
+  public static <T extends Enum<T> & Literal> Set<T> lookupCollection(Class<T> clazz,
+    @Nullable String s) {
     if (s == null || s.isBlank()) {
       return Collections.emptySet();
     }
@@ -45,8 +44,8 @@ public class LiteralLookup {
     Set<T> set = EnumSet.noneOf(clazz);
 
     s.trim()
-     .chars()
-     .forEachOrdered(ch -> lookup(clazz, String.valueOf((char) ch)).ifPresent(set::add));
+      .chars()
+      .forEachOrdered(ch -> lookup(clazz, String.valueOf((char) ch)).ifPresent(set::add));
 
     return Collections.unmodifiableSet(set);
   }

@@ -7,15 +7,13 @@ import com.joshuaharwood.cifparser.parsing.lines.model.Trailer;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.jspecify.annotations.Nullable;
 
 public record CifPostprocessedResult(Header header, List<TiplocRecord> tiplocRecords,
                                      List<Schedule> schedules, List<Association> associations,
                                      Trailer trailer) {
 
-  private static <T> @NotNull List<T> addElement(@Nullable List<T> list, T element) {
+  private static <T> List<T> addElement(@Nullable List<T> list, T element) {
     List<T> listRef = Objects.requireNonNullElseGet(list, ArrayList::new);
 
     listRef.add(element);
@@ -23,18 +21,17 @@ public record CifPostprocessedResult(Header header, List<TiplocRecord> tiplocRec
     return listRef;
   }
 
-  @Contract("_ -> new")
-  public @NotNull CifPostprocessedResult withHeader(Header header) {
+  public CifPostprocessedResult withHeader(Header header) {
     return new CifPostprocessedResult(header, tiplocRecords, schedules, associations, trailer);
   }
 
-  @Contract("_ -> new")
-  public @NotNull CifPostprocessedResult withTiplocRecords(List<TiplocRecord> tiplocRecords) {
+
+  public CifPostprocessedResult withTiplocRecords(List<TiplocRecord> tiplocRecords) {
     return new CifPostprocessedResult(header, tiplocRecords, schedules, associations, trailer);
   }
 
-  @Contract("_ -> new")
-  public @NotNull CifPostprocessedResult addTiplocRecord(TiplocRecord tiplocRecord) {
+
+  public CifPostprocessedResult addTiplocRecord(TiplocRecord tiplocRecord) {
     return new CifPostprocessedResult(header,
       addElement(tiplocRecords, tiplocRecord),
       schedules,
@@ -42,12 +39,11 @@ public record CifPostprocessedResult(Header header, List<TiplocRecord> tiplocRec
       trailer);
   }
 
-  public @NotNull CifPostprocessedResult withSchedules(List<Schedule> schedules) {
+  public CifPostprocessedResult withSchedules(List<Schedule> schedules) {
     return new CifPostprocessedResult(header, tiplocRecords, schedules, associations, trailer);
   }
-
-  @Contract("_ -> new")
-  public @NotNull CifPostprocessedResult addSchedule(@NotNull Schedule schedule) {
+  
+  public CifPostprocessedResult addSchedule(Schedule schedule) {
     return new CifPostprocessedResult(header,
       tiplocRecords,
       addElement(schedules, schedule),
@@ -55,8 +51,8 @@ public record CifPostprocessedResult(Header header, List<TiplocRecord> tiplocRec
       trailer);
   }
 
-  @Contract("_ -> new")
-  public @NotNull CifPostprocessedResult addAssociation(Association association) {
+
+  public CifPostprocessedResult addAssociation(Association association) {
     return new CifPostprocessedResult(header,
       tiplocRecords,
       schedules,
@@ -64,12 +60,12 @@ public record CifPostprocessedResult(Header header, List<TiplocRecord> tiplocRec
       trailer);
   }
 
-  public @NotNull CifPostprocessedResult withAssociations(List<Association> associations) {
+  public CifPostprocessedResult withAssociations(List<Association> associations) {
     return new CifPostprocessedResult(header, tiplocRecords, schedules, associations, trailer);
   }
 
-  @Contract("_ -> new")
-  public @NotNull CifPostprocessedResult withTrailer(Trailer trailer) {
+
+  public CifPostprocessedResult withTrailer(Trailer trailer) {
     return new CifPostprocessedResult(header, tiplocRecords, schedules, associations, trailer);
   }
 }

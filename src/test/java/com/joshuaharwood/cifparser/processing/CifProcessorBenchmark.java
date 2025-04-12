@@ -1,12 +1,11 @@
 package com.joshuaharwood.cifparser.processing;
 
-import com.joshuaharwood.cifparser.parsing.files.CifStreamImplProcessor;
 import com.joshuaharwood.cifparser.parsing.files.CifStreamExImplProcessor;
+import com.joshuaharwood.cifparser.parsing.files.CifStreamImplProcessor;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.util.Objects;
-import java.util.concurrent.ForkJoinPool;
 import java.util.concurrent.TimeUnit;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.BenchmarkMode;
@@ -22,8 +21,7 @@ import org.openjdk.jmh.infra.Blackhole;
 @Warmup(iterations = 2)
 public class CifProcessorBenchmark {
 
-  private static final CifStreamImplProcessor CIF_CUSTOM_EXECUTOR_MULTITHREADED_PROCESSOR = new CifStreamImplProcessor(
-    new ForkJoinPool());
+  private static final CifStreamImplProcessor CIF_CUSTOM_EXECUTOR_MULTITHREADED_PROCESSOR = new CifStreamImplProcessor();
 
   private static final CifStreamExImplProcessor CIF_DEFAULT_MULTITHREADED_PROCESSOR = new CifStreamExImplProcessor();
 

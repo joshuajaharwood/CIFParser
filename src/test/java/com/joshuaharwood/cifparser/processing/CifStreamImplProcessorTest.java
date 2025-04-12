@@ -9,7 +9,6 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.concurrent.ForkJoinPool;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -31,8 +30,7 @@ class CifStreamImplProcessorTest {
 
   @BeforeEach
   void setUp() {
-    cifStreamImplProcessorPlatformThreads = new CifStreamImplProcessor(
-      new ForkJoinPool());
+    cifStreamImplProcessorPlatformThreads = new CifStreamImplProcessor();
   }
 
   @Test

@@ -23,7 +23,7 @@ class TiplocInsertParserTest {
     assertThat(parser.parse(GOOD_TI_RECORD))
                                             .isEqualTo(new TiplocInsert("ABRDCH",
                                                 (byte) 8,
-                                                897678,
+                                                "897678",
                                                 'M',
                                                 "ABERDEEN CLAYHILLS CAR.M.D",
                                                 2075,
@@ -38,7 +38,7 @@ class TiplocInsertParserTest {
     assertThat(parser.parse(GOOD_TI_RECORD_2))
                                             .isEqualTo(new TiplocInsert("ABRDEEN",
                                                 (byte) 0,
-                                                897600,
+                                                "897600",
                                                 'G',
                                                 "ABERDEEN",
                                                 2071,

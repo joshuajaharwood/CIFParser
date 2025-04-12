@@ -6,14 +6,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
-import org.jetbrains.annotations.NotNull;
 
 public class StringParser {
 
   private StringParser() {
   }
 
-  public static @NotNull <T extends RowField> Map<T, String> parse(String record,
+  public static <T extends RowField> Map<T, String> parse(String record,
     List<T> rowFields) {
     Objects.requireNonNull(record);
     Objects.requireNonNull(rowFields);
@@ -30,7 +29,7 @@ public class StringParser {
     return hashMap;
   }
 
-  public static @NotNull <T extends RowField> Map<T, String> parse(String record, T[] rowFields) {
+  public static <T extends RowField> Map<T, String> parse(String record, T[] rowFields) {
     return parse(record, List.of(rowFields));
   }
 

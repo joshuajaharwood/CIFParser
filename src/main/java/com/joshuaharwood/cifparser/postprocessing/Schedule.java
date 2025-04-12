@@ -6,24 +6,19 @@ import com.joshuaharwood.cifparser.parsing.lines.model.LocationRecord;
 import com.joshuaharwood.cifparser.parsing.lines.model.OriginLocation;
 import com.joshuaharwood.cifparser.parsing.lines.model.TerminatingLocation;
 import java.util.List;
-import org.jetbrains.annotations.Contract;
-import org.jetbrains.annotations.NotNull;
 
 public record Schedule(BasicSchedule basicSchedule, BasicScheduleExtended basicScheduleExtended,
                        Route route) {
 
-  @Contract("_ -> new")
-  public @NotNull Schedule withBasicSchedule(BasicSchedule basicSchedule) {
+  public Schedule withBasicSchedule(BasicSchedule basicSchedule) {
     return new Schedule(basicSchedule, basicScheduleExtended, route);
   }
 
-  @Contract("_ -> new")
-  public @NotNull Schedule withBasicScheduleExtended(BasicScheduleExtended basicScheduleExtended) {
+  public Schedule withBasicScheduleExtended(BasicScheduleExtended basicScheduleExtended) {
     return new Schedule(basicSchedule, basicScheduleExtended, route);
   }
 
-  @Contract("_ -> new")
-  public @NotNull Schedule withRoute(Route route) {
+  public Schedule withRoute(Route route) {
     return new Schedule(basicSchedule, basicScheduleExtended, route);
   }
 
