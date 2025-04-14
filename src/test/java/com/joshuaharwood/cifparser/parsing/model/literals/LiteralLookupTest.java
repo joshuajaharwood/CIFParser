@@ -40,8 +40,8 @@ class LiteralLookupTest {
   }
 
   @Test
-  void lookupCollectionReturnsAllCorrectEnums() {
-    assertThat(LiteralLookup.lookupCollection(OperatingCharacteristics.class,
+  void lookupSetReturnsAllCorrectEnums() {
+    assertThat(LiteralLookup.lookupSet(OperatingCharacteristics.class,
       "BCDEGM")).containsExactly(OperatingCharacteristics.VACUUM_BRAKED,
       OperatingCharacteristics.TIMED_100_MPH,
       OperatingCharacteristics.DOO,
@@ -51,17 +51,17 @@ class LiteralLookupTest {
   }
 
   @Test
-  void lookupCollectionReturnsAllCorrectEnumsWithPaddedInput() {
-    assertThat(LiteralLookup.lookupCollection(OperatingCharacteristics.class,
+  void lookupSetReturnsAllCorrectEnumsWithPaddedInput() {
+    assertThat(LiteralLookup.lookupSet(OperatingCharacteristics.class,
       " BCD  ")).containsExactly(OperatingCharacteristics.VACUUM_BRAKED,
       OperatingCharacteristics.TIMED_100_MPH,
       OperatingCharacteristics.DOO).isUnmodifiable();
   }
 
   @Test
-  void lookupCollectionThrowsIllegalArgumentExceptionWithBadData() {
+  void lookupSetThrowsIllegalArgumentExceptionWithBadData() {
     // A is not a valid OperatingCharacteristic literal
-    assertThatIllegalArgumentException().isThrownBy(() -> LiteralLookup.lookupCollection(
+    assertThatIllegalArgumentException().isThrownBy(() -> LiteralLookup.lookupSet(
         OperatingCharacteristics.class,
         "ACDEGM"))
       .withMessage(
@@ -69,14 +69,14 @@ class LiteralLookupTest {
   }
 
   @Test
-  void lookupCollectionThrowsIllegalArgumentExceptionWithBlankData() {
-    assertThat(LiteralLookup.lookupCollection(OperatingCharacteristics.class,
+  void lookupSetThrowsIllegalArgumentExceptionWithBlankData() {
+    assertThat(LiteralLookup.lookupSet(OperatingCharacteristics.class,
       "   ")).isUnmodifiable().isEmpty();
   }
 
   @Test
-  void lookupCollectionThrowsIllegalArgumentExceptionWithNullData() {
-    assertThat(LiteralLookup.lookupCollection(OperatingCharacteristics.class,
+  void lookupSetThrowsIllegalArgumentExceptionWithNullData() {
+    assertThat(LiteralLookup.lookupSet(OperatingCharacteristics.class,
       null)).isUnmodifiable().isEmpty();
   }
 }

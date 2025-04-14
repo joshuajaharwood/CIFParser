@@ -1,51 +1,67 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.literals;
 
-import java.util.Collections;
+import com.google.common.collect.ImmutableSet;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.DuplicateLiteralException;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.UnknownLiteralException;
 import java.util.EnumSet;
 import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
 import org.jspecify.annotations.Nullable;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class LiteralLookup {
+
+  private static final Logger logger = LoggerFactory.getLogger(LiteralLookup.class);
 
   private LiteralLookup() {
   }
 
-  public static <T extends Enum<T> & Literal> Optional<T> lookup(Class<T> clazz,
-    @Nullable String literal) {
+  @Nullable
+  public static <T extends Enum<T> & Literal> T lookup(Class<T> clazz, @Nullable String literal) {
     Objects.requireNonNull(clazz);
 
-    if (literal == null || literal.isBlank()) {
-      return Optional.empty();
+    logger.debug("Attempting to lookup literal. [Class: {}] [Literal: {}]",
+      clazz.getSimpleName(),
+      literal);
+
+    // We can short-circuit here...
+    if (literal == null) {
+      logger.debug("Literal was null. [Class: {}]", clazz.getSimpleName());
+      return null;
     }
 
-    var foundEnumValue = EnumSet.allOf(clazz)
+    if (literal.isBlank()) {
+      logger.debug("Literal was blank. [Class: {}]", clazz.getSimpleName());
+      return null;
+    }
+
+    var matches = EnumSet.allOf(clazz)
       .stream()
-      .filter(e -> literal.toUpperCase().trim().equals(e.getLiteral()))
-      .findFirst();
+      .filter(e -> e.getLiteral() != null)
+      .filter(e -> literal.toUpperCase().trim().equals(e.getLiteral().toUpperCase().trim()))
+      .toList();
 
-    if (foundEnumValue.isPresent()) {
-      return foundEnumValue;
-    } else {
-      throw new IllegalArgumentException(
-        "Failed to map String for given Literal. [String: %s] [Enum: %s]".formatted(literal,
-          clazz.getSimpleName()));
+    if (matches.isEmpty()) {
+      throw new UnknownLiteralException(clazz, literal);
     }
+
+    if (matches.size() > 1) {
+      throw new DuplicateLiteralException(clazz, literal, matches);
+    }
+
+    return matches.getFirst();
   }
 
-  public static <T extends Enum<T> & Literal> Set<T> lookupCollection(Class<T> clazz,
+  public static <T extends Enum<T> & Literal> ImmutableSet<T> lookupSet(Class<T> clazz,
     @Nullable String s) {
     if (s == null || s.isBlank()) {
-      return Collections.emptySet();
+      return ImmutableSet.of();
     }
 
-    Set<T> set = EnumSet.noneOf(clazz);
-
-    s.trim()
-      .chars()
-      .forEachOrdered(ch -> lookup(clazz, String.valueOf((char) ch)).ifPresent(set::add));
-
-    return Collections.unmodifiableSet(set);
+    return EnumSet.allOf(clazz)
+      .stream()
+      .filter(t -> t.getLiteral() != null)
+      .filter(t -> s.equals(t.getLiteral()))
+      .collect(ImmutableSet.toImmutableSet());
   }
 }

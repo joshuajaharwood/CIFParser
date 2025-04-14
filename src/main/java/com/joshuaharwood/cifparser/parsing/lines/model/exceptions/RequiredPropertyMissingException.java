@@ -2,17 +2,13 @@ package com.joshuaharwood.cifparser.parsing.lines.model.exceptions;
 
 import java.util.Map;
 
-public class RequiredPropertyMissingException extends RuntimeException {
+public final class RequiredPropertyMissingException extends CifLineParserException {
 
-  public RequiredPropertyMissingException(ParserPropertyMetadata metadata) {
+  public RequiredPropertyMissingException(String fieldName, String record, Map<?, String> parsedValues) {
     super(
-      "Failed to parse as a required CIF field was null. [Field name: %s] [Record: %s] [Parsed values: %s] [Target class: %s]".formatted(
-        metadata.fieldName(),
-        metadata.record(),
-        metadata.parsedValues()));
-  }
-
-  public record ParserPropertyMetadata(String fieldName, String record, Map<?, ?> parsedValues) {
-
+      "Failed to parse as a required CIF field was null. [Field name: %s] [Record: %s] [Parsed values: %s]".formatted(
+        fieldName,
+        record,
+        parsedValues));
   }
 }

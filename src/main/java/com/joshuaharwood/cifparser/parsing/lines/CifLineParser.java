@@ -30,7 +30,7 @@ public class CifLineParser {
   }
 
   public CifRecord parseLine(String record) {
-    if (record == null || record.isBlank() || record.trim().length() < 2) {
+    if (record.isBlank() || record.trim().length() < 2) {
       throw new IllegalArgumentException(
           "Record must be at least 2 characters to establish RecordIdentity.");
     }

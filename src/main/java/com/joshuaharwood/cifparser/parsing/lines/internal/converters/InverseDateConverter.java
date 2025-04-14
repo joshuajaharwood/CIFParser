@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
+import org.jspecify.annotations.Nullable;
 
 public class InverseDateConverter {
 
@@ -11,15 +11,16 @@ public class InverseDateConverter {
   private InverseDateConverter() {
   }
 
-  public static Optional<LocalDate> convert(String input) {
-    if (input.isBlank()) {
-      return Optional.empty();
+  @Nullable
+  public static LocalDate convert(@Nullable String input) {
+    if (input == null || input.isBlank()) {
+      return null;
     }
 
     if (input.length() != 6) {
       throw new IllegalArgumentException("Date input must be 6 digits.");
     }
 
-    return Optional.of(LocalDate.parse(input, DATE_FORMAT));
+    return LocalDate.parse(input, DATE_FORMAT);
   }
 }

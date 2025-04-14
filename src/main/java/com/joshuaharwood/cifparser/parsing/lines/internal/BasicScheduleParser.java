@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
 import static com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup.lookup;
-import static com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup.lookupCollection;
+import static com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup.lookupSet;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DaysOfWeekBitmaskConverter;
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.InverseDateConverter;
@@ -28,22 +28,27 @@ public final class BasicScheduleParser implements RecordSpecificParser<BasicSche
     final Map<BasicScheduleFields, String> parsedValues = StringParser.parse(record,
       BasicScheduleFields.values());
 
-    return new BasicSchedule(lookup(TransactionType.class,
-      required(parsedValues.get(BasicScheduleFields.TRANSACTION_TYPE), ) // todo: lets add a function that creates the metadata, so its lazy!,
-      parsedValues.get(BasicScheduleFields.TRANSACTION_TYPE)).orElseThrow(() -> new RequiredPropertyMissingException(
-      BasicScheduleFields.TRANSACTION_TYPE.getName(),
-      record,
-      parsedValues)),
-      ifPresent(parsedValues.get(BasicScheduleFields.TRAIN_UID)).orElseThrow(() -> new RequiredPropertyMissingException(
-        BasicScheduleFields.TRAIN_UID.getName(),
+    return new BasicSchedule(
+      requiredLookup(
         record,
-        parsedValues)),
-      InverseDateConverter.convert(parsedValues.get(BasicScheduleFields.DATE_RUNS_FROM))
-        .orElseThrow(() -> new RequiredPropertyMissingException(BasicScheduleFields.DATE_RUNS_FROM.getName(),
-          record,
-          parsedValues)),
-      InverseDateConverter.convert(parsedValues.get(BasicScheduleFields.DATE_RUNS_TO)).orElse(null),
-      DaysOfWeekBitmaskConverter.convert(parsedValues.get(BasicScheduleFields.DAYS_RUN)),
+        parsedValues,
+        BasicScheduleFields.TRANSACTION_TYPE.getName(),
+        TransactionType.class),
+      required(
+        record,
+        parsedValues,
+        BasicScheduleFields.TRAIN_UID.getName()),
+      
+      InverseDateConverter.convert(required(record, parsedValues, BasicScheduleFields.DATE_RUNS_FROM.getName())),
+      InverseDateConverter.convert(parsedValues.get(BasicScheduleFields.DATE_RUNS_TO),
+
+      
+//      InverseDateConverter.convert(parsedValues.get(BasicScheduleFields.DATE_RUNS_FROM))
+//        .orElseThrow(() -> new RequiredPropertyMissingException(BasicScheduleFields.DATE_RUNS_FROM.getName(),
+//          record,
+//          parsedValues)),
+//      InverseDateConverter.convert(parsedValues.get(BasicScheduleFields.DATE_RUNS_TO)).orElse(null),
+//      DaysOfWeekBitmaskConverter.convert(parsedValues.get(BasicScheduleFields.DAYS_RUN)),
       lookup(BankHolidayRunning.class,
         parsedValues.get(BasicScheduleFields.BANK_HOLIDAY_RUNNING)).orElse(null),
       lookup(TrainStatus.class, parsedValues.get(BasicScheduleFields.TRAIN_STATUS)).orElse(null),
@@ -62,14 +67,14 @@ public final class BasicScheduleParser implements RecordSpecificParser<BasicSche
       lookup(PowerType.class, parsedValues.get(BasicScheduleFields.POWER_TYPE)).orElse(null),
       ifPresent(parsedValues.get(BasicScheduleFields.TIMING_LOAD)).orElse(null),
       ifPresent(parsedValues.get(BasicScheduleFields.SPEED)).map(Integer::valueOf).orElse(null),
-      lookupCollection(OperatingCharacteristics.class,
+      lookupSet(OperatingCharacteristics.class,
         parsedValues.get(BasicScheduleFields.OPERATING_CHARACTERISTICS)),
       lookup(SeatingClass.class, parsedValues.get(BasicScheduleFields.TRAIN_CLASS)).orElse(null),
       lookup(Sleepers.class, parsedValues.get(BasicScheduleFields.SLEEPERS)).orElse(null),
       lookup(Reservations.class, parsedValues.get(BasicScheduleFields.RESERVATIONS)).orElse(null),
       ifPresent(parsedValues.get(BasicScheduleFields.CONNECT_INDICATOR)).map(this::parseChar)
         .orElse(null),
-      lookupCollection(CateringCode.class, parsedValues.get(BasicScheduleFields.CATERING_CODE)),
+      lookupSet(CateringCode.class, parsedValues.get(BasicScheduleFields.CATERING_CODE)),
       ifPresent(parsedValues.get(BasicScheduleFields.SERVICE_BRANDING)).orElse(null),
       lookup(StpIndicator.class,
         parsedValues.get(BasicScheduleFields.STP_INDICATOR)).orElseThrow(() -> new RequiredPropertyMissingException(

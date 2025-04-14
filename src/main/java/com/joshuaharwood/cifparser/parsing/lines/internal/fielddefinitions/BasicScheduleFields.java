@@ -1,6 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions;
 
-@SuppressWarnings("SpellCheckingInspection")
 public enum BasicScheduleFields implements RowField {
   RECORD_IDENTITY(1, 2),
   TRANSACTION_TYPE(2, 1),

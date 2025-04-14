@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
 import static com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup.lookup;
-import static com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup.lookupCollection;
+import static com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup.lookupSet;
 
 import com.joshuaharwood.cifparser.parsing.lines.model.ChangeEnRoute;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.CateringCode;
@@ -34,7 +34,7 @@ public final class ChangeEnRouteParser implements RecordSpecificParser<ChangeEnR
         lookup(PowerType.class, parsedValues.get(ChangeEnRouteFields.POWER_TYPE)).orElse(null),
         ifPresent(parsedValues.get(ChangeEnRouteFields.TIMING_LOAD)).orElse(null),
         ifPresent(parsedValues.get(ChangeEnRouteFields.SPEED)).map(Integer::valueOf).orElse(null),
-        lookupCollection(OperatingCharacteristics.class,
+        lookupSet(OperatingCharacteristics.class,
             parsedValues.get(ChangeEnRouteFields.OPERATING_CHARACTERISTICS)),
         lookup(SeatingClass.class, parsedValues.get(ChangeEnRouteFields.TRAIN_CLASS)).orElse(null),
         lookup(Sleepers.class, parsedValues.get(ChangeEnRouteFields.SLEEPERS)).orElse(null),
