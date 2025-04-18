@@ -17,19 +17,19 @@ public final class IntermediateLocationParser implements
     return new IntermediateLocation(ifPresent(parsedValues.get(IntermediateLocationFields.LOCATION)).orElse(
         null),
         FiveDigitTimeConverter
-            .convert(parsedValues.get(IntermediateLocationFields.SCHEDULED_ARRIVAL_TIME))
+            .apply(parsedValues.get(IntermediateLocationFields.SCHEDULED_ARRIVAL_TIME))
             .orElse(null),
         FiveDigitTimeConverter
-            .convert(parsedValues.get(IntermediateLocationFields.SCHEDULED_DEPARTURE_TIME))
+            .apply(parsedValues.get(IntermediateLocationFields.SCHEDULED_DEPARTURE_TIME))
             .orElse(null),
         FiveDigitTimeConverter
-            .convert(parsedValues.get(IntermediateLocationFields.SCHEDULED_PASS))
+            .apply(parsedValues.get(IntermediateLocationFields.SCHEDULED_PASS))
             .orElse(null),
         ZeroSafeTimeConverter
-            .convert(parsedValues.get(IntermediateLocationFields.PUBLIC_ARRIVAL))
+            .apply(parsedValues.get(IntermediateLocationFields.PUBLIC_ARRIVAL))
             .orElse(null),
         ZeroSafeTimeConverter
-            .convert(parsedValues.get(IntermediateLocationFields.PUBLIC_DEPARTURE))
+            .apply(parsedValues.get(IntermediateLocationFields.PUBLIC_DEPARTURE))
             .orElse(null),
         ifPresent(parsedValues.get(IntermediateLocationFields.PLATFORM)).orElse(null),
         ifPresent(parsedValues.get(IntermediateLocationFields.LINE)).orElse(null),

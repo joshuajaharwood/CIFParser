@@ -13,7 +13,7 @@ class TimeConverterTest {
 
   @Test
   void parseGoodTimeReturnsCorrectOptional() {
-    assertThat(TimeConverter.convert("2359"))
+    assertThat(TimeConverter.apply("2359"))
       .get(LOCAL_TIME)
       .hasHour(23)
       .hasMinute(59)
@@ -23,19 +23,19 @@ class TimeConverterTest {
 
   @Test
   void parseNullTimeReturnsEmptyOptional() {
-    assertThat(TimeConverter.convert(null)).isEmpty();
+    assertThat(TimeConverter.apply(null)).isEmpty();
   }
 
   @Test
   void parseInvalidTimeThrowsJavaTimeException() {
-    assertThatExceptionOfType(DateTimeParseException.class).isThrownBy(() -> TimeConverter.convert(
+    assertThatExceptionOfType(DateTimeParseException.class).isThrownBy(() -> TimeConverter.apply(
       "2559"));
   }
 
   @Test
   void parseTooShortDateThrowsIllegalArgumentException() {
     assertThatIllegalArgumentException()
-      .isThrownBy(() -> TimeConverter.convert("120"))
+      .isThrownBy(() -> TimeConverter.apply("120"))
       .withMessage("Time input must be 4 digits.");
   }
 }

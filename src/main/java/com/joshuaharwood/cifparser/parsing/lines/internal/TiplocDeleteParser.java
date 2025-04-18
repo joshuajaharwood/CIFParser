@@ -13,8 +13,7 @@ public final class TiplocDeleteParser implements RecordSpecificParser<TiplocDele
         TiplocDeleteFields.values());
 
     return new TiplocDelete(ifPresent(parsedValues.get(TiplocDeleteFields.TIPLOC_CODE)).orElseThrow(
-        () -> new RequiredPropertyMissingException(TiplocDeleteFields.TIPLOC_CODE.getName(),
-            record,
-            parsedValues)), ifPresent(parsedValues.get(TiplocDeleteFields.SPARE)).orElse(null));
+        () -> new RequiredPropertyMissingException(TiplocDeleteFields.TIPLOC_CODE.name(),
+          parsedValues)), ifPresent(parsedValues.get(TiplocDeleteFields.SPARE)).orElse(null));
   }
 }

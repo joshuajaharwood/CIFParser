@@ -13,7 +13,7 @@ class FiveDigitTimeConverterTest {
 
   @Test
   public void convertsEmptyPadded5DigitInputSuccessfully() {
-    assertThat(FiveDigitTimeConverter.convert("1704 "))
+    assertThat(FiveDigitTimeConverter.apply("1704 "))
         .get(LOCAL_TIME)
         .hasHour(17)
         .hasMinute(4)
@@ -22,7 +22,7 @@ class FiveDigitTimeConverterTest {
 
   @Test
   public void convertsNonPadded5DigitInputSuccessfully() {
-    assertThat(FiveDigitTimeConverter.convert("1704"))
+    assertThat(FiveDigitTimeConverter.apply("1704"))
         .get(LOCAL_TIME)
         .hasHour(17)
         .hasMinute(4)
@@ -31,7 +31,7 @@ class FiveDigitTimeConverterTest {
 
   @Test
   public void convertsHPadded5DigitInputSuccessfully() {
-    assertThat(FiveDigitTimeConverter.convert("1704H"))
+    assertThat(FiveDigitTimeConverter.apply("1704H"))
         .get(LOCAL_TIME)
         .hasHour(17)
         .hasMinute(4)
@@ -41,32 +41,32 @@ class FiveDigitTimeConverterTest {
   @Test
   public void convertingTimeStringWithUnknownPaddingCharacterThrowsIllegalArgumentException() {
     assertThatIllegalArgumentException()
-        .isThrownBy(() -> FiveDigitTimeConverter.convert("1704X"))
+        .isThrownBy(() -> FiveDigitTimeConverter.apply("1704X"))
         .withMessageContaining("Unknown character appended to 5-digit time. [Input: 1704X]");
   }
 
   @Test
   public void convertingNullReturnsEmptyOptional() {
-    assertThat(FiveDigitTimeConverter.convert(null)).isEmpty();
+    assertThat(FiveDigitTimeConverter.apply(null)).isEmpty();
   }
 
   @Test
   public void convertingOversizedTimeStringThrowsIllegalArgumentException() {
     assertThatIllegalArgumentException()
-        .isThrownBy(() -> FiveDigitTimeConverter.convert("123456"))
+        .isThrownBy(() -> FiveDigitTimeConverter.apply("123456"))
         .withMessageContaining("Passed in time Strings must be 5 digits. [Input: 123456]");
   }
 
   @Test
   public void convertingUndersizedTimeStringThrowsIllegalArgumentException() {
     assertThatIllegalArgumentException()
-        .isThrownBy(() -> FiveDigitTimeConverter.convert("12"))
+        .isThrownBy(() -> FiveDigitTimeConverter.apply("12"))
         .withMessageContaining("Passed in time Strings must be 5 digits. [Input: 12]");
   }
 
   @Test
   public void convertingInvalidTimeStringThrowsDateTimeParseException() {
-    assertThatExceptionOfType(DateTimeParseException.class).isThrownBy(() -> FiveDigitTimeConverter.convert(
+    assertThatExceptionOfType(DateTimeParseException.class).isThrownBy(() -> FiveDigitTimeConverter.apply(
         "9999H"));
   }
 }

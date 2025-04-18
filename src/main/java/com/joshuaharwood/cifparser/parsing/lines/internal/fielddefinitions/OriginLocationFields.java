@@ -22,17 +22,17 @@ public enum OriginLocationFields implements RowField {
   }
 
   @Override
-  public int getOrder() {
+  public int order() {
     return order;
   }
 
   @Override
-  public String getName() {
+  public String name() {
     return toString();
   }
 
   @Override
-  public int getLength() {
+  public int length() {
     return length;
   }
 }

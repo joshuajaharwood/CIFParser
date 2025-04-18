@@ -23,7 +23,7 @@ public class StringParser {
     int startingIndex = 0;
 
     for (T field : rowFields) {
-      hashMap.put(field, record.substring(startingIndex, startingIndex += field.getLength()));
+      hashMap.put(field, record.substring(startingIndex, startingIndex += field.length()));
     }
 
     return hashMap;
@@ -42,7 +42,7 @@ public class StringParser {
       throw new IllegalArgumentException(
         "Given lengths did not sum up to a full record's length. [Given lengths: %s] [Record length: %d]".formatted(
           lengths.stream()
-            .map(RowField::getLength)
+            .map(RowField::length)
             .map(Object::toString)
             .collect(Collectors.joining(", ")),
           targetLength));
@@ -51,6 +51,6 @@ public class StringParser {
 
   private static <T extends RowField> boolean fieldsAreCorrectLengthTotal(List<T> fields,
     int targetLength) {
-    return fields.stream().mapToInt(RowField::getLength).sum() == targetLength;
+    return fields.stream().mapToInt(RowField::length).sum() == targetLength;
   }
 }

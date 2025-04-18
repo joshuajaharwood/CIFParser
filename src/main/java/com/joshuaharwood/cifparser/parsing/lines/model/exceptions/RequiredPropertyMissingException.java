@@ -4,11 +4,10 @@ import java.util.Map;
 
 public final class RequiredPropertyMissingException extends CifLineParserException {
 
-  public RequiredPropertyMissingException(String fieldName, String record, Map<?, String> parsedValues) {
+  public RequiredPropertyMissingException(String fieldName, Map<?, String> parsedValues) {
     super(
-      "Failed to parse as a required CIF field was null. [Field name: %s] [Record: %s] [Parsed values: %s]".formatted(
+      "Failed to parse as a required CIF field was null. [Field name: %s] [Parsed values: %s]".formatted(
         fieldName,
-        record,
         parsedValues));
   }
 }

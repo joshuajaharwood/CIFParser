@@ -18,8 +18,6 @@ public class LiteralLookup {
 
   @Nullable
   public static <T extends Enum<T> & Literal> T lookup(Class<T> clazz, @Nullable String literal) {
-    Objects.requireNonNull(clazz);
-
     logger.debug("Attempting to lookup literal. [Class: {}] [Literal: {}]",
       clazz.getSimpleName(),
       literal);
@@ -49,7 +47,11 @@ public class LiteralLookup {
       throw new DuplicateLiteralException(clazz, literal, matches);
     }
 
-    return matches.getFirst();
+    final var match = matches.getFirst();
+
+    logger.debug("Matched literal. [Literal: {}]", match);
+
+    return match;
   }
 
   public static <T extends Enum<T> & Literal> ImmutableSet<T> lookupSet(Class<T> clazz,

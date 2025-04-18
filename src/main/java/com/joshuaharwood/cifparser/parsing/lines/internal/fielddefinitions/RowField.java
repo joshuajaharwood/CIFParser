@@ -1,9 +1,15 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions;
 
-public interface RowField {
-  int getOrder();
+import java.util.function.Function;
 
-  String getName();
+public interface RowField<T> {
+  int order();
 
-  int getLength();
+  String name();
+
+  int length();
+  
+  boolean isRequired();
+
+  Function<String, T> getConverter();
 }

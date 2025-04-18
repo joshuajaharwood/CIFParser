@@ -10,11 +10,11 @@ class ZeroSafeTimeConverterTest {
 
   @Test
   void convertsZeroTimesToEmptyOptionals() {
-    assertThat(ZeroSafeTimeConverter.convert("0000")).isEmpty();
+    assertThat(ZeroSafeTimeConverter.apply("0000")).isEmpty();
   }
 
   @Test
   void convertsNonZeroTimesToLocalTimes() {
-    assertThat(ZeroSafeTimeConverter.convert("0001")).contains(LocalTime.of(0, 1));
+    assertThat(ZeroSafeTimeConverter.apply("0001")).contains(LocalTime.of(0, 1));
   }
 }

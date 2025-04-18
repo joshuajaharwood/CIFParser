@@ -22,14 +22,12 @@ public final class BasicScheduleExtendedParser implements
             .map(Integer::valueOf)
             .orElse(null),
         ifPresent(parsedValues.get(BasicScheduleExtendedFields.ATOC_CODE)).orElseThrow(() -> new RequiredPropertyMissingException(
-            BasicScheduleExtendedFields.ATOC_CODE.getName(),
-            record,
-            parsedValues)),
+            BasicScheduleExtendedFields.ATOC_CODE.name(),
+          parsedValues)),
         lookup(ApplicableTimetableCode.class,
             parsedValues.get(BasicScheduleExtendedFields.APPLICABLE_TIMETABLE_CODE)).orElseThrow(() -> new RequiredPropertyMissingException(
-            BasicScheduleExtendedFields.APPLICABLE_TIMETABLE_CODE.getName(),
-            record,
-            parsedValues)),
+            BasicScheduleExtendedFields.APPLICABLE_TIMETABLE_CODE.name(),
+          parsedValues)),
         ifPresent(parsedValues.get(BasicScheduleExtendedFields.RETAIL_SERVICE_ID)).orElse(null),
         ifPresent(parsedValues.get(BasicScheduleExtendedFields.SOURCE))
             .map(this::parseChar)

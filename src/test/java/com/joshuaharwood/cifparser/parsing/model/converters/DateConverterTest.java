@@ -14,7 +14,7 @@ class DateConverterTest {
 
   @Test
   void parseGoodDateReturnsCorrectOptional() {
-    assertThat(DateConverter.convert("221123"))
+    assertThat(DateConverter.apply("221123"))
         .get(LOCAL_DATE)
         .hasDayOfMonth(22)
         .hasMonth(Month.NOVEMBER)
@@ -23,19 +23,19 @@ class DateConverterTest {
 
   @Test
   void parseNullDateReturnsEmptyOptional() {
-    assertThat(DateConverter.convert(null)).isEmpty();
+    assertThat(DateConverter.apply(null)).isEmpty();
   }
 
   @Test
   void parseInvalidDateThrowsJavaTimeException() {
-    assertThatExceptionOfType(DateTimeParseException.class).isThrownBy(() -> DateConverter.convert(
+    assertThatExceptionOfType(DateTimeParseException.class).isThrownBy(() -> DateConverter.apply(
         "011301"));
   }
 
   @Test
   void parseTooShortDateThrowsIllegalArgumentException() {
     assertThatIllegalArgumentException()
-        .isThrownBy(() -> DateConverter.convert("01010"))
+        .isThrownBy(() -> DateConverter.apply("01010"))
         .withMessage("Date input must be 6 digits.");
   }
 }

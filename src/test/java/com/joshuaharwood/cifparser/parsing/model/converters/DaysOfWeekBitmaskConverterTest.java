@@ -12,7 +12,7 @@ class DaysOfWeekBitmaskConverterTest {
 
   @Test
   void convertValidBitmask() {
-    assertThat(DaysOfWeekBitmaskConverter.convert("0110011")).containsOnly(DayOfWeek.TUESDAY,
+    assertThat(DaysOfWeekBitmaskConverter.apply("0110011")).containsOnly(DayOfWeek.TUESDAY,
       DayOfWeek.WEDNESDAY,
       DayOfWeek.SATURDAY,
       DayOfWeek.SUNDAY);
@@ -20,19 +20,19 @@ class DaysOfWeekBitmaskConverterTest {
 
   @Test
   void convertInvalidBitmaskWrongLength() {
-    assertThatIllegalArgumentException().isThrownBy(() -> DaysOfWeekBitmaskConverter.convert("0110"))
+    assertThatIllegalArgumentException().isThrownBy(() -> DaysOfWeekBitmaskConverter.apply("0110"))
       .withMessage("Days-of-week bitmask must be 7 binary digits.");
   }
 
   @Test
   void convertInvalidBitmaskBadBit() {
-    assertThatIllegalArgumentException().isThrownBy(() -> DaysOfWeekBitmaskConverter.convert(
+    assertThatIllegalArgumentException().isThrownBy(() -> DaysOfWeekBitmaskConverter.apply(
       "0110211")).withMessage("Illegal character in bitmask. [Bitmask: 0110211] [Index: 4]");
   }
 
   @Test
   void convertNullBitmask() {
-    assertThatNullPointerException().isThrownBy(() -> DaysOfWeekBitmaskConverter.convert(null))
+    assertThatNullPointerException().isThrownBy(() -> DaysOfWeekBitmaskConverter.apply(null))
       .withMessage("Days-of-week bitmask must not be null.");
   }
 }

@@ -4,7 +4,6 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.AssociationParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.BasicScheduleExtendedParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.BasicScheduleParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.ChangeEnRouteParser;
-import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.CifLineParserException;
 import com.joshuaharwood.cifparser.parsing.lines.internal.HeaderParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.IntermediateLocationParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.OriginLocationParser;
@@ -14,9 +13,10 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.TiplocAmendParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.TiplocDeleteParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.TiplocInsertParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.TrailerParser;
+import com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup;
 import com.joshuaharwood.cifparser.parsing.lines.model.CifRecord;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.CifLineParserException;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -32,18 +32,21 @@ public class CifLineParser {
   public CifRecord parseLine(String record) {
     if (record.isBlank() || record.trim().length() < 2) {
       throw new IllegalArgumentException(
-          "Record must be at least 2 characters to establish RecordIdentity.");
+        "Record must be at least 2 characters to establish RecordIdentity.");
     }
 
     if (record.length() != 80) {
       throw new IllegalArgumentException(
-          "CIF records should be 80 characters, including whitespace.");
+        "CIF records should be 80 characters, including whitespace.");
     }
 
     try {
       final RecordIdentity identity = LiteralLookup.lookup(RecordIdentity.class,
-              record.substring(0, 2))
-          .orElseThrow(() -> new IllegalArgumentException("A record's identity cannot be blank."));
+        record.substring(0, 2));
+
+      if (identity == null) {
+        throw new IllegalArgumentException("A record's identity cannot be blank.");
+      }
 
       return parsers.get(identity).parse(record);
     } catch (Exception e) {

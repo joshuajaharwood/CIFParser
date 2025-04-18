@@ -26,11 +26,11 @@ public final class AssociationParser implements RecordSpecificParser<Association
       parsedValues.get(AssociationFields.TRANSACTION_TYPE)).orElse(null),
       ifPresent(parsedValues.get(AssociationFields.BASE_UID)).orElse(null),
       ifPresent(parsedValues.get(AssociationFields.ASSOCIATION_UID)).orElse(null),
-      InverseDateConverter.convert(parsedValues.get(AssociationFields.ASSOCIATION_START_DATE))
+      InverseDateConverter.apply(parsedValues.get(AssociationFields.ASSOCIATION_START_DATE))
         .orElse(null),
-      InverseDateConverter.convert(parsedValues.get(AssociationFields.ASSOCIATION_END_DATE))
+      InverseDateConverter.apply(parsedValues.get(AssociationFields.ASSOCIATION_END_DATE))
         .orElse(null),
-      DaysOfWeekBitmaskConverter.convert(parsedValues.get(AssociationFields.ASSOCIATION_DAYS)),
+      DaysOfWeekBitmaskConverter.apply(parsedValues.get(AssociationFields.ASSOCIATION_DAYS)),
       LiteralLookup.lookup(AssociationCategory.class,
         parsedValues.get(AssociationFields.ASSOCIATION_CATEGORY)).orElse(null),
       LiteralLookup.lookup(AssociationDateIndicator.class,

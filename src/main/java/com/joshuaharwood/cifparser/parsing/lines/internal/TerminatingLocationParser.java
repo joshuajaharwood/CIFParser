@@ -16,9 +16,9 @@ public final class TerminatingLocationParser implements
 
     return new TerminatingLocation(ifPresent(parsedValues.get(TerminatingLocationFields.LOCATION)).orElse(
         null),
-        FiveDigitTimeConverter.convert(parsedValues.get(TerminatingLocationFields.SCHEDULED_ARRIVAL_TIME))
+        FiveDigitTimeConverter.apply(parsedValues.get(TerminatingLocationFields.SCHEDULED_ARRIVAL_TIME))
                               .orElse(null),
-        ZeroSafeTimeConverter.convert(parsedValues.get(TerminatingLocationFields.PUBLIC_ARRIVAL_TIME))
+        ZeroSafeTimeConverter.apply(parsedValues.get(TerminatingLocationFields.PUBLIC_ARRIVAL_TIME))
                              .orElse(null),
         ifPresent(parsedValues.get(TerminatingLocationFields.PLATFORM)).orElse(null),
         ifPresent(parsedValues.get(TerminatingLocationFields.PATH)).orElse(null),

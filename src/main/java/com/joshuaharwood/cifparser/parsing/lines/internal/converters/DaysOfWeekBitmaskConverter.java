@@ -6,7 +6,28 @@ import java.util.EnumSet;
 import java.util.Objects;
 import java.util.Set;
 
-public class DaysOfWeekBitmaskConverter {
+public class DaysOfWeekBitmaskConverter implements Converter<Set<DayOfWeek>> {
+
+  private static final DaysOfWeekBitmaskConverter INSTANCE = new DaysOfWeekBitmaskConverter();
+
+  private DaysOfWeekBitmaskConverter() {
+  }
+
+  public static DaysOfWeekBitmaskConverter getInstance() {
+    return INSTANCE;
+  }
+
+  private static boolean getBit(String bitmask, int position) {
+    char c = bitmask.charAt(position);
+
+    if (c != '1' && c != '0') {
+      throw new IllegalArgumentException("Illegal character in bitmask. [Bitmask: %s] [Index: %d]".formatted(
+        bitmask,
+        position));
+    }
+
+    return c == '1';
+  }
 
   /**
    * Converts days-of-the-week bitmasks to {@link Set}s representing the days the bitmask
@@ -20,7 +41,7 @@ public class DaysOfWeekBitmaskConverter {
    * @throws IllegalArgumentException if {@code stringBitmask} is longer or shorter than 7
    *                                  characters.
    */
-  public static Set<DayOfWeek> convert(String stringBitmask) {
+  public Set<DayOfWeek> apply(String stringBitmask) {
     Objects.requireNonNull(stringBitmask, "Days-of-week bitmask must not be null.");
 
     if (stringBitmask.length() != 7) {
@@ -36,17 +57,5 @@ public class DaysOfWeekBitmaskConverter {
     }
 
     return Collections.unmodifiableSet(daysOfWeek);
-  }
-
-  private static boolean getBit(String bitmask, int position) {
-    char c = bitmask.charAt(position);
-
-    if (c != '1' && c != '0') {
-      throw new IllegalArgumentException("Illegal character in bitmask. [Bitmask: %s] [Index: %d]".formatted(
-        bitmask,
-        position));
-    }
-
-    return c == '1';
   }
 }

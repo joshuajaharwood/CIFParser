@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.model.exceptions;
 
-public abstract sealed class CifLineParserException extends RuntimeException permits
+public sealed class CifLineParserException extends RuntimeException permits
   RequiredPropertyMissingException, UnknownLiteralException, DuplicateLiteralException {
 
   public CifLineParserException(String message, Exception e) {

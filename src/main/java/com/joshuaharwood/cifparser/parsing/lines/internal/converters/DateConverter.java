@@ -2,18 +2,23 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 import java.util.Optional;
 
-public class DateConverter {
+public class DateConverter implements Converter<Optional<LocalDate>> {
 
   private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("ddMMyy");
 
+  private static final DateConverter INSTANCE = new DateConverter();
+
   private DateConverter() {
   }
+  
+  public static DateConverter getInstance() {
+    return INSTANCE;
+  }
 
-  public static Optional<LocalDate> convert(String input) {
-    if (input == null || input.isBlank()) {
+  public Optional<LocalDate> apply(String input) {
+    if (input.isBlank()) {
       return Optional.empty();
     }
 

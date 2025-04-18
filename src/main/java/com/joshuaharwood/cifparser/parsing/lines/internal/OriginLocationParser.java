@@ -15,14 +15,13 @@ public final class OriginLocationParser implements RecordSpecificParser<OriginLo
         OriginLocationFields.values());
 
     return new OriginLocation(ifPresent(parsedValues.get(OriginLocationFields.LOCATION)).orElseThrow(
-        () -> new RequiredPropertyMissingException(OriginLocationFields.LOCATION.getName(),
-            record,
-            parsedValues)),
+        () -> new RequiredPropertyMissingException(OriginLocationFields.LOCATION.name(),
+          parsedValues)),
         FiveDigitTimeConverter
-            .convert(parsedValues.get(OriginLocationFields.SCHEDULED_DEPARTURE_TIME).trim())
+            .apply(parsedValues.get(OriginLocationFields.SCHEDULED_DEPARTURE_TIME).trim())
             .orElse(null),
         ZeroSafeTimeConverter
-            .convert(parsedValues.get(OriginLocationFields.PUBLIC_DEPARTURE_TIME))
+            .apply(parsedValues.get(OriginLocationFields.PUBLIC_DEPARTURE_TIME))
             .orElse(null),
         ifPresent(parsedValues.get(OriginLocationFields.PLATFORM)).orElse(null),
         ifPresent(parsedValues.get(OriginLocationFields.LINE)).orElse(null),

@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule.TrainStatus;
+import com.joshuaharwood.cifparser.parsing.lines.model.BasicScheduleBuilder;
 import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.RequiredPropertyMissingException;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.SeatingClass;
@@ -35,31 +36,32 @@ class BasicScheduleParserTest {
 
   @Test
   void parsesGoodDataSuccessfully() {
-    final var expected = new BasicSchedule(TransactionType.REVISE,
-        "G82885",
-        LocalDate.of(2015, 10, 19),
-        LocalDate.of(2015, 10, 23),
-        Set.of(DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.FRIDAY),
-        null,
-        TrainStatus.PASSENGER_AND_PARCELS_PERMANENT,
-        TrainCategory.ORDINARY_PASSENGER,
-        "2N75",
-        null,
-        (byte) 1,
-        13575825,
-        null,
-        PowerType.DIESEL_MECHANICAL_MULTIPLE_UNIT,
-        "E",
-        90,
-        Collections.emptySet(),
-        SeatingClass.STANDARD,
-        null,
-        null,
-        null,
-        Collections.emptySet(),
-        null,
-        StpIndicator.STP_OVERLAY_OF_PERMANENT_ASSOCIATION,
-        null);
+    final var expected = new BasicScheduleBuilder().setTransactionType(TransactionType.REVISE)
+      .setTrainUid("G82885")
+      .setDateRunsFrom(LocalDate.of(2015, 10, 19))
+      .setDateRunsTo(LocalDate.of(2015, 10, 23))
+      .setDaysRun(Set.of(DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.FRIDAY))
+      .setBankHolidayRunning(null)
+      .setTrainStatus(TrainStatus.PASSENGER_AND_PARCELS_PERMANENT)
+      .setTrainCategory(TrainCategory.ORDINARY_PASSENGER)
+      .setTrainIdentity("2N75")
+      .setHeadcode(null)
+      .setCourseIndicator((byte) 1)
+      .setTrainServiceCode(13575825)
+      .setPortionId(null)
+      .setPowerType(PowerType.DIESEL_MECHANICAL_MULTIPLE_UNIT)
+      .setTimingLoad("E")
+      .setSpeed(90)
+      .setOperatingCharacteristics(Collections.emptySet())
+      .setSeatingClass(SeatingClass.STANDARD)
+      .setSleepers(null)
+      .setReservations(null)
+      .setConnectionIndicator(null)
+      .setCateringCode(Collections.emptySet())
+      .setServiceBranding(null)
+      .setStpIndicator(StpIndicator.STP_OVERLAY_OF_PERMANENT_ASSOCIATION)
+      .setSpare(null)
+      .createBasicSchedule();
 
     final var actual = parser.parse(TEST_BS_RECORD);
 
@@ -96,31 +98,32 @@ class BasicScheduleParserTest {
 
     final BasicSchedule actual = parser.parse(headcode);
 
-    final BasicSchedule expected = new BasicSchedule(TransactionType.NEW,
-        "C18521",
-        LocalDate.of(2023, 5, 21),
-        LocalDate.of(2023, 12, 3),
-        Set.of(DayOfWeek.SUNDAY),
-        null,
-        TrainStatus.BUS_PERMANENT,
-        TrainCategory.BUS_WTT_SERVICE,
-        "0B00",
-        "RA6",
-        (byte) 1,
-        25527005,
-        null, 
-        null, 
-        null, 
-        null, 
-        Collections.emptySet(),
-        null,
-        null,
-        null,
-        null,
-        Collections.emptySet(),
-        null,
-        StpIndicator.PERMANENT_ASSOCIATION,
-        null);
+    final BasicSchedule expected = new BasicScheduleBuilder().setTransactionType(TransactionType.NEW)
+      .setTrainUid("C18521")
+      .setDateRunsFrom(LocalDate.of(2023, 5, 21))
+      .setDateRunsTo(LocalDate.of(2023, 12, 3))
+      .setDaysRun(Set.of(DayOfWeek.SUNDAY))
+      .setBankHolidayRunning(null)
+      .setTrainStatus(TrainStatus.BUS_PERMANENT)
+      .setTrainCategory(TrainCategory.BUS_WTT_SERVICE)
+      .setTrainIdentity("0B00")
+      .setHeadcode("RA6")
+      .setCourseIndicator((byte) 1)
+      .setTrainServiceCode(25527005)
+      .setPortionId(null)
+      .setPowerType(null)
+      .setTimingLoad(null)
+      .setSpeed(null)
+      .setOperatingCharacteristics(Collections.emptySet())
+      .setSeatingClass(null)
+      .setSleepers(null)
+      .setReservations(null)
+      .setConnectionIndicator(null)
+      .setCateringCode(Collections.emptySet())
+      .setServiceBranding(null)
+      .setStpIndicator(StpIndicator.PERMANENT_ASSOCIATION)
+      .setSpare(null)
+      .createBasicSchedule();
     
     assertThat(actual).isEqualTo(expected);
   }

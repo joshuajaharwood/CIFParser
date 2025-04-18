@@ -4,15 +4,21 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 
-public class TimeConverter {
+public class TimeConverter implements Converter<Optional<LocalTime>> {
 
   private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HHmm");
+
+  private static final TimeConverter INSTANCE = new TimeConverter();
 
   private TimeConverter() {
   }
 
-  public static Optional<LocalTime> convert(String input) {
-    if (input == null || input.isBlank()) {
+  public static TimeConverter getInstance() {
+    return INSTANCE;
+  }
+
+  public Optional<LocalTime> apply(String input) {
+    if (input.isBlank()) {
       return Optional.empty();
     }
 
