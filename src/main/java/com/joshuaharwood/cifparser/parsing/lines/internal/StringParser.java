@@ -12,7 +12,7 @@ public class StringParser {
   private StringParser() {
   }
 
-  public static <T extends RowField> Map<T, String> parse(String record,
+  public static <T extends RowField<?>> Map<T, String> parse(String record,
     List<T> rowFields) {
     Objects.requireNonNull(record);
     Objects.requireNonNull(rowFields);
@@ -29,11 +29,11 @@ public class StringParser {
     return hashMap;
   }
 
-  public static <T extends RowField> Map<T, String> parse(String record, T[] rowFields) {
+  public static <T extends RowField<?>> Map<T, String> parse(String record, T[] rowFields) {
     return parse(record, List.of(rowFields));
   }
 
-  private static <T extends RowField> void validateLengths(List<T> lengths, int targetLength) {
+  private static <T extends RowField<?>> void validateLengths(List<T> lengths, int targetLength) {
     if (!fieldsAreCorrectLengthTotal(lengths, targetLength)) {
       if (lengths.isEmpty()) {
         throw new IllegalArgumentException("RowField argument must include at least one element.");
@@ -49,7 +49,7 @@ public class StringParser {
     }
   }
 
-  private static <T extends RowField> boolean fieldsAreCorrectLengthTotal(List<T> fields,
+  private static <T extends RowField<?>> boolean fieldsAreCorrectLengthTotal(List<T> fields,
     int targetLength) {
     return fields.stream().mapToInt(RowField::length).sum() == targetLength;
   }

@@ -14,25 +14,16 @@ public final class BasicScheduleParser implements RecordSpecificParser<BasicSche
 
   @Override
   public BasicSchedule parse(String record) {
-    final Map<BasicScheduleField, String> parsedValues = StringParser.parse(record,
-      BasicScheduleField.values());
+    final Map<BasicScheduleField<?>, String> parsedValues = StringParser.parse(record,
+      BasicScheduleField.getFields());
 
     var builder = new BasicScheduleBuilder();
 
-    for (BasicScheduleField value : BasicScheduleField.values()) {
-      var parsedValue = parsedValues.get(value);
-
-      if (value.isRequired() && parsedValue == null) {
-        throw new RequiredPropertyMissingException(value.getName(), parsedValues);
-      }
+    // FIXME: we might want runtime type info here... or maybe at least for compile time checking?
+    for (BasicScheduleField<?> value : BasicScheduleField.getFields()) {
       
-      if (value.isRequired()) {
-        if (value.getMarshallableType().isInstance()) {
-          
-        }
-      }
-
-      // We return the builder here to ensure exhaustiveness. Language quirk...
+      var converted = value.convert(parsedValues.get(value));
+      
       BasicScheduleBuilder x = switch (value) {
 //        case CATERING_CODE -> builder.setCateringCode();
         case SPARE -> builder.setSpare(parsedValue);
@@ -65,6 +56,21 @@ public final class BasicScheduleParser implements RecordSpecificParser<BasicSche
         // No-op
         case RECORD_IDENTITY -> builder;
       };
+      
+      
+      var parsedValue = parsedValues.get(value)
+
+      if (value.isRequired() && parsedValue == null) {
+        throw new RequiredPropertyMissingException(value.getName(), parsedValues);
+      }
+
+      if (value.isRequired()) {
+        if (value.getMarshallableType().isInstance()) {
+        }
+      }
+
+      // We return the builder here to ensure exhaustiveness. Language quirk...
+      
 
     }
 
@@ -113,15 +119,15 @@ public final class BasicScheduleParser implements RecordSpecificParser<BasicSche
 //          ifPresent(parsedValues.get(BasicScheduleField.SPARE)).orElse(null))).createBasicSchedule();
   }
 
-  private @Nullable String getValue(Map<BasicScheduleField, String> parsedValues,
-    BasicScheduleField key,
-    boolean required) {
-    var value = parsedValues.get(key);
-
-    if (value == null && required) {
-      throw new RequiredPropertyMissingException(key.getName(), parsedValues);
-    }
-
-    return value;
-  }
+//  private @Nullable String getValue(Map<BasicScheduleField, String> parsedValues,
+//    BasicScheduleField key,
+//    boolean required) {
+//    var value = parsedValues.get(key);
+//
+//    if (value == null && required) {
+//      throw new RequiredPropertyMissingException(key.getName(), parsedValues);
+//    }
+//
+//    return value;
+//  }
 }
