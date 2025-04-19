@@ -7,8 +7,8 @@ import java.util.function.Function;
 public record TrainIdentityField() implements BasicScheduleField<String> {
 
   @Override
-  public int order() {
-    return 10;
+  public int startIndex() {
+    return 32;
   }
 
   @Override

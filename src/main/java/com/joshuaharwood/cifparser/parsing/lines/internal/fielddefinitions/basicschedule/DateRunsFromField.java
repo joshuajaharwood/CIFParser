@@ -8,8 +8,8 @@ import java.util.function.Function;
 public record DateRunsFromField() implements BasicScheduleField<LocalDate> {
 
   @Override
-  public int order() {
-    return 4;
+  public int startIndex() {
+    return 9;
   }
 
   @Override

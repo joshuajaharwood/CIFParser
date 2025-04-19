@@ -7,8 +7,8 @@ import java.util.function.Function;
 public record ServiceBrandingField() implements BasicScheduleField<String> {
 
   @Override
-  public int order() {
-    return 24;
+  public int startIndex() {
+    return 74;
   }
 
   @Override

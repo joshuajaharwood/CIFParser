@@ -1,33 +1,28 @@
 package com.joshuaharwood.cifparser.parsing.lines;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.AssociationParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.BasicScheduleExtendedParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.BasicScheduleParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.ChangeEnRouteParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.HeaderParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.IntermediateLocationParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.OriginLocationParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.RecordSpecificParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.TerminatingLocationParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.TiplocAmendParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.TiplocDeleteParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.TiplocInsertParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.TrailerParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup;
 import com.joshuaharwood.cifparser.parsing.lines.model.CifRecord;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.CifLineParserException;
-import java.util.EnumMap;
-import java.util.Map;
+import org.slf4j.Logger;
 
 public class CifLineParser {
 
-  private final Map<RecordIdentity, RecordSpecificParser<?>> parsers;
+  private static final BasicScheduleParser BASIC_SCHEDULE_PARSER = new BasicScheduleParser();
+  private static final Logger LOG = org.slf4j.LoggerFactory.getLogger(CifLineParser.class);
 
-  public CifLineParser() {
-    this.parsers = new EnumMap<>(RecordIdentity.class);
-    constructParserMap();
-  }
+//  private static final HeaderParser HEADER_PARSER = new HeaderParser();
+//  private static final TiplocInsertParser TIPLOC_INSERT_PARSER = new TiplocInsertParser();
+//  private static final TiplocAmendParser TIPLOC_AMEND_PARSER = new TiplocAmendParser();
+//  private static final TiplocDeleteParser TIPLOC_DELETE_PARSER = new TiplocDeleteParser();
+//  private static final AssociationParser ASSOCIATION_PARSER = new AssociationParser();
+//  private static final BasicScheduleExtendedParser BASIC_SCHEDULE_EXTENDED_PARSER = new BasicScheduleExtendedParser();
+//  private static final OriginLocationParser ORIGIN_LOCATION_PARSER = new OriginLocationParser();
+//  private static final IntermediateLocationParser INTERMEDIATE_LOCATION_PARSER = new IntermediateLocationParser();
+//  private static final ChangeEnRouteParser CHANGE_EN_ROUTE_PARSER = new ChangeEnRouteParser();
+//  private static final TerminatingLocationParser TERMINATING_LOCATION_PARSER = new TerminatingLocationParser();
+//  private static final TrailerParser TRAILER_PARSER = new TrailerParser();
 
   public CifRecord parseLine(String record) {
     if (record.isBlank() || record.trim().length() < 2) {
@@ -48,33 +43,26 @@ public class CifLineParser {
         throw new IllegalArgumentException("A record's identity cannot be blank.");
       }
 
-      return parsers.get(identity).parse(record);
+      return switch (identity) {
+//        case HEADER_RECORD -> HEADER_PARSER.parse(record);
+//        case TIPLOC_INSERT_RECORD -> TIPLOC_INSERT_PARSER.parse(record);
+//        case TIPLOC_AMEND_RECORD -> TIPLOC_AMEND_PARSER.parse(record);
+//        case TIPLOC_DELETE_RECORD -> TIPLOC_DELETE_PARSER.parse(record);
+//        case ASSOCIATION_RECORD -> ASSOCIATION_PARSER.parse(record);
+        case BASIC_SCHEDULE -> BASIC_SCHEDULE_PARSER.parse(record);
+//        case BASIC_SCHEDULE_EXTRA_DETAILS -> BASIC_SCHEDULE_EXTENDED_PARSER.parse(record);
+//        case ORIGIN_LOCATION -> ORIGIN_LOCATION_PARSER.parse(record);
+//        case INTERMEDIATE_LOCATION -> INTERMEDIATE_LOCATION_PARSER.parse(record);
+//        case CHANGE_EN_ROUTE -> CHANGE_EN_ROUTE_PARSER.parse(record);
+//        case TERMINATING_LOCATION -> TERMINATING_LOCATION_PARSER.parse(record);
+//        case TRAILER_RECORD -> TRAILER_PARSER.parse(record);
+
+        default -> throw new UnsupportedOperationException("Not yet implemented. TEMP");
+//        case TRAIN_SPECIFIC_NOTE, LOCATION_SPECIFIC_NOTE ->
+//          throw new UnsupportedOperationException("Not yet implemented.");
+      };
     } catch (Exception e) {
       throw new CifLineParserException("Failed to parse record. [Record: %s]".formatted(record), e);
-    }
-  }
-
-  private void constructParserMap() {
-    for (RecordIdentity recordIdentity : RecordIdentity.values()) {
-      RecordSpecificParser<?> parser = switch (recordIdentity) {
-        case HEADER_RECORD -> new HeaderParser();
-        case TIPLOC_INSERT_RECORD -> new TiplocInsertParser();
-        case TIPLOC_AMEND_RECORD -> new TiplocAmendParser();
-        case TIPLOC_DELETE_RECORD -> new TiplocDeleteParser();
-        case ASSOCIATION_RECORD -> new AssociationParser();
-        case BASIC_SCHEDULE -> new BasicScheduleParser();
-        case BASIC_SCHEDULE_EXTRA_DETAILS -> new BasicScheduleExtendedParser();
-        case ORIGIN_LOCATION -> new OriginLocationParser();
-        case INTERMEDIATE_LOCATION -> new IntermediateLocationParser();
-        case CHANGE_EN_ROUTE -> new ChangeEnRouteParser();
-        case TERMINATING_LOCATION -> new TerminatingLocationParser();
-        case TRAILER_RECORD -> new TrailerParser();
-        case TRAIN_SPECIFIC_NOTE, LOCATION_SPECIFIC_NOTE -> null;
-      };
-
-      if (parser != null) {
-        parsers.put(recordIdentity, parser);
-      }
     }
   }
 }

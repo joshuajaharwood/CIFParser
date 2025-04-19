@@ -30,76 +30,51 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basic
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.TransactionTypeField;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicScheduleBuilder;
-import java.util.Map;
 
 public final class BasicScheduleParser implements RecordSpecificParser<BasicSchedule> {
 
   @Override
   public BasicSchedule parse(String record) {
-    final Map<BasicScheduleField<?>, String> parsedValues = StringParser.parse(record,
-      BasicScheduleFieldInstances.getAll());
+    final var builder = new BasicScheduleBuilder();
 
-    var builder = new BasicScheduleBuilder();
-
-    for (var fieldEntry : parsedValues.entrySet()) {
-      switch (fieldEntry.getKey()) {
-        case BankHolidayRunningField bankHolidayRunningField -> {
+    for (BasicScheduleField<?> basicScheduleField : BasicScheduleFieldInstances.getAll()) {
+      // Switching here allows type checking on the conversion!
+      switch (basicScheduleField) {
+        case RecordIdentityField _ -> {
         }
-        case BusinessSectorPortionIdField businessSectorPortionIdField -> {
-        }
-        case CateringCodeField cateringCodeField -> {
-        }
-        case ConnectIndicatorField connectIndicatorField -> {
-        }
-        case CourseIndicatorField courseIndicatorField -> {
-        }
-        case DateRunsFromField dateRunsFromField -> {
-        }
-        case DateRunsToField dateRunsToField -> {
-        }
-        case DaysRunField daysRunField -> {
-        }
-        case HeadcodeField headcodeField -> {
-        }
-        case OperatingCharacteristicsField operatingCharacteristicsField -> {
-        }
-        case PowerTypeField powerTypeField -> {
-        }
-        case ProfitCentreCodeField profitCentreCodeField -> {
-        }
-        case RecordIdentityField recordIdentityField -> {
-        }
-        case ReservationsField reservationsField -> {
-        }
-        case ServiceBrandingField serviceBrandingField -> {
-        }
-        case SleepersField sleepersField -> {
-        }
-        case SpareField spareField -> {
-        }
-        case SpeedField speedField -> {
-        }
-        case StpIndicatorField stpIndicatorField -> {
-        }
-        case TimingLoadField timingLoadField -> {
-        }
-        case TrainCategoryField trainCategoryField -> {
-        }
-        case TrainClassField trainClassField -> {
-        }
-        case TrainIdentityField trainIdentityField -> {
-        }
-        case TrainStatusField trainStatusField -> {
-        }
-        case TrainUidField trainUidField -> {
-        }
-        case TransactionTypeField transactionTypeField -> {
-        }
+        case BankHolidayRunningField v -> builder.setBankHolidayRunning(convert(v, record));
+        case BusinessSectorPortionIdField v -> builder.setPortionId(convert(v, record));
+        case CateringCodeField v -> builder.setCateringCode(convert(v, record));
+        case ConnectIndicatorField v -> builder.setConnectionIndicator(convert(v, record));
+        case CourseIndicatorField v -> builder.setCourseIndicator(convert(v, record));
+        case DateRunsFromField v -> builder.setDateRunsFrom(convert(v, record));
+        case DateRunsToField v -> builder.setDateRunsTo(convert(v, record));
+        case DaysRunField v -> builder.setDaysRun(convert(v, record));
+        case HeadcodeField v -> builder.setHeadcode(convert(v, record));
+        case OperatingCharacteristicsField v ->
+          builder.setOperatingCharacteristics(convert(v, record));
+        case PowerTypeField v -> builder.setPowerType(convert(v, record));
+        case ProfitCentreCodeField v -> builder.setTrainServiceCode(convert(v, record));
+        case ReservationsField v -> builder.setReservations(convert(v, record));
+        case ServiceBrandingField v -> builder.setServiceBranding(convert(v, record));
+        case SleepersField v -> builder.setSleepers(convert(v, record));
+        case SpareField v -> builder.setSpare(convert(v, record));
+        case SpeedField v -> builder.setSpeed(convert(v, record));
+        case StpIndicatorField v -> builder.setStpIndicator(convert(v, record));
+        case TimingLoadField v -> builder.setTimingLoad(convert(v, record));
+        case TrainCategoryField v -> builder.setTrainCategory(convert(v, record));
+        case TrainClassField v -> builder.setSeatingClass(convert(v, record));
+        case TrainIdentityField v -> builder.setTrainIdentity(convert(v, record));
+        case TrainStatusField v -> builder.setTrainStatus(convert(v, record));
+        case TrainUidField v -> builder.setTrainUid(convert(v, record));
+        case TransactionTypeField v -> builder.setTransactionType(convert(v, record));
       }
-
-
     }
 
     return builder.createBasicSchedule();
-
   }
+
+  private <T> T convert(BasicScheduleField<T> v, String record) {
+    return v.convert(record.substring(v.startIndex(), v.endIndex()));
+  }
+}

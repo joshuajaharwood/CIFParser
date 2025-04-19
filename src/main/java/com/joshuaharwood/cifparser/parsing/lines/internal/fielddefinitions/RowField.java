@@ -4,7 +4,7 @@ import java.util.function.Function;
 
 public interface RowField<T> {
 
-  int order();
+  int startIndex();
 
   String name();
 
@@ -16,10 +16,13 @@ public interface RowField<T> {
 
   default T convert(String raw) {
     if (isRequired() && raw.isBlank()) {
-      //TODO: improve exception message
-      throw new IllegalArgumentException("Required field '" + name() + "' is blank");
+      throw new IllegalArgumentException("Required field '%s' is blank".formatted(name()));
     }
 
     return converter().apply(raw);
+  }
+
+  default int endIndex() {
+    return startIndex() + length();
   }
 }

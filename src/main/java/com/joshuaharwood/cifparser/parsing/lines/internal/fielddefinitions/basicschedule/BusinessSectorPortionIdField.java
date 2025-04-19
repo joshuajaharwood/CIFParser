@@ -1,13 +1,12 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.ParsingHelpers;
 import java.util.function.Function;
 
 public record BusinessSectorPortionIdField() implements BasicScheduleField<Character> {
 
   @Override
-  public int order() {
-    return 14;
+  public int startIndex() {
+    return 49;
   }
 
   @Override
@@ -27,6 +26,6 @@ public record BusinessSectorPortionIdField() implements BasicScheduleField<Chara
 
   @Override
   public Function<String, Character> converter() {
-    return ParsingHelpers::parseChar;
+    return s -> s.charAt(0);
   }
 }

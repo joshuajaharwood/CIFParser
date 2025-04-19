@@ -3,6 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
 import com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup;
 import java.util.Objects;
+import org.jspecify.annotations.Nullable;
 
 public class LiteralConverter<T extends Enum<T> & Literal> implements Converter<T> {
 
@@ -17,7 +18,7 @@ public class LiteralConverter<T extends Enum<T> & Literal> implements Converter<
   }
 
   @Override
-  public T apply(String input) {
-    return Objects.requireNonNull(LiteralLookup.lookup(literalClass, input));
+  public @Nullable T apply(String input) {
+    return LiteralLookup.lookup(literalClass, input);
   }
 }

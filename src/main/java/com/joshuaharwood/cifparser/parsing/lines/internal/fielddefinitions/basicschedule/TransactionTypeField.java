@@ -2,13 +2,15 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 
 import static com.joshuaharwood.cifparser.parsing.lines.internal.converters.Converters.TRANSACTION_TYPE_CONVERTER;
 
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
 import java.util.function.Function;
+import org.jspecify.annotations.Nullable;
 
 public record TransactionTypeField() implements BasicScheduleField<TransactionType> {
 
   @Override
-  public int order() {
+  public int startIndex() {
     return 2;
   }
 
@@ -31,4 +33,14 @@ public record TransactionTypeField() implements BasicScheduleField<TransactionTy
   public Function<String, TransactionType> converter() {
     return TRANSACTION_TYPE_CONVERTER;
   }
+
+//  @Override
+//  public @Nullable RowField<?> previousField() {
+//    return null;
+//  }
+//
+//  @Override
+//  public @Nullable RowField<?> nextField() {
+//    return ;
+//  }
 }

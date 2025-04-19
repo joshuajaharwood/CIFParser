@@ -14,14 +14,15 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Set;
-import org.jspecify.annotations.Nullable;
+import org.jspecify.annotations.NullUnmarked;
 
+@NullUnmarked
 public class BasicScheduleBuilder {
 
   private TransactionType transactionType;
   private String trainUid;
   private LocalDate dateRunsFrom;
-  private @Nullable LocalDate dateRunsTo;
+  private LocalDate dateRunsTo;
   private Set<DayOfWeek> daysRun;
   private BankHolidayRunning bankHolidayRunning;
   private TrainStatus trainStatus;
@@ -42,7 +43,7 @@ public class BasicScheduleBuilder {
   private Set<CateringCode> cateringCode;
   private String serviceBranding;
   private StpIndicator stpIndicator;
-  private @Nullable String spare;
+  private String spare;
 
   public BasicScheduleBuilder setTransactionType(TransactionType transactionType) {
     this.transactionType = transactionType;
@@ -59,7 +60,7 @@ public class BasicScheduleBuilder {
     return this;
   }
 
-  public BasicScheduleBuilder setDateRunsTo(@Nullable LocalDate dateRunsTo) {
+  public BasicScheduleBuilder setDateRunsTo(LocalDate dateRunsTo) {
     this.dateRunsTo = dateRunsTo;
     return this;
   }
@@ -164,7 +165,7 @@ public class BasicScheduleBuilder {
     return this;
   }
 
-  public BasicScheduleBuilder setSpare(@Nullable String spare) {
+  public BasicScheduleBuilder setSpare(String spare) {
     this.spare = spare;
     return this;
   }

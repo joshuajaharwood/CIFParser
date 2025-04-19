@@ -10,55 +10,14 @@ import java.util.Optional;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
-public sealed interface RecordSpecificParser<T extends CifRecord> permits AssociationParser,
-  BasicScheduleExtendedParser, BasicScheduleParser, ChangeEnRouteParser, HeaderParser,
-  IntermediateLocationParser, OriginLocationParser, TerminatingLocationParser, TiplocAmendParser,
-  TiplocDeleteParser, TiplocInsertParser, TrailerParser {
+public sealed interface RecordSpecificParser<T extends CifRecord> permits
+  BasicScheduleParser
+  
+//  AssociationParser,
+//  BasicScheduleExtendedParser, , ChangeEnRouteParser, HeaderParser,
+//  IntermediateLocationParser, OriginLocationParser, TerminatingLocationParser, TiplocAmendParser,
+//  TiplocDeleteParser, TiplocInsertParser, TrailerParser 
+{
 
   T parse(String record);
-
-//  default Optional<String> ifPresent(String s) {
-//    if (s.isBlank()) {
-//      return Optional.empty();
-//    }
-//
-//    return Optional.of(s.trim());
-//  }
-//
-//  default @Nullable Character parseChar(String s) {
-//    if (s.length() > 1) {
-//      throw new IllegalArgumentException("Given string was longer than one character.");
-//    }
-//
-//    if (s.isBlank()) {
-//      return null;
-//    }
-//
-//    return s.charAt(0);
-//  }
-//
-//
-//  default String required(
-//    Map<?, String> parsedValues,
-//    String parseKey) {
-//    
-//    String parsedValue = parsedValues.get(parseKey);
-//    
-//    if (parsedValue == null) {
-//      throw new RequiredPropertyMissingException(parseKey,
-//        parsedValues);
-//    }
-//
-//    return parsedValue;
-//  }
-//
-//  default <E extends Enum<E> & Literal> E requiredLookup(Map<?, String> parsedValues,
-//    String parseKey,
-//    Class<E> literalType) {
-//    
-//    String requiredValue = required(parsedValues, parseKey);
-//
-//    // If this is null, we couldn't find the literal!
-//    return lookup(literalType, requiredValue);
-//  }
 }

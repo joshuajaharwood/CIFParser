@@ -4,11 +4,10 @@ import static com.joshuaharwood.cifparser.parsing.lines.internal.converters.Conv
 
 import java.util.function.Function;
 
-public record ConnectIndicatorField() implements BasicScheduleField<String> {
-
+public record ConnectIndicatorField() implements BasicScheduleField<Character> {
   @Override
-  public int order() {
-    return 22;
+  public int startIndex() {
+    return 69;
   }
 
   @Override
@@ -27,7 +26,7 @@ public record ConnectIndicatorField() implements BasicScheduleField<String> {
   }
 
   @Override
-  public Function<String, String> converter() {
-    return NOOP_CONVERTER;
+  public Function<String, Character> converter() {
+    return s -> s.charAt(0);
   }
 }

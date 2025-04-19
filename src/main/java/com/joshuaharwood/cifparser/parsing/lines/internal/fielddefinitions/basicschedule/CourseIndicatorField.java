@@ -3,10 +3,9 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 import java.util.function.Function;
 
 public record CourseIndicatorField() implements BasicScheduleField<Byte> {
-
   @Override
-  public int order() {
-    return 12;
+  public int startIndex() {
+    return 40;
   }
 
   @Override

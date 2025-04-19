@@ -2,11 +2,12 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 
 import java.util.function.Function;
 
+//todo: AKA train service code
 public record ProfitCentreCodeField() implements BasicScheduleField<Integer> {
 
   @Override
-  public int order() {
-    return 13;
+  public int startIndex() {
+    return 41;
   }
 
   @Override

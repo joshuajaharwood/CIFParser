@@ -5,10 +5,9 @@ import static com.joshuaharwood.cifparser.parsing.lines.internal.converters.Conv
 import java.util.function.Function;
 
 public record RecordIdentityField() implements BasicScheduleField<String> {
-
   @Override
-  public int order() {
-    return 1;
+  public int startIndex() {
+    return 0;
   }
 
   @Override

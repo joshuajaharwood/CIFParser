@@ -3,10 +3,9 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 import java.util.function.Function;
 
 public record SpeedField() implements BasicScheduleField<Integer> {
-
   @Override
-  public int order() {
-    return 17;
+  public int startIndex() {
+    return 57;
   }
 
   @Override

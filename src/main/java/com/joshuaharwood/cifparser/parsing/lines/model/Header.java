@@ -13,7 +13,7 @@ public record Header(String fileMainframeIdentity, LocalDate dateOfExtract,
                      @Nullable String spare) implements CifRecord {
 
   public Header {
-    if (version == null || !Character.isUpperCase(version)) {
+    if (!Character.isUpperCase(version)) {
       throw new IllegalArgumentException(
           "A non-capital-alphanumeric Version property was passed as an argument. [Version: %s]".formatted(
               version));

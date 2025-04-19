@@ -5,11 +5,12 @@ import static com.joshuaharwood.cifparser.parsing.lines.internal.converters.Conv
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.SeatingClass;
 import java.util.function.Function;
 
+//todo: aka seating class
 public record TrainClassField() implements BasicScheduleField<SeatingClass> {
 
   @Override
-  public int order() {
-    return 19;
+  public int startIndex() {
+    return 66;
   }
 
   @Override

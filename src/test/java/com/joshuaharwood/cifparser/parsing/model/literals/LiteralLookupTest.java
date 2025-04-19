@@ -12,12 +12,12 @@ class LiteralLookupTest {
 
   @Test
   void parseLiteralWithNullStringReturnsEmptyOptional() {
-    assertThat(LiteralLookup.lookup(PowerType.class, null)).isEmpty();
+    assertThat(LiteralLookup.lookup(PowerType.class, null)).isNull();
   }
 
   @Test
   void parseLiteralWithWhitespaceStringReturnsEmptyOptional() {
-    assertThat(LiteralLookup.lookup(PowerType.class, "   ")).isEmpty();
+    assertThat(LiteralLookup.lookup(PowerType.class, "   ")).isNull();
   }
 
   @Test
@@ -30,13 +30,13 @@ class LiteralLookupTest {
   @Test
   void parseLiteralWithRightStringButLowercaseReturnsCorrectEnumInstance() {
     assertThat(LiteralLookup.lookup(PowerType.class,
-      "emu")).hasValue(PowerType.ELECTRIC_MULTIPLE_UNIT);
+      "emu")).isEqualTo(PowerType.ELECTRIC_MULTIPLE_UNIT);
   }
 
   @Test
   void parseLiteralWithRightStringReturnsCorrectEnumInstance() {
     assertThat(LiteralLookup.lookup(PowerType.class,
-      "EMU")).hasValue(PowerType.ELECTRIC_MULTIPLE_UNIT);
+      "EMU")).isEqualTo(PowerType.ELECTRIC_MULTIPLE_UNIT);
   }
 
   @Test

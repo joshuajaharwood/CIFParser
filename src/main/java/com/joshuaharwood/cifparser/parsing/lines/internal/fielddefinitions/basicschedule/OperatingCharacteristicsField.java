@@ -8,10 +8,9 @@ import java.util.function.Function;
 
 public record OperatingCharacteristicsField() implements
   BasicScheduleField<Set<OperatingCharacteristics>> {
-
   @Override
-  public int order() {
-    return 18;
+  public int startIndex() {
+    return 60;
   }
 
   @Override

@@ -5,10 +5,9 @@ import static com.joshuaharwood.cifparser.parsing.lines.internal.converters.Conv
 import java.util.function.Function;
 
 public record SpareField() implements BasicScheduleField<String> {
-
   @Override
-  public int order() {
-    return 25;
+  public int startIndex() {
+    return 78;
   }
 
   @Override

@@ -9,8 +9,8 @@ import java.util.function.Function;
 public record DaysRunField() implements BasicScheduleField<Set<DayOfWeek>> {
 
   @Override
-  public int order() {
-    return 6;
+  public int startIndex() {
+    return 21;
   }
 
   @Override

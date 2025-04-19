@@ -6,10 +6,9 @@ import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule.TrainStatus
 import java.util.function.Function;
 
 public record TrainStatusField() implements BasicScheduleField<TrainStatus> {
-
   @Override
-  public int order() {
-    return 8;
+  public int startIndex() {
+    return 29;
   }
 
   @Override

@@ -6,10 +6,9 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.Reservations;
 import java.util.function.Function;
 
 public record ReservationsField() implements BasicScheduleField<Reservations> {
-
   @Override
-  public int order() {
-    return 21;
+  public int startIndex() {
+    return 68;
   }
 
   @Override

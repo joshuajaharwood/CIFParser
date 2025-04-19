@@ -6,10 +6,9 @@ import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule.BankHoliday
 import java.util.function.Function;
 
 public record BankHolidayRunningField() implements BasicScheduleField<BankHolidayRunning> {
-
   @Override
-  public int order() {
-    return 7;
+  public int startIndex() {
+    return 28;
   }
 
   @Override

@@ -11,10 +11,11 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.Sleepers;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainCategory;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
+import java.util.function.Function;
 
 public class Converters {
 
-  public static final NoopConverter NOOP_CONVERTER = NoopConverter.getInstance();
+  public static final Function<String, String> NOOP_CONVERTER = Function.identity();
   public static final InverseDateConverter INVERSE_DATE_CONVERTER = InverseDateConverter.getInstance();
   public static final DaysOfWeekBitmaskConverter DAYS_OF_WEEK_BITMASK_CONVERTER = DaysOfWeekBitmaskConverter.getInstance();
   public static final LiteralConverter<TransactionType> TRANSACTION_TYPE_CONVERTER = LiteralConverter.getInstance(

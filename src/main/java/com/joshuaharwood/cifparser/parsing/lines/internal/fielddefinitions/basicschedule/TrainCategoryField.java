@@ -6,10 +6,9 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainCategory;
 import java.util.function.Function;
 
 public record TrainCategoryField() implements BasicScheduleField<TrainCategory> {
-
   @Override
-  public int order() {
-    return 9;
+  public int startIndex() {
+    return 30;
   }
 
   @Override

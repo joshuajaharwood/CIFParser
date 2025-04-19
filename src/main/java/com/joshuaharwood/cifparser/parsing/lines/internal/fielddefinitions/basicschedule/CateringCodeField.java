@@ -9,8 +9,8 @@ import java.util.function.Function;
 public record CateringCodeField() implements BasicScheduleField<Set<CateringCode>> {
 
   @Override
-  public int order() {
-    return 23;
+  public int startIndex() {
+    return 70;
   }
 
   @Override

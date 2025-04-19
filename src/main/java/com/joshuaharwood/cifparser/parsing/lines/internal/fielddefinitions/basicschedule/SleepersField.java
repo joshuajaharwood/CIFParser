@@ -6,10 +6,9 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.Sleepers;
 import java.util.function.Function;
 
 public record SleepersField() implements BasicScheduleField<Sleepers> {
-
   @Override
-  public int order() {
-    return 20;
+  public int startIndex() {
+    return 67;
   }
 
   @Override

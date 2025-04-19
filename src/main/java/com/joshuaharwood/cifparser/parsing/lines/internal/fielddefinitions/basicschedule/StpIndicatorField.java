@@ -6,10 +6,9 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
 import java.util.function.Function;
 
 public record StpIndicatorField() implements BasicScheduleField<StpIndicator> {
-
   @Override
-  public int order() {
-    return 26;
+  public int startIndex() {
+    return 79;
   }
 
   @Override

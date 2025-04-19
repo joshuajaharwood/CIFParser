@@ -6,10 +6,9 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;
 import java.util.function.Function;
 
 public record PowerTypeField() implements BasicScheduleField<PowerType> {
-
   @Override
-  public int order() {
-    return 15;
+  public int startIndex() {
+    return 50;
   }
 
   @Override
