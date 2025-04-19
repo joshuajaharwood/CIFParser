@@ -12,7 +12,7 @@ public interface RowField<T> {
 
   boolean isRequired();
 
-  Function<String, T> getConverter();
+  Function<String, T> converter();
 
   default T convert(String raw) {
     if (isRequired() && raw.isBlank()) {
@@ -20,6 +20,6 @@ public interface RowField<T> {
       throw new IllegalArgumentException("Required field '" + name() + "' is blank");
     }
 
-    return getConverter().apply(raw);
+    return converter().apply(raw);
   }
 }

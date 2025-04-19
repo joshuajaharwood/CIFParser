@@ -1,133 +1,105 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.ParsingHelpers.requiredLookup;
-
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.BasicScheduleField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BankHolidayRunningField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BasicScheduleField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BasicScheduleFieldInstances;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BusinessSectorPortionIdField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.CateringCodeField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.ConnectIndicatorField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.CourseIndicatorField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.DateRunsFromField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.DateRunsToField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.DaysRunField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.HeadcodeField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.OperatingCharacteristicsField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.PowerTypeField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.ProfitCentreCodeField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.RecordIdentityField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.ReservationsField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.ServiceBrandingField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.SleepersField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.SpareField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.SpeedField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.StpIndicatorField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.TimingLoadField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.TrainCategoryField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.TrainClassField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.TrainIdentityField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.TrainStatusField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.TrainUidField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.TransactionTypeField;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicScheduleBuilder;
-import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
-import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.RequiredPropertyMissingException;
 import java.util.Map;
-import org.jspecify.annotations.Nullable;
 
 public final class BasicScheduleParser implements RecordSpecificParser<BasicSchedule> {
 
   @Override
   public BasicSchedule parse(String record) {
     final Map<BasicScheduleField<?>, String> parsedValues = StringParser.parse(record,
-      BasicScheduleField.getFields());
+      BasicScheduleFieldInstances.getAll());
 
     var builder = new BasicScheduleBuilder();
 
-    // FIXME: we might want runtime type info here... or maybe at least for compile time checking?
-    for (BasicScheduleField<?> value : BasicScheduleField.getFields()) {
-      
-      var converted = value.convert(parsedValues.get(value));
-      
-      BasicScheduleBuilder x = switch (value) {
-//        case CATERING_CODE -> builder.setCateringCode();
-        case SPARE -> builder.setSpare(parsedValue);
-        case TRANSACTION_TYPE -> builder.setTransactionType(requiredLookup(parsedValues,
-          BasicScheduleField.TRANSACTION_TYPE,
-          TransactionType.class));
-        case TRAIN_UID -> builder.setTrainUid(parsedValue);
-        case DATE_RUNS_FROM -> false;
-        case DATE_RUNS_TO -> false;
-        case DAYS_RUN -> false;
-        case BANK_HOLIDAY_RUNNING -> false;
-        case TRAIN_STATUS -> false;
-        case TRAIN_CATEGORY -> false;
-        case TRAIN_IDENTITY -> false;
-        case HEADCODE -> false;
-        case COURSE_INDICATOR -> false;
-        case PROFIT_CENTRE_CODE_TRAIN_SERVICE_CODE -> false;
-        case BUSINESS_SECTOR_PORTION_ID -> false;
-        case POWER_TYPE -> false;
-        case TIMING_LOAD -> false;
-        case SPEED -> false;
-        case OPERATING_CHARACTERISTICS -> false;
-        case TRAIN_CLASS -> false;
-        case SLEEPERS -> false;
-        case RESERVATIONS -> false;
-        case CONNECT_INDICATOR -> false;
-        case CATERING_CODE -> false;
-        case SERVICE_BRANDING -> false;
-        case STP_INDICATOR -> false;
-        // No-op
-        case RECORD_IDENTITY -> builder;
-      };
-      
-      
-      var parsedValue = parsedValues.get(value)
-
-      if (value.isRequired() && parsedValue == null) {
-        throw new RequiredPropertyMissingException(value.getName(), parsedValues);
-      }
-
-      if (value.isRequired()) {
-        if (value.getMarshallableType().isInstance()) {
+    for (var fieldEntry : parsedValues.entrySet()) {
+      switch (fieldEntry.getKey()) {
+        case BankHolidayRunningField bankHolidayRunningField -> {
+        }
+        case BusinessSectorPortionIdField businessSectorPortionIdField -> {
+        }
+        case CateringCodeField cateringCodeField -> {
+        }
+        case ConnectIndicatorField connectIndicatorField -> {
+        }
+        case CourseIndicatorField courseIndicatorField -> {
+        }
+        case DateRunsFromField dateRunsFromField -> {
+        }
+        case DateRunsToField dateRunsToField -> {
+        }
+        case DaysRunField daysRunField -> {
+        }
+        case HeadcodeField headcodeField -> {
+        }
+        case OperatingCharacteristicsField operatingCharacteristicsField -> {
+        }
+        case PowerTypeField powerTypeField -> {
+        }
+        case ProfitCentreCodeField profitCentreCodeField -> {
+        }
+        case RecordIdentityField recordIdentityField -> {
+        }
+        case ReservationsField reservationsField -> {
+        }
+        case ServiceBrandingField serviceBrandingField -> {
+        }
+        case SleepersField sleepersField -> {
+        }
+        case SpareField spareField -> {
+        }
+        case SpeedField speedField -> {
+        }
+        case StpIndicatorField stpIndicatorField -> {
+        }
+        case TimingLoadField timingLoadField -> {
+        }
+        case TrainCategoryField trainCategoryField -> {
+        }
+        case TrainClassField trainClassField -> {
+        }
+        case TrainIdentityField trainIdentityField -> {
+        }
+        case TrainStatusField trainStatusField -> {
+        }
+        case TrainUidField trainUidField -> {
+        }
+        case TransactionTypeField transactionTypeField -> {
         }
       }
 
-      // We return the builder here to ensure exhaustiveness. Language quirk...
-      
 
     }
 
     return builder.createBasicSchedule();
 
-//    return new BasicScheduleBuilder().setTransactionType(requiredLookup(parsedValues,
-//        BasicScheduleField.TRANSACTION_TYPE,
-//        TransactionType.class))
-//      .setTrainUid(required(parsedValues, BasicScheduleField.TRAIN_UID))
-//      .setDateRunsFrom(InverseDateConverter.apply(required(parsedValues,
-//        BasicScheduleField.DATE_RUNS_FROM)))
-//      .setDateRunsTo(optional(InverseDateConverter.apply(parsedValues.get(BasicScheduleField.DATE_RUNS_TO)),
-//
-//        DaysOfWeekBitmaskConverter.apply(required(parsedValues.get(BasicScheduleField.DAYS_RUN)),
-//          lookup(BankHolidayRunning.class,
-//            parsedValues.get(BasicScheduleField.BANK_HOLIDAY_RUNNING)).orElse(null),
-//          lookup(TrainStatus.class, parsedValues.get(BasicScheduleField.TRAIN_STATUS)).orElse(null),
-//          lookup(TrainCategory.class, parsedValues.get(BasicScheduleField.TRAIN_CATEGORY)).orElse(
-//            null),
-//          ifPresent(parsedValues.get(BasicScheduleField.TRAIN_IDENTITY)).orElse(null),
-//          ifPresent(parsedValues.get(BasicScheduleField.HEADCODE)).orElse(null),
-//          ifPresent(parsedValues.get(BasicScheduleField.COURSE_INDICATOR)).map(Byte::parseByte)
-//            .orElseThrow(() -> new RequiredPropertyMissingException(BasicScheduleField.COURSE_INDICATOR.getName(),
-//              parsedValues)),
-//          ifPresent(parsedValues.get(BasicScheduleField.PROFIT_CENTRE_CODE_TRAIN_SERVICE_CODE)).map(
-//            Integer::valueOf).orElse(null),
-//          ifPresent(parsedValues.get(BasicScheduleField.BUSINESS_SECTOR_PORTION_ID)).map(this::parseChar)
-//            .orElse(null),
-//          lookup(PowerType.class, parsedValues.get(BasicScheduleField.POWER_TYPE)).orElse(null),
-//          ifPresent(parsedValues.get(BasicScheduleField.TIMING_LOAD)).orElse(null),
-//          ifPresent(parsedValues.get(BasicScheduleField.SPEED)).map(Integer::valueOf).orElse(null),
-//          lookupSet(OperatingCharacteristics.class,
-//            parsedValues.get(BasicScheduleField.OPERATING_CHARACTERISTICS)),
-//          lookup(SeatingClass.class, parsedValues.get(BasicScheduleField.TRAIN_CLASS)).orElse(null),
-//          lookup(Sleepers.class, parsedValues.get(BasicScheduleField.SLEEPERS)).orElse(null),
-//          lookup(Reservations.class,
-//            parsedValues.get(BasicScheduleField.RESERVATIONS)).orElse(null),
-//          ifPresent(parsedValues.get(BasicScheduleField.CONNECT_INDICATOR)).map(this::parseChar)
-//            .orElse(null),
-//          lookupSet(CateringCode.class, parsedValues.get(BasicScheduleField.CATERING_CODE)),
-//          ifPresent(parsedValues.get(BasicScheduleField.SERVICE_BRANDING)).orElse(null),
-//          lookup(StpIndicator.class,
-//            parsedValues.get(BasicScheduleField.STP_INDICATOR)).orElseThrow(() -> new RequiredPropertyMissingException(
-//            BasicScheduleField.STP_INDICATOR.getName(),
-//            parsedValues)),
-//          ifPresent(parsedValues.get(BasicScheduleField.SPARE)).orElse(null))).createBasicSchedule();
   }
-
-//  private @Nullable String getValue(Map<BasicScheduleField, String> parsedValues,
-//    BasicScheduleField key,
-//    boolean required) {
-//    var value = parsedValues.get(key);
-//
-//    if (value == null && required) {
-//      throw new RequiredPropertyMissingException(key.getName(), parsedValues);
-//    }
-//
-//    return value;
-//  }
-}
