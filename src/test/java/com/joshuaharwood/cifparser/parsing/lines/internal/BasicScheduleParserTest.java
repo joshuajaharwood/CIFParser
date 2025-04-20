@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import com.google.common.collect.ImmutableSet;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule;
-import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule.TrainStatus;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainStatus;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicScheduleBuilder;
 import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.RequiredPropertyMissingException;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;

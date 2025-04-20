@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
-import com.joshuaharwood.cifparser.parsing.lines.model.Header.UpdateIndicator;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.UpdateIndicator;
 import java.util.function.Function;
 
 public record UpdateIndicatorField() implements HeaderScheduleField<UpdateIndicator> {

@@ -1,17 +1,10 @@
-//package com.joshuaharwood.cifparser.parsing.lines.internal;
-//
-//import com.joshuaharwood.cifparser.parsing.lines.model.Header;
-//import com.joshuaharwood.cifparser.parsing.lines.model.Header.UpdateIndicator;
-//import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DateConverter;
-//import com.joshuaharwood.cifparser.parsing.lines.internal.converters.TimeConverter;
-//import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.HeaderFields;
-//import com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup;
-//import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.RequiredPropertyMissingException;
-//import java.util.Map;
-//
-//public final class HeaderParser implements RecordSpecificParser<Header> {
-//
-//  public Header parse(String record) {
+package com.joshuaharwood.cifparser.parsing.lines.internal;
+
+import com.joshuaharwood.cifparser.parsing.lines.model.Header;
+
+public final class HeaderParser implements RecordSpecificParser<Header> {
+
+  public Header parse(String record) {
 //    final Map<HeaderFields, String> parsedValues = StringParser.parse(record,
 //        HeaderFields.values());
 //
@@ -30,5 +23,5 @@
 //        DateConverter.apply(parsedValues.get(HeaderFields.EXTRACT_START_DATE)).orElse(null),
 //        DateConverter.apply(parsedValues.get(HeaderFields.EXTRACT_END_DATE)).orElse(null),
 //        ifPresent(parsedValues.get(HeaderFields.SPARE)).orElse(null));
-//  }
-//}
+  }
+}

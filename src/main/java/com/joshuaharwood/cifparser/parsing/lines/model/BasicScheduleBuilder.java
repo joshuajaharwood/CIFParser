@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.lines.model;
 
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule.BankHolidayRunning;
-import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule.TrainStatus;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainStatus;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.CateringCode;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.OperatingCharacteristics;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;

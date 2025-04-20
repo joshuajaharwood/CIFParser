@@ -1,8 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultCharConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
-import com.joshuaharwood.cifparser.parsing.lines.model.Header.UpdateIndicator;
 import java.util.function.Function;
 
 public record VersionField() implements HeaderScheduleField<Character> {
