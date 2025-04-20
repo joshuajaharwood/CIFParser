@@ -1,9 +1,10 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 import java.util.function.Function;
 
-public record RecordIdentityField() implements BasicScheduleField<String> {
+public record RecordIdentityField() implements BasicScheduleField<RecordIdentity> {
 
   @Override
   public int startIndex() {
@@ -26,7 +27,7 @@ public record RecordIdentityField() implements BasicScheduleField<String> {
   }
 
   @Override
-  public Function<String, String> converter() {
-    return DefaultStringConverter.getInstance();
+  public Function<String, RecordIdentity> converter() {
+    return LiteralConverter.create(RecordIdentity.class);
   }
 }
