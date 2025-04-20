@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.EnumSet;
 import java.util.Objects;
 import java.util.Set;
+import org.jspecify.annotations.NonNull;
 
 public class DaysOfWeekBitmaskConverter implements Converter<Set<DayOfWeek>> {
 
@@ -41,6 +42,8 @@ public class DaysOfWeekBitmaskConverter implements Converter<Set<DayOfWeek>> {
    * @throws IllegalArgumentException if {@code stringBitmask} is longer or shorter than 7
    *                                  characters.
    */
+  @Override
+  @NonNull
   public Set<DayOfWeek> apply(String stringBitmask) {
     Objects.requireNonNull(stringBitmask, "Days-of-week bitmask must not be null.");
 

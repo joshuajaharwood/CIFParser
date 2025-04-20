@@ -1,7 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.converters.Converters.POWER_TYPE_CONVERTER;
-
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;
 import java.util.function.Function;
 
@@ -28,6 +27,6 @@ public record PowerTypeField() implements BasicScheduleField<PowerType> {
 
   @Override
   public Function<String, PowerType> converter() {
-    return POWER_TYPE_CONVERTER;
+    return LiteralConverter.create(PowerType.class);
   }
 }

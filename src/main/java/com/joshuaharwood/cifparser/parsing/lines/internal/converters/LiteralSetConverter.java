@@ -4,6 +4,7 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
 import com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup;
 import java.util.Objects;
 import java.util.Set;
+import org.jspecify.annotations.NonNull;
 
 public class LiteralSetConverter<T extends Enum<T> & Literal> implements Converter<Set<T>> {
 
@@ -18,6 +19,7 @@ public class LiteralSetConverter<T extends Enum<T> & Literal> implements Convert
   }
 
   @Override
+  @NonNull
   public Set<T> apply(String input) {
     return LiteralLookup.lookupSet(literalClass, input);
   }

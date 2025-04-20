@@ -1,7 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.converters.Converters.RESERVATIONS_CONVERTER;
-
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.Reservations;
 import java.util.function.Function;
 
@@ -28,6 +27,6 @@ public record ReservationsField() implements BasicScheduleField<Reservations> {
 
   @Override
   public Function<String, Reservations> converter() {
-    return RESERVATIONS_CONVERTER;
+    return LiteralConverter.create(Reservations.class);
   }
 }

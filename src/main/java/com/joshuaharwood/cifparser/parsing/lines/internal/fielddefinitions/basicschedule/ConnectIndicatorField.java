@@ -1,7 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.converters.Converters.NOOP_CONVERTER;
-
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultCharConverter;
 import java.util.function.Function;
 
 public record ConnectIndicatorField() implements BasicScheduleField<Character> {
@@ -22,11 +21,11 @@ public record ConnectIndicatorField() implements BasicScheduleField<Character> {
 
   @Override
   public boolean isRequired() {
-    return true;
+    return false;
   }
 
   @Override
   public Function<String, Character> converter() {
-    return s -> s.charAt(0);
+    return DefaultCharConverter.getInstance();
   }
 }

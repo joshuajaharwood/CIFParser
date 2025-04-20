@@ -3,6 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
+import org.jspecify.annotations.NonNull;
 
 public class TimeConverter implements Converter<Optional<LocalTime>> {
 
@@ -17,6 +18,8 @@ public class TimeConverter implements Converter<Optional<LocalTime>> {
     return INSTANCE;
   }
 
+  @Override
+  @NonNull
   public Optional<LocalTime> apply(String input) {
     if (input.isBlank()) {
       return Optional.empty();

@@ -13,12 +13,7 @@ See: https://wiki.openraildata.com/index.php/SCHEDULE
 
 ## Requirements
 
-* Java 21
-
-## Dependencies
-
-* `com.pivovarit:parallel-collectors:3.0.0`
-* `org.slf4j:slf4j-api:2.0.12`
+* Java 24
 
 ## Getting started
 ### Binaries

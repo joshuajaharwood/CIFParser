@@ -1,7 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.converters.Converters.OPERATING_CHARACTERISTICS_CONVERTER;
-
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralSetConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.OperatingCharacteristics;
 import java.util.Set;
 import java.util.function.Function;
@@ -25,11 +24,11 @@ public record OperatingCharacteristicsField() implements
 
   @Override
   public boolean isRequired() {
-    return true;
+    return false;
   }
 
   @Override
   public Function<String, Set<OperatingCharacteristics>> converter() {
-    return OPERATING_CHARACTERISTICS_CONVERTER;
+    return LiteralSetConverter.getInstance(OperatingCharacteristics.class);
   }
 }

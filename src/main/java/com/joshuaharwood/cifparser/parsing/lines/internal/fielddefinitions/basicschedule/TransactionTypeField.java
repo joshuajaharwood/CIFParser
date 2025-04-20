@@ -1,11 +1,8 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.converters.Converters.TRANSACTION_TYPE_CONVERTER;
-
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
 import java.util.function.Function;
-import org.jspecify.annotations.Nullable;
 
 public record TransactionTypeField() implements BasicScheduleField<TransactionType> {
 
@@ -31,16 +28,6 @@ public record TransactionTypeField() implements BasicScheduleField<TransactionTy
 
   @Override
   public Function<String, TransactionType> converter() {
-    return TRANSACTION_TYPE_CONVERTER;
+    return LiteralConverter.create(TransactionType.class);
   }
-
-//  @Override
-//  public @Nullable RowField<?> previousField() {
-//    return null;
-//  }
-//
-//  @Override
-//  public @Nullable RowField<?> nextField() {
-//    return ;
-//  }
 }

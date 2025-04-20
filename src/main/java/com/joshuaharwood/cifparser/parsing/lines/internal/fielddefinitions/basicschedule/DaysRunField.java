@@ -1,7 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.converters.Converters.DAYS_OF_WEEK_BITMASK_CONVERTER;
-
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DaysOfWeekBitmaskConverter;
 import java.time.DayOfWeek;
 import java.util.Set;
 import java.util.function.Function;
@@ -30,6 +29,6 @@ public record DaysRunField() implements BasicScheduleField<Set<DayOfWeek>> {
 
   @Override
   public Function<String, Set<DayOfWeek>> converter() {
-    return DAYS_OF_WEEK_BITMASK_CONVERTER;
+    return DaysOfWeekBitmaskConverter.getInstance();
   }
 }

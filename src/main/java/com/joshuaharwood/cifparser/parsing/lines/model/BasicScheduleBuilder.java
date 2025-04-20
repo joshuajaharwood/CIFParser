@@ -194,7 +194,7 @@ public class BasicScheduleBuilder {
       connectionIndicator,
       cateringCode,
       serviceBranding,
-      stpIndicator,
-      spare);
+      spare, stpIndicator
+    );
   }
 }

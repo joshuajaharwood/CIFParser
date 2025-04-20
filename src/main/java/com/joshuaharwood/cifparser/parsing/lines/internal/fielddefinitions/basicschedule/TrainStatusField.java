@@ -1,7 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.converters.Converters.TRAIN_STATUS_CONVERTER;
-
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule.TrainStatus;
 import java.util.function.Function;
 
@@ -28,6 +27,6 @@ public record TrainStatusField() implements BasicScheduleField<TrainStatus> {
 
   @Override
   public Function<String, TrainStatus> converter() {
-    return TRAIN_STATUS_CONVERTER;
+    return LiteralConverter.create(TrainStatus.class);
   }
 }

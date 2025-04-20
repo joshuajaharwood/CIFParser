@@ -2,6 +2,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
 import java.time.LocalTime;
 import java.util.Optional;
+import org.jspecify.annotations.NonNull;
 
 public class ZeroSafeTimeConverter implements Converter<Optional<LocalTime>> {
 
@@ -16,6 +17,8 @@ public class ZeroSafeTimeConverter implements Converter<Optional<LocalTime>> {
     return INSTANCE;
   }
 
+  @Override
+  @NonNull
   public Optional<LocalTime> apply(String input) {
     if (input.trim().equals("0000")) {
       return Optional.empty();

@@ -3,6 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
+import com.google.common.collect.ImmutableSet;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule.TrainStatus;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicScheduleBuilder;
@@ -40,7 +41,7 @@ class BasicScheduleParserTest {
       .setTrainUid("G82885")
       .setDateRunsFrom(LocalDate.of(2015, 10, 19))
       .setDateRunsTo(LocalDate.of(2015, 10, 23))
-      .setDaysRun(Set.of(DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.FRIDAY))
+      .setDaysRun(ImmutableSet.of(DayOfWeek.MONDAY, DayOfWeek.TUESDAY, DayOfWeek.FRIDAY))
       .setBankHolidayRunning(null)
       .setTrainStatus(TrainStatus.PASSENGER_AND_PARCELS_PERMANENT)
       .setTrainCategory(TrainCategory.ORDINARY_PASSENGER)
@@ -65,7 +66,7 @@ class BasicScheduleParserTest {
 
     final var actual = parser.parse(TEST_BS_RECORD);
 
-    assertThat(actual).isEqualTo(expected);
+    assertThat(actual).usingRecursiveComparison().isEqualTo(expected);
   }
 
   @Test

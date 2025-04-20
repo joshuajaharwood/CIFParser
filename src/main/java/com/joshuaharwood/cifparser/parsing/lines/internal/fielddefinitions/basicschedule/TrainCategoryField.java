@@ -1,7 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.converters.Converters.TRAIN_CATEGORY_CONVERTER;
-
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainCategory;
 import java.util.function.Function;
 
@@ -28,6 +27,6 @@ public record TrainCategoryField() implements BasicScheduleField<TrainCategory> 
 
   @Override
   public Function<String, TrainCategory> converter() {
-    return TRAIN_CATEGORY_CONVERTER;
+    return LiteralConverter.create(TrainCategory.class);
   }
 }
