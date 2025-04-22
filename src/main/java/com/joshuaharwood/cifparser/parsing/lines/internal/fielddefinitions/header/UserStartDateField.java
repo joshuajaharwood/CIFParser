@@ -1,12 +1,11 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DateConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultCharConverter;
 import java.time.LocalDate;
 import java.util.Optional;
 import java.util.function.Function;
 
-public record UserStartDateField() implements HeaderScheduleField<LocalDate> {
+public record UserStartDateField() implements HeaderField<LocalDate> {
 
   @Override
   public int startIndex() {

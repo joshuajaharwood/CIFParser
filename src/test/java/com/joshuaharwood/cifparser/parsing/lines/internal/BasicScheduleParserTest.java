@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import com.google.common.collect.ImmutableSet;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainStatus;
-import com.joshuaharwood.cifparser.parsing.lines.model.BasicScheduleBuilder;
+import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule.Builder;
 import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.RequiredPropertyMissingException;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.SeatingClass;
@@ -37,7 +37,7 @@ class BasicScheduleParserTest {
 
   @Test
   void parsesGoodDataSuccessfully() {
-    final var expected = new BasicScheduleBuilder().setTransactionType(TransactionType.REVISE)
+    final var expected = new Builder().setTransactionType(TransactionType.REVISE)
       .setTrainUid("G82885")
       .setDateRunsFrom(LocalDate.of(2015, 10, 19))
       .setDateRunsTo(LocalDate.of(2015, 10, 23))
@@ -99,7 +99,7 @@ class BasicScheduleParserTest {
 
     final BasicSchedule actual = parser.parse(headcode);
 
-    final BasicSchedule expected = new BasicScheduleBuilder().setTransactionType(TransactionType.NEW)
+    final BasicSchedule expected = new Builder().setTransactionType(TransactionType.NEW)
       .setTrainUid("C18521")
       .setDateRunsFrom(LocalDate.of(2023, 5, 21))
       .setDateRunsTo(LocalDate.of(2023, 12, 3))

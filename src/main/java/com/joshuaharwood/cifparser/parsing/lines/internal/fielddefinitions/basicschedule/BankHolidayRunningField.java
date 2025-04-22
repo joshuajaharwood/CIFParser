@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
-import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule.BankHolidayRunning;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.BankHolidayRunning;
 import java.util.function.Function;
 
 public record BankHolidayRunningField() implements BasicScheduleField<BankHolidayRunning> {

@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.head
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 import java.util.function.Function;
 
-public record FileMainframeIdentityField() implements HeaderScheduleField<String> {
+public record FileMainframeIdentityField() implements HeaderField<String> {
 
   @Override
   public int startIndex() {

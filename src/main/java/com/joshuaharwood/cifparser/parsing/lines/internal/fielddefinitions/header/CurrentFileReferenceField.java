@@ -1,12 +1,9 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.converters.TimeConverter;
-import java.time.LocalTime;
-import java.util.Optional;
 import java.util.function.Function;
 
-public record CurrentFileReferenceField() implements HeaderScheduleField<String> {
+public record CurrentFileReferenceField() implements HeaderField<String> {
 
   @Override
   public int startIndex() {

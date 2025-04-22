@@ -4,7 +4,7 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConv
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.UpdateIndicator;
 import java.util.function.Function;
 
-public record UpdateIndicatorField() implements HeaderScheduleField<UpdateIndicator> {
+public record UpdateIndicatorField() implements HeaderField<UpdateIndicator> {
 
   @Override
   public int startIndex() {

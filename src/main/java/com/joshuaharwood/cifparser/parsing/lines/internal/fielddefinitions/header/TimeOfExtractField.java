@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import java.util.Optional;
 import java.util.function.Function;
 
-public record TimeOfExtractField() implements HeaderScheduleField<LocalTime> {
+public record TimeOfExtractField() implements HeaderField<LocalTime> {
 
   @Override
   public int startIndex() {

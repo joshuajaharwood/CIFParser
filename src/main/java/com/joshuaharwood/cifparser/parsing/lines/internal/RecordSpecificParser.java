@@ -10,13 +10,13 @@ import java.util.Optional;
 import org.jspecify.annotations.NonNull;
 import org.jspecify.annotations.Nullable;
 
-public sealed interface RecordSpecificParser<T extends CifRecord> permits
-  BasicScheduleParser, HeaderParser
+public sealed interface RecordSpecificParser<T extends CifRecord> permits BasicScheduleParser,
+  HeaderParser, TrailerParser
   
 //  AssociationParser,
 //  BasicScheduleExtendedParser, , ChangeEnRouteParser, 
 //  IntermediateLocationParser, OriginLocationParser, TerminatingLocationParser, TiplocAmendParser,
-//  TiplocDeleteParser, TiplocInsertParser, TrailerParser 
+//  TiplocDeleteParser, TiplocInsertParser 
 {
 
   T parse(String record);

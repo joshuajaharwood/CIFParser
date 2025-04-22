@@ -1,28 +1,30 @@
-package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header;
+package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.trailer;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 import java.util.function.Function;
 
-public record LastFileReferenceField() implements HeaderField<String> {
-
+public record SpareField() implements TrailerField<String> {
+  
   @Override
   public int startIndex() {
-    return 39;
+    return 2;
   }
 
   @Override
   public String name() {
-    return "CURRENT_FILE_REFERENCE";
+    return "SPARE";
   }
 
   @Override
   public int length() {
-    return 7;
+    return 78;
   }
 
   @Override
   public boolean isRequired() {
-    return true;
+    return false;
   }
 
   @Override

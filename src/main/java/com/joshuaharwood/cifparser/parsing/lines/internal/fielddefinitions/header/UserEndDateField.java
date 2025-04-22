@@ -5,7 +5,7 @@ import java.time.LocalDate;
 import java.util.Optional;
 import java.util.function.Function;
 
-public record UserEndDateField() implements HeaderScheduleField<LocalDate> {
+public record UserEndDateField() implements HeaderField<LocalDate> {
 
   @Override
   public int startIndex() {

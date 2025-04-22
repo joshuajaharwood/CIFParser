@@ -1,8 +1,10 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
+import static com.joshuaharwood.cifparser.parsing.lines.internal.Converter.convert;
+
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BankHolidayRunningField;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BasicScheduleField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BasicScheduleFieldInstances;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BasicScheduleField.Instances;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BusinessSectorPortionIdField;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.CateringCodeField;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.ConnectIndicatorField;
@@ -29,16 +31,14 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basic
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.TrainUidField;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.TransactionTypeField;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule;
-import com.joshuaharwood.cifparser.parsing.lines.model.BasicScheduleBuilder;
 
 public final class BasicScheduleParser implements RecordSpecificParser<BasicSchedule> {
 
   @Override
   public BasicSchedule parse(String record) {
-    final var builder = new BasicScheduleBuilder();
+    final var builder = new BasicSchedule.Builder();
 
-    for (BasicScheduleField<?> basicScheduleField : BasicScheduleFieldInstances.getAll()) {
-      // Switching here allows type checking on the conversion!
+    for (BasicScheduleField<?> basicScheduleField : BasicScheduleField.Instances.getAll()) {
       switch (basicScheduleField) {
         case RecordIdentityField _ -> {
         }
@@ -72,9 +72,5 @@ public final class BasicScheduleParser implements RecordSpecificParser<BasicSche
     }
 
     return builder.createBasicSchedule();
-  }
-
-  private <T> T convert(BasicScheduleField<T> v, String record) {
-    return v.convert(record.substring(v.startIndex(), v.endIndex()));
   }
 }
