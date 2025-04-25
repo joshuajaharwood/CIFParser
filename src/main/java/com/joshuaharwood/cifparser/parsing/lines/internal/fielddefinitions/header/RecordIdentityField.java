@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.head
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
-import java.util.function.Function;
 
 public record RecordIdentityField() implements HeaderField<RecordIdentity> {
 
@@ -27,7 +26,7 @@ public record RecordIdentityField() implements HeaderField<RecordIdentity> {
   }
 
   @Override
-  public Function<String, RecordIdentity> converter() {
-    return LiteralConverter.create(RecordIdentity.class);
+  public RecordIdentity convert(String raw) {
+    return LiteralConverter.create(RecordIdentity.class).apply(raw);
   }
 }

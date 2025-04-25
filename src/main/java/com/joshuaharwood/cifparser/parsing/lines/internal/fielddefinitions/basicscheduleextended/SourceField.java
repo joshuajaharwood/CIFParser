@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicscheduleextended;
 
-import java.util.function.Function;
-
 public record SourceField() implements BasicScheduleExtendedField<Character> {
 
   @Override
@@ -25,7 +23,7 @@ public record SourceField() implements BasicScheduleExtendedField<Character> {
   }
 
   @Override
-  public Function<String, Character> converter() {
-    return s -> s.charAt(0);
+  public Character convert(String raw) {
+    return raw.charAt(0);
   }
 }

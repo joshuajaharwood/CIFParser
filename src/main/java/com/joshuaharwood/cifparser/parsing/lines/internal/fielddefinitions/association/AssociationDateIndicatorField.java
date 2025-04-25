@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.asso
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationDateIndicator;
-import java.util.function.Function;
 
 public record AssociationDateIndicatorField() implements AssociationField<AssociationDateIndicator> {
 
@@ -27,7 +26,7 @@ public record AssociationDateIndicatorField() implements AssociationField<Associ
   }
 
   @Override
-  public Function<String, AssociationDateIndicator> converter() {
-    return LiteralConverter.create(AssociationDateIndicator.class);
+  public AssociationDateIndicator convert(String raw) {
+    return LiteralConverter.create(AssociationDateIndicator.class).apply(raw);
   }
 }

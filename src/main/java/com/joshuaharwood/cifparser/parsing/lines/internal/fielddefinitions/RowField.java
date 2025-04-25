@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions;
 
-import java.util.function.Function;
-
 public interface RowField<T> {
 
   int startIndex();
@@ -12,14 +10,14 @@ public interface RowField<T> {
 
   boolean isRequired();
 
-  Function<String, T> converter();
+  T convert(String raw);
 
   default T convertTemp(String raw) {
     if (isRequired() && raw.isBlank()) {
       throw new IllegalArgumentException("Required field '%s' is blank".formatted(name()));
     }
 
-    return converter().apply(raw);
+    return convert(raw);
   }
 
   default int endIndex() {

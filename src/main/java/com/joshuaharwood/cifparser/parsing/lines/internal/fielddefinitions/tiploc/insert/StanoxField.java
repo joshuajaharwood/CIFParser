@@ -1,7 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.insert;
 
 import java.util.Optional;
-import java.util.function.Function;
 
 public record StanoxField() implements TiplocInsertField<Optional<Integer>> {
 
@@ -26,7 +25,7 @@ public record StanoxField() implements TiplocInsertField<Optional<Integer>> {
   }
 
   @Override
-  public Function<String, Optional<Integer>> converter() {
+  public Optional<Integer> convert(String raw) {
     return s -> {
       if (s == null || s.isBlank()) {
         return Optional.empty();

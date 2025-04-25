@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.association;
 
-import java.util.function.Function;
-
 public record AssociationLocationSuffixField() implements AssociationField<Byte> {
 
   @Override
@@ -25,7 +23,7 @@ public record AssociationLocationSuffixField() implements AssociationField<Byte>
   }
 
   @Override
-  public Function<String, Byte> converter() {
-    return Byte::parseByte;
+  public Byte convert(String raw) {
+    return Byte.parseByte(raw);
   }
 }

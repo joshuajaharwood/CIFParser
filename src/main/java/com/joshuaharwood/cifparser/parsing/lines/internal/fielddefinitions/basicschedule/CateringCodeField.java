@@ -3,7 +3,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralSetConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.CateringCode;
 import java.util.Set;
-import java.util.function.Function;
 
 public record CateringCodeField() implements BasicScheduleField<Set<CateringCode>> {
 
@@ -28,7 +27,7 @@ public record CateringCodeField() implements BasicScheduleField<Set<CateringCode
   }
 
   @Override
-  public Function<String, Set<CateringCode>> converter() {
-    return LiteralSetConverter.getInstance(CateringCode.class);
+  public Set<CateringCode> convert(String raw) {
+    return LiteralSetConverter.getInstance(CateringCode.class).apply(raw);
   }
 }

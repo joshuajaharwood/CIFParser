@@ -1,7 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultCharConverter;
-import java.util.function.Function;
 
 public record BusinessSectorPortionIdField() implements BasicScheduleField<Character> {
 
@@ -26,7 +25,7 @@ public record BusinessSectorPortionIdField() implements BasicScheduleField<Chara
   }
 
   @Override
-  public Function<String, Character> converter() {
-    return DefaultCharConverter.getInstance();
+  public Character convert(String raw) {
+    return DefaultCharConverter.getInstance().apply(raw);
   }
 }

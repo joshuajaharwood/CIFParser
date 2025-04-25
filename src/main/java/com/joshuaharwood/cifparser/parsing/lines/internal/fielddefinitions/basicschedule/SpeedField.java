@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-import java.util.function.Function;
-
 public record SpeedField() implements BasicScheduleField<Integer> {
   @Override
   public int startIndex() {
@@ -24,7 +22,7 @@ public record SpeedField() implements BasicScheduleField<Integer> {
   }
 
   @Override
-  public Function<String, Integer> converter() {
-    return Integer::valueOf;
+  public Integer convert(String raw) {
+    return Integer.valueOf(raw);
   }
 }

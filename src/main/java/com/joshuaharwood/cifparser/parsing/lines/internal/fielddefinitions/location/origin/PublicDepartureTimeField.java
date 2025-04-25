@@ -3,7 +3,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.ZeroSafeTimeConverter;
 import java.time.LocalTime;
 import java.util.Optional;
-import java.util.function.Function;
 
 public record PublicDepartureTimeField() implements OriginLocationField<Optional<LocalTime>> {
 
@@ -28,7 +27,7 @@ public record PublicDepartureTimeField() implements OriginLocationField<Optional
   }
 
   @Override
-  public Function<String, Optional<LocalTime>> converter() {
-    return ZeroSafeTimeConverter.getInstance()::apply;
+  public Optional<LocalTime> convert(String raw) {
+    return ZeroSafeTimeConverter.getInstance().apply(raw);
   }
 }

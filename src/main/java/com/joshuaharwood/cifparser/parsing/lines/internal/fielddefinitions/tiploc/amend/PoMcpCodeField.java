@@ -1,8 +1,10 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.amend;
 
-import java.util.function.Function;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 
-public record PoMcpCodeField() implements TiplocAmendField<Integer> {
+public record PoMcpCodeField() implements TiplocAmendField<String> {
+  
+  private static final DefaultStringConverter DEFAULT_STRING_CONVERTER = DefaultStringConverter.getInstance();
 
   @Override
   public int startIndex() {
@@ -25,12 +27,7 @@ public record PoMcpCodeField() implements TiplocAmendField<Integer> {
   }
 
   @Override
-  public Function<String, Integer> converter() {
-    return s -> {
-      if (s == null || s.isBlank()) {
-        return null;
-      }
-      return Integer.valueOf(s);
-    };
+  public String convert(String raw) {
+    return DEFAULT_STRING_CONVERTER.apply(raw);
   }
 }

@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.amend;
 
-import java.util.function.Function;
-
 public record NlcCheckCharacterField() implements TiplocAmendField<Character> {
 
   @Override
@@ -25,7 +23,7 @@ public record NlcCheckCharacterField() implements TiplocAmendField<Character> {
   }
 
   @Override
-  public Function<String, Character> converter() {
+  public Character convert(String raw) {
     return s -> {
       if (s == null || s.isBlank()) {
         return null;

@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
-import java.util.function.Function;
 
 public record TransactionTypeField() implements BasicScheduleField<TransactionType> {
 
@@ -27,7 +26,7 @@ public record TransactionTypeField() implements BasicScheduleField<TransactionTy
   }
 
   @Override
-  public Function<String, TransactionType> converter() {
-    return LiteralConverter.create(TransactionType.class);
+  public TransactionType convert(String raw) {
+    return LiteralConverter.create(TransactionType.class).apply(raw);
   }
 }

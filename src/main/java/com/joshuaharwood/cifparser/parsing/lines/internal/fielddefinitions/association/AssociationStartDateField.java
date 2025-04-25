@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.asso
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.InverseDateConverter;
 import java.time.LocalDate;
-import java.util.function.Function;
 
 public record AssociationStartDateField() implements AssociationField<LocalDate> {
 
@@ -27,7 +26,7 @@ public record AssociationStartDateField() implements AssociationField<LocalDate>
   }
 
   @Override
-  public Function<String, LocalDate> converter() {
-    return InverseDateConverter.getInstance();
+  public LocalDate convert(String raw) {
+    return InverseDateConverter.getInstance().apply(raw);
   }
 }

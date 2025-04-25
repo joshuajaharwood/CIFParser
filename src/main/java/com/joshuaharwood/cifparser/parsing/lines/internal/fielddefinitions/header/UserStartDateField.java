@@ -3,7 +3,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.head
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DateConverter;
 import java.time.LocalDate;
 import java.util.Optional;
-import java.util.function.Function;
 
 public record UserStartDateField() implements HeaderField<LocalDate> {
 
@@ -28,7 +27,7 @@ public record UserStartDateField() implements HeaderField<LocalDate> {
   }
 
   @Override
-  public Function<String, LocalDate> converter() {
-    return DateConverter.getInstance().andThen(Optional::orElseThrow);
+  public LocalDate convert(String raw) {
+    return DateConverter.getInstance().apply(raw).orElseThrow(IllegalArgumentException::new);
   }
 }

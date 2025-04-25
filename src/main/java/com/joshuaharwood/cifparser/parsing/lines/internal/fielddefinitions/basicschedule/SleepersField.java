@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.Sleepers;
-import java.util.function.Function;
 
 public record SleepersField() implements BasicScheduleField<Sleepers> {
 
@@ -27,7 +26,7 @@ public record SleepersField() implements BasicScheduleField<Sleepers> {
   }
 
   @Override
-  public Function<String, Sleepers> converter() {
-    return LiteralConverter.create(Sleepers.class);
+  public Sleepers convert(String raw) {
+    return LiteralConverter.create(Sleepers.class).apply(raw);
   }
 }

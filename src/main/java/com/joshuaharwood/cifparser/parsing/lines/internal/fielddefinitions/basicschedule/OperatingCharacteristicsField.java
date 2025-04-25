@@ -3,7 +3,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralSetConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.OperatingCharacteristics;
 import java.util.Set;
-import java.util.function.Function;
 
 public record OperatingCharacteristicsField() implements
   BasicScheduleField<Set<OperatingCharacteristics>> {
@@ -28,7 +27,7 @@ public record OperatingCharacteristicsField() implements
   }
 
   @Override
-  public Function<String, Set<OperatingCharacteristics>> converter() {
-    return LiteralSetConverter.getInstance(OperatingCharacteristics.class);
+  public Set<OperatingCharacteristics> convert(String raw) {
+    return LiteralSetConverter.getInstance(OperatingCharacteristics.class).apply(raw);
   }
 }

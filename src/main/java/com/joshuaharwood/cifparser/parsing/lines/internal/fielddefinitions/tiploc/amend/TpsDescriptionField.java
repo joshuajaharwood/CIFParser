@@ -25,7 +25,7 @@ public record TpsDescriptionField() implements TiplocAmendField<String> {
   }
 
   @Override
-  public Function<String, String> converter() {
-    return Function.identity();
+  public String convert(String raw) {
+    return DefaultStringConverter.getInstance().apply(raw);
   }
 }

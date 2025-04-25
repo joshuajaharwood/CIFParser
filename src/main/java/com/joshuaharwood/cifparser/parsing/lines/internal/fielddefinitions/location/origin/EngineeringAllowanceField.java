@@ -1,7 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.location.origin;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
-import java.util.function.Function;
 
 public record EngineeringAllowanceField() implements OriginLocationField<String> {
 
@@ -26,7 +25,7 @@ public record EngineeringAllowanceField() implements OriginLocationField<String>
   }
 
   @Override
-  public Function<String, String> converter() {
-    return DefaultStringConverter.getInstance();
+  public String convert(String raw) {
+    return DefaultStringConverter.getInstance().apply(raw);
   }
 }

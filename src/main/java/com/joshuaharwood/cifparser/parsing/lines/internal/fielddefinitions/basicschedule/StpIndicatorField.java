@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
-import java.util.function.Function;
 
 public record StpIndicatorField() implements BasicScheduleField<StpIndicator> {
   @Override
@@ -26,7 +25,7 @@ public record StpIndicatorField() implements BasicScheduleField<StpIndicator> {
   }
 
   @Override
-  public Function<String, StpIndicator> converter() {
-    return LiteralConverter.create(StpIndicator.class);
+  public StpIndicator convert(String raw) {
+    return LiteralConverter.create(StpIndicator.class).apply(raw);
   }
 }

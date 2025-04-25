@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.asso
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.Association.DiagramType;
-import java.util.function.Function;
 
 public record DiagramTypeField() implements AssociationField<DiagramType> {
 
@@ -27,7 +26,7 @@ public record DiagramTypeField() implements AssociationField<DiagramType> {
   }
 
   @Override
-  public Function<String, DiagramType> converter() {
-    return LiteralConverter.create(DiagramType.class);
+  public DiagramType convert(String raw) {
+    return LiteralConverter.create(DiagramType.class).apply(raw);
   }
 }

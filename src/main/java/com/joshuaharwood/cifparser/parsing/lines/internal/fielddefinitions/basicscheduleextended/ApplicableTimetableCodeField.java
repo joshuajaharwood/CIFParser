@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.ApplicableTimetableCode;
-import java.util.function.Function;
 
 public record ApplicableTimetableCodeField() implements BasicScheduleExtendedField<ApplicableTimetableCode> {
 
@@ -27,7 +26,7 @@ public record ApplicableTimetableCodeField() implements BasicScheduleExtendedFie
   }
 
   @Override
-  public Function<String, ApplicableTimetableCode> converter() {
-    return LiteralConverter.create(ApplicableTimetableCode.class);
+  public ApplicableTimetableCode convert(String raw) {
+    return LiteralConverter.create(ApplicableTimetableCode.class).apply(raw);
   }
 }

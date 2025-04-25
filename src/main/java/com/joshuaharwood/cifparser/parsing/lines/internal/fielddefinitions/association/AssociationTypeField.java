@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.asso
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationType;
-import java.util.function.Function;
 
 public record AssociationTypeField() implements AssociationField<AssociationType> {
 
@@ -27,7 +26,7 @@ public record AssociationTypeField() implements AssociationField<AssociationType
   }
 
   @Override
-  public Function<String, AssociationType> converter() {
-    return LiteralConverter.create(AssociationType.class);
+  public AssociationType convert(String raw) {
+    return LiteralConverter.create(AssociationType.class).apply(raw);
   }
 }

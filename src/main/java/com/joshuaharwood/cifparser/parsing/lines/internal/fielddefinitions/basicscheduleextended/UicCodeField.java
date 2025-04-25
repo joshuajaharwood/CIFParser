@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicscheduleextended;
 
-import java.util.function.Function;
-
 public record UicCodeField() implements BasicScheduleExtendedField<Integer> {
 
   @Override
@@ -25,7 +23,7 @@ public record UicCodeField() implements BasicScheduleExtendedField<Integer> {
   }
 
   @Override
-  public Function<String, Integer> converter() {
-    return Integer::valueOf;
+  public Integer convert(String raw) {
+    return Integer.valueOf(raw);
   }
 }

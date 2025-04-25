@@ -3,7 +3,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.head
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.TimeConverter;
 import java.time.LocalTime;
 import java.util.Optional;
-import java.util.function.Function;
 
 public record TimeOfExtractField() implements HeaderField<LocalTime> {
 
@@ -28,7 +27,7 @@ public record TimeOfExtractField() implements HeaderField<LocalTime> {
   }
 
   @Override
-  public Function<String, LocalTime> converter() {
-    return TimeConverter.getInstance().andThen(Optional::orElseThrow);
+  public LocalTime convert(String raw) {
+    return TimeConverter.getInstance().apply(raw).orElseThrow(IllegalArgumentException::new);
   }
 }

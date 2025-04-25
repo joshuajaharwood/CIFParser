@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.InverseDateConverter;
 import java.time.LocalDate;
-import java.util.function.Function;
 
 public record DateRunsToField() implements BasicScheduleField<LocalDate> {
 
@@ -27,7 +26,7 @@ public record DateRunsToField() implements BasicScheduleField<LocalDate> {
   }
 
   @Override
-  public Function<String, LocalDate> converter() {
-    return InverseDateConverter.getInstance();
+  public LocalDate convert(String raw) {
+    return InverseDateConverter.getInstance().apply(raw);
   }
 }

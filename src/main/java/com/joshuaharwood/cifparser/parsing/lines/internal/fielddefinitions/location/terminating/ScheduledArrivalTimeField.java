@@ -3,7 +3,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.FiveDigitTimeConverter;
 import java.time.LocalTime;
 import java.util.Optional;
-import java.util.function.Function;
 
 public record ScheduledArrivalTimeField() implements TerminatingLocationField<Optional<LocalTime>> {
 
@@ -28,7 +27,7 @@ public record ScheduledArrivalTimeField() implements TerminatingLocationField<Op
   }
 
   @Override
-  public Function<String, Optional<LocalTime>> converter() {
-    return FiveDigitTimeConverter.getInstance()::apply;
+  public Optional<LocalTime> convert(String raw) {
+    return FiveDigitTimeConverter.getInstance().apply(raw);
   }
 }

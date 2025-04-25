@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.head
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.UpdateIndicator;
-import java.util.function.Function;
 
 public record UpdateIndicatorField() implements HeaderField<UpdateIndicator> {
 
@@ -27,7 +26,7 @@ public record UpdateIndicatorField() implements HeaderField<UpdateIndicator> {
   }
 
   @Override
-  public Function<String, UpdateIndicator> converter() {
-    return LiteralConverter.create(UpdateIndicator.class);
+  public UpdateIndicator convert(String raw) {
+    return LiteralConverter.create(UpdateIndicator.class).apply(raw);
   }
 }

@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.BankHolidayRunning;
-import java.util.function.Function;
 
 public record BankHolidayRunningField() implements BasicScheduleField<BankHolidayRunning> {
 
@@ -27,7 +26,7 @@ public record BankHolidayRunningField() implements BasicScheduleField<BankHolida
   }
 
   @Override
-  public Function<String, BankHolidayRunning> converter() {
-    return LiteralConverter.create(BankHolidayRunning.class);
+  public BankHolidayRunning convert(String raw) {
+    return LiteralConverter.create(BankHolidayRunning.class).apply(raw);
   }
 }
