@@ -14,7 +14,7 @@ public interface RowField<T> {
 
   Function<String, T> converter();
 
-  default T convert(String raw) {
+  default T convertTemp(String raw) {
     if (isRequired() && raw.isBlank()) {
       throw new IllegalArgumentException("Required field '%s' is blank".formatted(name()));
     }

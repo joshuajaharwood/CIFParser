@@ -8,6 +8,6 @@ public class Converter {
   }
 
   public static <T> T convert(RowField<T> v, String record) {
-    return v.convert(record.substring(v.startIndex(), v.endIndex()));
+    return v.convertTemp(record.substring(v.startIndex(), v.endIndex()));
   }
 }
