@@ -3,6 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tipl
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 
 public record DescriptionField() implements TiplocInsertField<String> {
+  private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 
   @Override
   public int startIndex() {
@@ -26,6 +27,6 @@ public record DescriptionField() implements TiplocInsertField<String> {
 
   @Override
   public String convert(String raw) {
-    return DefaultStringConverter.getInstance().apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

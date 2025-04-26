@@ -26,6 +26,6 @@ public record ServiceBrandingField() implements ChangeEnRouteField<String> {
 
   @Override
   public String convert(String raw) {
-    return DefaultStringConverter.getInstance().apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

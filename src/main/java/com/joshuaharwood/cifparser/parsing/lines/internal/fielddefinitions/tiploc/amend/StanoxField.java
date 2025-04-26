@@ -3,6 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tipl
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 
 public record StanoxField() implements TiplocAmendField<String> {
+
   private static final DefaultStringConverter DEFAULT_STRING_CONVERTER = DefaultStringConverter.getInstance();
 
   @Override

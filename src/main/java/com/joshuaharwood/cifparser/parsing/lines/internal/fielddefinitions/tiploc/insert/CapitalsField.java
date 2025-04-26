@@ -1,8 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.insert;
 
-import java.util.Optional;
-
-public record CapitalsField() implements TiplocInsertField<Optional<Byte>> {
+public record CapitalsField() implements TiplocInsertField<Byte> {
 
   @Override
   public int startIndex() {
@@ -25,14 +23,7 @@ public record CapitalsField() implements TiplocInsertField<Optional<Byte>> {
   }
 
   @Override
-  public Optional<Byte> convert(String raw) {
-    if (raw.isBlank()) {
-      return Optional.empty();
-    }
-    try {
-      return Optional.of(Byte.parseByte(raw.trim()));
-    } catch (NumberFormatException e) {
-      return Optional.empty();
-    }
+  public Byte convert(String raw) {
+    return Byte.parseByte(raw);
   }
 }

@@ -6,6 +6,8 @@ import java.util.Optional;
 
 public record DateOfExtractField() implements HeaderField<LocalDate> {
 
+  private static final DateConverter CONVERTER = DateConverter.getInstance();
+
   @Override
   public int startIndex() {
     return 22;
@@ -28,6 +30,6 @@ public record DateOfExtractField() implements HeaderField<LocalDate> {
 
   @Override
   public LocalDate convert(String raw) {
-    return DateConverter.getInstance().apply(raw).orElseThrow(IllegalArgumentException::new);
+    return CONVERTER.apply(raw).orElseThrow(IllegalArgumentException::new);
   }
 }

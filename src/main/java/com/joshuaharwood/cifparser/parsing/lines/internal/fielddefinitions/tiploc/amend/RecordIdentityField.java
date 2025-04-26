@@ -5,7 +5,8 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 
 public record RecordIdentityField() implements TiplocAmendField<RecordIdentity> {
 
-  private static final LiteralConverter<RecordIdentity> CONVERTER = LiteralConverter.create(RecordIdentity.class);
+  private static final LiteralConverter<RecordIdentity> CONVERTER = LiteralConverter.create(
+    RecordIdentity.class);
 
   @Override
   public int startIndex() {

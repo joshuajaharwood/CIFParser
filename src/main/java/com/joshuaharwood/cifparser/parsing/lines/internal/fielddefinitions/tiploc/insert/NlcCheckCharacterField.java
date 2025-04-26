@@ -29,6 +29,6 @@ public record NlcCheckCharacterField() implements TiplocInsertField<Optional<Cha
 
   @Override
   public Optional<Character> convert(String raw) {
-    return Optional.ofNullable(DEFAULT_CHAR_CONVERTER.apply(raw));
+    return Optional.of(DEFAULT_CHAR_CONVERTER.apply(raw));
   }
 }

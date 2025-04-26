@@ -4,10 +4,13 @@ import com.google.common.collect.ImmutableList;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
 
 public sealed interface TiplocAmendField<T> extends RowField<T> permits RecordIdentityField,
-  TiplocCodeField, CapitalsIdentificationField, NlcField, NlcCheckCharacterField, TpsDescriptionField,
-  StanoxField, PoMcpCodeField, ThreeAlphaCodeField, NlcDescriptionField, NewTiplocField, SpareField {
+  TiplocCodeField, CapitalsIdentificationField, NlcField, NlcCheckCharacterField,
+  TpsDescriptionField,
+  StanoxField, PoMcpCodeField, ThreeAlphaCodeField, NlcDescriptionField, NewTiplocField,
+  SpareField {
 
   class Instances {
+
     public static final RecordIdentityField RECORD_IDENTITY_FIELD = new RecordIdentityField();
     public static final TiplocCodeField TIPLOC_CODE_FIELD = new TiplocCodeField();
     public static final CapitalsIdentificationField CAPITALS_IDENTIFICATION_FIELD = new CapitalsIdentificationField();
@@ -33,10 +36,10 @@ public sealed interface TiplocAmendField<T> extends RowField<T> permits RecordId
       NLC_DESCRIPTION_FIELD,
       NEW_TIPLOC_FIELD,
       SPARE_FIELD);
-  
+
     private Instances() {
     }
-  
+
     public static ImmutableList<TiplocAmendField<?>> getAll() {
       return ALL_INSTANCES;
     }

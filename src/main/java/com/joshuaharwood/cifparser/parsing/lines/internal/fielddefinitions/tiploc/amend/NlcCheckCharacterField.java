@@ -1,6 +1,10 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.amend;
 
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultCharConverter;
+
 public record NlcCheckCharacterField() implements TiplocAmendField<Character> {
+
+  private static final DefaultCharConverter CONVERTER = DefaultCharConverter.getInstance();
 
   @Override
   public int startIndex() {
@@ -24,14 +28,6 @@ public record NlcCheckCharacterField() implements TiplocAmendField<Character> {
 
   @Override
   public Character convert(String raw) {
-    return s -> {
-      if (s == null || s.isBlank()) {
-        return null;
-      }
-      if (s.length() != 1) {
-        throw new IllegalArgumentException("Given string was longer than one character.");
-      }
-      return s.charAt(0);
-    };
+    return CONVERTER.apply(raw);
   }
 }

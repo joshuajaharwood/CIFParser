@@ -6,6 +6,8 @@ import java.util.Set;
 
 public record CateringCodeField() implements BasicScheduleField<Set<CateringCode>> {
 
+  private static final LiteralSetConverter<CateringCode> CONVERTER = LiteralSetConverter.getInstance(CateringCode.class);
+
   @Override
   public int startIndex() {
     return 70;
@@ -28,6 +30,6 @@ public record CateringCodeField() implements BasicScheduleField<Set<CateringCode
 
   @Override
   public Set<CateringCode> convert(String raw) {
-    return LiteralSetConverter.getInstance(CateringCode.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

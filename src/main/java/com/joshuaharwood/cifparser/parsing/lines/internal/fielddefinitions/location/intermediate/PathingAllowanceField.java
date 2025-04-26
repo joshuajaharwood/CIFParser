@@ -26,6 +26,6 @@ public record PathingAllowanceField() implements IntermediateLocationField<Strin
 
   @Override
   public String convert(String raw) {
-    return DefaultStringConverter.getInstance().apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

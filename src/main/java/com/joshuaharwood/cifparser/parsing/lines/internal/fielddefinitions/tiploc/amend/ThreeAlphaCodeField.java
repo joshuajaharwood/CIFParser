@@ -1,9 +1,10 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.amend;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
-import java.util.function.Function;
 
 public record ThreeAlphaCodeField() implements TiplocAmendField<String> {
+
+  private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 
   @Override
   public int startIndex() {
@@ -27,6 +28,6 @@ public record ThreeAlphaCodeField() implements TiplocAmendField<String> {
 
   @Override
   public String convert(String raw) {
-    return DefaultStringConverter.getInstance().apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

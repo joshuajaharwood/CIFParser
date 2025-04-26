@@ -4,7 +4,10 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConv
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 
 public record RecordIdentityField() implements TrailerField<RecordIdentity> {
-  
+
+  private static final LiteralConverter<RecordIdentity> CONVERTER = LiteralConverter.create(
+    RecordIdentity.class);
+
   @Override
   public int startIndex() {
     return 0;
@@ -27,6 +30,6 @@ public record RecordIdentityField() implements TrailerField<RecordIdentity> {
 
   @Override
   public RecordIdentity convert(String raw) {
-    return LiteralConverter.create(RecordIdentity.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }
