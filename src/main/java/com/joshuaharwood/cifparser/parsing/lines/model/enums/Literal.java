@@ -1,4 +1,4 @@
-package com.joshuaharwood.cifparser.parsing.lines.internal.literals;
+package com.joshuaharwood.cifparser.parsing.lines.model.enums;
 
 import org.jspecify.annotations.Nullable;
 

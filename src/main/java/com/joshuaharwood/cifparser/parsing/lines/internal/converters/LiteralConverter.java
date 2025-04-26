@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.Literal;
 import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.DuplicateLiteralException;
 import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.UnknownLiteralException;
 import java.util.EnumSet;

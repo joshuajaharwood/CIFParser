@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.association;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
-import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationType;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.AssociationType;
 
 public record AssociationTypeField() implements AssociationField<AssociationType> {
 

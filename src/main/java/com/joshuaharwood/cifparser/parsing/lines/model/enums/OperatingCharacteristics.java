@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.model.enums;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
-
 public enum OperatingCharacteristics implements Literal {
   VACUUM_BRAKED("B", "Vacuum Braked"),
   TIMED_100_MPH("C", "Timed at 100 m.p.h."),

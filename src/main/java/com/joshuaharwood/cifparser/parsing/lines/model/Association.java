@@ -1,6 +1,9 @@
 package com.joshuaharwood.cifparser.parsing.lines.model;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.AssociationCategory;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.AssociationDateIndicator;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.AssociationType;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.DiagramType;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
@@ -27,69 +30,6 @@ public record Association(TransactionType transactionType,
   @Override
   public RecordIdentity recordIdentity() {
     return RecordIdentity.ASSOCIATION_RECORD;
-  }
-
-  public enum AssociationCategory implements Literal {
-    JOIN("JJ"),
-    DIVIDE("VV"),
-    NEXT("NP");
-
-    private final String literal;
-
-    AssociationCategory(String literal) {
-      this.literal = literal;
-    }
-
-    public String getLiteral() {
-      return literal;
-    }
-  }
-
-  public enum AssociationDateIndicator implements Literal {
-    STANDARD("S"),
-    OVER_NEXT_MIDNIGHT("N"),
-    OVER_PREVIOUS_MIDNIGHT("P");
-
-    private final String literal;
-
-    AssociationDateIndicator(String literal) {
-      this.literal = literal;
-    }
-
-    public String getLiteral() {
-      return literal;
-    }
-  }
-
-  public enum DiagramType implements Literal {
-    T("T");
-
-    private final String literal;
-
-
-    DiagramType(String literal) {
-      this.literal = literal;
-    }
-
-    @Override
-    public String getLiteral() {
-      return literal;
-    }
-  }
-
-  public enum AssociationType implements Literal {
-    PASSENGER_USE("P"),
-    OPERATING_USE_ONLY("O");
-    private final String literal;
-
-    AssociationType(String literal) {
-      this.literal = literal;
-    }
-
-    @Override
-    public String getLiteral() {
-      return literal;
-    }
   }
 
 }

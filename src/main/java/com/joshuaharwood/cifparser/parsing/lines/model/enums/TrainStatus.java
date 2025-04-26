@@ -3,7 +3,6 @@ package com.joshuaharwood.cifparser.parsing.lines.model.enums;
 import static com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainStatusSchedulingType.SHORT_TERM_PLANNING;
 import static com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainStatusSchedulingType.WORKING_TIMETABLE;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
 import org.jspecify.annotations.Nullable;
 
 public enum TrainStatus implements Literal {

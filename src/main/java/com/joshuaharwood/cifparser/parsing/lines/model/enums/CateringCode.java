@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.model.enums;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
-
 public enum CateringCode implements Literal {
   BUFFET_SERVICE("C", "Buffet Service"),
   RESTAURANT_CAR_AVAILABLE_FOR_FIRST_CLASS_PASSENGERS("F",

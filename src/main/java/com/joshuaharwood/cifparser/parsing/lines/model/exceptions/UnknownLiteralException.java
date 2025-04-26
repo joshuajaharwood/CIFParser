@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.model.exceptions;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.Literal;
 
 public final class UnknownLiteralException extends CifLineParserException {
 

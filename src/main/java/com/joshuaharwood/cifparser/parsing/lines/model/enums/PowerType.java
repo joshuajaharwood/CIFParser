@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.model.enums;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
-
 public enum PowerType implements Literal {
   DIESEL("D", "Diesel"),
   DIESEL_ELECTRIC_MULTIPLE_UNIT("DEM", "Diesel Electric Multiple Unit"),

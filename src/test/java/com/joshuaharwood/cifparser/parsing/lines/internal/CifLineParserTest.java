@@ -6,10 +6,10 @@ import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException
 
 import com.joshuaharwood.cifparser.parsing.lines.CifLineParser;
 import com.joshuaharwood.cifparser.parsing.lines.model.Association;
-import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationCategory;
-import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationDateIndicator;
-import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationType;
-import com.joshuaharwood.cifparser.parsing.lines.model.Association.DiagramType;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.AssociationCategory;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.AssociationDateIndicator;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.AssociationType;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.DiagramType;
 import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.CifLineParserException;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;

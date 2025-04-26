@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.model.enums;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
-
 public enum UpdateIndicator implements Literal {
   UPDATE_EXTRACT("U", "Update Extract"),
   FULL_EXTRACT("F", "Full Extract");

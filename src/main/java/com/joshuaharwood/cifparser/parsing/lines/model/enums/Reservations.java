@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.model.enums;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
-
 public enum Reservations implements Literal {
   RESERVATIONS_COMPULSORY("A", "Reservations compulsory"),
   RESERVATIONS_FOR_BICYCLES_ESSENTIAL("E", "Reservations for bicycles essential"),

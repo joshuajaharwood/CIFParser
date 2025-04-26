@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.model.enums;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
-
 public enum ApplicableTimetableCode implements Literal {
   APPLICABLE("Y"),
   NOT_APPLICABLE("N");

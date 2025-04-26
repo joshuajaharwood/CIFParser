@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.model.enums;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
-
 public enum RecordIdentity implements Literal {
   HEADER_RECORD("HD", "Header Record"),
   TIPLOC_INSERT_RECORD("TI", "TIPLOC Insert Record"),

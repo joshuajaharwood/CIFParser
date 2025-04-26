@@ -1,16 +1,16 @@
 package com.joshuaharwood.cifparser.parsing.lines.model.enums;
 
-public enum TransactionType implements Literal {
-  NEW("N"),
-  DELETE("D"),
-  REVISE("R");
+public enum DiagramType implements Literal {
+  T("T");
 
   private final String literal;
 
-  TransactionType(String literal) {
+
+  DiagramType(String literal) {
     this.literal = literal;
   }
 
+  @Override
   public String getLiteral() {
     return literal;
   }

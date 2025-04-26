@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.model.enums;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.Literal;
-
 public enum SeatingClass implements Literal {
   FIRST_AND_STANDARD("B", "First and standard"),
   STANDARD("S", "Standard only");
