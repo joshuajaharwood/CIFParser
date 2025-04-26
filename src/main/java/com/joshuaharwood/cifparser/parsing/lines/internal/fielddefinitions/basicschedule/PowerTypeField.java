@@ -4,6 +4,9 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConv
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;
 
 public record PowerTypeField() implements BasicScheduleField<PowerType> {
+
+  private static final LiteralConverter<PowerType> CONVERTER = LiteralConverter.create(PowerType.class);
+
   @Override
   public int startIndex() {
     return 50;
@@ -26,6 +29,6 @@ public record PowerTypeField() implements BasicScheduleField<PowerType> {
 
   @Override
   public PowerType convert(String raw) {
-    return LiteralConverter.create(PowerType.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

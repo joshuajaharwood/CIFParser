@@ -5,6 +5,8 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
 
 public record StpIndicatorField() implements AssociationField<StpIndicator> {
 
+  private static final LiteralConverter<StpIndicator> CONVERTER = LiteralConverter.create(StpIndicator.class);
+
   @Override
   public int startIndex() {
     return 79;
@@ -27,6 +29,6 @@ public record StpIndicatorField() implements AssociationField<StpIndicator> {
 
   @Override
   public StpIndicator convert(String raw) {
-    return LiteralConverter.create(StpIndicator.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

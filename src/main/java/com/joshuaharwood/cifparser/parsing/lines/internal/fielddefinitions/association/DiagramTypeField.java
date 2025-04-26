@@ -5,6 +5,8 @@ import com.joshuaharwood.cifparser.parsing.lines.model.Association.DiagramType;
 
 public record DiagramTypeField() implements AssociationField<DiagramType> {
 
+  private static final LiteralConverter<DiagramType> CONVERTER = LiteralConverter.create(DiagramType.class);
+
   @Override
   public int startIndex() {
     return 46;
@@ -27,6 +29,6 @@ public record DiagramTypeField() implements AssociationField<DiagramType> {
 
   @Override
   public DiagramType convert(String raw) {
-    return LiteralConverter.create(DiagramType.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

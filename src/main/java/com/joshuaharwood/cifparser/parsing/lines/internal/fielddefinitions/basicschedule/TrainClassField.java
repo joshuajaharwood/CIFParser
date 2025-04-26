@@ -6,6 +6,8 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.SeatingClass;
 //todo: aka seating class
 public record TrainClassField() implements BasicScheduleField<SeatingClass> {
 
+  private static final LiteralConverter<SeatingClass> CONVERTER = LiteralConverter.create(SeatingClass.class);
+
   @Override
   public int startIndex() {
     return 66;
@@ -28,6 +30,6 @@ public record TrainClassField() implements BasicScheduleField<SeatingClass> {
 
   @Override
   public SeatingClass convert(String raw) {
-    return LiteralConverter.create(SeatingClass.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

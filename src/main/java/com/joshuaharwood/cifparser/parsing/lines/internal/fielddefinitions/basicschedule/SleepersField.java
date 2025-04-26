@@ -5,6 +5,8 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.Sleepers;
 
 public record SleepersField() implements BasicScheduleField<Sleepers> {
 
+  private static final LiteralConverter<Sleepers> CONVERTER = LiteralConverter.create(Sleepers.class);
+
   @Override
   public int startIndex() {
     return 67;
@@ -27,6 +29,6 @@ public record SleepersField() implements BasicScheduleField<Sleepers> {
 
   @Override
   public Sleepers convert(String raw) {
-    return LiteralConverter.create(Sleepers.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

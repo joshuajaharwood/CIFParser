@@ -4,6 +4,9 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConv
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.Reservations;
 
 public record ReservationsField() implements BasicScheduleField<Reservations> {
+
+  private static final LiteralConverter<Reservations> CONVERTER = LiteralConverter.create(Reservations.class);
+
   @Override
   public int startIndex() {
     return 68;
@@ -26,6 +29,6 @@ public record ReservationsField() implements BasicScheduleField<Reservations> {
 
   @Override
   public Reservations convert(String raw) {
-    return LiteralConverter.create(Reservations.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

@@ -5,6 +5,8 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.ApplicableTimetable
 
 public record ApplicableTimetableCodeField() implements BasicScheduleExtendedField<ApplicableTimetableCode> {
 
+  private static final LiteralConverter<ApplicableTimetableCode> CONVERTER = LiteralConverter.create(ApplicableTimetableCode.class);
+
   @Override
   public int startIndex() {
     return 13;
@@ -27,6 +29,6 @@ public record ApplicableTimetableCodeField() implements BasicScheduleExtendedFie
 
   @Override
   public ApplicableTimetableCode convert(String raw) {
-    return LiteralConverter.create(ApplicableTimetableCode.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

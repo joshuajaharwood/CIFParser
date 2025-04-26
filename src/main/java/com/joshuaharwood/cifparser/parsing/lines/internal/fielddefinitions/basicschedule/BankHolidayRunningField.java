@@ -5,6 +5,8 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.BankHolidayRunning;
 
 public record BankHolidayRunningField() implements BasicScheduleField<BankHolidayRunning> {
 
+  private static final LiteralConverter<BankHolidayRunning> CONVERTER = LiteralConverter.create(BankHolidayRunning.class);
+
   @Override
   public int startIndex() {
     return 28;
@@ -27,6 +29,6 @@ public record BankHolidayRunningField() implements BasicScheduleField<BankHolida
 
   @Override
   public BankHolidayRunning convert(String raw) {
-    return LiteralConverter.create(BankHolidayRunning.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

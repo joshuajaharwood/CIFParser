@@ -5,6 +5,8 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
 
 public record TransactionTypeField() implements AssociationField<TransactionType> {
 
+  private static final LiteralConverter<TransactionType> CONVERTER = LiteralConverter.create(TransactionType.class);
+
   @Override
   public int startIndex() {
     return 2;
@@ -27,6 +29,6 @@ public record TransactionTypeField() implements AssociationField<TransactionType
 
   @Override
   public TransactionType convert(String raw) {
-    return LiteralConverter.create(TransactionType.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

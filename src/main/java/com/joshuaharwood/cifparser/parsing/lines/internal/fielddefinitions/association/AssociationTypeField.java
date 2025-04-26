@@ -5,6 +5,8 @@ import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationTy
 
 public record AssociationTypeField() implements AssociationField<AssociationType> {
 
+  private static final LiteralConverter<AssociationType> CONVERTER = LiteralConverter.create(AssociationType.class);
+
   @Override
   public int startIndex() {
     return 47;
@@ -27,6 +29,6 @@ public record AssociationTypeField() implements AssociationField<AssociationType
 
   @Override
   public AssociationType convert(String raw) {
-    return LiteralConverter.create(AssociationType.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

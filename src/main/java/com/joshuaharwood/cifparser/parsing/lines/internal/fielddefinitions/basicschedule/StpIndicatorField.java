@@ -4,6 +4,9 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConv
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
 
 public record StpIndicatorField() implements BasicScheduleField<StpIndicator> {
+
+  private static final LiteralConverter<StpIndicator> CONVERTER = LiteralConverter.create(StpIndicator.class);
+
   @Override
   public int startIndex() {
     return 79;
@@ -26,6 +29,6 @@ public record StpIndicatorField() implements BasicScheduleField<StpIndicator> {
 
   @Override
   public StpIndicator convert(String raw) {
-    return LiteralConverter.create(StpIndicator.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

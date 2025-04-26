@@ -4,6 +4,9 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConv
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainCategory;
 
 public record TrainCategoryField() implements BasicScheduleField<TrainCategory> {
+
+  private static final LiteralConverter<TrainCategory> CONVERTER = LiteralConverter.create(TrainCategory.class);
+
   @Override
   public int startIndex() {
     return 30;
@@ -26,6 +29,6 @@ public record TrainCategoryField() implements BasicScheduleField<TrainCategory> 
 
   @Override
   public TrainCategory convert(String raw) {
-    return LiteralConverter.create(TrainCategory.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

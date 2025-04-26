@@ -5,6 +5,8 @@ import com.joshuaharwood.cifparser.parsing.lines.model.Association.AssociationDa
 
 public record AssociationDateIndicatorField() implements AssociationField<AssociationDateIndicator> {
 
+  private static final LiteralConverter<AssociationDateIndicator> CONVERTER = LiteralConverter.create(AssociationDateIndicator.class);
+
   @Override
   public int startIndex() {
     return 36;
@@ -27,6 +29,6 @@ public record AssociationDateIndicatorField() implements AssociationField<Associ
 
   @Override
   public AssociationDateIndicator convert(String raw) {
-    return LiteralConverter.create(AssociationDateIndicator.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

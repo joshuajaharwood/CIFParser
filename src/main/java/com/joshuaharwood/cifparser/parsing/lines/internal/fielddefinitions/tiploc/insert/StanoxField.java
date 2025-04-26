@@ -1,8 +1,9 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.insert;
 
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 import java.util.Optional;
 
-public record StanoxField() implements TiplocInsertField<Optional<Integer>> {
+public record StanoxField() implements TiplocInsertField<String> {
 
   @Override
   public int startIndex() {
@@ -25,16 +26,7 @@ public record StanoxField() implements TiplocInsertField<Optional<Integer>> {
   }
 
   @Override
-  public Optional<Integer> convert(String raw) {
-    return s -> {
-      if (s == null || s.isBlank()) {
-        return Optional.empty();
-      }
-      try {
-        return Optional.of(Integer.valueOf(s.trim()));
-      } catch (NumberFormatException e) {
-        return Optional.empty();
-      }
-    };
+  public String convert(String raw) {
+    return DefaultStringConverter.getInstance().apply(raw);
   }
 }
