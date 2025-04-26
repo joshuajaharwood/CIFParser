@@ -1,16 +1,19 @@
 package com.joshuaharwood.cifparser.parsing.lines;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.BasicScheduleParser;
-import com.joshuaharwood.cifparser.parsing.lines.internal.literals.LiteralLookup;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.CifRecord;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.CifLineParserException;
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class CifLineParser {
 
   private static final BasicScheduleParser BASIC_SCHEDULE_PARSER = new BasicScheduleParser();
-  private static final Logger LOG = org.slf4j.LoggerFactory.getLogger(CifLineParser.class);
+  private static final Logger LOG = LoggerFactory.getLogger(CifLineParser.class);
+  private static final LiteralConverter<RecordIdentity> RECORD_IDENTITY_LITERAL_CONVERTER = LiteralConverter.create(
+    RecordIdentity.class);
 
 //  private static final HeaderParser HEADER_PARSER = new HeaderParser();
 //  private static final TiplocInsertParser TIPLOC_INSERT_PARSER = new TiplocInsertParser();
@@ -36,8 +39,8 @@ public class CifLineParser {
     }
 
     try {
-      final RecordIdentity identity = LiteralLookup.lookup(RecordIdentity.class,
-        record.substring(0, 2));
+      final RecordIdentity identity = RECORD_IDENTITY_LITERAL_CONVERTER.apply(record.substring(0,
+        2));
 
       if (identity == null) {
         throw new IllegalArgumentException("A record's identity cannot be blank.");
