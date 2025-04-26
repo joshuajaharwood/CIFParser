@@ -6,6 +6,8 @@ import java.util.Set;
 
 public record DaysRunField() implements BasicScheduleField<Set<DayOfWeek>> {
 
+  private static final DaysOfWeekBitmaskConverter CONVERTER = DaysOfWeekBitmaskConverter.getInstance();
+
   @Override
   public int startIndex() {
     return 21;
@@ -28,6 +30,6 @@ public record DaysRunField() implements BasicScheduleField<Set<DayOfWeek>> {
 
   @Override
   public Set<DayOfWeek> convert(String raw) {
-    return DaysOfWeekBitmaskConverter.getInstance().apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

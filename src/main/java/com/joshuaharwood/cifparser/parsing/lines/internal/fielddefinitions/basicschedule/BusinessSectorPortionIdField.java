@@ -4,6 +4,8 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultChar
 
 public record BusinessSectorPortionIdField() implements BasicScheduleField<Character> {
 
+  private static final DefaultCharConverter CONVERTER = DefaultCharConverter.getInstance();
+
   @Override
   public int startIndex() {
     return 49;
@@ -26,6 +28,6 @@ public record BusinessSectorPortionIdField() implements BasicScheduleField<Chara
 
   @Override
   public Character convert(String raw) {
-    return DefaultCharConverter.getInstance().apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

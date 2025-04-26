@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 public record DateRunsFromField() implements BasicScheduleField<LocalDate> {
 
+  private static final InverseDateConverter CONVERTER = InverseDateConverter.getInstance();
+
   @Override
   public int startIndex() {
     return 9;
@@ -27,6 +29,6 @@ public record DateRunsFromField() implements BasicScheduleField<LocalDate> {
 
   @Override
   public LocalDate convert(String raw) {
-    return InverseDateConverter.getInstance().apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

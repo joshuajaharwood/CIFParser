@@ -6,6 +6,8 @@ import java.util.Set;
 
 public record AssociationDaysField() implements AssociationField<Set<DayOfWeek>> {
 
+  private static final DaysOfWeekBitmaskConverter CONVERTER = DaysOfWeekBitmaskConverter.getInstance();
+
   @Override
   public int startIndex() {
     return 27;
@@ -28,6 +30,6 @@ public record AssociationDaysField() implements AssociationField<Set<DayOfWeek>>
 
   @Override
   public Set<DayOfWeek> convert(String raw) {
-    return DaysOfWeekBitmaskConverter.getInstance().apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

@@ -6,6 +6,9 @@ import java.util.Set;
 
 public record OperatingCharacteristicsField() implements
   BasicScheduleField<Set<OperatingCharacteristics>> {
+
+  private static final LiteralSetConverter<OperatingCharacteristics> CONVERTER = LiteralSetConverter.getInstance(OperatingCharacteristics.class);
+
   @Override
   public int startIndex() {
     return 60;
@@ -28,6 +31,6 @@ public record OperatingCharacteristicsField() implements
 
   @Override
   public Set<OperatingCharacteristics> convert(String raw) {
-    return LiteralSetConverter.getInstance(OperatingCharacteristics.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 public record AssociationStartDateField() implements AssociationField<LocalDate> {
 
+  private static final InverseDateConverter CONVERTER = InverseDateConverter.getInstance();
+
   @Override
   public int startIndex() {
     return 15;
@@ -27,6 +29,6 @@ public record AssociationStartDateField() implements AssociationField<LocalDate>
 
   @Override
   public LocalDate convert(String raw) {
-    return InverseDateConverter.getInstance().apply(raw);
+    return CONVERTER.apply(raw);
   }
 }
