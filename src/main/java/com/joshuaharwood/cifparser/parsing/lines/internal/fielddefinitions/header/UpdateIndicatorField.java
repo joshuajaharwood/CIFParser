@@ -5,6 +5,8 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.UpdateIndicator;
 
 public record UpdateIndicatorField() implements HeaderField<UpdateIndicator> {
 
+   private static final LiteralConverter<UpdateIndicator> CONVERTER = LiteralConverter.create(UpdateIndicator.class);
+
   @Override
   public int startIndex() {
     return 46;
@@ -27,6 +29,6 @@ public record UpdateIndicatorField() implements HeaderField<UpdateIndicator> {
 
   @Override
   public UpdateIndicator convert(String raw) {
-    return LiteralConverter.create(UpdateIndicator.class).apply(raw);
+    return CONVERTER.apply(raw);
   }
 }
