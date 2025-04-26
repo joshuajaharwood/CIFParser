@@ -1,7 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
-import org.jspecify.annotations.Nullable;
-
 public class DefaultStringConverter implements Converter<String> {
 
   private static final DefaultStringConverter INSTANCE = new DefaultStringConverter();
@@ -11,10 +9,9 @@ public class DefaultStringConverter implements Converter<String> {
   }
 
   @Override
-  @Nullable
   public String apply(String input) {
     if (input.isBlank()) {
-      return null;
+      throw new IllegalArgumentException("Given String must not be blank.");
     }
 
     return input.trim();

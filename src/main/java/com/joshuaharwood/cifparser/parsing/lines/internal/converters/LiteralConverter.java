@@ -23,18 +23,10 @@ public class LiteralConverter<T extends Enum<T> & Literal> implements Converter<
 
   @Override
   public T apply(String input) {
-    LOG.debug("Attempting to lookup literal. [Class: {}] [Literal: {}]",
-      literalClass.getSimpleName(),
-      input);
+    LOG.debug("Looking up literal. [Class: {}] [Literal: {}]", literalClass.getSimpleName(), input);
 
-    // We can short-circuit here...
-    
-    //fixme: this should probably throw - we shouldn't be allowing empty collections here but handle
-    //  them earlier?
     if (input.isBlank()) {
-      LOG.debug("Literal was blank. [Class: {}]", literalClass.getSimpleName());
-//      throw new IllegalArgumentException("String literals c")
-      return null;
+      throw new IllegalArgumentException("Literal string must not be blank.");
     }
 
     var matches = EnumSet.allOf(literalClass)

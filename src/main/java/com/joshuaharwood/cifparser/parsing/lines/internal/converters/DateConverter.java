@@ -2,10 +2,8 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import org.jspecify.annotations.NonNull;
 
-public class DateConverter implements Converter<Optional<LocalDate>> {
+public class DateConverter implements Converter<LocalDate> {
 
   private static final DateTimeFormatter DATE_FORMAT = DateTimeFormatter.ofPattern("ddMMyy");
 
@@ -17,12 +15,11 @@ public class DateConverter implements Converter<Optional<LocalDate>> {
   public static DateConverter getInstance() {
     return INSTANCE;
   }
-  
+
   @Override
-  @NonNull
-  public Optional<LocalDate> apply(String input) {
+  public LocalDate apply(String input) {
     if (input.isBlank()) {
-      return Optional.empty();
+      throw new IllegalArgumentException("Input cannot be blank string");
     }
 
     final String trimmed = input.trim();
@@ -31,6 +28,6 @@ public class DateConverter implements Converter<Optional<LocalDate>> {
       throw new IllegalArgumentException("Date input must be 6 digits.");
     }
 
-    return Optional.of(LocalDate.parse(trimmed, DATE_FORMAT));
+    return LocalDate.parse(trimmed, DATE_FORMAT);
   }
 }

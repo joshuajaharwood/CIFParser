@@ -2,10 +2,8 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Optional;
-import org.jspecify.annotations.NonNull;
 
-public class TimeConverter implements Converter<Optional<LocalTime>> {
+public class TimeConverter implements Converter<LocalTime> {
 
   private static final DateTimeFormatter TIME_FORMAT = DateTimeFormatter.ofPattern("HHmm");
 
@@ -19,10 +17,9 @@ public class TimeConverter implements Converter<Optional<LocalTime>> {
   }
 
   @Override
-  @NonNull
-  public Optional<LocalTime> apply(String input) {
+  public LocalTime apply(String input) {
     if (input.isBlank()) {
-      return Optional.empty();
+      throw new IllegalArgumentException("Input cannot be blank string.");
     }
 
     final String trimmed = input.trim();
@@ -31,6 +28,6 @@ public class TimeConverter implements Converter<Optional<LocalTime>> {
       throw new IllegalArgumentException("Time input must be 4 digits.");
     }
 
-    return Optional.of(LocalTime.parse(trimmed, TIME_FORMAT));
+    return LocalTime.parse(trimmed, TIME_FORMAT);
   }
 }
