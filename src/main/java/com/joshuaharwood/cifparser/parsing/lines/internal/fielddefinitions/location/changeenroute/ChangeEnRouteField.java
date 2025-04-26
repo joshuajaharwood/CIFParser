@@ -13,6 +13,7 @@ public sealed interface ChangeEnRouteField<T> extends RowField<T> permits
   RetailServiceIdField, SpareField {
 
   class Instances {
+
     public static final RecordIdentityField RECORD_IDENTITY = new RecordIdentityField();
     public static final LocationField LOCATION = new LocationField();
     public static final TrainCategoryField TRAIN_CATEGORY = new TrainCategoryField();

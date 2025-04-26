@@ -4,6 +4,8 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStri
 
 public record TrainClassField() implements ChangeEnRouteField<String> {
 
+  private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
+
   @Override
   public int startIndex() {
     return 46;

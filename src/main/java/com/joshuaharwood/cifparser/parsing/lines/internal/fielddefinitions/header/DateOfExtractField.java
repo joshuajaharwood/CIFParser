@@ -30,6 +30,6 @@ public record DateOfExtractField() implements HeaderField<LocalDate> {
 
   @Override
   public LocalDate convert(String raw) {
-    return CONVERTER.apply(raw).orElseThrow(IllegalArgumentException::new);
+    return CONVERTER.apply(raw);
   }
 }

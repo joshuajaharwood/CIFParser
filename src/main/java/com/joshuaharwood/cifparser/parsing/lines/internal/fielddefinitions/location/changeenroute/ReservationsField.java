@@ -1,8 +1,12 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.location.changeenroute;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.Reservations;
 
-public record ReservationsField() implements ChangeEnRouteField<String> {
+public record ReservationsField() implements ChangeEnRouteField<Reservations> {
+
+  private static final LiteralConverter<Reservations> CONVERTER = LiteralConverter.create(
+    Reservations.class);
 
   @Override
   public int startIndex() {
@@ -25,7 +29,7 @@ public record ReservationsField() implements ChangeEnRouteField<String> {
   }
 
   @Override
-  public String convert(String raw) {
+  public Reservations convert(String raw) {
     return CONVERTER.apply(raw);
   }
 }
