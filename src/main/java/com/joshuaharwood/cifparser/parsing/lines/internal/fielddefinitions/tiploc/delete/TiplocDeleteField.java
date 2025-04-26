@@ -7,6 +7,7 @@ public sealed interface TiplocDeleteField<T> extends RowField<T> permits
   RecordIdentityField, TiplocCodeField, SpareField {
 
   class Instances {
+
     public static final RecordIdentityField RECORD_IDENTITY = new RecordIdentityField();
     public static final TiplocCodeField TIPLOC_CODE = new TiplocCodeField();
     public static final SpareField SPARE = new SpareField();

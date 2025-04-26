@@ -3,10 +3,13 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.Sleepers;
 
-public record SleepersField() implements ChangeEnRouteField<Sleepers> {
+public final class SleepersField implements ChangeEnRouteField<Sleepers> {
 
   private static final LiteralConverter<Sleepers> CONVERTER = LiteralConverter.create(
     Sleepers.class);
+
+  SleepersField() {
+  }
 
   @Override
   public int startIndex() {
@@ -32,4 +35,20 @@ public record SleepersField() implements ChangeEnRouteField<Sleepers> {
   public Sleepers convert(String raw) {
     return CONVERTER.apply(raw);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj == this || obj != null && obj.getClass() == this.getClass();
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    return "SleepersField[]";
+  }
+
 }

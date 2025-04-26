@@ -1,6 +1,9 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicscheduleextended;
 
-public record UicCodeField() implements BasicScheduleExtendedField<Integer> {
+public final class UicCodeField implements BasicScheduleExtendedField<Integer> {
+
+  UicCodeField() {
+  }
 
   @Override
   public int startIndex() {
@@ -26,4 +29,20 @@ public record UicCodeField() implements BasicScheduleExtendedField<Integer> {
   public Integer convert(String raw) {
     return Integer.valueOf(raw);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj == this || obj != null && obj.getClass() == this.getClass();
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    return "UicCodeField[]";
+  }
+
 }

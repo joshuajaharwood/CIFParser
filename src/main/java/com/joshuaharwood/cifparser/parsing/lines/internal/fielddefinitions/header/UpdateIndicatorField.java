@@ -3,9 +3,13 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.head
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.UpdateIndicator;
 
-public record UpdateIndicatorField() implements HeaderField<UpdateIndicator> {
+public final class UpdateIndicatorField implements HeaderField<UpdateIndicator> {
 
-   private static final LiteralConverter<UpdateIndicator> CONVERTER = LiteralConverter.create(UpdateIndicator.class);
+  private static final LiteralConverter<UpdateIndicator> CONVERTER = LiteralConverter.create(
+    UpdateIndicator.class);
+
+  UpdateIndicatorField() {
+  }
 
   @Override
   public int startIndex() {
@@ -31,4 +35,20 @@ public record UpdateIndicatorField() implements HeaderField<UpdateIndicator> {
   public UpdateIndicator convert(String raw) {
     return CONVERTER.apply(raw);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj == this || obj != null && obj.getClass() == this.getClass();
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    return "UpdateIndicatorField[]";
+  }
+
 }

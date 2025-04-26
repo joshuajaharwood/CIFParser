@@ -9,6 +9,7 @@ public sealed interface TiplocInsertField<T> extends RowField<T> permits
   CrsCodeField, DescriptionField, SpareField {
 
   class Instances {
+
     public static final RecordIdentityField RECORD_IDENTITY = new RecordIdentityField();
     public static final TiplocCodeField TIPLOC_CODE = new TiplocCodeField();
     public static final CapitalsField CAPITALS = new CapitalsField();

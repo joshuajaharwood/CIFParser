@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.Optional;
 
 public record PublicArrivalTimeField() implements TerminatingLocationField<Optional<LocalTime>> {
+
   private static final ZeroSafeTimeConverter CONVERTER = ZeroSafeTimeConverter.getInstance();
 
   @Override

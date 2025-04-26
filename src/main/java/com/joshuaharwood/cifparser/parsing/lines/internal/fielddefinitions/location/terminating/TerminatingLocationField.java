@@ -8,6 +8,7 @@ public sealed interface TerminatingLocationField<T> extends RowField<T> permits
   PlatformField, PathField, ActivityField, SpareField {
 
   class Instances {
+
     public static final RecordIdentityField RECORD_IDENTITY = new RecordIdentityField();
     public static final LocationField LOCATION = new LocationField();
     public static final ScheduledArrivalTimeField SCHEDULED_ARRIVAL_TIME = new ScheduledArrivalTimeField();

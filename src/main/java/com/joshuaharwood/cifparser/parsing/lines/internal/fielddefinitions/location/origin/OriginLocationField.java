@@ -9,6 +9,7 @@ public sealed interface OriginLocationField<T> extends RowField<T> permits
   ActivityField, PerformanceAllowanceField, SpareField {
 
   class Instances {
+
     public static final RecordIdentityField RECORD_IDENTITY = new RecordIdentityField();
     public static final LocationField LOCATION = new LocationField();
     public static final ScheduledDepartureTimeField SCHEDULED_DEPARTURE_TIME = new ScheduledDepartureTimeField();

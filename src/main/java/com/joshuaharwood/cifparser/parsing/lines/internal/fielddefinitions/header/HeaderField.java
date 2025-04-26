@@ -13,7 +13,7 @@ public sealed interface HeaderField<T> extends RowField<T> permits
   UserStartDateField, VersionField {
 
   class Instances {
-  
+
     public static final HeaderField<RecordIdentity> RECORD_IDENTITY = new RecordIdentityField();
     public static final HeaderField<String> FILE_MAINFRAME_IDENTITY = new FileMainframeIdentityField();
     public static final HeaderField<LocalDate> DATE_OF_EXTRACT = new DateOfExtractField();
@@ -25,7 +25,8 @@ public sealed interface HeaderField<T> extends RowField<T> permits
     public static final HeaderField<LocalDate> USER_START_DATE = new UserStartDateField();
     public static final HeaderField<LocalDate> USER_END_DATE = new UserEndDateField();
     public static final HeaderField<String> SPARE = new SpareField();
-    private static final ImmutableList<HeaderField<?>> ALL_INSTANCES = ImmutableList.of(RECORD_IDENTITY,
+    private static final ImmutableList<HeaderField<?>> ALL_INSTANCES = ImmutableList.of(
+      RECORD_IDENTITY,
       FILE_MAINFRAME_IDENTITY,
       DATE_OF_EXTRACT,
       TIME_OF_EXTRACT,
@@ -36,10 +37,10 @@ public sealed interface HeaderField<T> extends RowField<T> permits
       USER_START_DATE,
       USER_END_DATE,
       SPARE);
-  
+
     private Instances() {
     }
-  
+
     public static ImmutableList<HeaderField<?>> getAll() {
       return ALL_INSTANCES;
     }

@@ -1,9 +1,9 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.insert;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
-import java.util.Optional;
 
 public record StanoxField() implements TiplocInsertField<String> {
+
   private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 
   @Override

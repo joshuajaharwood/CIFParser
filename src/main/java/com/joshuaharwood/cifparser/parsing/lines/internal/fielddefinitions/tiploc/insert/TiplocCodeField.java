@@ -3,6 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tipl
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 
 public record TiplocCodeField() implements TiplocInsertField<String> {
+
   private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 
   @Override

@@ -4,9 +4,12 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.ZeroSafeTim
 import java.time.LocalTime;
 import java.util.Optional;
 
-public record PublicArrivalField() implements IntermediateLocationField<Optional<LocalTime>> {
+public final class PublicArrivalField implements IntermediateLocationField<Optional<LocalTime>> {
 
   private static final ZeroSafeTimeConverter CONVERTER = ZeroSafeTimeConverter.getInstance();
+
+  PublicArrivalField() {
+  }
 
   @Override
   public int startIndex() {
@@ -32,4 +35,20 @@ public record PublicArrivalField() implements IntermediateLocationField<Optional
   public Optional<LocalTime> convert(String raw) {
     return CONVERTER.apply(raw);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj == this || obj != null && obj.getClass() == this.getClass();
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    return "PublicArrivalField[]";
+  }
+
 }

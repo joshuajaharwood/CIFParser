@@ -8,6 +8,7 @@ public sealed interface BasicScheduleExtendedField<T> extends RowField<T> permit
   ApplicableTimetableCodeField, RetailServiceIdField, SourceField, SpareField {
 
   class Instances {
+
     public static final RecordIdentityField RECORD_IDENTITY = new RecordIdentityField();
     public static final TractionClassField TRACTION_CLASS = new TractionClassField();
     public static final UicCodeField UIC_CODE = new UicCodeField();

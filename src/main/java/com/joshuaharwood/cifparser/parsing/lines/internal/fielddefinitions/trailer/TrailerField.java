@@ -8,6 +8,7 @@ public sealed interface TrailerField<T> extends RowField<T> permits RecordIdenti
   SpareField {
 
   class Instances {
+
     public static final RecordIdentityField RECORD_IDENTITY = new RecordIdentityField();
     public static final SpareField SPARE = new SpareField();
     private static final ImmutableList<TrailerField<?>> ALL_INSTANCES = ImmutableList.of(

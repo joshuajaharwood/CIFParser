@@ -11,6 +11,7 @@ public sealed interface AssociationField<T> extends RowField<T> permits
   AssociationTypeField, FillerField, StpIndicatorField {
 
   class Instances {
+
     static final RecordIdentityField RECORD_IDENTITY = new RecordIdentityField();
     static final TransactionTypeField TRANSACTION_TYPE = new TransactionTypeField();
     static final BaseUidField BASE_UID = new BaseUidField();
