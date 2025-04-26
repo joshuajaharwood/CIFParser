@@ -4,7 +4,7 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStri
 
 public record StanoxField() implements TiplocAmendField<String> {
 
-  private static final DefaultStringConverter DEFAULT_STRING_CONVERTER = DefaultStringConverter.getInstance();
+  private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 
   @Override
   public int startIndex() {
@@ -28,6 +28,6 @@ public record StanoxField() implements TiplocAmendField<String> {
 
   @Override
   public String convert(String raw) {
-    return DEFAULT_STRING_CONVERTER.apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

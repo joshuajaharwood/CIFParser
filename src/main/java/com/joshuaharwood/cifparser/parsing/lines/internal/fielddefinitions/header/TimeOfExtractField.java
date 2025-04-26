@@ -2,9 +2,10 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.head
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.TimeConverter;
 import java.time.LocalTime;
-import java.util.Optional;
 
 public record TimeOfExtractField() implements HeaderField<LocalTime> {
+
+  private static final TimeConverter CONVERTER = TimeConverter.getInstance();
 
   @Override
   public int startIndex() {
@@ -28,6 +29,6 @@ public record TimeOfExtractField() implements HeaderField<LocalTime> {
 
   @Override
   public LocalTime convert(String raw) {
-    return TimeConverter.getInstance().apply(raw).orElseThrow(IllegalArgumentException::new);
+    return CONVERTER.apply(raw);
   }
 }

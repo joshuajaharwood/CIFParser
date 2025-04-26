@@ -2,9 +2,10 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.head
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DateConverter;
 import java.time.LocalDate;
-import java.util.Optional;
 
 public record UserStartDateField() implements HeaderField<LocalDate> {
+
+  private static final DateConverter CONVERTER = DateConverter.getInstance();
 
   @Override
   public int startIndex() {
@@ -28,6 +29,6 @@ public record UserStartDateField() implements HeaderField<LocalDate> {
 
   @Override
   public LocalDate convert(String raw) {
-    return DateConverter.getInstance().apply(raw).orElseThrow(IllegalArgumentException::new);
+    return CONVERTER.apply(raw);
   }
 }

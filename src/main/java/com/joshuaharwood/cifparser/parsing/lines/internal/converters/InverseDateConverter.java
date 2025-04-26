@@ -19,7 +19,7 @@ public class InverseDateConverter implements Converter<LocalDate> {
 
   @Override
   @NonNull
-  public  LocalDate apply(String input) {
+  public LocalDate apply(String input) {
     if (input.length() != 6) {
       throw new IllegalArgumentException("Date input must be 6 digits.");
     }

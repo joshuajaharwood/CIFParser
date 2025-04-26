@@ -2,9 +2,10 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.FiveDigitTimeConverter;
 import java.time.LocalTime;
-import java.util.Optional;
 
-public record ScheduledArrivalTimeField() implements IntermediateLocationField<Optional<LocalTime>> {
+public record ScheduledArrivalTimeField() implements IntermediateLocationField<LocalTime> {
+
+  private static final FiveDigitTimeConverter CONVERTER = FiveDigitTimeConverter.getInstance();
 
   @Override
   public int startIndex() {
@@ -27,7 +28,7 @@ public record ScheduledArrivalTimeField() implements IntermediateLocationField<O
   }
 
   @Override
-  public Optional<LocalTime> convert(String raw) {
-    return FiveDigitTimeConverter.getInstance().apply(raw);
+  public LocalTime convert(String raw) {
+    return CONVERTER.apply(raw);
   }
 }

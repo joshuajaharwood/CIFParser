@@ -3,6 +3,9 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultCharConverter;
 
 public record ConnectIndicatorField() implements BasicScheduleField<Character> {
+
+  private static final DefaultCharConverter CONVERTER = DefaultCharConverter.getInstance();
+
   @Override
   public int startIndex() {
     return 69;
@@ -25,6 +28,6 @@ public record ConnectIndicatorField() implements BasicScheduleField<Character> {
 
   @Override
   public Character convert(String raw) {
-    return DefaultCharConverter.getInstance().apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

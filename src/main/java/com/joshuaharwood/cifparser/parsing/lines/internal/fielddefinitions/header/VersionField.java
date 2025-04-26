@@ -4,6 +4,8 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultChar
 
 public record VersionField() implements HeaderField<Character> {
 
+  private static final DefaultCharConverter CONVERTER = DefaultCharConverter.getInstance();
+
   @Override
   public int startIndex() {
     return 47;
@@ -26,6 +28,6 @@ public record VersionField() implements HeaderField<Character> {
 
   @Override
   public Character convert(String raw) {
-    return DefaultCharConverter.getInstance().apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

@@ -7,7 +7,7 @@ public class ZeroSafeTimeConverter implements Converter<Optional<LocalTime>> {
 
   private static final ZeroSafeTimeConverter INSTANCE = new ZeroSafeTimeConverter();
 
-  private static final TimeConverter TIME_CONVERTER = TimeConverter.getInstance();
+  private static final TimeConverter CONVERTER = TimeConverter.getInstance();
 
   private ZeroSafeTimeConverter() {
   }
@@ -22,6 +22,6 @@ public class ZeroSafeTimeConverter implements Converter<Optional<LocalTime>> {
       return Optional.empty();
     }
 
-    return Optional.of(TIME_CONVERTER.apply(input));
+    return Optional.of(CONVERTER.apply(input));
   }
 }

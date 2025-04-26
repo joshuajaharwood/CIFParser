@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public record NlcCheckCharacterField() implements TiplocInsertField<Optional<Character>> {
 
-  private static final DefaultCharConverter DEFAULT_CHAR_CONVERTER = DefaultCharConverter.getInstance();
+  private static final DefaultCharConverter CONVERTER = DefaultCharConverter.getInstance();
 
   @Override
   public int startIndex() {
@@ -29,6 +29,6 @@ public record NlcCheckCharacterField() implements TiplocInsertField<Optional<Cha
 
   @Override
   public Optional<Character> convert(String raw) {
-    return Optional.of(DEFAULT_CHAR_CONVERTER.apply(raw));
+    return Optional.of(CONVERTER.apply(raw));
   }
 }

@@ -3,6 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.head
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 
 public record SpareField() implements HeaderField<String> {
+  private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 
   @Override
   public int startIndex() {

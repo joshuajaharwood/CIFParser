@@ -11,7 +11,7 @@ public class DateConverter implements Converter<LocalDate> {
 
   private DateConverter() {
   }
-  
+
   public static DateConverter getInstance() {
     return INSTANCE;
   }

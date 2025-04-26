@@ -5,6 +5,7 @@ import java.time.LocalTime;
 import java.util.Optional;
 
 public record PublicDepartureTimeField() implements OriginLocationField<Optional<LocalTime>> {
+  private static final ZeroSafeTimeConverter CONVERTER = ZeroSafeTimeConverter.getInstance();
 
   @Override
   public int startIndex() {
@@ -28,6 +29,6 @@ public record PublicDepartureTimeField() implements OriginLocationField<Optional
 
   @Override
   public Optional<LocalTime> convert(String raw) {
-    return ZeroSafeTimeConverter.getInstance().apply(raw);
+    return CONVERTER.apply(raw);
   }
 }

@@ -13,7 +13,7 @@ public class FiveDigitTimeConverter implements Converter<LocalTime> {
 
   private static final FiveDigitTimeConverter INSTANCE = new FiveDigitTimeConverter();
 
-  private static final TimeConverter TIME_CONVERTER = TimeConverter.getInstance();
+  private static final TimeConverter CONVERTER = TimeConverter.getInstance();
 
   private static final char HALF_MINUTE_INDICATOR = 'H';
 
@@ -31,7 +31,7 @@ public class FiveDigitTimeConverter implements Converter<LocalTime> {
         input));
     }
 
-    var time = TIME_CONVERTER.apply(input.substring(0, 3));
+    var time = CONVERTER.apply(input.substring(0, 3));
 
     if (input.length() == 5) {
       if (input.charAt(4) != HALF_MINUTE_INDICATOR) {

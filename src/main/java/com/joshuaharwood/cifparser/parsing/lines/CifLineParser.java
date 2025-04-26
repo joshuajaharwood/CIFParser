@@ -12,7 +12,7 @@ public class CifLineParser {
 
   private static final BasicScheduleParser BASIC_SCHEDULE_PARSER = new BasicScheduleParser();
   private static final Logger LOG = LoggerFactory.getLogger(CifLineParser.class);
-  private static final LiteralConverter<RecordIdentity> RECORD_IDENTITY_LITERAL_CONVERTER = LiteralConverter.create(
+  private static final LiteralConverter<RecordIdentity> CONVERTER = LiteralConverter.create(
     RecordIdentity.class);
 
 //  private static final HeaderParser HEADER_PARSER = new HeaderParser();
@@ -39,7 +39,7 @@ public class CifLineParser {
     }
 
     try {
-      final RecordIdentity identity = RECORD_IDENTITY_LITERAL_CONVERTER.apply(record.substring(0,
+      final RecordIdentity identity = CONVERTER.apply(record.substring(0,
         2));
 
       if (identity == null) {
