@@ -3,9 +3,12 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.InverseDateConverter;
 import java.time.LocalDate;
 
-public record DateRunsToField() implements BasicScheduleField<LocalDate> {
+public final class DateRunsToField implements BasicScheduleField<LocalDate> {
 
   private static final InverseDateConverter CONVERTER = InverseDateConverter.getInstance();
+
+  DateRunsToField() {
+  }
 
   @Override
   public int startIndex() {
@@ -31,4 +34,20 @@ public record DateRunsToField() implements BasicScheduleField<LocalDate> {
   public LocalDate convert(String raw) {
     return CONVERTER.apply(raw);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj == this || obj != null && obj.getClass() == this.getClass();
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    return "DateRunsToField[]";
+  }
+
 }

@@ -12,6 +12,7 @@ public sealed interface BasicScheduleField<T> extends RowField<T> permits BankHo
   TransactionTypeField {
 
   class Instances {
+
     public static final RecordIdentityField RECORD_IDENTITY_FIELD = new RecordIdentityField();
     public static final TransactionTypeField TRANSACTION_TYPE_FIELD = new TransactionTypeField();
     public static final TrainUidField TRAIN_UID_FIELD = new TrainUidField();
@@ -65,10 +66,10 @@ public sealed interface BasicScheduleField<T> extends RowField<T> permits BankHo
       SERVICE_BRANDING_FIELD,
       SPARE_FIELD,
       STP_INDICATOR_FIELD);
-  
+
     private Instances() {
     }
-  
+
     public static ImmutableList<BasicScheduleField<?>> getAll() {
       return ALL_INSTANCES;
     }

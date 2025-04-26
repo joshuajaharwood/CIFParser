@@ -2,9 +2,12 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultCharConverter;
 
-public record BusinessSectorPortionIdField() implements BasicScheduleField<Character> {
+public final class BusinessSectorPortionIdField implements BasicScheduleField<Character> {
 
   private static final DefaultCharConverter CONVERTER = DefaultCharConverter.getInstance();
+
+  BusinessSectorPortionIdField() {
+  }
 
   @Override
   public int startIndex() {
@@ -30,4 +33,20 @@ public record BusinessSectorPortionIdField() implements BasicScheduleField<Chara
   public Character convert(String raw) {
     return CONVERTER.apply(raw);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj == this || obj != null && obj.getClass() == this.getClass();
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    return "BusinessSectorPortionIdField[]";
+  }
+
 }

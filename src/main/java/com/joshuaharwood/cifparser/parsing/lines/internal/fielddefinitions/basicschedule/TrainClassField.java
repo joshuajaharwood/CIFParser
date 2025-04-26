@@ -4,9 +4,13 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConv
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.SeatingClass;
 
 //todo: aka seating class
-public record TrainClassField() implements BasicScheduleField<SeatingClass> {
+public final class TrainClassField implements BasicScheduleField<SeatingClass> {
 
-  private static final LiteralConverter<SeatingClass> CONVERTER = LiteralConverter.create(SeatingClass.class);
+  private static final LiteralConverter<SeatingClass> CONVERTER = LiteralConverter.create(
+    SeatingClass.class);
+
+  TrainClassField() {
+  }
 
   @Override
   public int startIndex() {
@@ -32,4 +36,20 @@ public record TrainClassField() implements BasicScheduleField<SeatingClass> {
   public SeatingClass convert(String raw) {
     return CONVERTER.apply(raw);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj == this || obj != null && obj.getClass() == this.getClass();
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    return "TrainClassField[]";
+  }
+
 }

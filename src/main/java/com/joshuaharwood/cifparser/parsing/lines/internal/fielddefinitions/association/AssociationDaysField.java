@@ -4,9 +4,12 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DaysOfWeekB
 import java.time.DayOfWeek;
 import java.util.Set;
 
-public record AssociationDaysField() implements AssociationField<Set<DayOfWeek>> {
+public final class AssociationDaysField implements AssociationField<Set<DayOfWeek>> {
 
   private static final DaysOfWeekBitmaskConverter CONVERTER = DaysOfWeekBitmaskConverter.getInstance();
+
+  AssociationDaysField() {
+  }
 
   @Override
   public int startIndex() {
@@ -32,4 +35,20 @@ public record AssociationDaysField() implements AssociationField<Set<DayOfWeek>>
   public Set<DayOfWeek> convert(String raw) {
     return CONVERTER.apply(raw);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj == this || obj != null && obj.getClass() == this.getClass();
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    return "AssociationDaysField[]";
+  }
+
 }

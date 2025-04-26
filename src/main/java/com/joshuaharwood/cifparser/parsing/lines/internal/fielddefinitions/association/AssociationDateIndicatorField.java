@@ -3,9 +3,14 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.asso
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.AssociationDateIndicator;
 
-public record AssociationDateIndicatorField() implements AssociationField<AssociationDateIndicator> {
+public final class AssociationDateIndicatorField implements
+  AssociationField<AssociationDateIndicator> {
 
-  private static final LiteralConverter<AssociationDateIndicator> CONVERTER = LiteralConverter.create(AssociationDateIndicator.class);
+  private static final LiteralConverter<AssociationDateIndicator> CONVERTER = LiteralConverter.create(
+    AssociationDateIndicator.class);
+
+  AssociationDateIndicatorField() {
+  }
 
   @Override
   public int startIndex() {
@@ -31,4 +36,20 @@ public record AssociationDateIndicatorField() implements AssociationField<Associ
   public AssociationDateIndicator convert(String raw) {
     return CONVERTER.apply(raw);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj == this || obj != null && obj.getClass() == this.getClass();
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    return "AssociationDateIndicatorField[]";
+  }
+
 }

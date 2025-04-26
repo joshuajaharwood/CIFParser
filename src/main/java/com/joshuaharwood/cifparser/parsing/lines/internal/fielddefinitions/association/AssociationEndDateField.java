@@ -3,9 +3,12 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.asso
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.InverseDateConverter;
 import java.time.LocalDate;
 
-public record AssociationEndDateField() implements AssociationField<LocalDate> {
+public final class AssociationEndDateField implements AssociationField<LocalDate> {
 
   private static final InverseDateConverter CONVERTER = InverseDateConverter.getInstance();
+
+  AssociationEndDateField() {
+  }
 
   @Override
   public int startIndex() {
@@ -31,4 +34,20 @@ public record AssociationEndDateField() implements AssociationField<LocalDate> {
   public LocalDate convert(String raw) {
     return CONVERTER.apply(raw);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj == this || obj != null && obj.getClass() == this.getClass();
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    return "AssociationEndDateField[]";
+  }
+
 }

@@ -1,7 +1,10 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
 //todo: AKA train service code
-public record ProfitCentreCodeField() implements BasicScheduleField<Integer> {
+public final class ProfitCentreCodeField implements BasicScheduleField<Integer> {
+
+  ProfitCentreCodeField() {
+  }
 
   @Override
   public int startIndex() {
@@ -27,4 +30,20 @@ public record ProfitCentreCodeField() implements BasicScheduleField<Integer> {
   public Integer convert(String raw) {
     return Integer.valueOf(raw);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj == this || obj != null && obj.getClass() == this.getClass();
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    return "ProfitCentreCodeField[]";
+  }
+
 }
