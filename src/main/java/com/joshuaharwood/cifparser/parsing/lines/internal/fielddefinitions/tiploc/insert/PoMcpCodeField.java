@@ -1,8 +1,10 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.insert;
 
-import java.util.Optional;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 
-public final class PoMcpCodeField implements TiplocInsertField<Optional<Integer>> {
+public final class PoMcpCodeField implements TiplocInsertField<String> {
+
+  private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 
   PoMcpCodeField() {
   }
@@ -28,17 +30,8 @@ public final class PoMcpCodeField implements TiplocInsertField<Optional<Integer>
   }
 
   @Override
-  public Optional<Integer> convert(String raw) {
-    return s -> {
-      if (s == null || s.isBlank()) {
-        return Optional.empty();
-      }
-      try {
-        return Optional.of(Integer.valueOf(s.trim()));
-      } catch (NumberFormatException e) {
-        return Optional.empty();
-      }
-    };
+  public String convert(String raw) {
+    return CONVERTER.apply(raw);
   }
 
   @Override
@@ -55,5 +48,4 @@ public final class PoMcpCodeField implements TiplocInsertField<Optional<Integer>
   public String toString() {
     return "PoMcpCodeField[]";
   }
-
 }

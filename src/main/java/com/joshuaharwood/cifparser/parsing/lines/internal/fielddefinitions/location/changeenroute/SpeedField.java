@@ -1,11 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.location.changeenroute;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
-
-public final class SpeedField implements ChangeEnRouteField<String> {
-
-  private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
-
+public final class SpeedField implements ChangeEnRouteField<Integer> {
   SpeedField() {
   }
 
@@ -30,8 +25,8 @@ public final class SpeedField implements ChangeEnRouteField<String> {
   }
 
   @Override
-  public String convert(String raw) {
-    return CONVERTER.apply(raw);
+  public Integer convert(String raw) {
+    return Integer.valueOf(raw);
   }
 
   @Override

@@ -1,10 +1,11 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.location.changeenroute;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;
 
-public final class PowerTypeField implements ChangeEnRouteField<String> {
+public final class PowerTypeField implements ChangeEnRouteField<PowerType> {
 
-  private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
+  private static final LiteralConverter<PowerType> CONVERTER = LiteralConverter.create(PowerType.class);
 
   PowerTypeField() {
   }
@@ -30,7 +31,7 @@ public final class PowerTypeField implements ChangeEnRouteField<String> {
   }
 
   @Override
-  public String convert(String raw) {
+  public PowerType convert(String raw) {
     return CONVERTER.apply(raw);
   }
 

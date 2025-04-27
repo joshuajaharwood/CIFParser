@@ -1,10 +1,12 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.location.changeenroute;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.CateringCode;
 
-public final class CateringCodeField implements ChangeEnRouteField<String> {
+public final class CateringCodeField implements ChangeEnRouteField<CateringCode> {
 
-  private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
+  private static final LiteralConverter<CateringCode> CONVERTER = LiteralConverter.create(
+    CateringCode.class);
 
   CateringCodeField() {
   }
@@ -30,7 +32,7 @@ public final class CateringCodeField implements ChangeEnRouteField<String> {
   }
 
   @Override
-  public String convert(String raw) {
+  public CateringCode convert(String raw) {
     return CONVERTER.apply(raw);
   }
 

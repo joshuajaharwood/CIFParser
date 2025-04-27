@@ -12,14 +12,6 @@ public interface RowField<T> {
 
   T convert(String raw);
 
-  default T convertTemp(String raw) {
-    if (isRequired() && raw.isBlank()) {
-      throw new IllegalArgumentException("Required field '%s' is blank".formatted(name()));
-    }
-
-    return convert(raw);
-  }
-
   default int endIndex() {
     return startIndex() + length();
   }

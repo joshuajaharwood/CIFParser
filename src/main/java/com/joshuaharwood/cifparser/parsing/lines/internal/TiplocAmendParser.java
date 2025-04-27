@@ -10,7 +10,6 @@ public final class TiplocAmendParser implements RecordSpecificParser<TiplocAmend
   @Override
   public TiplocAmend parse(String record) {
     return new TiplocAmend(
-      convert(TiplocAmendField.Instances.TIPLOC_CODE_FIELD, record),
       convert(TiplocAmendField.Instances.CAPITALS_IDENTIFICATION_FIELD, record),
       convert(TiplocAmendField.Instances.NLC_FIELD, record),
       convert(TiplocAmendField.Instances.NLC_CHECK_CHARACTER_FIELD, record),

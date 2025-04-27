@@ -1,10 +1,14 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.location.changeenroute;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralSetConverter;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.OperatingCharacteristics;
+import java.util.Set;
 
-public final class OperatingCharacteristicsField implements ChangeEnRouteField<String> {
+public final class OperatingCharacteristicsField implements
+  ChangeEnRouteField<Set<OperatingCharacteristics>> {
 
-  private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
+  private static final LiteralSetConverter<OperatingCharacteristics> CONVERTER = LiteralSetConverter.getInstance(
+    OperatingCharacteristics.class);
 
   OperatingCharacteristicsField() {
   }
@@ -30,7 +34,7 @@ public final class OperatingCharacteristicsField implements ChangeEnRouteField<S
   }
 
   @Override
-  public String convert(String raw) {
+  public Set<OperatingCharacteristics> convert(String raw) {
     return CONVERTER.apply(raw);
   }
 
