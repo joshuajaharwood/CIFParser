@@ -3,9 +3,12 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.FiveDigitTimeConverter;
 import java.time.LocalTime;
 
-public record ScheduledDepartureTimeField() implements OriginLocationField<LocalTime> {
+public final class ScheduledDepartureTimeField implements OriginLocationField<LocalTime> {
 
   private static final FiveDigitTimeConverter CONVERTER = FiveDigitTimeConverter.getInstance();
+
+  ScheduledDepartureTimeField() {
+  }
 
   @Override
   public int startIndex() {
@@ -31,4 +34,20 @@ public record ScheduledDepartureTimeField() implements OriginLocationField<Local
   public LocalTime convert(String raw) {
     return CONVERTER.apply(raw);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj == this || obj != null && obj.getClass() == this.getClass();
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    return "ScheduledDepartureTimeField[]";
+  }
+
 }

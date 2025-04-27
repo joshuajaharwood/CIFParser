@@ -1,6 +1,9 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.insert;
 
-public record CapitalsField() implements TiplocInsertField<Byte> {
+public final class CapitalsField implements TiplocInsertField<Byte> {
+
+  CapitalsField() {
+  }
 
   @Override
   public int startIndex() {
@@ -26,4 +29,20 @@ public record CapitalsField() implements TiplocInsertField<Byte> {
   public Byte convert(String raw) {
     return Byte.parseByte(raw);
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    return obj == this || obj != null && obj.getClass() == this.getClass();
+  }
+
+  @Override
+  public int hashCode() {
+    return 1;
+  }
+
+  @Override
+  public String toString() {
+    return "CapitalsField[]";
+  }
+
 }
