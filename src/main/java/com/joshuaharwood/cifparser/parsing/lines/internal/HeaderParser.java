@@ -1,44 +1,61 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.Converter.convert;
-
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header.CurrentFileReferenceField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header.DateOfExtractField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header.FileMainframeIdentityField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header.HeaderField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header.HeaderField.Instances;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header.LastFileReferenceField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header.RecordIdentityField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header.SpareField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header.TimeOfExtractField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header.UpdateIndicatorField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header.UserEndDateField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header.UserStartDateField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.header.VersionField;
 import com.joshuaharwood.cifparser.parsing.lines.model.Header;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.UpdateIndicator;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import org.jspecify.annotations.Nullable;
 
 public final class HeaderParser implements RecordSpecificParser<Header> {
 
+  private final HeaderRowDefinition fieldDefinitions;
+
+  public HeaderParser() {
+    this(HeaderRowDefinition.DEFAULT_ROW_DEFINITION);
+  }
+
+  public HeaderParser(HeaderRowDefinition fieldDefinitions) {
+    this.fieldDefinitions = fieldDefinitions;
+  }
+
   public Header parse(String record) {
-    final var builder = new Header.Builder();
+    return new Header(fieldDefinitions.fileMainframeIdentity().substringAndConvert(record),
+      fieldDefinitions.dateOfExtract().substringAndConvert(record),
+      fieldDefinitions.timeOfExtract().substringAndConvert(record),
+      fieldDefinitions.currentFileReference().substringAndConvert(record),
+      fieldDefinitions.lastFileReference().substringAndConvert(record),
+      fieldDefinitions.updateIndicator().substringAndConvert(record),
+      fieldDefinitions.version().substringAndConvert(record),
+      fieldDefinitions.userStartDate().substringAndConvert(record),
+      fieldDefinitions.userEndDate().substringAndConvert(record),
+      fieldDefinitions.spare().substringAndConvert(record));
+  }
 
-    for (HeaderField<?> headerField : HeaderField.Instances.getAll()) {
-      switch (headerField) {
-        case RecordIdentityField _ -> {
-        }
-        case CurrentFileReferenceField v -> builder.setCurrentFileReference(convert(v, record));
-        case DateOfExtractField v -> builder.setDateOfExtract(convert(v, record));
-        case FileMainframeIdentityField v -> builder.setFileMainframeIdentity(convert(v, record));
-        case LastFileReferenceField v -> builder.setLastFileReference(convert(v, record));
-        case SpareField v -> builder.setSpare(convert(v, record));
-        case TimeOfExtractField v -> builder.setTimeOfExtract(convert(v, record));
-        case UpdateIndicatorField v -> builder.setUpdateIndicator(convert(v, record));
-        case UserStartDateField v -> builder.setUserStartDate(convert(v, record));
-        case UserEndDateField v -> builder.setUserEndDate(convert(v, record));
-        case VersionField v -> builder.setVersion(convert(v, record));
-      }
-    }
+  public record HeaderRowDefinition(RowField<RecordIdentity> recordIdentity,
+                                    RowField<String> fileMainframeIdentity,
+                                    RowField<LocalDate> dateOfExtract,
+                                    RowField<LocalTime> timeOfExtract,
+                                    RowField<String> currentFileReference,
+                                    RowField<String> lastFileReference,
+                                    RowField<UpdateIndicator> updateIndicator,
+                                    RowField<Character> version, RowField<LocalDate> userStartDate,
+                                    RowField<LocalDate> userEndDate,
+                                    RowField<@Nullable String> spare) {
 
-    return builder.createHeader();
+    public static final HeaderRowDefinition DEFAULT_ROW_DEFINITION = new HeaderRowDefinition(
+      Instances.RECORD_IDENTITY,
+      Instances.FILE_MAINFRAME_IDENTITY,
+      Instances.DATE_OF_EXTRACT,
+      Instances.TIME_OF_EXTRACT,
+      Instances.CURRENT_FILE_REFERENCE,
+      Instances.LAST_FILE_REFERENCE,
+      Instances.UPDATE_INDICATOR,
+      Instances.VERSION,
+      Instances.USER_START_DATE,
+      Instances.USER_END_DATE,
+      Instances.SPARE);
   }
 }

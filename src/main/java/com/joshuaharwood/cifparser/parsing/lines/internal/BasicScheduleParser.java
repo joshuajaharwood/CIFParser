@@ -24,7 +24,7 @@ public final class BasicScheduleParser implements RecordSpecificParser<BasicSche
   private final BasicScheduleRowDefinition fieldDefinitions;
 
   public BasicScheduleParser() {
-    this(BasicScheduleRowDefinition.DEFAULT);
+    this(BasicScheduleRowDefinition.DEFAULT_ROW_DEFINITION);
   }
 
   public BasicScheduleParser(BasicScheduleRowDefinition fieldDefinitions) {
@@ -87,7 +87,7 @@ public final class BasicScheduleParser implements RecordSpecificParser<BasicSche
 
   ) {
 
-    public static final BasicScheduleRowDefinition DEFAULT = new BasicScheduleRowDefinition(
+    public static final BasicScheduleRowDefinition DEFAULT_ROW_DEFINITION = new BasicScheduleRowDefinition(
       Instances.RECORD_IDENTITY_FIELD,
       Instances.TRANSACTION_TYPE_FIELD,
       Instances.TRAIN_UID_FIELD,

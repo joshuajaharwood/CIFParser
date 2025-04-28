@@ -10,19 +10,4 @@ public record Trailer(@Nullable String spare) implements CifRecord {
   public RecordIdentity recordIdentity() {
     return RecordIdentity.TRAILER_RECORD;
   }
-
-  @NullUnmarked
-  public static class Builder {
-
-    private @Nullable String spare;
-
-    public Trailer.Builder setSpare(@Nullable String spare) {
-      this.spare = spare;
-      return this;
-    }
-
-    public Trailer createTrailer() {
-      return new Trailer(spare);
-    }
-  }
 }
