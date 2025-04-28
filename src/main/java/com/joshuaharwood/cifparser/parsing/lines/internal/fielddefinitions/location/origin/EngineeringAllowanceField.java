@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 
-public final class EngineeringAllowanceField implements OriginLocationField<String> {
+public non-sealed class EngineeringAllowanceField implements OriginLocationField<String> {
 
   private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 

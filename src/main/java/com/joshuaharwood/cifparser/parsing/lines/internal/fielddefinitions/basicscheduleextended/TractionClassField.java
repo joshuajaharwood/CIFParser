@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 
-public final class TractionClassField implements BasicScheduleExtendedField<String> {
+public non-sealed class TractionClassField implements BasicScheduleExtendedField<String> {
 
   private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 

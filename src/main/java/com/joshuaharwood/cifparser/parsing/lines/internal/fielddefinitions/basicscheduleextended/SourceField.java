@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicscheduleextended;
 
-public final class SourceField implements BasicScheduleExtendedField<Character> {
+public non-sealed class SourceField implements BasicScheduleExtendedField<Character> {
 
   SourceField() {
   }

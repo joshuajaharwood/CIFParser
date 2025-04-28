@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.CateringCode;
 
-public final class CateringCodeField implements ChangeEnRouteField<CateringCode> {
+public non-sealed class CateringCodeField implements ChangeEnRouteField<CateringCode> {
 
   private static final LiteralConverter<CateringCode> CONVERTER = LiteralConverter.create(
     CateringCode.class);

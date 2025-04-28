@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.head
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.TimeConverter;
 import java.time.LocalTime;
 
-public final class TimeOfExtractField implements HeaderField<LocalTime> {
+public non-sealed class TimeOfExtractField implements HeaderField<LocalTime> {
 
   private static final TimeConverter CONVERTER = TimeConverter.getInstance();
 

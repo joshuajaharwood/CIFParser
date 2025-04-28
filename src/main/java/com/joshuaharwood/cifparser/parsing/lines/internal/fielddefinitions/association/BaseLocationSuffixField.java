@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.association;
 
-public final class BaseLocationSuffixField implements AssociationField<Byte> {
+public non-sealed class BaseLocationSuffixField implements AssociationField<Byte> {
 
   BaseLocationSuffixField() {
   }

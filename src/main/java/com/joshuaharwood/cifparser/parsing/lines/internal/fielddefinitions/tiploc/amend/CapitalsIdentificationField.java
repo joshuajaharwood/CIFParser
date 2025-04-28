@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.amend;
 
-public final class CapitalsIdentificationField implements TiplocAmendField<Byte> {
+public non-sealed class CapitalsIdentificationField implements TiplocAmendField<Byte> {
 
   CapitalsIdentificationField() {
   }

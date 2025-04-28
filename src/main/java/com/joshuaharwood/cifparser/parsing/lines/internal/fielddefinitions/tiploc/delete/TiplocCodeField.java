@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tipl
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 
-public final class TiplocCodeField implements TiplocDeleteField<String> {
+public non-sealed class TiplocCodeField implements TiplocDeleteField<String> {
 
   private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 

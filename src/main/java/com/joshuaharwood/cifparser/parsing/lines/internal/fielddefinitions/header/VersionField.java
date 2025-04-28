@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.head
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultCharConverter;
 
-public final class VersionField implements HeaderField<Character> {
+public non-sealed class VersionField implements HeaderField<Character> {
 
   private static final DefaultCharConverter CONVERTER = DefaultCharConverter.getInstance();
 

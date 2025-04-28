@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tipl
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultCharConverter;
 import java.util.Optional;
 
-public final class NlcCheckCharacterField implements TiplocInsertField<Optional<Character>> {
+public non-sealed class NlcCheckCharacterField implements TiplocInsertField<Optional<Character>> {
 
   private static final DefaultCharConverter CONVERTER = DefaultCharConverter.getInstance();
 

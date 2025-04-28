@@ -4,7 +4,7 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.ZeroSafeTim
 import java.time.LocalTime;
 import java.util.Optional;
 
-public final class PublicDepartureTimeField implements OriginLocationField<Optional<LocalTime>> {
+public non-sealed class PublicDepartureTimeField implements OriginLocationField<Optional<LocalTime>> {
 
   private static final ZeroSafeTimeConverter CONVERTER = ZeroSafeTimeConverter.getInstance();
 

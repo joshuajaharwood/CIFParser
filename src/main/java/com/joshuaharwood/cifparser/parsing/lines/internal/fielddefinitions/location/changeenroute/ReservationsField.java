@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.Reservations;
 
-public final class ReservationsField implements ChangeEnRouteField<Reservations> {
+public non-sealed class ReservationsField implements ChangeEnRouteField<Reservations> {
 
   private static final LiteralConverter<Reservations> CONVERTER = LiteralConverter.create(
     Reservations.class);

@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.asso
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.AssociationType;
 
-public final class AssociationTypeField implements AssociationField<AssociationType> {
+public non-sealed class AssociationTypeField implements AssociationField<AssociationType> {
 
   private static final LiteralConverter<AssociationType> CONVERTER = LiteralConverter.create(
     AssociationType.class);

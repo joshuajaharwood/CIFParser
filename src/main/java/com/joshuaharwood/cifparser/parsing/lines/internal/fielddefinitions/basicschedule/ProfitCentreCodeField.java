@@ -1,7 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
 //todo: AKA train service code
-public final class ProfitCentreCodeField implements BasicScheduleField<Integer> {
+public non-sealed class ProfitCentreCodeField implements BasicScheduleField<Integer> {
 
   ProfitCentreCodeField() {
   }

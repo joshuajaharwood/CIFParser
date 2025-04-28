@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 
-public final class TractionClassField implements ChangeEnRouteField<String> {
+public non-sealed class TractionClassField implements ChangeEnRouteField<String> {
 
   private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 

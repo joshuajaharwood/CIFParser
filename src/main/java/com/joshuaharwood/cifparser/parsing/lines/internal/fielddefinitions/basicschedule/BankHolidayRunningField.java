@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.BankHolidayRunning;
 
-public final class BankHolidayRunningField implements BasicScheduleField<BankHolidayRunning> {
+public non-sealed class BankHolidayRunningField implements BasicScheduleField<BankHolidayRunning> {
 
   private static final LiteralConverter<BankHolidayRunning> CONVERTER = LiteralConverter.create(
     BankHolidayRunning.class);

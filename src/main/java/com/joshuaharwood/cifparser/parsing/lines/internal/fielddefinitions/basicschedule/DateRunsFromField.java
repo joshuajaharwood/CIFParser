@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.InverseDateConverter;
 import java.time.LocalDate;
 
-public final class DateRunsFromField implements BasicScheduleField<LocalDate> {
+public non-sealed class DateRunsFromField implements BasicScheduleField<LocalDate> {
 
   private static final InverseDateConverter CONVERTER = InverseDateConverter.getInstance();
 

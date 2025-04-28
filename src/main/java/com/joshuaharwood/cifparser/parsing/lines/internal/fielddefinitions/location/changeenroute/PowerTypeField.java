@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;
 
-public final class PowerTypeField implements ChangeEnRouteField<PowerType> {
+public non-sealed class PowerTypeField implements ChangeEnRouteField<PowerType> {
 
   private static final LiteralConverter<PowerType> CONVERTER = LiteralConverter.create(PowerType.class);
 

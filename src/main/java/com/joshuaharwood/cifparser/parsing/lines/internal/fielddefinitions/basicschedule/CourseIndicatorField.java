@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-public final class CourseIndicatorField implements BasicScheduleField<Byte> {
+public non-sealed class CourseIndicatorField implements BasicScheduleField<Byte> {
 
   CourseIndicatorField() {
   }

@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tipl
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultCharConverter;
 
-public final class NlcCheckCharacterField implements TiplocAmendField<Character> {
+public non-sealed class NlcCheckCharacterField implements TiplocAmendField<Character> {
 
   private static final DefaultCharConverter CONVERTER = DefaultCharConverter.getInstance();
 

@@ -4,7 +4,7 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralSetC
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.CateringCode;
 import java.util.Set;
 
-public final class CateringCodeField implements BasicScheduleField<Set<CateringCode>> {
+public non-sealed class CateringCodeField implements BasicScheduleField<Set<CateringCode>> {
 
   private static final LiteralSetConverter<CateringCode> CONVERTER = LiteralSetConverter.getInstance(
     CateringCode.class);

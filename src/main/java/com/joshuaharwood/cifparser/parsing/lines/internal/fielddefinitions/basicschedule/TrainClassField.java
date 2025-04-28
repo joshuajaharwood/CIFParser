@@ -4,7 +4,7 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConv
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.SeatingClass;
 
 //todo: aka seating class
-public final class TrainClassField implements BasicScheduleField<SeatingClass> {
+public non-sealed class TrainClassField implements BasicScheduleField<SeatingClass> {
 
   private static final LiteralConverter<SeatingClass> CONVERTER = LiteralConverter.create(
     SeatingClass.class);

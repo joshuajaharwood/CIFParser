@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.FiveDigitTimeConverter;
 import java.time.LocalTime;
 
-public final class ScheduledArrivalTimeField implements IntermediateLocationField<LocalTime> {
+public non-sealed class ScheduledArrivalTimeField implements IntermediateLocationField<LocalTime> {
 
   private static final FiveDigitTimeConverter CONVERTER = FiveDigitTimeConverter.getInstance();
 

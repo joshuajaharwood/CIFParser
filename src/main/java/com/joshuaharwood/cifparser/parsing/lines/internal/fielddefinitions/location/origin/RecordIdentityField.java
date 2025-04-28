@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 
-public final class RecordIdentityField implements OriginLocationField<RecordIdentity> {
+public non-sealed class RecordIdentityField implements OriginLocationField<RecordIdentity> {
 
   private static final LiteralConverter<RecordIdentity> CONVERTER = LiteralConverter.create(
     RecordIdentity.class);

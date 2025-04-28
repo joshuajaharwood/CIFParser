@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.Sleepers;
 
-public final class SleepersField implements ChangeEnRouteField<Sleepers> {
+public non-sealed class SleepersField implements ChangeEnRouteField<Sleepers> {
 
   private static final LiteralConverter<Sleepers> CONVERTER = LiteralConverter.create(
     Sleepers.class);

@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.Reservations;
 
-public final class ReservationsField implements BasicScheduleField<Reservations> {
+public non-sealed class ReservationsField implements BasicScheduleField<Reservations> {
 
   private static final LiteralConverter<Reservations> CONVERTER = LiteralConverter.create(
     Reservations.class);

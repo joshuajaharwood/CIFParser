@@ -4,7 +4,7 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DaysOfWeekB
 import java.time.DayOfWeek;
 import java.util.Set;
 
-public final class AssociationDaysField implements AssociationField<Set<DayOfWeek>> {
+public non-sealed class AssociationDaysField implements AssociationField<Set<DayOfWeek>> {
 
   private static final DaysOfWeekBitmaskConverter CONVERTER = DaysOfWeekBitmaskConverter.getInstance();
 

@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.asso
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.InverseDateConverter;
 import java.time.LocalDate;
 
-public final class AssociationStartDateField implements AssociationField<LocalDate> {
+public non-sealed class AssociationStartDateField implements AssociationField<LocalDate> {
 
   private static final InverseDateConverter CONVERTER = InverseDateConverter.getInstance();
 

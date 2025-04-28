@@ -2,7 +2,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultCharConverter;
 
-public final class ConnectIndicatorField implements BasicScheduleField<Character> {
+public non-sealed class ConnectIndicatorField implements BasicScheduleField<Character> {
 
   private static final DefaultCharConverter CONVERTER = DefaultCharConverter.getInstance();
 

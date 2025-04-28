@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
 
-public final class StpIndicatorField implements BasicScheduleField<StpIndicator> {
+public non-sealed class StpIndicatorField implements BasicScheduleField<StpIndicator> {
 
   private static final LiteralConverter<StpIndicator> CONVERTER = LiteralConverter.create(
     StpIndicator.class);

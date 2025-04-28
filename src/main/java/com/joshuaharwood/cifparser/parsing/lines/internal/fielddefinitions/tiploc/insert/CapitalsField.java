@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.insert;
 
-public final class CapitalsField implements TiplocInsertField<Byte> {
+public non-sealed class CapitalsField implements TiplocInsertField<Byte> {
 
   CapitalsField() {
   }

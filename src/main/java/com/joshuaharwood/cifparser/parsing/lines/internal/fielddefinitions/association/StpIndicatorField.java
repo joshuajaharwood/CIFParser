@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.asso
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
 
-public final class StpIndicatorField implements AssociationField<StpIndicator> {
+public non-sealed class StpIndicatorField implements AssociationField<StpIndicator> {
 
   private static final LiteralConverter<StpIndicator> CONVERTER = LiteralConverter.create(
     StpIndicator.class);

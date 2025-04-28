@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainCategory;
 
-public final class TrainCategoryField implements ChangeEnRouteField<TrainCategory> {
+public non-sealed class TrainCategoryField implements ChangeEnRouteField<TrainCategory> {
 
   private static final LiteralConverter<TrainCategory> CONVERTER = LiteralConverter.create(
     TrainCategory.class);

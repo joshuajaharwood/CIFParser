@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.asso
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.AssociationDateIndicator;
 
-public final class AssociationDateIndicatorField implements
+public non-sealed class AssociationDateIndicatorField implements
   AssociationField<AssociationDateIndicator> {
 
   private static final LiteralConverter<AssociationDateIndicator> CONVERTER = LiteralConverter.create(

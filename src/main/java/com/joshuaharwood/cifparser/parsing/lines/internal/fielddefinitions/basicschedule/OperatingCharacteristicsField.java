@@ -4,7 +4,7 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralSetC
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.OperatingCharacteristics;
 import java.util.Set;
 
-public final class OperatingCharacteristicsField implements
+public non-sealed class OperatingCharacteristicsField implements
   BasicScheduleField<Set<OperatingCharacteristics>> {
 
   private static final LiteralSetConverter<OperatingCharacteristics> CONVERTER = LiteralSetConverter.getInstance(

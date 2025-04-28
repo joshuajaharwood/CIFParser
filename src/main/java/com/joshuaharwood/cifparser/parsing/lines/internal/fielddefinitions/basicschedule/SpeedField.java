@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-public final class SpeedField implements BasicScheduleField<Integer> {
+public non-sealed class SpeedField implements BasicScheduleField<Integer> {
 
   SpeedField() {
   }

@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicscheduleextended;
 
-public final class UicCodeField implements BasicScheduleExtendedField<Integer> {
+public non-sealed class UicCodeField implements BasicScheduleExtendedField<Integer> {
 
   UicCodeField() {
   }

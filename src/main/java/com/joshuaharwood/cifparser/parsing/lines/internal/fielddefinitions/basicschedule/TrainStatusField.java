@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainStatus;
 
-public final class TrainStatusField implements BasicScheduleField<TrainStatus> {
+public non-sealed class TrainStatusField implements BasicScheduleField<TrainStatus> {
 
   private static final LiteralConverter<TrainStatus> CONVERTER = LiteralConverter.create(TrainStatus.class);
 

@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.head
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DateConverter;
 import java.time.LocalDate;
 
-public final class UserStartDateField implements HeaderField<LocalDate> {
+public non-sealed class UserStartDateField implements HeaderField<LocalDate> {
 
   private static final DateConverter CONVERTER = DateConverter.getInstance();
 

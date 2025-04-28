@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.ApplicableTimetableCode;
 
-public final class ApplicableTimetableCodeField implements
+public non-sealed class ApplicableTimetableCodeField implements
   BasicScheduleExtendedField<ApplicableTimetableCode> {
 
   private static final LiteralConverter<ApplicableTimetableCode> CONVERTER = LiteralConverter.create(

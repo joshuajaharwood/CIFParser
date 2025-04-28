@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.head
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.UpdateIndicator;
 
-public final class UpdateIndicatorField implements HeaderField<UpdateIndicator> {
+public non-sealed class UpdateIndicatorField implements HeaderField<UpdateIndicator> {
 
   private static final LiteralConverter<UpdateIndicator> CONVERTER = LiteralConverter.create(
     UpdateIndicator.class);

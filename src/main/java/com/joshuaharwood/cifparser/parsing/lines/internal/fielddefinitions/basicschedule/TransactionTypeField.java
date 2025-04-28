@@ -3,7 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basi
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
 
-public final class TransactionTypeField implements BasicScheduleField<TransactionType> {
+public non-sealed class TransactionTypeField implements BasicScheduleField<TransactionType> {
 
   private static final LiteralConverter<TransactionType> CONVERTER = LiteralConverter.create(
     TransactionType.class);

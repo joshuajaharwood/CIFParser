@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.location.changeenroute;
 
-public final class SpeedField implements ChangeEnRouteField<Integer> {
+public non-sealed class SpeedField implements ChangeEnRouteField<Integer> {
   SpeedField() {
   }
 
