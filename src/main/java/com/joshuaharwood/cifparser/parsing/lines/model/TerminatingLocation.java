@@ -10,7 +10,7 @@ public record TerminatingLocation(String location,
                                   String path,
                                   String activity,
                                   String spare) implements
-    LocationRecord {
+  LocationRecord {
 
   @Override
   public RecordIdentity recordIdentity() {

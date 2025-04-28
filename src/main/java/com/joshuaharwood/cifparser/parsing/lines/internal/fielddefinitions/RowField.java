@@ -11,7 +11,7 @@ public interface RowField<R> {
   boolean isRequired();
 
   R convert(String raw);
-  
+
   default R substringAndConvert(String record) {
     return convert(record.substring(startIndex(), endIndex()));
   }

@@ -9,7 +9,7 @@ public record IntermediateLocation(String location, LocalTime scheduledArrivalTi
                                    String platform, String line, String path, String activity,
                                    String engineeringAllowance, String pathingAllowance,
                                    String performanceAllowance, String spare) implements
-    LocationRecord {
+  LocationRecord {
 
   @Override
   public RecordIdentity recordIdentity() {

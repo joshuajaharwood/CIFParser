@@ -21,7 +21,7 @@ public class CifLineParser {
   private static final HeaderParser HEADER_PARSER = new HeaderParser();
   //  private static final TiplocInsertParser TIPLOC_INSERT_PARSER = new TiplocInsertParser();
   private static final TiplocAmendParser TIPLOC_AMEND_PARSER = new TiplocAmendParser();
-//  private static final TiplocDeleteParser TIPLOC_DELETE_PARSER = new TiplocDeleteParser();
+  //  private static final TiplocDeleteParser TIPLOC_DELETE_PARSER = new TiplocDeleteParser();
 //  private static final AssociationParser ASSOCIATION_PARSER = new AssociationParser();
 //  private static final BasicScheduleExtendedParser BASIC_SCHEDULE_EXTENDED_PARSER = new BasicScheduleExtendedParser();
 //  private static final OriginLocationParser ORIGIN_LOCATION_PARSER = new OriginLocationParser();

@@ -30,15 +30,6 @@ public non-sealed class SourceField implements BasicScheduleExtendedField<Charac
     return raw.charAt(0);
   }
 
-  @Override
-  public boolean equals(Object obj) {
-    return obj == this || obj != null && obj.getClass() == this.getClass();
-  }
-
-  @Override
-  public int hashCode() {
-    return 1;
-  }
 
   @Override
   public String toString() {

@@ -4,9 +4,9 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.CateringCode;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.OperatingCharacteristics;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.Reservations;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.SeatingClass;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.Sleepers;
-import com.joshuaharwood.cifparser.parsing.lines.model.enums.Reservations;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainCategory;
 import java.util.Set;
 

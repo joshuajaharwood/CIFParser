@@ -13,7 +13,7 @@ public enum OperatingCharacteristics implements Literal {
   STEAM_HEATED("S", "Steam Heated"),
   RUNS_TO_TERMINAL_YARDS("Y", "Runs to Terminals/Yards as required"),
   MAY_CONVEY_TRAFFIC("Z",
-      "May convey traffic to SB1C gauge. Not to be diverted from booked route without authority.");
+    "May convey traffic to SB1C gauge. Not to be diverted from booked route without authority.");
 
   private final String literal;
   private final String description;

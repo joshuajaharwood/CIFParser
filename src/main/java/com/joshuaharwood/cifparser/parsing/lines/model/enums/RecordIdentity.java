@@ -37,6 +37,6 @@ public enum RecordIdentity implements Literal {
   @Override
   public String toString() {
     return "RecordIdentity{" + "literal='" + literal + '\'' + ", description='" + description + '\''
-        + '}';
+           + '}';
   }
 }
