@@ -1,6 +1,9 @@
 package com.joshuaharwood.cifparser.parsing.lines;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.BasicScheduleParser;
+import com.joshuaharwood.cifparser.parsing.lines.internal.HeaderParser;
+import com.joshuaharwood.cifparser.parsing.lines.internal.TiplocAmendParser;
+import com.joshuaharwood.cifparser.parsing.lines.internal.TrailerParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
 import com.joshuaharwood.cifparser.parsing.lines.model.CifRecord;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
@@ -15,9 +18,9 @@ public class CifLineParser {
   private static final LiteralConverter<RecordIdentity> CONVERTER = LiteralConverter.create(
     RecordIdentity.class);
 
-//  private static final HeaderParser HEADER_PARSER = new HeaderParser();
-//  private static final TiplocInsertParser TIPLOC_INSERT_PARSER = new TiplocInsertParser();
-//  private static final TiplocAmendParser TIPLOC_AMEND_PARSER = new TiplocAmendParser();
+  private static final HeaderParser HEADER_PARSER = new HeaderParser();
+  //  private static final TiplocInsertParser TIPLOC_INSERT_PARSER = new TiplocInsertParser();
+  private static final TiplocAmendParser TIPLOC_AMEND_PARSER = new TiplocAmendParser();
 //  private static final TiplocDeleteParser TIPLOC_DELETE_PARSER = new TiplocDeleteParser();
 //  private static final AssociationParser ASSOCIATION_PARSER = new AssociationParser();
 //  private static final BasicScheduleExtendedParser BASIC_SCHEDULE_EXTENDED_PARSER = new BasicScheduleExtendedParser();
@@ -25,7 +28,7 @@ public class CifLineParser {
 //  private static final IntermediateLocationParser INTERMEDIATE_LOCATION_PARSER = new IntermediateLocationParser();
 //  private static final ChangeEnRouteParser CHANGE_EN_ROUTE_PARSER = new ChangeEnRouteParser();
 //  private static final TerminatingLocationParser TERMINATING_LOCATION_PARSER = new TerminatingLocationParser();
-//  private static final TrailerParser TRAILER_PARSER = new TrailerParser();
+  private static final TrailerParser TRAILER_PARSER = new TrailerParser();
 
   public CifRecord parseLine(String record) {
     if (record.isBlank() || record.trim().length() < 2) {
@@ -39,17 +42,12 @@ public class CifLineParser {
     }
 
     try {
-      final RecordIdentity identity = CONVERTER.apply(record.substring(0,
-        2));
-
-      if (identity == null) {
-        throw new IllegalArgumentException("A record's identity cannot be blank.");
-      }
+      final RecordIdentity identity = CONVERTER.apply(record.substring(0, 2));
 
       return switch (identity) {
-//        case HEADER_RECORD -> HEADER_PARSER.parse(record);
+        case HEADER_RECORD -> HEADER_PARSER.parse(record);
 //        case TIPLOC_INSERT_RECORD -> TIPLOC_INSERT_PARSER.parse(record);
-//        case TIPLOC_AMEND_RECORD -> TIPLOC_AMEND_PARSER.parse(record);
+        case TIPLOC_AMEND_RECORD -> TIPLOC_AMEND_PARSER.parse(record);
 //        case TIPLOC_DELETE_RECORD -> TIPLOC_DELETE_PARSER.parse(record);
 //        case ASSOCIATION_RECORD -> ASSOCIATION_PARSER.parse(record);
         case BASIC_SCHEDULE -> BASIC_SCHEDULE_PARSER.parse(record);
@@ -58,11 +56,12 @@ public class CifLineParser {
 //        case INTERMEDIATE_LOCATION -> INTERMEDIATE_LOCATION_PARSER.parse(record);
 //        case CHANGE_EN_ROUTE -> CHANGE_EN_ROUTE_PARSER.parse(record);
 //        case TERMINATING_LOCATION -> TERMINATING_LOCATION_PARSER.parse(record);
-//        case TRAILER_RECORD -> TRAILER_PARSER.parse(record);
+        case TRAILER_RECORD -> TRAILER_PARSER.parse(record);
+
+        case TRAIN_SPECIFIC_NOTE, LOCATION_SPECIFIC_NOTE ->
+          throw new UnsupportedOperationException("Not yet implemented.");
 
         default -> throw new UnsupportedOperationException("Not yet implemented. TEMP");
-//        case TRAIN_SPECIFIC_NOTE, LOCATION_SPECIFIC_NOTE ->
-//          throw new UnsupportedOperationException("Not yet implemented.");
       };
     } catch (Exception e) {
       throw new CifLineParserException("Failed to parse record. [Record: %s]".formatted(record), e);

@@ -1,27 +1,33 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal;
 
-import static com.joshuaharwood.cifparser.parsing.lines.internal.Converter.convert;
-
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.trailer.RecordIdentityField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.trailer.SpareField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.trailer.TrailerField;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.trailer.TrailerField.Instances;
 import com.joshuaharwood.cifparser.parsing.lines.model.Trailer;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
+import org.jspecify.annotations.Nullable;
 
 public final class TrailerParser implements RecordSpecificParser<Trailer> {
 
+  private final TrailerRowDefinition fieldDefinitions;
+
+  public TrailerParser() {
+    this(TrailerRowDefinition.DEFAULT_ROW_DEFINITION);
+  }
+
+  public TrailerParser(TrailerRowDefinition fieldDefinitions) {
+    this.fieldDefinitions = fieldDefinitions;
+  }
+
   @Override
   public Trailer parse(String record) {
-    var builder = new Trailer.Builder();
+    return new Trailer(fieldDefinitions.spare().substringAndConvert(record));
+  }
 
-    for (TrailerField<?> trailerField : Instances.getAll()) {
-      switch (trailerField) {
-        case RecordIdentityField _ -> {
-        }
-        case SpareField spareField -> builder.setSpare(convert(spareField, record));
-      }
-    }
+  public record TrailerRowDefinition(RowField<RecordIdentity> recordIdentity,
+                                     RowField<@Nullable String> spare) {
 
-    return builder.createTrailer();
+    public static final TrailerRowDefinition DEFAULT_ROW_DEFINITION = new TrailerRowDefinition(
+      Instances.RECORD_IDENTITY,
+      Instances.SPARE);
   }
 }
