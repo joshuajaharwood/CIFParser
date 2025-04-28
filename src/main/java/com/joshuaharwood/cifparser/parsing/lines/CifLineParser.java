@@ -3,6 +3,7 @@ package com.joshuaharwood.cifparser.parsing.lines;
 import com.joshuaharwood.cifparser.parsing.lines.internal.BasicScheduleExtendedParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.BasicScheduleParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.HeaderParser;
+import com.joshuaharwood.cifparser.parsing.lines.internal.OriginLocationParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.TiplocAmendParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.TiplocDeleteParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.TrailerParser;
@@ -26,8 +27,8 @@ public class CifLineParser {
   private static final TiplocDeleteParser TIPLOC_DELETE_PARSER = new TiplocDeleteParser();
   //  private static final AssociationParser ASSOCIATION_PARSER = new AssociationParser();
   private static final BasicScheduleExtendedParser BASIC_SCHEDULE_EXTENDED_PARSER = new BasicScheduleExtendedParser();
-  //  private static final OriginLocationParser ORIGIN_LOCATION_PARSER = new OriginLocationParser();
-//  private static final IntermediateLocationParser INTERMEDIATE_LOCATION_PARSER = new IntermediateLocationParser();
+  private static final OriginLocationParser ORIGIN_LOCATION_PARSER = new OriginLocationParser();
+  //  private static final IntermediateLocationParser INTERMEDIATE_LOCATION_PARSER = new IntermediateLocationParser();
 //  private static final ChangeEnRouteParser CHANGE_EN_ROUTE_PARSER = new ChangeEnRouteParser();
 //  private static final TerminatingLocationParser TERMINATING_LOCATION_PARSER = new TerminatingLocationParser();
   private static final TrailerParser TRAILER_PARSER = new TrailerParser();
@@ -54,7 +55,7 @@ public class CifLineParser {
 //        case ASSOCIATION_RECORD -> ASSOCIATION_PARSER.parse(record);
         case BASIC_SCHEDULE -> BASIC_SCHEDULE_PARSER.parse(record);
         case BASIC_SCHEDULE_EXTRA_DETAILS -> BASIC_SCHEDULE_EXTENDED_PARSER.parse(record);
-//        case ORIGIN_LOCATION -> ORIGIN_LOCATION_PARSER.parse(record);
+        case ORIGIN_LOCATION -> ORIGIN_LOCATION_PARSER.parse(record);
 //        case INTERMEDIATE_LOCATION -> INTERMEDIATE_LOCATION_PARSER.parse(record);
 //        case CHANGE_EN_ROUTE -> CHANGE_EN_ROUTE_PARSER.parse(record);
 //        case TERMINATING_LOCATION -> TERMINATING_LOCATION_PARSER.parse(record);

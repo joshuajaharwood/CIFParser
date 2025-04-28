@@ -2,10 +2,10 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.ZeroSafeTimeConverter;
 import java.time.LocalTime;
-import java.util.Optional;
+import org.jspecify.annotations.Nullable;
 
 public non-sealed class PublicDepartureTimeField implements
-  OriginLocationField<Optional<LocalTime>> {
+  OriginLocationField<@Nullable LocalTime> {
 
   private static final ZeroSafeTimeConverter CONVERTER = ZeroSafeTimeConverter.getInstance();
 
@@ -33,8 +33,9 @@ public non-sealed class PublicDepartureTimeField implements
   }
 
   @Override
-  public Optional<LocalTime> convert(String raw) {
-    return CONVERTER.apply(raw);
+  @Nullable
+  public LocalTime convert(String raw) {
+    return CONVERTER.apply(raw).orElse(null);
   }
 
 
