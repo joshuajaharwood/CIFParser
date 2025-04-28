@@ -38,7 +38,7 @@ public sealed interface BasicScheduleField<T> extends RowField<T> permits BankHo
     public static final CateringCodeField CATERING_CODE_FIELD = new CateringCodeField();
     public static final ServiceBrandingField SERVICE_BRANDING_FIELD = new ServiceBrandingField();
     public static final SpareField SPARE_FIELD = new SpareField();
-    public static final StpIndicatorField STP_INDICATOR_FIELD = new StpIndicatorField();
+    public static final StpIndicatorField STP_INDICATOR_FIELD = new StpIndicatorField(); 
     private static final ImmutableList<BasicScheduleField<?>> ALL_INSTANCES = ImmutableList.of(
       RECORD_IDENTITY_FIELD,
       TRANSACTION_TYPE_FIELD,

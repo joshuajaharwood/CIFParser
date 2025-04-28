@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
 import com.google.common.collect.ImmutableSet;
+import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BasicScheduleField;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainStatus;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule.Builder;
@@ -32,7 +33,7 @@ class BasicScheduleParserTest {
 
   @BeforeEach
   void setUp() {
-    parser = new BasicScheduleParser();
+    parser = new BasicScheduleParser(BasicScheduleField.Instances.getAll());
   }
 
   @Test

@@ -4,7 +4,6 @@ import static com.joshuaharwood.cifparser.parsing.lines.internal.Converter.conve
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BankHolidayRunningField;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BasicScheduleField;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BasicScheduleField.Instances;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BusinessSectorPortionIdField;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.CateringCodeField;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.ConnectIndicatorField;
@@ -31,14 +30,21 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basic
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.TrainUidField;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.TransactionTypeField;
 import com.joshuaharwood.cifparser.parsing.lines.model.BasicSchedule;
+import java.util.List;
 
 public final class BasicScheduleParser implements RecordSpecificParser<BasicSchedule> {
+
+  private final List<BasicScheduleField<?>> fieldDefinitions;
+
+  public BasicScheduleParser(List<BasicScheduleField<?>> fieldDefinitions) {
+    this.fieldDefinitions = fieldDefinitions;
+  }
 
   @Override
   public BasicSchedule parse(String record) {
     final var builder = new BasicSchedule.Builder();
 
-    for (BasicScheduleField<?> basicScheduleField : BasicScheduleField.Instances.getAll()) {
+    for (BasicScheduleField<?> basicScheduleField : fieldDefinitions) {
       switch (basicScheduleField) {
         case RecordIdentityField _ -> {
         }
