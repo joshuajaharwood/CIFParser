@@ -3,10 +3,10 @@ package com.joshuaharwood.cifparser.parsing.lines.internal;
 import com.joshuaharwood.cifparser.parsing.lines.model.CifRecord;
 
 public sealed interface RecordSpecificParser<T extends CifRecord> permits BasicScheduleParser,
-  HeaderParser, TrailerParser, TiplocAmendParser
+  HeaderParser, TrailerParser, TiplocAmendParser, BasicScheduleExtendedParser
 
 //  AssociationParser,
-//  BasicScheduleExtendedParser, , ChangeEnRouteParser, 
+//  , , ChangeEnRouteParser, 
 //  IntermediateLocationParser, OriginLocationParser, TerminatingLocationParser,
 //  TiplocDeleteParser, TiplocInsertParser 
 {

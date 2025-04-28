@@ -1,6 +1,10 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicscheduleextended;
 
-public non-sealed class UicCodeField implements BasicScheduleExtendedField<Integer> {
+import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
+
+public non-sealed class UicCodeField implements BasicScheduleExtendedField<String> {
+
+  private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 
   UicCodeField() {
   }
@@ -26,14 +30,12 @@ public non-sealed class UicCodeField implements BasicScheduleExtendedField<Integ
   }
 
   @Override
-  public Integer convert(String raw) {
-    return Integer.valueOf(raw);
+  public String convert(String raw) {
+    return CONVERTER.apply(raw);
   }
-
 
   @Override
   public String toString() {
     return "UicCodeField[]";
   }
-
 }

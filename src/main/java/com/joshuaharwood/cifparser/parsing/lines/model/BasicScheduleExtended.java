@@ -4,10 +4,10 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.ApplicableTimetable
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 import org.jspecify.annotations.Nullable;
 
-public record BasicScheduleExtended(@Nullable String tractionClass, Integer uicCode,
+public record BasicScheduleExtended(@Nullable String tractionClass, String uicCode,
                                     String atocCode,
                                     ApplicableTimetableCode applicableTimetableCode, String rsid,
-                                    Character dataSource, String spare) implements CifRecord {
+                                    Character dataSource, @Nullable String spare) implements CifRecord {
 
   @Override
   public RecordIdentity recordIdentity() {
