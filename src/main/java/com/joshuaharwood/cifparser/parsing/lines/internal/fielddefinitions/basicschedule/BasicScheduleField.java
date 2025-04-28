@@ -1,6 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule;
 
-import com.google.common.collect.ImmutableList;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
 
 public sealed interface BasicScheduleField<T> extends RowField<T> permits BankHolidayRunningField,
@@ -38,40 +37,9 @@ public sealed interface BasicScheduleField<T> extends RowField<T> permits BankHo
     public static final CateringCodeField CATERING_CODE_FIELD = new CateringCodeField();
     public static final ServiceBrandingField SERVICE_BRANDING_FIELD = new ServiceBrandingField();
     public static final SpareField SPARE_FIELD = new SpareField();
-    public static final StpIndicatorField STP_INDICATOR_FIELD = new StpIndicatorField(); 
-    private static final ImmutableList<BasicScheduleField<?>> ALL_INSTANCES = ImmutableList.of(
-      RECORD_IDENTITY_FIELD,
-      TRANSACTION_TYPE_FIELD,
-      TRAIN_UID_FIELD,
-      DATE_RUNS_FROM_FIELD,
-      DATE_RUNS_TO_FIELD,
-      DAYS_RUN_FIELD,
-      BANK_HOLIDAY_RUNNING_FIELD,
-      TRAIN_STATUS_FIELD,
-      TRAIN_CATEGORY_FIELD,
-      TRAIN_IDENTITY_FIELD,
-      HEADCODE_FIELD,
-      COURSE_INDICATOR_FIELD,
-      PROFIT_CENTRE_CODE_FIELD,
-      BUSINESS_SECTOR_PORTION_ID_FIELD,
-      POWER_TYPE_FIELD,
-      TIMING_LOAD_FIELD,
-      SPEED_FIELD,
-      OPERATING_CHARACTERISTICS_FIELD,
-      TRAIN_CLASS_FIELD,
-      SLEEPERS_FIELD,
-      RESERVATIONS_FIELD,
-      CONNECT_INDICATOR_FIELD,
-      CATERING_CODE_FIELD,
-      SERVICE_BRANDING_FIELD,
-      SPARE_FIELD,
-      STP_INDICATOR_FIELD);
+    public static final StpIndicatorField STP_INDICATOR_FIELD = new StpIndicatorField();
 
     private Instances() {
-    }
-
-    public static ImmutableList<BasicScheduleField<?>> getAll() {
-      return ALL_INSTANCES;
     }
   }
 }

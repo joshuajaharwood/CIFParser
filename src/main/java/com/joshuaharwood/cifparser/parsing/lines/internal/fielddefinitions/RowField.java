@@ -1,6 +1,6 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions;
 
-public interface RowField<T> {
+public interface RowField<R> {
 
   int startIndex();
 
@@ -10,7 +10,11 @@ public interface RowField<T> {
 
   boolean isRequired();
 
-  T convert(String raw);
+  R convert(String raw);
+  
+  default R substringAndConvert(String record) {
+    return convert(record.substring(startIndex(), endIndex()));
+  }
 
   default int endIndex() {
     return startIndex() + length();

@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.BasicScheduleParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.LiteralConverter;
-import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.basicschedule.BasicScheduleField;
 import com.joshuaharwood.cifparser.parsing.lines.model.CifRecord;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.CifLineParserException;
@@ -11,8 +10,7 @@ import org.slf4j.LoggerFactory;
 
 public class CifLineParser {
 
-  private static final BasicScheduleParser BASIC_SCHEDULE_PARSER = new BasicScheduleParser(
-    BasicScheduleField.Instances.getAll());
+  private static final BasicScheduleParser BASIC_SCHEDULE_PARSER = new BasicScheduleParser();
   private static final Logger LOG = LoggerFactory.getLogger(CifLineParser.class);
   private static final LiteralConverter<RecordIdentity> CONVERTER = LiteralConverter.create(
     RecordIdentity.class);
