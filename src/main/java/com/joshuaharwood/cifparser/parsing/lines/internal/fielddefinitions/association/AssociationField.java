@@ -1,6 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.association;
 
-import com.google.common.collect.ImmutableList;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
 
 public sealed interface AssociationField<T> extends RowField<T> permits
@@ -28,29 +27,8 @@ public sealed interface AssociationField<T> extends RowField<T> permits
     static final AssociationTypeField ASSOCIATION_TYPE = new AssociationTypeField();
     static final FillerField FILLER = new FillerField();
     static final StpIndicatorField STP_INDICATOR = new StpIndicatorField();
-    private static final ImmutableList<AssociationField<?>> ALL_INSTANCES = ImmutableList.of(
-      RECORD_IDENTITY,
-      TRANSACTION_TYPE,
-      BASE_UID,
-      ASSOCIATION_UID,
-      ASSOCIATION_START_DATE,
-      ASSOCIATION_END_DATE,
-      ASSOCIATION_DAYS,
-      ASSOCIATION_CATEGORY,
-      ASSOCIATION_DATE_INDICATOR,
-      ASSOCIATION_LOCATION,
-      BASE_LOCATION_SUFFIX,
-      ASSOCIATION_LOCATION_SUFFIX,
-      DIAGRAM_TYPE,
-      ASSOCIATION_TYPE,
-      FILLER,
-      STP_INDICATOR);
 
     private Instances() {
-    }
-
-    public static ImmutableList<AssociationField<?>> getAll() {
-      return ALL_INSTANCES;
     }
   }
 }

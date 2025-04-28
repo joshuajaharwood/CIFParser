@@ -1,6 +1,5 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.location.origin;
 
-import com.google.common.collect.ImmutableList;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
 
 public sealed interface OriginLocationField<T> extends RowField<T> permits
@@ -22,24 +21,7 @@ public sealed interface OriginLocationField<T> extends RowField<T> permits
     public static final PerformanceAllowanceField PERFORMANCE_ALLOWANCE = new PerformanceAllowanceField();
     public static final SpareField SPARE = new SpareField();
 
-    private static final ImmutableList<OriginLocationField<?>> ALL_INSTANCES = ImmutableList.of(
-      RECORD_IDENTITY,
-      LOCATION,
-      SCHEDULED_DEPARTURE_TIME,
-      PUBLIC_DEPARTURE_TIME,
-      PLATFORM,
-      LINE,
-      ENGINEERING_ALLOWANCE,
-      PATHING_ALLOWANCE,
-      ACTIVITY,
-      PERFORMANCE_ALLOWANCE,
-      SPARE);
-
     private Instances() {
-    }
-
-    public static ImmutableList<OriginLocationField<?>> getAll() {
-      return ALL_INSTANCES;
     }
   }
 }

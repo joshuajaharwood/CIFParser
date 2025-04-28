@@ -2,10 +2,10 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.ZeroSafeTimeConverter;
 import java.time.LocalTime;
-import java.util.Optional;
+import org.jspecify.annotations.Nullable;
 
 public non-sealed class PublicArrivalField implements
-  IntermediateLocationField<Optional<LocalTime>> {
+  IntermediateLocationField<LocalTime> {
 
   private static final ZeroSafeTimeConverter CONVERTER = ZeroSafeTimeConverter.getInstance();
 
@@ -32,9 +32,12 @@ public non-sealed class PublicArrivalField implements
     return false;
   }
 
+  // TODO: how should we separate null-possible and null-impossible converters in the annotation library's opinion?
+  @SuppressWarnings("NullableProblems")
   @Override
-  public Optional<LocalTime> convert(String raw) {
-    return CONVERTER.apply(raw);
+  @Nullable
+  public LocalTime convert(String raw) {
+    return CONVERTER.apply(raw).orElse(null);
   }
 
 

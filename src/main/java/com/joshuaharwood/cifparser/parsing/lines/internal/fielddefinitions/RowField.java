@@ -9,7 +9,7 @@ public interface RowField<R> {
   int length();
 
   boolean isRequired();
-
+  
   R convert(String raw);
 
   default R substringAndConvert(String record) {

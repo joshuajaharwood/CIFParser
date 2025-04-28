@@ -1,11 +1,10 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.location.terminating;
 
-import com.google.common.collect.ImmutableList;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
 
-public sealed interface TerminatingLocationField<T> extends RowField<T> permits
-  RecordIdentityField, LocationField, ScheduledArrivalTimeField, PublicArrivalTimeField,
-  PlatformField, PathField, ActivityField, SpareField {
+public sealed interface TerminatingLocationField<T> extends RowField<T> permits RecordIdentityField,
+  LocationField, ScheduledArrivalTimeField, PublicArrivalTimeField, PlatformField, PathField,
+  ActivityField, SpareField {
 
   class Instances {
 
@@ -18,21 +17,7 @@ public sealed interface TerminatingLocationField<T> extends RowField<T> permits
     public static final ActivityField ACTIVITY = new ActivityField();
     public static final SpareField SPARE = new SpareField();
 
-    private static final ImmutableList<TerminatingLocationField<?>> ALL_INSTANCES = ImmutableList.of(
-      RECORD_IDENTITY,
-      LOCATION,
-      SCHEDULED_ARRIVAL_TIME,
-      PUBLIC_ARRIVAL_TIME,
-      PLATFORM,
-      PATH,
-      ACTIVITY,
-      SPARE);
-
     private Instances() {
-    }
-
-    public static ImmutableList<TerminatingLocationField<?>> getAll() {
-      return ALL_INSTANCES;
     }
   }
 }

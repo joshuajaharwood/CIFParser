@@ -22,24 +22,7 @@ public sealed interface TiplocInsertField<T> extends RowField<T> permits
     public static final DescriptionField DESCRIPTION = new DescriptionField();
     public static final SpareField SPARE = new SpareField();
 
-    private static final ImmutableList<TiplocInsertField<?>> ALL_INSTANCES = ImmutableList.of(
-      RECORD_IDENTITY,
-      TIPLOC_CODE,
-      CAPITALS,
-      NATIONAL_LOCATION_CODE,
-      NLC_CHECK_CHARACTER,
-      TPS_DESCRIPTION,
-      STANOX,
-      PO_MCP_CODE,
-      CRS_CODE,
-      DESCRIPTION,
-      SPARE);
-
     private Instances() {
-    }
-
-    public static ImmutableList<TiplocInsertField<?>> getAll() {
-      return ALL_INSTANCES;
     }
   }
 }

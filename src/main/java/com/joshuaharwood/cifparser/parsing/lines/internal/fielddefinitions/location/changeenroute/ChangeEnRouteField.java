@@ -36,36 +36,8 @@ public sealed interface ChangeEnRouteField<T> extends RowField<T> permits
     public static final UicCodeField UIC_CODE = new UicCodeField();
     public static final RetailServiceIdField RETAIL_SERVICE_ID = new RetailServiceIdField();
     public static final SpareField SPARE = new SpareField();
-
-    private static final ImmutableList<ChangeEnRouteField<?>> ALL_INSTANCES = ImmutableList.of(
-      RECORD_IDENTITY,
-      LOCATION,
-      TRAIN_CATEGORY,
-      TRAIN_IDENTITY,
-      HEADCODE,
-      COURSE_INDICATOR,
-      PROFIT_CENTRE_CODE_TRAIN_SERVICE_CODE,
-      BUSINESS_SECTOR,
-      POWER_TYPE,
-      TIMING_LOAD,
-      SPEED,
-      OPERATING_CHARACTERISTICS,
-      TRAIN_CLASS,
-      SLEEPERS,
-      RESERVATIONS,
-      CONNECT_INDICATOR,
-      CATERING_CODE,
-      SERVICE_BRANDING,
-      TRACTION_CLASS,
-      UIC_CODE,
-      RETAIL_SERVICE_ID,
-      SPARE);
-
+    
     private Instances() {
-    }
-
-    public static ImmutableList<ChangeEnRouteField<?>> getAll() {
-      return ALL_INSTANCES;
     }
   }
 }

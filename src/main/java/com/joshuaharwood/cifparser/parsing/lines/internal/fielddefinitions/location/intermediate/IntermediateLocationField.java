@@ -27,28 +27,7 @@ public sealed interface IntermediateLocationField<T> extends RowField<T> permits
     public static final PerformanceAllowanceField PERFORMANCE_ALLOWANCE = new PerformanceAllowanceField();
     public static final SpareField SPARE = new SpareField();
 
-    private static final ImmutableList<IntermediateLocationField<?>> ALL_INSTANCES = ImmutableList.of(
-      RECORD_IDENTITY,
-      LOCATION,
-      SCHEDULED_ARRIVAL_TIME,
-      SCHEDULED_DEPARTURE_TIME,
-      SCHEDULED_PASS,
-      PUBLIC_ARRIVAL,
-      PUBLIC_DEPARTURE,
-      PLATFORM,
-      LINE,
-      PATH,
-      ACTIVITY,
-      ENGINEERING_ALLOWANCE,
-      PATHING_ALLOWANCE,
-      PERFORMANCE_ALLOWANCE,
-      SPARE);
-
     private Instances() {
-    }
-
-    public static ImmutableList<IntermediateLocationField<?>> getAll() {
-      return ALL_INSTANCES;
     }
   }
 }
