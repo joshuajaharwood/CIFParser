@@ -18,6 +18,7 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Set;
+import org.jspecify.annotations.Nullable;
 
 public final class BasicScheduleParser implements RecordSpecificParser<BasicSchedule> {
 
@@ -82,7 +83,8 @@ public final class BasicScheduleParser implements RecordSpecificParser<BasicSche
                                            RowField<Reservations> reservations,
                                            RowField<Character> connectIndicator,
                                            RowField<Set<CateringCode>> cateringCode,
-                                           RowField<String> serviceBranding, RowField<String> spare,
+                                           RowField<String> serviceBranding, 
+                                           RowField<@Nullable String> spare,
                                            RowField<StpIndicator> stpIndicator
 
   ) {

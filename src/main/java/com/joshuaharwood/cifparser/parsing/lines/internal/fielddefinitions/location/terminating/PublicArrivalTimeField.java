@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import java.util.Optional;
 
 public non-sealed class PublicArrivalTimeField implements
-  TerminatingLocationField<Optional<LocalTime>> {
+  TerminatingLocationField<LocalTime> {
 
   private static final ZeroSafeTimeConverter CONVERTER = ZeroSafeTimeConverter.getInstance();
 
@@ -32,9 +32,11 @@ public non-sealed class PublicArrivalTimeField implements
     return false;
   }
 
+  // fixme: zero-safe converter nullability issue. investigate later.
+  @SuppressWarnings("DataFlowIssue")
   @Override
-  public Optional<LocalTime> convert(String raw) {
-    return CONVERTER.apply(raw);
+  public LocalTime convert(String raw) {
+    return CONVERTER.apply(raw).orElse(null);
   }
 
 

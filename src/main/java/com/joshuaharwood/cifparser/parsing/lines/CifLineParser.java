@@ -6,6 +6,7 @@ import com.joshuaharwood.cifparser.parsing.lines.internal.BasicScheduleParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.HeaderParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.IntermediateLocationParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.OriginLocationParser;
+import com.joshuaharwood.cifparser.parsing.lines.internal.TerminatingLocationParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.TiplocAmendParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.TiplocDeleteParser;
 import com.joshuaharwood.cifparser.parsing.lines.internal.TiplocInsertParser;
@@ -33,7 +34,7 @@ public class CifLineParser {
   private static final OriginLocationParser ORIGIN_LOCATION_PARSER = new OriginLocationParser();
   private static final IntermediateLocationParser INTERMEDIATE_LOCATION_PARSER = new IntermediateLocationParser();
   //  private static final ChangeEnRouteParser CHANGE_EN_ROUTE_PARSER = new ChangeEnRouteParser();
-//  private static final TerminatingLocationParser TERMINATING_LOCATION_PARSER = new TerminatingLocationParser();
+  private static final TerminatingLocationParser TERMINATING_LOCATION_PARSER = new TerminatingLocationParser();
   private static final TrailerParser TRAILER_PARSER = new TrailerParser();
 
   public CifRecord parseLine(String record) {
@@ -61,7 +62,7 @@ public class CifLineParser {
         case ORIGIN_LOCATION -> ORIGIN_LOCATION_PARSER.parse(record);
         case INTERMEDIATE_LOCATION -> INTERMEDIATE_LOCATION_PARSER.parse(record);
 //        case CHANGE_EN_ROUTE -> CHANGE_EN_ROUTE_PARSER.parse(record);
-//        case TERMINATING_LOCATION -> TERMINATING_LOCATION_PARSER.parse(record);
+        case TERMINATING_LOCATION -> TERMINATING_LOCATION_PARSER.parse(record);
         case TRAILER_RECORD -> TRAILER_PARSER.parse(record);
 
         case TRAIN_SPECIFIC_NOTE, LOCATION_SPECIFIC_NOTE ->
