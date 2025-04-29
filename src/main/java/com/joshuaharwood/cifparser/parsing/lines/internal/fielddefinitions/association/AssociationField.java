@@ -11,22 +11,22 @@ public sealed interface AssociationField<T> extends RowField<T> permits
 
   class Instances {
 
-    static final RecordIdentityField RECORD_IDENTITY = new RecordIdentityField();
-    static final TransactionTypeField TRANSACTION_TYPE = new TransactionTypeField();
-    static final BaseUidField BASE_UID = new BaseUidField();
-    static final AssociationUidField ASSOCIATION_UID = new AssociationUidField();
-    static final AssociationStartDateField ASSOCIATION_START_DATE = new AssociationStartDateField();
-    static final AssociationEndDateField ASSOCIATION_END_DATE = new AssociationEndDateField();
-    static final AssociationDaysField ASSOCIATION_DAYS = new AssociationDaysField();
-    static final AssociationCategoryField ASSOCIATION_CATEGORY = new AssociationCategoryField();
-    static final AssociationDateIndicatorField ASSOCIATION_DATE_INDICATOR = new AssociationDateIndicatorField();
-    static final AssociationLocationField ASSOCIATION_LOCATION = new AssociationLocationField();
-    static final BaseLocationSuffixField BASE_LOCATION_SUFFIX = new BaseLocationSuffixField();
-    static final AssociationLocationSuffixField ASSOCIATION_LOCATION_SUFFIX = new AssociationLocationSuffixField();
-    static final DiagramTypeField DIAGRAM_TYPE = new DiagramTypeField();
-    static final AssociationTypeField ASSOCIATION_TYPE = new AssociationTypeField();
-    static final FillerField FILLER = new FillerField();
-    static final StpIndicatorField STP_INDICATOR = new StpIndicatorField();
+    public static final RecordIdentityField RECORD_IDENTITY = new RecordIdentityField();
+    public static final TransactionTypeField TRANSACTION_TYPE = new TransactionTypeField();
+    public static final BaseUidField BASE_UID = new BaseUidField();
+    public static final AssociationUidField ASSOCIATION_UID = new AssociationUidField();
+    public static final AssociationStartDateField ASSOCIATION_START_DATE = new AssociationStartDateField();
+    public static final AssociationEndDateField ASSOCIATION_END_DATE = new AssociationEndDateField();
+    public static final AssociationDaysField ASSOCIATION_DAYS = new AssociationDaysField();
+    public static final AssociationCategoryField ASSOCIATION_CATEGORY = new AssociationCategoryField();
+    public static final AssociationDateIndicatorField ASSOCIATION_DATE_INDICATOR = new AssociationDateIndicatorField();
+    public static final AssociationLocationField ASSOCIATION_LOCATION = new AssociationLocationField();
+    public static final BaseLocationSuffixField BASE_LOCATION_SUFFIX = new BaseLocationSuffixField();
+    public static final AssociationLocationSuffixField ASSOCIATION_LOCATION_SUFFIX = new AssociationLocationSuffixField();
+    public static final DiagramTypeField DIAGRAM_TYPE = new DiagramTypeField();
+    public static final AssociationTypeField ASSOCIATION_TYPE = new AssociationTypeField();
+    public static final FillerField FILLER = new FillerField();
+    public static final StpIndicatorField STP_INDICATOR = new StpIndicatorField();
 
     private Instances() {
     }
