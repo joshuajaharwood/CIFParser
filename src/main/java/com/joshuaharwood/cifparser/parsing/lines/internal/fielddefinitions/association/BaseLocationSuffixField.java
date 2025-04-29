@@ -22,7 +22,7 @@ public non-sealed class BaseLocationSuffixField implements AssociationField<Byte
 
   @Override
   public boolean isRequired() {
-    return true;
+    return false;
   }
 
   @Override

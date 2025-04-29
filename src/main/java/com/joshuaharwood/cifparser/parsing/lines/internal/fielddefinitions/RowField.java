@@ -9,11 +9,21 @@ public interface RowField<R> {
   int length();
 
   boolean isRequired();
-  
+
   R convert(String raw);
 
   default R substringAndConvert(String record) {
-    return convert(record.substring(startIndex(), endIndex()));
+    var rawField = record.substring(startIndex(), endIndex());
+
+    if (rawField.isBlank()) {
+      if (isRequired()) {
+        throw new IllegalArgumentException("Record is blank for required field " + name());
+      }
+
+      return null;
+    }
+
+    return convert(rawField);
   }
 
   default int endIndex() {
