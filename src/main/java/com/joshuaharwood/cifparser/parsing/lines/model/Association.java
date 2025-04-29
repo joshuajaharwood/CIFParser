@@ -10,6 +10,7 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Set;
+import org.jspecify.annotations.Nullable;
 
 public record Association(TransactionType transactionType,
                           String mainTrainUid,
@@ -20,8 +21,8 @@ public record Association(TransactionType transactionType,
                           AssociationCategory associationCategory,
                           AssociationDateIndicator associationDateIndicator,
                           String associationLocation,
-                          Byte baseLocationSuffix,
-                          Byte associationLocationSuffix,
+                          @Nullable Byte baseLocationSuffix,
+                          @Nullable Byte associationLocationSuffix,
                           DiagramType diagramType,
                           AssociationType associationType,
                           StpIndicator stpIndicator

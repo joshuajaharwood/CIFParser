@@ -1,5 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions;
 
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.RequiredPropertyMissingException;
+
 public interface RowField<R> {
 
   int startIndex();
@@ -17,7 +19,7 @@ public interface RowField<R> {
 
     if (rawField.isBlank()) {
       if (isRequired()) {
-        throw new IllegalArgumentException("Record is blank for required field " + name());
+        throw new RequiredPropertyMissingException(name());
       }
 
       return null;
