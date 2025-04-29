@@ -22,7 +22,7 @@ public non-sealed class AssociationLocationSuffixField implements AssociationFie
 
   @Override
   public boolean isRequired() {
-    return true;
+    return false;
   }
 
   @Override

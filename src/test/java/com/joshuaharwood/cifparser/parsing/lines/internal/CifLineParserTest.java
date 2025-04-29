@@ -10,9 +10,11 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.AssociationCategory
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.AssociationDateIndicator;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.AssociationType;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.DiagramType;
-import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.CifLineParserException;
+import com.joshuaharwood.cifparser.parsing.lines.model.enums.RecordIdentity;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.StpIndicator;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TransactionType;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.CifLineParserException;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.UnknownLiteralException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Set;
@@ -67,8 +69,7 @@ class CifLineParserTest {
         INVALID_IDENTITY_RECORD))
       .withMessage(
         "Failed to parse record. [Record: ABNC01484C014852312102405260000001NPSKNGX     TO                               P]")
-      .withCause(new IllegalArgumentException(
-        "Failed to map String for given Literal. [String: AB] [Enum: RecordIdentity]"));
+      .withCause(new UnknownLiteralException(RecordIdentity.class, "AB"));
   }
 
   @Test
