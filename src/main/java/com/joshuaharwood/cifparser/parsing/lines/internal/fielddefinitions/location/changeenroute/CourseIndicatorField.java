@@ -1,10 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.location.changeenroute;
 
-import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 
-public non-sealed class CourseIndicatorField implements ChangeEnRouteField<String> {
-
-  private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
+public non-sealed class CourseIndicatorField implements ChangeEnRouteField<Byte> {
 
   CourseIndicatorField() {
   }
@@ -30,14 +27,12 @@ public non-sealed class CourseIndicatorField implements ChangeEnRouteField<Strin
   }
 
   @Override
-  public String convert(String raw) {
-    return CONVERTER.apply(raw);
+  public Byte convert(String raw) {
+    return Byte.parseByte(raw);
   }
-
-
+  
   @Override
   public String toString() {
     return "CourseIndicatorField[]";
   }
-
 }
