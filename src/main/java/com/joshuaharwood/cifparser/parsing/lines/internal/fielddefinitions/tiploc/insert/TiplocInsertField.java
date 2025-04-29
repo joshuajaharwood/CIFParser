@@ -1,12 +1,11 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.insert;
 
-import com.google.common.collect.ImmutableList;
 import com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.RowField;
 
 public sealed interface TiplocInsertField<T> extends RowField<T> permits
   RecordIdentityField, TiplocCodeField, CapitalsField, NationalLocationCodeField,
   NlcCheckCharacterField, TpsDescriptionField, StanoxField, PoMcpCodeField,
-  CrsCodeField, DescriptionField, SpareField {
+  ThreeAlphaField, NlcDescriptionField, SpareField {
 
   class Instances {
 
@@ -18,8 +17,8 @@ public sealed interface TiplocInsertField<T> extends RowField<T> permits
     public static final TpsDescriptionField TPS_DESCRIPTION = new TpsDescriptionField();
     public static final StanoxField STANOX = new StanoxField();
     public static final PoMcpCodeField PO_MCP_CODE = new PoMcpCodeField();
-    public static final CrsCodeField CRS_CODE = new CrsCodeField();
-    public static final DescriptionField DESCRIPTION = new DescriptionField();
+    public static final ThreeAlphaField THREE_ALPHA_FIELD = new ThreeAlphaField();
+    public static final NlcDescriptionField DESCRIPTION = new NlcDescriptionField();
     public static final SpareField SPARE = new SpareField();
 
     private Instances() {

@@ -2,26 +2,26 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tipl
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 
-public non-sealed class DescriptionField implements TiplocInsertField<String> {
+public non-sealed class ThreeAlphaField implements TiplocInsertField<String> {
 
   private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 
-  DescriptionField() {
+  ThreeAlphaField() {
   }
 
   @Override
   public int startIndex() {
-    return 56;
+    return 53;
   }
 
   @Override
   public String name() {
-    return "DESCRIPTION";
+    return "THREE_ALPHA";
   }
 
   @Override
   public int length() {
-    return 16;
+    return 3;
   }
 
   @Override
@@ -37,7 +37,7 @@ public non-sealed class DescriptionField implements TiplocInsertField<String> {
 
   @Override
   public String toString() {
-    return "DescriptionField[]";
+    return "ThreeAlphaField[]";
   }
 
 }

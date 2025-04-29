@@ -2,26 +2,26 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tipl
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultStringConverter;
 
-public non-sealed class CrsCodeField implements TiplocInsertField<String> {
+public non-sealed class NlcDescriptionField implements TiplocInsertField<String> {
 
   private static final DefaultStringConverter CONVERTER = DefaultStringConverter.getInstance();
 
-  CrsCodeField() {
+  NlcDescriptionField() {
   }
 
   @Override
   public int startIndex() {
-    return 53;
+    return 56;
   }
 
   @Override
   public String name() {
-    return "CRS_CODE";
+    return "NLC_DESCRIPTION";
   }
 
   @Override
   public int length() {
-    return 3;
+    return 16;
   }
 
   @Override
@@ -37,7 +37,7 @@ public non-sealed class CrsCodeField implements TiplocInsertField<String> {
 
   @Override
   public String toString() {
-    return "CrsCodeField[]";
+    return "NlcDescriptionField[]";
   }
 
 }

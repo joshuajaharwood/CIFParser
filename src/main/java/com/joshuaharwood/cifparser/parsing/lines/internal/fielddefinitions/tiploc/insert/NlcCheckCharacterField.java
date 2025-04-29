@@ -1,9 +1,8 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.tiploc.insert;
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.DefaultCharConverter;
-import java.util.Optional;
 
-public non-sealed class NlcCheckCharacterField implements TiplocInsertField<Optional<Character>> {
+public non-sealed class NlcCheckCharacterField implements TiplocInsertField<Character> {
 
   private static final DefaultCharConverter CONVERTER = DefaultCharConverter.getInstance();
 
@@ -31,11 +30,10 @@ public non-sealed class NlcCheckCharacterField implements TiplocInsertField<Opti
   }
 
   @Override
-  public Optional<Character> convert(String raw) {
-    return Optional.of(CONVERTER.apply(raw));
+  public Character convert(String raw) {
+    return CONVERTER.apply(raw);
   }
-
-
+  
   @Override
   public String toString() {
     return "NlcCheckCharacterField[]";
