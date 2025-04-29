@@ -2,10 +2,8 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.fielddefinitions.loca
 
 import com.joshuaharwood.cifparser.parsing.lines.internal.converters.ZeroSafeTimeConverter;
 import java.time.LocalTime;
-import java.util.Optional;
 
-public non-sealed class PublicDepartureField implements
-  IntermediateLocationField<Optional<LocalTime>> {
+public non-sealed class PublicDepartureField implements IntermediateLocationField<LocalTime> {
 
   private static final ZeroSafeTimeConverter CONVERTER = ZeroSafeTimeConverter.getInstance();
 
@@ -31,16 +29,16 @@ public non-sealed class PublicDepartureField implements
   public boolean isRequired() {
     return false;
   }
-
+  
+  //FIXME: zerosafe converter nullability issue. investigate later.
+  @SuppressWarnings("DataFlowIssue")
   @Override
-  public Optional<LocalTime> convert(String raw) {
-    return CONVERTER.apply(raw);
+  public LocalTime convert(String raw) {
+    return CONVERTER.apply(raw).orElse(null);
   }
-
 
   @Override
   public String toString() {
     return "PublicDepartureField[]";
   }
-
 }
