@@ -1,9 +1,12 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.PowerType;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.UnknownLiteralException;
 import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -19,18 +22,20 @@ class LiteralConverterTest {
 
   @Test
   void parseLiteralWithNullStringReturnsEmptyOptional() {
-    assertThat(literalConverter.apply(null)).isNull();
+    //noinspection DataFlowIssue
+    assertThatNullPointerException().isThrownBy(() -> literalConverter.apply(null));
   }
 
   @Test
   void parseLiteralWithWhitespaceStringReturnsEmptyOptional() {
-    assertThat(literalConverter.apply("   ")).isNull();
+    assertThatIllegalArgumentException().isThrownBy(() -> literalConverter.apply(" "))
+      .withMessage("Literal string must not be blank.");
   }
 
   @Test
   void parseLiteralWithWrongStringThrowsIllegalArgumentException() {
-    assertThatIllegalArgumentException().isThrownBy(() -> literalConverter.apply("XXX"))
-      .withMessage("Failed to map String for given Literal. [String: XXX] [Enum: PowerType]");
+    assertThatExceptionOfType(UnknownLiteralException.class).isThrownBy(() -> literalConverter.apply("XXX"))
+      .withMessage("Failed to find matching literal for given String. [Literal class: PowerType] [Literal string: XXX]");
   }
 
   @Test

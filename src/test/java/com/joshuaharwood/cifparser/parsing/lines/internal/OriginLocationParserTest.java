@@ -43,7 +43,7 @@
 //    assertThatExceptionOfType(RequiredPropertyMissingException.class)
 //        .isThrownBy(() -> parser.parse(LO_RECORD_MISSING_LOCATION))
 //        .withMessageContaining(
-//            "Failed to parse as a required CIF field was blank or null. [Field name: LOCATION]");
+//            "Failed to parse as a required CIF field was not populated. [Field name: LOCATION]");
 //  }
 //
 //  @Test

@@ -71,7 +71,7 @@ class BasicScheduleParserTest {
     assertThatExceptionOfType(RequiredPropertyMissingException.class).isThrownBy(() -> parser.parse(
         TEST_BS_RECORD_MISSING_TRAIN_UID))
       .withMessageContaining(
-        "Failed to parse as a required CIF field was blank or null. [Field name: TRAIN_UID]");
+        "Failed to parse as a required CIF field was not populated. [Field name: TRAIN_UID]");
   }
 
   @Test
@@ -79,7 +79,7 @@ class BasicScheduleParserTest {
     assertThatExceptionOfType(RequiredPropertyMissingException.class).isThrownBy(() -> parser.parse(
         TEST_BS_RECORD_MISSING_TRANSACTION_TYPE))
       .withMessageContaining(
-        "Failed to parse as a required CIF field was blank or null. [Field name: TRANSACTION_TYPE]");
+        "Failed to parse as a required CIF field was not populated. [Field name: TRANSACTION_TYPE]");
   }
 
   @Test
@@ -87,7 +87,7 @@ class BasicScheduleParserTest {
     assertThatExceptionOfType(RequiredPropertyMissingException.class).isThrownBy(() -> parser.parse(
         TEST_BS_RECORD_MISSING_STP_INDICATOR))
       .withMessageContaining(
-        "Failed to parse as a required CIF field was blank or null. [Field name: STP_INDICATOR]");
+        "Failed to parse as a required CIF field was not populated. [Field name: STP_INDICATOR]");
   }
 
   @Test

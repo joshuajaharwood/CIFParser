@@ -44,4 +44,8 @@ public non-sealed class OperatingCharacteristicsField implements
     return "OperatingCharacteristicsField[]";
   }
 
+  @Override
+  public Set<OperatingCharacteristics> substringAndConvert(String record) {
+    return convert(record.substring(startIndex(), endIndex()));
+  }
 }

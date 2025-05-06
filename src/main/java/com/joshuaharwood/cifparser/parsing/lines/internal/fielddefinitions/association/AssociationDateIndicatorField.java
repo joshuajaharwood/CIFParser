@@ -29,7 +29,7 @@ public non-sealed class AssociationDateIndicatorField implements
 
   @Override
   public boolean isRequired() {
-    return true;
+    return false;
   }
 
   @Override

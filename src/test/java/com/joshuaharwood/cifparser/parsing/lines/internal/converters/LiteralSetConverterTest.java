@@ -2,6 +2,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.OperatingCharacteristics;
 import org.jspecify.annotations.NonNull;
@@ -43,13 +44,13 @@ class LiteralSetConverterTest {
   }
 
   @Test
-  void lookupSetThrowsIllegalArgumentExceptionWithBlankData() {
+  void lookupSetReturnsEmptySetWithBlankData() {
     assertThat(literalSetConverter.apply("   ")).isUnmodifiable().isEmpty();
   }
 
   @Test
-  void lookupSetThrowsIllegalArgumentExceptionWithNullData() {
-    assertThat(literalSetConverter.apply(null)).isUnmodifiable().isEmpty();
+  void lookupSetThrowsNullPointerExceptionWithNullArgument() {
+    //noinspection DataFlowIssue
+    assertThatNullPointerException().isThrownBy(() -> literalSetConverter.apply(null));
   }
-
 }

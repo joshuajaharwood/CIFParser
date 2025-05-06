@@ -43,4 +43,8 @@ public non-sealed class CateringCodeField implements BasicScheduleField<Set<Cate
     return "CateringCodeField[]";
   }
 
+  @Override
+  public Set<CateringCode> substringAndConvert(String record) {
+    return convert(record.substring(startIndex(), endIndex()));
+  }
 }

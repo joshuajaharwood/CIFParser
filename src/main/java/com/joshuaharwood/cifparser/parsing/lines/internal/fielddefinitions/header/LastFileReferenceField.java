@@ -16,7 +16,7 @@ public non-sealed class LastFileReferenceField implements HeaderField<String> {
 
   @Override
   public String name() {
-    return "CURRENT_FILE_REFERENCE";
+    return "LAST_FILE_REFERENCE";
   }
 
   @Override
@@ -26,7 +26,7 @@ public non-sealed class LastFileReferenceField implements HeaderField<String> {
 
   @Override
   public boolean isRequired() {
-    return true;
+    return false;
   }
 
   @Override

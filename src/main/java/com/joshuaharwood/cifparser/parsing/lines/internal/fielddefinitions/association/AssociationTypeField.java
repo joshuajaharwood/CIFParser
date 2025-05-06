@@ -28,7 +28,7 @@ public non-sealed class AssociationTypeField implements AssociationField<Associa
 
   @Override
   public boolean isRequired() {
-    return true;
+    return false;
   }
 
   @Override

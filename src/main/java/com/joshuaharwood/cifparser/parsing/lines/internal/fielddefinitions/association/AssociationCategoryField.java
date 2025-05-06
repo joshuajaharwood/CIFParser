@@ -28,7 +28,7 @@ public non-sealed class AssociationCategoryField implements AssociationField<Ass
 
   @Override
   public boolean isRequired() {
-    return true;
+    return false;
   }
 
   @Override
@@ -36,10 +36,8 @@ public non-sealed class AssociationCategoryField implements AssociationField<Ass
     return CONVERTER.apply(raw);
   }
 
-
   @Override
   public String toString() {
     return "AssociationCategoryField[]";
   }
-
 }

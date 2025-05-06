@@ -48,7 +48,7 @@ class HeaderParserTest {
     assertThatExceptionOfType(RequiredPropertyMissingException.class).isThrownBy(() -> parser.parse(
             badInput))
         .withMessageContaining(
-            "Failed to parse as a required CIF field was blank or null. [Field name: FILE_IDENTITY]");
+            "Failed to parse as a required CIF field was not populated. [Field name: FILE_MAINFRAME_IDENTITY]");
   }
 
   @Test
@@ -58,6 +58,6 @@ class HeaderParserTest {
     assertThatExceptionOfType(RequiredPropertyMissingException.class).isThrownBy(() -> parser.parse(
             badInput))
         .withMessageContaining(
-            "Failed to parse as a required CIF field was blank or null. [Field name: CURRENT_FILE_REFERENCE]");
+            "Failed to parse as a required CIF field was not populated. [Field name: CURRENT_FILE_REFERENCE]");
   }
 }

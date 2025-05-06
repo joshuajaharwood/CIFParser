@@ -18,13 +18,13 @@ public record Association(TransactionType transactionType,
                           LocalDate associationStartDate,
                           LocalDate associationEndDate,
                           Set<DayOfWeek> associationDays,
-                          AssociationCategory associationCategory,
-                          AssociationDateIndicator associationDateIndicator,
+                          @Nullable AssociationCategory associationCategory,
+                          @Nullable AssociationDateIndicator associationDateIndicator,
                           String associationLocation,
                           @Nullable Byte baseLocationSuffix,
                           @Nullable Byte associationLocationSuffix,
                           DiagramType diagramType,
-                          AssociationType associationType,
+                          @Nullable AssociationType associationType,
                           StpIndicator stpIndicator
 ) implements CifRecord {
 

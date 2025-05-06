@@ -26,7 +26,7 @@ public non-sealed class SpareField implements HeaderField<String> {
 
   @Override
   public boolean isRequired() {
-    return true;
+    return false;
   }
 
   @Override
