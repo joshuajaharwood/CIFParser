@@ -2,6 +2,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 import org.jspecify.annotations.NonNull;
 
 public class InverseDateConverter implements Converter<LocalDate> {
@@ -20,6 +21,8 @@ public class InverseDateConverter implements Converter<LocalDate> {
   @Override
   @NonNull
   public LocalDate apply(String input) {
+    Objects.requireNonNull(input, "Date must not be null.");
+    
     if (input.length() != 6) {
       throw new IllegalArgumentException("Date input must be 6 digits.");
     }

@@ -39,7 +39,7 @@ class TiplocInsertParserTest {
       "897600",
       'G',
       "ABERDEEN",
-      "2071",
+      "02071",
       "2800",
       "ABD",
       "ABERDEEN",

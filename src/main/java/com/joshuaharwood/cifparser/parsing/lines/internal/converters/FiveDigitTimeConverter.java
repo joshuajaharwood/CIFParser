@@ -1,6 +1,7 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
 import java.time.LocalTime;
+import java.util.Objects;
 
 /**
  * Converts 5-digit SCHEDULE times, where a 4-digit time can be appended with an 'H' (meaning 'half'
@@ -26,6 +27,7 @@ public class FiveDigitTimeConverter implements Converter<LocalTime> {
 
   @Override
   public LocalTime apply(String input) {
+    Objects.requireNonNull(input, "Time must not be null.");
     
     String trimmed = input.trim();
     

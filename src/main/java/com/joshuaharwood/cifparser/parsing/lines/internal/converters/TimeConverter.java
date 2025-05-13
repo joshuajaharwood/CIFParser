@@ -2,6 +2,7 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class TimeConverter implements Converter<LocalTime> {
 
@@ -18,6 +19,8 @@ public class TimeConverter implements Converter<LocalTime> {
 
   @Override
   public LocalTime apply(String input) {
+    Objects.requireNonNull(input, "Time must not be null.");
+    
     if (input.isBlank()) {
       throw new IllegalArgumentException("Input cannot be blank string.");
     }
