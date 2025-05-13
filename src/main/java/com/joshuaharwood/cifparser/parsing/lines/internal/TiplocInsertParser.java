@@ -20,12 +20,13 @@ public final class TiplocInsertParser implements RecordSpecificParser<TiplocInse
   @Override
   public TiplocInsert parse(String record) {
     return new TiplocInsert(fieldDefinitions.tiplocCode().substringAndConvert(record),
+      // Fixme: not sure this one's right...
       fieldDefinitions.capitalsIdentification().substringAndConvert(record),
       fieldDefinitions.nlc().substringAndConvert(record),
       fieldDefinitions.nlcCheckCharacter().substringAndConvert(record),
       fieldDefinitions.tpsDescription().substringAndConvert(record),
       fieldDefinitions.stanox().substringAndConvert(record),
-      fieldDefinitions.tpsDescription().substringAndConvert(record),
+      fieldDefinitions.poMcpCode().substringAndConvert(record),
       fieldDefinitions.threeAlphaCode().substringAndConvert(record),
       fieldDefinitions.nlcDescription().substringAndConvert(record),
       fieldDefinitions.spare().substringAndConvert(record));
@@ -35,7 +36,8 @@ public final class TiplocInsertParser implements RecordSpecificParser<TiplocInse
                                           RowField<Byte> capitalsIdentification,
                                           RowField<String> nlc,
                                           RowField<Character> nlcCheckCharacter,
-                                          RowField<String> tpsDescription, RowField<String> stanox,
+                                          RowField<String> tpsDescription, 
+                                          RowField<String> stanox,
                                           RowField<String> poMcpCode,
                                           RowField<String> threeAlphaCode,
                                           RowField<String> nlcDescription,

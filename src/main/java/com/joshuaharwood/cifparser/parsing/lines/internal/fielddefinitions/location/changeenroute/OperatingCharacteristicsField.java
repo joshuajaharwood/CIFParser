@@ -38,10 +38,13 @@ public non-sealed class OperatingCharacteristicsField implements
     return CONVERTER.apply(raw);
   }
 
+  @Override
+  public Set<OperatingCharacteristics> substringAndConvert(String record) {
+    return convert(record.substring(startIndex(), endIndex()));  
+  }
 
   @Override
   public String toString() {
     return "OperatingCharacteristicsField[]";
   }
-
 }

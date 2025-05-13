@@ -9,28 +9,29 @@ import com.joshuaharwood.cifparser.parsing.lines.model.enums.SeatingClass;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.Sleepers;
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.TrainCategory;
 import java.util.Set;
+import org.jspecify.annotations.Nullable;
 
 public record ChangeEnRoute(String location,
                             TrainCategory trainCategory,
                             String trainIdentity,
-                            String headcode,
+                            @Nullable String headcode,
                             Byte courseIndicator,
                             String profitCentreCodeTrainServiceCode,
-                            String businessSector,
+                            @Nullable String businessSector,
                             PowerType powerType,
                             String timingLoad,
                             Integer speed,
                             Set<OperatingCharacteristics> operatingCharacteristics,
                             SeatingClass trainClass,
-                            Sleepers sleepers,
-                            Reservations reservations,
-                            String connectIndicator,
-                            CateringCode cateringCode,
-                            String serviceBranding,
-                            String tractionClass,
-                            String uicCode,
-                            String retailServiceId,
-                            String spare) implements LocationRecord {
+                            @Nullable Sleepers sleepers,
+                            @Nullable Reservations reservations,
+                            @Nullable String connectIndicator,
+                            @Nullable CateringCode cateringCode,
+                            @Nullable String serviceBranding,
+                            @Nullable String tractionClass,
+                            @Nullable String uicCode,
+                            @Nullable String retailServiceId,
+                            @Nullable String spare) implements LocationRecord {
 
   @Override
   public RecordIdentity recordIdentity() {
