@@ -26,15 +26,18 @@ public class FiveDigitTimeConverter implements Converter<LocalTime> {
 
   @Override
   public LocalTime apply(String input) {
-    if (input.length() != 4 && input.length() != 5) {
+    
+    String trimmed = input.trim();
+    
+    if (trimmed.length() != 4 && trimmed.length() != 5) {
       throw new IllegalArgumentException("Input must be 4 or 5 digits long. [Input: %s]".formatted(
-        input));
+        trimmed));
     }
 
-    var time = CONVERTER.apply(input.substring(0, 3));
+    var time = CONVERTER.apply(trimmed.substring(0, 4));
 
-    if (input.length() == 5) {
-      if (input.charAt(4) != HALF_MINUTE_INDICATOR) {
+    if (trimmed.length() == 5) {
+      if (trimmed.charAt(4) != HALF_MINUTE_INDICATOR) {
         throw new IllegalArgumentException(
           "Unrecognised character appended to 4-digit time. [Input: %s]".formatted(input));
       }

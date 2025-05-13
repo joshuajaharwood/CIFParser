@@ -1,10 +1,12 @@
 package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.OperatingCharacteristics;
+import com.joshuaharwood.cifparser.parsing.lines.model.exceptions.UnknownLiteralException;
 import org.jspecify.annotations.NonNull;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -38,9 +40,9 @@ class LiteralSetConverterTest {
   @Test
   void lookupSetThrowsIllegalArgumentExceptionWithBadData() {
     // A is not a valid OperatingCharacteristic literal
-    assertThatIllegalArgumentException().isThrownBy(() -> literalSetConverter.apply("ACDEGM"))
+    assertThatExceptionOfType(UnknownLiteralException.class).isThrownBy(() -> literalSetConverter.apply("ACDEGM"))
       .withMessage(
-        "Failed to map String for given Literal. [String: A] [Enum: OperatingCharacteristics]");
+        "Failed to find matching literal for given String. [Literal class: OperatingCharacteristics] [Literal string: ACDEGM]");
   }
 
   @Test
