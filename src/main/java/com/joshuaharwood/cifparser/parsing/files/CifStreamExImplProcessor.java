@@ -8,27 +8,25 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
-import java.util.concurrent.Executor;
 import java.util.concurrent.ForkJoinPool;
-import java.util.stream.Stream;
+import one.util.streamex.StreamEx;
 
-/**
- * A synchronous CifProcessor implementation using the default {@link Stream#parallel()}
- * implementation to parallelise {@link CifRecord} processing.
- *
- * @apiNote {@link Stream#parallel()} uses {@link ForkJoinPool#commonPool()}, which can lead to the
- * common thread pool becoming exhausted if other common thread pool consumers are competing for
- * threads. If this is a concern for you, {@link CifStreamImplProcessor} and
- * {@link CifCustomExecutorMultithreadedBatchingProcessor} allow you to provide your own
- * {@link Executor}.
- */
 public class CifStreamExImplProcessor implements CifProcessor<Path, List<CifRecord>> {
 
   private static final CifLineParser CIF_LINE_PARSER = new CifLineParser();
 
+  private static List<CifRecord> usingCommonForkJoinPool(BufferedReader b) {
+    return StreamEx.of(b.lines()).parallel().map(CIF_LINE_PARSER::parseLine).toList();
+  }
+
+  private static List<CifRecord> usingCustomForkJoinPool(BufferedReader b, ForkJoinPool fjp) {
+    return StreamEx.of(b.lines()).parallel(fjp).map(CIF_LINE_PARSER::parseLine).toList();
+  }
+
   public List<CifRecord> process(Path path) throws IOException {
     try (BufferedReader b = Files.newBufferedReader(path, StandardCharsets.US_ASCII)) {
-      return b.lines().parallel().map(CIF_LINE_PARSER::parseLine).toList();
+      return b.lines().map(CIF_LINE_PARSER::parseLine).toList();
     }
   }
 }
+
