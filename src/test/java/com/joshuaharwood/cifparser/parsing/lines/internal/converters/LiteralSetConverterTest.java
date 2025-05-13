@@ -2,7 +2,6 @@ package com.joshuaharwood.cifparser.parsing.lines.internal.converters;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 import static org.assertj.core.api.Assertions.assertThatNullPointerException;
 
 import com.joshuaharwood.cifparser.parsing.lines.model.enums.OperatingCharacteristics;
@@ -40,7 +39,8 @@ class LiteralSetConverterTest {
   @Test
   void lookupSetThrowsIllegalArgumentExceptionWithBadData() {
     // A is not a valid OperatingCharacteristic literal
-    assertThatExceptionOfType(UnknownLiteralException.class).isThrownBy(() -> literalSetConverter.apply("ACDEGM"))
+    assertThatExceptionOfType(UnknownLiteralException.class).isThrownBy(() -> literalSetConverter.apply(
+        "ACDEGM"))
       .withMessage(
         "Failed to find matching literal for given String. [Literal class: OperatingCharacteristics] [Literal string: ACDEGM]");
   }
